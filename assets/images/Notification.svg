@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="Notification" transform="translate(-278.766 -144.921)">
+    <rect id="Rectangle_167462" data-name="Rectangle 167462" width="20" height="20" transform="translate(278.766 144.921)" fill="none"/>
+    <g id="bell_1_" data-name="bell (1)" transform="translate(280.738 144.962)">
+      <path id="Path_114061" data-name="Path 114061" d="M17.926,13.9a5.5,5.5,0,0,1-1.955-4.212V7.4A5.757,5.757,0,0,0,11.04,1.709V.822A.822.822,0,1,0,9.4.822v.888A5.757,5.757,0,0,0,4.465,7.4V9.688A5.511,5.511,0,0,1,2.5,13.906a1.438,1.438,0,0,0,.935,2.53H17a1.438,1.438,0,0,0,.928-2.537Z" transform="translate(-2 0)" fill="#1000ff"/>
+      <path id="Path_114062" data-name="Path 114062" d="M11.345,23.465A3.087,3.087,0,0,0,14.365,21H8.326A3.087,3.087,0,0,0,11.345,23.465Z" transform="translate(-3.127 -3.742)" fill="#1000ff"/>
+    </g>
+  </g>
+</svg>

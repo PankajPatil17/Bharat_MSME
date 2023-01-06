@@ -1,0 +1,839 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
+import 'package:tssia_replica/Controller/EventsController.dart';
+import 'package:tssia_replica/Controller/HomeController.dart';
+import 'package:tssia_replica/Generic/Common/CommonText.dart';
+import 'package:tssia_replica/Generic/Common/Common_AppBar.dart';
+import 'package:tssia_replica/Generic/Common/Common_BottomBar.dart';
+import 'package:tssia_replica/Generic/Common/Common_Color.dart';
+import 'package:tssia_replica/Generic/Custom/Custom_Drawer.dart';
+import 'package:tssia_replica/Generic/Custom/Custom_Loader.dart';
+import 'package:tssia_replica/Generic/Custom/variables.dart';
+import 'package:tssia_replica/Screens/Circulars/Circulars.dart';
+import 'package:tssia_replica/Screens/Committee/Coming_soon.dart';
+import 'package:tssia_replica/Screens/Events/Event_Details.dart';
+import 'package:tssia_replica/Screens/Events/Events.dart';
+import 'package:tssia_replica/Screens/HelpOthers/HelpOthers.dart';
+import 'package:tssia_replica/Screens/Members/Members.dart';
+import 'package:tssia_replica/Screens/Our_Services.dart/Blood_Bank.dart';
+import 'package:tssia_replica/Screens/Our_Services.dart/Ecoo.dart';
+import 'package:tssia_replica/Screens/Our_Services.dart/Hall_Booking.dart';
+import 'package:tssia_replica/Screens/Our_Services.dart/Visa_Recommendation.dart';
+import 'ChatAndDiscussionForum/SingleandGroupCreateScreen.dart';
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  var HomePageController = Get.put(HomeController());
+  var eventcontroller = Get.put(EventsController());
+  var tapcolor;
+
+  @override
+  void initState() {
+    HomePageController.HomePageApi();
+    tapcolor = 'Home';
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: PWhite,
+      drawer: CustomDrawer(),
+      appBar: PreferredSize(
+          child: SafeArea(child: CommonAppBar()),
+          preferredSize: Size(100.h, 20.h)),
+      body: SafeArea(
+          child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+              child: Container(
+            width: 100.h,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  BannerImages(),
+                  HomeSixModules(),
+                  UpcomingEvents(),
+                  OurServices(),
+                  // Gallery(),
+                ],
+              ),
+            ),
+          )),
+          CommonBottomBar(TapColor: tapcolor)
+        ],
+      )),
+    );
+  }
+
+  BannerImages() {
+    return FutureBuilder(
+      future: HomePageController.HomePageApi(),
+      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Container(
+            height: 24.h,
+            width: 100.w,
+            child: CustomLoader(),
+            decoration: BoxDecoration(
+              color: PWhite,
+              borderRadius: BorderRadius.circular(6),
+            ),
+          );
+        }
+        return Container(
+          margin: EdgeInsets.symmetric(vertical: 1.5.h, horizontal: 1.5.h),
+          height: 24.h,
+          width: 70.h,
+          child: CarouselSlider.builder(
+            itemCount: HomePageController.bannerImages.length,
+            itemBuilder: (BuildContext context, int index, int realIndex) {
+              return Container(
+                width: 100.h,
+                decoration: BoxDecoration(
+                  color: PWhite,
+                  borderRadius: BorderRadius.circular(6),
+                  boxShadow: Mainboxshadow,
+                  image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: AssetImage(
+                      "${HomePageController.bannerImages[index]}",
+                    ),
+                  ),
+                ),
+              );
+            },
+            options: CarouselOptions(
+              autoPlay: true,
+              pauseAutoPlayOnManualNavigate: true,
+              pauseAutoPlayOnTouch: true,
+              viewportFraction: 1,
+              aspectRatio: 16 / 9,
+              initialPage: 0,
+              autoPlayInterval: Duration(seconds: 4),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  HomeSixModules() {
+    return FutureBuilder(
+        future: HomePageController.HomePageApi(),
+        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Container(
+              height: 24.h,
+              width: 100.w,
+              child: CustomLoader(),
+              decoration: BoxDecoration(
+                color: PWhite,
+                borderRadius: BorderRadius.circular(6),
+              ),
+            );
+          }
+          return Container(
+            // margin: EdgeInsets.only(top: 2.2.h),
+            padding: EdgeInsets.all(1.5.h),
+            width: 100.h,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: CommonText(
+                    fontw8: FontWeight.w400,
+                    label: 'Lorem ipsum',
+                    size: 11.sp,
+                    colorT: Color(0xff003C5E),
+                  ),
+                ),
+                SizedBox(
+                  height: 1.5.h,
+                ),
+                GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 20.0,
+                    mainAxisSpacing: 20.0,
+                    childAspectRatio: 1.1,
+                  ),
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: HomePageController.HomeSixModulesColor.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                        onTap: () {
+                          if (index == 0) {
+                            Get.to(Members(), transition: transitonEffect);
+                          } else if (index == 1) {
+                            // Get.to(Committee(), transition: transitonEffect);
+
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return WellnessComingSoon();
+                              },
+                            );
+                          } else if (index == 3) {
+                            Get.to(Events(), transition: transitonEffect);
+                          } else if (index == 4) {
+                            Get.to(Circulars(), transition: transitonEffect);
+                          } else if (index == 5) {
+                            Get.to(SingleandGroupCreateScreen(),
+                                transition: transitonEffect);
+                          } else if (index == 2) {
+                            Get.to(HelpOtherJoin(),
+                                transition: transitonEffect);
+                          }
+                        },
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(bottom: 1.5.h),
+                              decoration: BoxDecoration(
+                                  color: Color(HomePageController
+                                      .HomeSixModulesColor[index]),
+                                  border: Border.all(
+                                      width: 0.5, color: Color(0xffe4e4e4)),
+                                  borderRadius: BorderRadius.circular(10),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        blurRadius: 2,
+                                        spreadRadius: 2,
+                                        offset: Offset(0, 2),
+                                        color: Color(0xffe4e4e4))
+                                  ]),
+                              child: Container(
+                                padding: EdgeInsets.all(1.5.h),
+                                height: 8.5.h,
+                                width: 8.5.h,
+                                child: SvgPicture.asset(
+                                  "${HomePageController.HomeSixModulesImage[index]}",
+                                ),
+                              ),
+                            ),
+                            Text(
+                              "${HomePageController.HomeSixModulesName[index]}",
+                              maxLines: 1,
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'Lato',
+                                  fontSize: 9.sp,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ],
+                        ));
+                  },
+                ),
+              ],
+            ),
+          );
+        });
+  }
+
+  UpcomingEvents() {
+    return FutureBuilder(
+      future: eventcontroller.EventsListApi(),
+      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Container(
+            height: 24.h,
+            width: 100.w,
+            child: CustomLoader(),
+            decoration: BoxDecoration(
+              color: PWhite,
+              borderRadius: BorderRadius.circular(6),
+            ),
+          );
+        }
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: 2.h, vertical: 1.5.h),
+          margin: EdgeInsets.only(bottom: 1.h, top: 1.h),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: CommonText(
+                  label: 'Upcoming Events',
+                  fontw8: FontWeight.w500,
+                  size: 12.sp,
+                  colorT: Color(0xff003C5E),
+                ),
+              ),
+              SizedBox(
+                height: 2.h,
+              ),
+              Container(
+                height: 36.h,
+                width: 100.h,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  controller: ScrollController(),
+                  itemCount: eventcontroller.EventsList.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Get.to(
+                            EventDetails(
+                              id: eventcontroller.EventsList[index]['id']
+                                  .toString(),
+                            ),
+                            transition: transitonEffect);
+                        eventcontroller.EventsDetailsApi(
+                            id: "${eventcontroller.EventsList[index]['id'].toString()}");
+                      },
+
+                      child: Container(
+                        width: 19.5.h,
+                        margin: EdgeInsets.only(left: 2.2.h, bottom: 1.5.h),
+                        decoration: BoxDecoration(
+                            color: PWhite,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                                width: 0.5, color: Color(0xffe4e4e4))),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              height: 16.h,
+                              width: 16.h,
+                              margin: EdgeInsets.only(
+                                  right: 1.5.h,
+                                  left: 1.5.h,
+                                  top: 1.5.h,
+                                  bottom: 1.5.h),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  border: Border.all(
+                                      width: 0.5, color: Color(0xffe4e4e4)),
+                                  image: DecorationImage(
+                                      fit: BoxFit.fill,
+                                      image: AssetImage(
+                                          'assets/images/Event_Image.png'))),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 1.5.h),
+                              child: CommonText(
+                                label: 'Lorem ipsum dolor sit amet, consetetur',
+                                colorT: Colors.black,
+                                fontw8: FontWeight.w400,
+                                maxline: 2,
+                                size: 10.sp,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 1.5.h, vertical: 0.7.h),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SvgPicture.asset(
+                                    'assets/images/clock.svg',
+                                    color: Color(0xff003C5E),
+                                  ),
+                                  SizedBox(
+                                    width: 1.h,
+                                  ),
+                                  SizedBox(
+                                    width: 10.h,
+                                    child: CommonText(
+                                      label:
+                                          '${eventcontroller.EventsList[index]['event_time']}',
+                                      colorT: Colors.black,
+                                      fontw8: FontWeight.w400,
+                                      maxline: 1,
+                                      size: 10.sp,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 1.5.h,
+                              ),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SvgPicture.asset(
+                                    'assets/images/calendar.svg',
+                                    color: Color(0xffF3AE33),
+                                  ),
+                                  SizedBox(
+                                    width: 1.h,
+                                  ),
+                                  SizedBox(
+                                    width: 10.h,
+                                    child: CommonText(
+                                      label:
+                                          '${eventcontroller.EventsList[index]['event_date']}',
+                                      colorT: Colors.black,
+                                      fontw8: FontWeight.w400,
+                                      maxline: 1,
+                                      size: 10.sp,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Spacer(),
+                            Container(
+                              alignment: Alignment.center,
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 1.h, horizontal: 1.5.h),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff56CA6A),
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(10),
+                                    bottomRight: Radius.circular(10),
+                                  )),
+                              child: CommonText(
+                                label:
+                                    'Rs ${eventcontroller.EventsList[index]['event_price']}',
+                                colorT: PWhite,
+                                fontw8: FontWeight.w400,
+                                maxline: 1,
+                                size: 10.sp,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      // child: Container(
+                      //   width: 39.5.h,
+                      //   padding: EdgeInsets.all(1.3.h),
+                      //   margin: EdgeInsets.only(right: 2.2.h),
+                      //   decoration: BoxDecoration(
+                      //       boxShadow: [
+                      //         BoxShadow(
+                      //             color: Colors.black12,
+                      //             blurRadius: 2,
+                      //             offset: Offset(0, 4))
+                      //       ],
+                      //       color: PWhite,
+                      //       borderRadius: BorderRadius.circular(6),
+                      //       border: Border.all(
+                      //           width: 0.5, color: Color(0xffe4e4e4))),
+                      //   child: Row(
+                      //     children: [
+                      // Container(
+                      //   height: 12.h,
+                      //   width: 12.h,
+                      //   margin: EdgeInsets.only(right: 1.5.h),
+                      //   decoration: BoxDecoration(
+                      //       borderRadius: BorderRadius.circular(6),
+                      //       image: DecorationImage(
+                      //           fit: BoxFit.fill,
+                      //           image: NetworkImage(
+                      //               '${eventcontroller.EventsList[index]['event_url']}'))),
+                      // ),
+                      //       Expanded(
+                      //         child: Column(
+                      //           mainAxisAlignment:
+                      //               MainAxisAlignment.spaceBetween,
+                      //           crossAxisAlignment: CrossAxisAlignment.start,
+                      //           children: [
+                      //             CommonText(
+                      //               label:
+                      //                   '${eventcontroller.EventsList[index]['event_name']}'
+                      //                       .replaceAll('Tssia', ''),
+                      //               colorT: Colors.black,
+                      //               fontw8: FontWeight.w400,
+                      //               maxline: 2,
+                      //               size: 10.sp,
+                      //               overflow: TextOverflow.ellipsis,
+                      //             ),
+                      // Row(
+                      //   crossAxisAlignment:
+                      //       CrossAxisAlignment.center,
+                      //   mainAxisAlignment:
+                      //       MainAxisAlignment.spaceBetween,
+                      //   children: [
+                      //     Column(
+                      //       crossAxisAlignment:
+                      //           CrossAxisAlignment.start,
+                      //       children: [
+                      //         Row(
+                      //           crossAxisAlignment:
+                      //               CrossAxisAlignment.center,
+                      //           mainAxisAlignment:
+                      //               MainAxisAlignment.start,
+                      //           children: [
+                      //             SvgPicture.asset(
+                      //                 'assets/images/calendar.svg'),
+                      //             SizedBox(
+                      //               width: 1.h,
+                      //             ),
+                      //             CommonText(
+                      //               label:
+                      //                   '${eventcontroller.EventsList[index]['event_date']}',
+                      //               colorT: Colors.black,
+                      //               fontw8: FontWeight.w400,
+                      //               maxline: 2,
+                      //               size: 10.sp,
+                      //               overflow: TextOverflow.ellipsis,
+                      //             ),
+                      //           ],
+                      //         ),
+                      //         Row(
+                      //           crossAxisAlignment:
+                      //               CrossAxisAlignment.center,
+                      //           mainAxisAlignment:
+                      //               MainAxisAlignment.start,
+                      //           children: [
+                      //             SvgPicture.asset(
+                      //                 'assets/images/clock.svg'),
+                      //             SizedBox(
+                      //               width: 1.h,
+                      //             ),
+                      //             SizedBox(
+                      //               width: 10.h,
+                      //               child: CommonText(
+                      //                 label:
+                      //                     '${eventcontroller.EventsList[index]['event_time']}',
+                      //                 colorT: Colors.black,
+                      //                 fontw8: FontWeight.w400,
+                      //                 maxline: 1,
+                      //                 size: 10.sp,
+                      //                 overflow:
+                      //                     TextOverflow.ellipsis,
+                      //               ),
+                      //             ),
+                      //           ],
+                      //         )
+                      //       ],
+                      //     ),
+                      //                 Container(
+                      //                   alignment: Alignment.center,
+                      //                   padding: EdgeInsets.only(
+                      //                       top: 1.1.h,
+                      //                       bottom: 1.1.h,
+                      //                       left: 1.5.h,
+                      //                       right: 1.5.h),
+                      //                   decoration: BoxDecoration(
+                      //                       color: Color(0xffF89902),
+                      //                       borderRadius:
+                      //                           BorderRadius.circular(6),
+                      //                       border: Border.all(
+                      //                           width: 0.5,
+                      //                           color: Color(0xffe4e4e4))),
+                      //                   child: CommonText(
+                      //                     label:
+                      //                         'Rs ${eventcontroller.EventsList[index]['event_price']}',
+                      //                     colorT: PWhite,
+                      //                     fontw8: FontWeight.w400,
+                      //                     maxline: 2,
+                      //                     size: 10.sp,
+                      //                     overflow: TextOverflow.ellipsis,
+                      //                   ),
+                      //                 ),
+                      //               ],
+                      //             ),
+                      //           ],
+                      //         ),
+                      //       )
+                      //     ],
+                      //   ),
+                      // ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  OurServices() {
+    return FutureBuilder(
+      future: HomePageController.HomePageApi(),
+      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Container(
+            height: 24.h,
+            width: 100.w,
+            child: CustomLoader(),
+            decoration: BoxDecoration(
+              color: PWhite,
+              borderRadius: BorderRadius.circular(6),
+            ),
+          );
+        }
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: 2.h, vertical: 1.5.h),
+          margin: EdgeInsets.only(bottom: 2.h),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: CommonText(
+                  label: 'Explore Services',
+                  fontw8: FontWeight.w500,
+                  size: 12.sp,
+                  colorT: Color(0xff003C5E),
+                ),
+              ),
+              SizedBox(
+                height: 2.h,
+              ),
+              Container(
+                // padding: EdgeInsets.all(2.h),
+                height: 13.h,
+
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemCount: HomePageController.ServicesModulesColor.length,
+                  controller: ScrollController(),
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        if (index == 0) {
+                          Get.to(HallBookingPage(),
+                              transition: transitonEffect);
+                        } else if (index == 3) {
+                          Get.to(VisaRecomendationPage(),
+                              transition: transitonEffect);
+                        } else if (index == 1) {
+                          Get.to(EcooPage(), transition: transitonEffect);
+                        } else if (index == 2) {
+                          Get.to(BloodBankPage(), transition: transitonEffect);
+                        }
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(1.5.h),
+                        width: 15.h,
+                        margin: EdgeInsets.only(left: 2.h),
+                        decoration: BoxDecoration(
+                            color: PWhite,
+                            boxShadow: Mainboxshadow,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                                width: 1.0,
+                                color: Color(HomePageController
+                                    .ServicesModulesColor[index]))),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            SvgPicture.asset(
+                                "${HomePageController.ServicesModulesImage[index]}"),
+                            CommonText(
+                              colorT: Colors.black,
+                              fontw8: FontWeight.w400,
+                              size: 9.sp,
+                              overflow: TextOverflow.ellipsis,
+                              maxline: 2,
+                              label:
+                                  "${HomePageController.ServicesModulesName[index]}",
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                // child: GridView.builder(
+                //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                //     crossAxisCount: 2,
+                //     crossAxisSpacing: 20.0,
+                //     mainAxisSpacing: 20.0,
+                //     childAspectRatio: 1.5,
+                //   ),
+                //   physics: NeverScrollableScrollPhysics(),
+                //   shrinkWrap: true,
+                //   itemCount: HomePageController.Services.length,
+                //   itemBuilder: (context, index) {
+                //     return GestureDetector(
+                // onTap: () {
+                //   if (index == 0) {
+                //     Get.to(HallBookingPage(),
+                //         transition: transitonEffect);
+                //   } else if (index == 1) {
+                //     Get.to(VisaRecomendationPage(),
+                //         transition: transitonEffect);
+                //   } else if (index == 2) {
+                //     Get.to(EcooPage(), transition: transitonEffect);
+                //   } else if (index == 3) {
+                //     Get.to(BloodBankPage(),
+                //         transition: transitonEffect);
+                //   }
+                // },
+                //         child: Container(
+                //           padding: EdgeInsets.symmetric(horizontal: 0.5.h),
+                //           decoration: BoxDecoration(
+                //             color: PWhite,
+                //             boxShadow: [
+                //               BoxShadow(
+                //                   color: Colors.black12,
+                //                   blurRadius: 2,
+                //                   offset: Offset(0, 4))
+                //             ],
+                //             border: Border.all(
+                //                 width: 0.5, color: Color(0xffe4e4e4)),
+                //             borderRadius: BorderRadius.circular(9),
+                //           ),
+                //           child: Column(
+                //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //             children: [
+                //               Container(
+                //                 height: 5.h,
+                //                 width: 5.h,
+                //                 child: CommonImage(
+                //                   url: HomePageController.Services[index]
+                //                       ['image'],
+                //                 ),
+                //               ),
+                //               Text(
+                //                 "${HomePageController.Services[index]['name']}",
+                //                 maxLines: 1,
+                //                 textAlign: TextAlign.center,
+                //                 overflow: TextOverflow.ellipsis,
+                //                 style: TextStyle(
+                //                     color: Colors.black,
+                //                     fontFamily: 'Lato',
+                //                     fontSize: 9.sp,
+                //                     fontWeight: FontWeight.w400),
+                //               )
+                //             ],
+                //           ),
+                //         ));
+                //   },
+                // ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Gallery() {
+    return FutureBuilder(
+      future: HomePageController.HomePageApi(),
+      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Container(
+            height: 24.h,
+            width: 100.w,
+            child: CustomLoader(),
+            decoration: BoxDecoration(
+              color: PWhite,
+              borderRadius: BorderRadius.circular(6),
+            ),
+          );
+        }
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: 2.h, vertical: 1.5.h),
+          margin: EdgeInsets.only(bottom: 2.h),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CommonText(
+                label: 'Gallery',
+                fontw8: FontWeight.w500,
+                size: 12.sp,
+              ),
+              SizedBox(
+                height: 2.h,
+              ),
+              Container(
+                height: 24.h,
+                width: 70.h,
+                child: CarouselSlider.builder(
+                  itemCount: HomePageController.GalleryImage.length,
+                  itemBuilder:
+                      (BuildContext context, int index, int realIndex) {
+                    return Container(
+                      width: 100.h,
+                      decoration: BoxDecoration(
+                          color: PWhite,
+                          borderRadius: BorderRadius.circular(6),
+                          image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage(
+                              HomePageController.GalleryImage[index]
+                                  ['gallery_img'],
+                            ),
+                          ),
+                          boxShadow: Mainboxshadow,
+                          border:
+                              Border.all(width: 0.5, color: Color(0xffe4e4e4))),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(1.h),
+                            margin: EdgeInsets.only(
+                                left: 2.h, right: 2.h, top: 1.h),
+                            decoration: BoxDecoration(
+                                color: Colors.black,
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(6),
+                                    topRight: Radius.circular(6))),
+                            child: Text(
+                              '${HomePageController.GalleryImage[index]['gallery_name']}',
+                              textAlign: TextAlign.center,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontFamily: 'Lato',
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 11.sp,
+                                  color: PWhite),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  options: CarouselOptions(
+                    enlargeCenterPage: true,
+                    autoPlay: true,
+                    pauseAutoPlayOnManualNavigate: true,
+                    pauseAutoPlayOnTouch: true,
+                    viewportFraction: 1,
+                    disableCenter: false,
+                    aspectRatio: 10 / 5,
+                    initialPage: 0,
+                    autoPlayInterval: Duration(seconds: 2),
+                  ),
+                ),
+              )
+            ],
+          ),
+        );
+      },
+    );
+  }
+}
