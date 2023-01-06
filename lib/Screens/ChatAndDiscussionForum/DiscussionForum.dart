@@ -70,11 +70,9 @@ class _DiscussionForumState extends State<DiscussionForum> {
       body: Column(
         children: [
           Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [PostBox(), AllPostList()],
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [PostBox()],
             ),
           ),
           CommonBottomBar(TapColor: tapcolor)
@@ -260,7 +258,7 @@ class _DiscussionForumState extends State<DiscussionForum> {
             ),
             TextFormField(
               controller: Description,
-              maxLines: 5,
+              maxLines: 6,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.symmetric(
