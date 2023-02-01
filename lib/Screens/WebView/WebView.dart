@@ -25,7 +25,7 @@ class WebviewScreen extends StatelessWidget {
         centerTitle: true,
         automaticallyImplyLeading: false,
         leading: BackButton(color: Colors.black),
-        title: Text(label),
+        title: Text("${label}"),
         titleTextStyle: TextStyle(
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w400,
