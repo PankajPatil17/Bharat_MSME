@@ -122,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           _passwordVisible
                               ? Icons.visibility
                               : Icons.visibility_off,
-                          color: Theme.of(context).primaryColorDark,
+                          color: Color(0xffBF2025),
                         ),
                         onPressed: () {
                           setState(() {
@@ -141,8 +141,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   children: [
                     Checkbox(
-                      checkColor: Color.fromARGB(255, 4, 79, 18),
-                      fillColor: MaterialStateProperty.all(Colors.blue),
+                      checkColor: Color(0xffFFFFFF),
+                      fillColor: MaterialStateProperty.all(Color(0xffBF2025)),
                       value: checkvalue,
                       onChanged: (checkboxValue) {
                         setState(() {
@@ -177,7 +177,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       decoration: TextDecoration.underline,
                                       fontSize: 10.sp,
                                       fontFamily: 'Poppins',
-                                      color: Colors.blue,
+                                      color: Color(0xffBF2025),
                                       fontWeight: FontWeight.w400),
                                 ),
                               ),
@@ -215,7 +215,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 5.h,
                       width: 32.w,
                       decoration: BoxDecoration(
-                          color: Color(0xffF89902),
+                          color: Color(0xffBF2025),
                           borderRadius: MainBorderRadius),
                       child: Center(
                         child: CommonText(
