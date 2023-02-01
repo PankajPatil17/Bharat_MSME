@@ -268,7 +268,7 @@ class _HomePageState extends State<HomePage> {
         }
         return Container(
           margin: EdgeInsets.symmetric(vertical: 1.5.h, horizontal: 1.5.h),
-          height: 24.h,
+          height: 18.h,
           width: 70.h,
           child: CarouselSlider.builder(
             itemCount: 1,
@@ -290,7 +290,6 @@ class _HomePageState extends State<HomePage> {
               );
             },
             options: CarouselOptions(
-              autoPlay: true,
               pauseAutoPlayOnManualNavigate: true,
               pauseAutoPlayOnTouch: true,
               viewportFraction: 1,
