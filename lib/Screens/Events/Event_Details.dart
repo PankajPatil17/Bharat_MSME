@@ -51,7 +51,7 @@ class _EventDetailsState extends State<EventDetails> {
           ),
         ),
         titleTextStyle: TextStyle(
-            fontFamily: 'Lato',
+            fontFamily: 'Poppins',
             fontWeight: FontWeight.w400,
             color: Colors.black,
             fontSize: 13.sp),
@@ -363,7 +363,7 @@ class _EventDetailsState extends State<EventDetails> {
     Widget continueButton = ElevatedButton(
       child: const Text(
         "Back",
-        style: TextStyle(fontFamily: 'Lato', fontWeight: FontWeight.w400),
+        style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w400),
       ),
       onPressed: () {
         Get.back();

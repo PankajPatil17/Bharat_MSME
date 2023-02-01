@@ -27,7 +27,7 @@ class WebviewScreen extends StatelessWidget {
         leading: BackButton(color: Colors.black),
         title: Text(label),
         titleTextStyle: TextStyle(
-            fontFamily: 'Lato',
+            fontFamily: 'Poppins',
             fontWeight: FontWeight.w400,
             color: Colors.black,
             fontSize: 13.sp),

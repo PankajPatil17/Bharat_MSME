@@ -107,7 +107,7 @@ class _MembersState extends State<Members> {
                       hintStyle: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 11.sp,
-                          fontFamily: 'Lato'),
+                          fontFamily: 'Poppins'),
                     ),
                   ),
                   SizedBox(
@@ -197,7 +197,7 @@ class _MembersState extends State<Members> {
                                             textAlign: TextAlign.center,
                                             maxLines: 2,
                                             style: TextStyle(
-                                              fontFamily: 'Lato',
+                                              fontFamily: 'Poppins',
                                               fontWeight: FontWeight.w400,
                                               fontSize: 11.sp,
                                               color: Color(0xff038CDA),
@@ -335,7 +335,7 @@ class _MembersState extends State<Members> {
                                             textAlign: TextAlign.center,
                                             maxLines: 2,
                                             style: TextStyle(
-                                              fontFamily: 'Lato',
+                                              fontFamily: 'Poppins',
                                               fontWeight: FontWeight.w400,
                                               fontSize: 11.sp,
                                               color: Color(0xff038CDA),

@@ -77,7 +77,7 @@ class _MemberForm02State extends State<MemberForm02> {
                   hintStyle: TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 11.sp,
-                      fontFamily: 'Lato'),
+                      fontFamily: 'Poppins'),
                 ),
               ),
               MemberHeaderText('Designation'),
@@ -98,7 +98,7 @@ class _MemberForm02State extends State<MemberForm02> {
                   hintStyle: TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 11.sp,
-                      fontFamily: 'Lato'),
+                      fontFamily: 'Poppins'),
                 ),
               ),
               MemberHeaderText('Upload Document'),

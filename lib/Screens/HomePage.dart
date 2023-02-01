@@ -232,7 +232,7 @@ class _HomePageState extends State<HomePage> {
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontFamily: 'Lato',
+                                  fontFamily: 'Poppins',
                                   fontSize: 9.sp,
                                   fontWeight: FontWeight.w400),
                             ),
@@ -713,7 +713,7 @@ class _HomePageState extends State<HomePage> {
                 //                 overflow: TextOverflow.ellipsis,
                 //                 style: TextStyle(
                 //                     color: Colors.black,
-                //                     fontFamily: 'Lato',
+                //                     fontFamily: 'Poppins',
                 //                     fontSize: 9.sp,
                 //                     fontWeight: FontWeight.w400),
                 //               )
@@ -799,7 +799,7 @@ class _HomePageState extends State<HomePage> {
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                  fontFamily: 'Lato',
+                                  fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w400,
                                   fontSize: 11.sp,
                                   color: PWhite),

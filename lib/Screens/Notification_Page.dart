@@ -61,7 +61,7 @@ class _NotificationPageState extends State<NotificationPage> {
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontFamily: 'Lato',
+                                  fontFamily: 'Poppins',
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.w400),
                             )
@@ -119,7 +119,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                               ? ''
                                               : "${NotificationController.notification[index]['title']}",
                                           style: TextStyle(
-                                              fontFamily: 'Lato',
+                                              fontFamily: 'Poppins',
                                               fontSize: 11.sp,
                                               fontWeight: FontWeight.w600),
                                         ),
@@ -139,7 +139,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                                   .replaceAll('</h2>', ''),
                                           style: TextStyle(
                                               color: Colors.black,
-                                              fontFamily: 'Lato',
+                                              fontFamily: 'Poppins',
                                               fontSize: 11.sp,
                                               fontWeight: FontWeight.w400),
                                           maxLines: 2,
@@ -170,7 +170,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                           renderMode: RenderMode.column,
                                           textStyle: TextStyle(
                                               color: Colors.black,
-                                              fontFamily: 'Lato',
+                                              fontFamily: 'Poppins',
                                               fontSize: 13.sp,
                                               fontWeight: FontWeight.w400),
                                         ),

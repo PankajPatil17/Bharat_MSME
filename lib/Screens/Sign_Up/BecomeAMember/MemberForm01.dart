@@ -93,7 +93,7 @@ class _MemberForm01State extends State<MemberForm01> {
                     hintStyle: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 11.sp,
-                        fontFamily: 'Lato'),
+                        fontFamily: 'Poppins'),
                   ),
                 ),
                 MemberHeaderText('Address of the Establishment'),
@@ -120,7 +120,7 @@ class _MemberForm01State extends State<MemberForm01> {
                     hintStyle: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 11.sp,
-                        fontFamily: 'Lato'),
+                        fontFamily: 'Poppins'),
                   ),
                 ),
                 MemberHeaderText('Nature of the Establishment'),
@@ -159,7 +159,7 @@ class _MemberForm01State extends State<MemberForm01> {
                                   color: Colors.black,
                                   fontWeight: FontWeight.w400,
                                   fontSize: 11.sp,
-                                  fontFamily: 'Lato',
+                                  fontFamily: 'Poppins',
                                   overflow: TextOverflow.ellipsis),
                             ));
                       }).toList(),
@@ -197,7 +197,7 @@ class _MemberForm01State extends State<MemberForm01> {
                     hintStyle: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 11.sp,
-                        fontFamily: 'Lato'),
+                        fontFamily: 'Poppins'),
                   ),
                 ),
                 MemberHeaderText('Establishment Email'),
@@ -224,7 +224,7 @@ class _MemberForm01State extends State<MemberForm01> {
                     hintStyle: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 11.sp,
-                        fontFamily: 'Lato'),
+                        fontFamily: 'Poppins'),
                   ),
                 ),
                 MemberHeaderText('Name of Owner/Managing Partner/Director'),
@@ -251,7 +251,7 @@ class _MemberForm01State extends State<MemberForm01> {
                     hintStyle: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 11.sp,
-                        fontFamily: 'Lato'),
+                        fontFamily: 'Poppins'),
                   ),
                 ),
                 MemberHeaderText('Owner Registration Area'),
@@ -278,7 +278,7 @@ class _MemberForm01State extends State<MemberForm01> {
                     hintStyle: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 11.sp,
-                        fontFamily: 'Lato'),
+                        fontFamily: 'Poppins'),
                   ),
                 ),
                 MemberHeaderText('Owner Mobile Number'),
@@ -309,7 +309,7 @@ class _MemberForm01State extends State<MemberForm01> {
                     hintStyle: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 11.sp,
-                        fontFamily: 'Lato'),
+                        fontFamily: 'Poppins'),
                   ),
                 ),
                 MemberHeaderText('Owner Email'),
@@ -336,7 +336,7 @@ class _MemberForm01State extends State<MemberForm01> {
                     hintStyle: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 11.sp,
-                        fontFamily: 'Lato'),
+                        fontFamily: 'Poppins'),
                   ),
                 ),
                 MemberHeaderText('Udyam Registration & GST No'),
@@ -363,7 +363,7 @@ class _MemberForm01State extends State<MemberForm01> {
                     hintStyle: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 11.sp,
-                        fontFamily: 'Lato'),
+                        fontFamily: 'Poppins'),
                   ),
                 ),
                 MemberHeaderText('Special Facilities Available [Machinery]'),
@@ -390,7 +390,7 @@ class _MemberForm01State extends State<MemberForm01> {
                     hintStyle: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 11.sp,
-                        fontFamily: 'Lato'),
+                        fontFamily: 'Poppins'),
                   ),
                 ),
                 MemberHeaderText('Product'),
@@ -417,7 +417,7 @@ class _MemberForm01State extends State<MemberForm01> {
                     hintStyle: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 11.sp,
-                        fontFamily: 'Lato'),
+                        fontFamily: 'Poppins'),
                   ),
                 ),
                 MemberHeaderText('Industory'),
@@ -444,7 +444,7 @@ class _MemberForm01State extends State<MemberForm01> {
                     hintStyle: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 11.sp,
-                        fontFamily: 'Lato'),
+                        fontFamily: 'Poppins'),
                   ),
                 ),
                 SizedBox(

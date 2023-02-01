@@ -47,7 +47,7 @@ class _ContactUsState extends State<ContactUs> {
           ),
         ),
         titleTextStyle: TextStyle(
-            fontFamily: 'Lato',
+            fontFamily: 'Poppins',
             fontWeight: FontWeight.w400,
             color: Colors.black,
             fontSize: 13.sp),
@@ -93,7 +93,7 @@ class _ContactUsState extends State<ContactUs> {
                         hintStyle: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 11.sp,
-                            fontFamily: 'Lato'),
+                            fontFamily: 'Poppins'),
                       ),
                     ),
                     SizedBox(
@@ -124,7 +124,7 @@ class _ContactUsState extends State<ContactUs> {
                         hintStyle: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 11.sp,
-                            fontFamily: 'Lato'),
+                            fontFamily: 'Poppins'),
                       ),
                     ),
                     SizedBox(
@@ -155,7 +155,7 @@ class _ContactUsState extends State<ContactUs> {
                         hintStyle: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 11.sp,
-                            fontFamily: 'Lato'),
+                            fontFamily: 'Poppins'),
                       ),
                     ),
                     SizedBox(
@@ -179,7 +179,7 @@ class _ContactUsState extends State<ContactUs> {
                         hintStyle: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 11.sp,
-                            fontFamily: 'Lato'),
+                            fontFamily: 'Poppins'),
                       ),
                     ),
                     Align(

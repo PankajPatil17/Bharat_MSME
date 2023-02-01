@@ -88,7 +88,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                         hintStyle: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 11.sp,
-                            fontFamily: 'Lato'),
+                            fontFamily: 'Poppins'),
                       ),
                     ),
                   ),

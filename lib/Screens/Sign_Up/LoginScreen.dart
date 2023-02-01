@@ -88,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       hintStyle: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 11.sp,
-                          fontFamily: 'Lato'),
+                          fontFamily: 'Poppins'),
                     ),
                   ),
                 ),
@@ -134,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontWeight: FontWeight.w400,
                           fontSize: 12.sp,
                           color: Colors.black54,
-                          fontFamily: 'Lato'),
+                          fontFamily: 'Poppins'),
                     ),
                   ),
                 ),
@@ -176,7 +176,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   style: TextStyle(
                                       decoration: TextDecoration.underline,
                                       fontSize: 10.sp,
-                                      fontFamily: 'Lato',
+                                      fontFamily: 'Poppins',
                                       color: Colors.blue,
                                       fontWeight: FontWeight.w400),
                                 ),

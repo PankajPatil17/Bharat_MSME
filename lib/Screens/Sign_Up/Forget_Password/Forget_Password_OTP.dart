@@ -86,7 +86,7 @@ class _ForgetPasswordotpState extends State<ForgetPasswordotp> {
                         hintStyle: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 11.sp,
-                            fontFamily: 'Lato'),
+                            fontFamily: 'Poppins'),
                       ),
                     ),
                   ),
@@ -133,7 +133,7 @@ class _ForgetPasswordotpState extends State<ForgetPasswordotp> {
                             fontWeight: FontWeight.w400,
                             fontSize: 12.sp,
                             color: Colors.black54,
-                            fontFamily: 'Lato'),
+                            fontFamily: 'Poppins'),
                       ),
                       obscureText: !_passwordVisible,
                     ),
@@ -178,7 +178,7 @@ class _ForgetPasswordotpState extends State<ForgetPasswordotp> {
                           fontWeight: FontWeight.w400,
                           fontSize: 12.sp,
                           color: Colors.black54,
-                          fontFamily: 'Lato'),
+                          fontFamily: 'Poppins'),
                     ),
                   ),
                   Align(

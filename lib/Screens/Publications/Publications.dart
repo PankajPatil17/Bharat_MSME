@@ -146,7 +146,7 @@ class _PublicationsState extends State<Publications> {
                               textAlign: TextAlign.center,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                  fontFamily: 'Lato',
+                                  fontFamily: 'Poppins',
                                   color: Colors.white,
                                   fontWeight: FontWeight.w400,
                                   fontSize: 11.sp),

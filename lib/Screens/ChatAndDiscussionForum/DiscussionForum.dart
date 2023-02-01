@@ -252,7 +252,7 @@ class _DiscussionForumState extends State<DiscussionForum> {
                 hintStyle: TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 11.sp,
-                    fontFamily: 'Lato',
+                    fontFamily: 'Poppins',
                     color: Mainfentbackgrey),
               ),
             ),
@@ -273,7 +273,7 @@ class _DiscussionForumState extends State<DiscussionForum> {
                 hintStyle: TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 11.sp,
-                    fontFamily: 'Lato',
+                    fontFamily: 'Poppins',
                     color: Mainfentbackgrey),
               ),
             ),

@@ -221,7 +221,7 @@ class _MyProfileState extends State<MyProfile> {
                                 '${titles[index]}',
                                 maxLines: 1,
                                 style: TextStyle(
-                                    fontFamily: 'Lato',
+                                    fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w400,
                                     fontSize: 11.sp,
                                     color: Colors.black),

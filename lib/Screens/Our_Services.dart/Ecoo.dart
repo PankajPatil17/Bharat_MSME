@@ -176,7 +176,7 @@ class _EcooPageState extends State<EcooPage> {
                   CircularProgressIndicator(),
               renderMode: RenderMode.column,
               textStyle: TextStyle(
-                fontFamily: 'Lato',
+                fontFamily: 'Poppins',
                 fontSize: 11.sp,
                 fontWeight: FontWeight.w400,
               ),
@@ -198,7 +198,7 @@ class _EcooPageState extends State<EcooPage> {
                   CircularProgressIndicator(),
               renderMode: RenderMode.column,
               textStyle: TextStyle(
-                fontFamily: 'Lato',
+                fontFamily: 'Poppins',
                 fontSize: 11.sp,
                 fontWeight: FontWeight.w400,
               ),

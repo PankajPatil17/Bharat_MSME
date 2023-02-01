@@ -173,7 +173,7 @@ class _BloodBankPageState extends State<BloodBankPage> {
               CircularProgressIndicator(),
           renderMode: RenderMode.column,
           textStyle: TextStyle(
-            fontFamily: 'Lato',
+            fontFamily: 'Poppins',
             fontSize: 11.sp,
             fontWeight: FontWeight.w400,
           ),

@@ -137,7 +137,7 @@ class _PartnersState extends State<Partners> {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     color: Colors.black,
-                                    fontFamily: 'Lato',
+                                    fontFamily: 'Poppins',
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w500),
                               ),
@@ -147,7 +147,7 @@ class _PartnersState extends State<Partners> {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     color: Colors.black,
-                                    fontFamily: 'Lato',
+                                    fontFamily: 'Poppins',
                                     fontSize: 11.sp,
                                     fontWeight: FontWeight.w400),
                               ),

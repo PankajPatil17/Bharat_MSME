@@ -53,7 +53,7 @@ class _CommitteeState extends State<Committee> {
                       style: TextStyle(
                           fontSize: 13.sp,
                           color: Colors.black,
-                          fontFamily: 'Lato',
+                          fontFamily: 'Poppins',
                           fontWeight: FontWeight.w500),
                     ),
                   ),
@@ -67,7 +67,7 @@ class _CommitteeState extends State<Committee> {
                       style: TextStyle(
                           fontSize: 12.sp,
                           color: Color(0xff000000),
-                          fontFamily: 'Lato',
+                          fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400),
                     ),
                   ),
@@ -132,7 +132,7 @@ class _CommitteeState extends State<Committee> {
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.w400,
-                                    fontFamily: 'Lato',
+                                    fontFamily: 'Poppins',
                                     fontSize: 11.sp,
                                   ),
                                 ),
@@ -146,7 +146,7 @@ class _CommitteeState extends State<Committee> {
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.w400,
-                                    fontFamily: 'Lato',
+                                    fontFamily: 'Poppins',
                                     fontSize: 11.sp,
                                   ),
                                   '${committeecontroller.CommitteeList[index]['designation']}',

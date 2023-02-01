@@ -119,7 +119,7 @@ class _CircularsState extends State<Circulars> {
                       hintStyle: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 11.sp,
-                          fontFamily: 'Lato'),
+                          fontFamily: 'Poppins'),
                     ),
                   ),
                   SizedBox(

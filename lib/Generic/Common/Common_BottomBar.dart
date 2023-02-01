@@ -63,12 +63,12 @@ class _CommonBottomBarState extends State<CommonBottomBar> {
                   style: widget.TapColor == 'Home'
                       ? TextStyle(
                           color: mainBlue,
-                          fontFamily: 'Lato',
+                          fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
                           fontSize: 10.sp)
                       : TextStyle(
                           color: Colors.black,
-                          fontFamily: 'Lato',
+                          fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
                           fontSize: 10.sp),
                 )
@@ -98,12 +98,12 @@ class _CommonBottomBarState extends State<CommonBottomBar> {
                   style: widget.TapColor == 'Partners'
                       ? TextStyle(
                           color: mainBlue,
-                          fontFamily: 'Lato',
+                          fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
                           fontSize: 10.sp)
                       : TextStyle(
                           color: Colors.black,
-                          fontFamily: 'Lato',
+                          fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
                           fontSize: 10.sp),
                 )
@@ -133,12 +133,12 @@ class _CommonBottomBarState extends State<CommonBottomBar> {
                   style: widget.TapColor == 'Chat'
                       ? TextStyle(
                           color: mainBlue,
-                          fontFamily: 'Lato',
+                          fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
                           fontSize: 10.sp)
                       : TextStyle(
                           color: Colors.black,
-                          fontFamily: 'Lato',
+                          fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
                           fontSize: 10.sp),
                 )
@@ -168,12 +168,12 @@ class _CommonBottomBarState extends State<CommonBottomBar> {
                   style: widget.TapColor == 'Publication'
                       ? TextStyle(
                           color: mainBlue,
-                          fontFamily: 'Lato',
+                          fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
                           fontSize: 10.sp)
                       : TextStyle(
                           color: Colors.black,
-                          fontFamily: 'Lato',
+                          fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
                           fontSize: 10.sp),
                 )
@@ -203,12 +203,12 @@ class _CommonBottomBarState extends State<CommonBottomBar> {
                   style: widget.TapColor == 'Profile'
                       ? TextStyle(
                           color: mainBlue,
-                          fontFamily: 'Lato',
+                          fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
                           fontSize: 10.sp)
                       : TextStyle(
                           color: Colors.black,
-                          fontFamily: 'Lato',
+                          fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
                           fontSize: 10.sp),
                 )
