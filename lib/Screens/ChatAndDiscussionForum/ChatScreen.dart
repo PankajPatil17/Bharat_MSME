@@ -135,8 +135,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                 CommonText(
                                   label: ChatForumController.GetAllPosts[index]
                                           ['created_at']
-                                      .toString()
-                                      .replaceRange(9, 18, ''),
+                                      .toString(),
                                   colorT: Colors.black,
                                   fontw8: FontWeight.w400,
                                   size: 10.sp,
