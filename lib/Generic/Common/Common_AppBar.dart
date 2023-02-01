@@ -43,9 +43,9 @@ class _CommonAppBarState extends State<CommonAppBar> {
             },
           ),
           CommonImage(
-            url: 'assets/images/rupee_logo.png',
-            height: 6.h,
-            width: 6.h,
+            url: 'assets/images/Bharat_Logo.png',
+            height: 8.h,
+            width: 8.h,
           ),
           Spacer(),
           GestureDetector(

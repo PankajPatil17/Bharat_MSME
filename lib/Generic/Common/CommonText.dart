@@ -22,7 +22,7 @@ class CommonText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       label,
-      style: GoogleFonts.lato(
+      style: GoogleFonts.poppins(
         color: colorT,
         fontSize: size,
         fontWeight: fontw8,

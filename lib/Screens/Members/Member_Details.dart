@@ -37,7 +37,7 @@ class _MemberDetailsState extends State<MemberDetails> {
         title: Padding(
           padding: EdgeInsets.only(top: 2.h, bottom: 2.h),
           child: CommonImage(
-            url: 'assets/images/rupee_logo.png',
+            url: 'assets/images/Bharat_Logo.png',
             height: 5.h,
             width: 5.h,
           ),

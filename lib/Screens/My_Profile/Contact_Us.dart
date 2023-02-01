@@ -41,7 +41,7 @@ class _ContactUsState extends State<ContactUs> {
         title: Padding(
           padding: EdgeInsets.only(top: 1.5.h, bottom: 1.5.h),
           child: CommonImage(
-            url: 'assets/images/rupee_logo.png',
+            url: 'assets/images/Bharat_Logo.png',
             height: 5.h,
             width: 5.h,
           ),

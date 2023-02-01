@@ -102,7 +102,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                         child: "${NotificationController.notification[index]['image']}" ==
                                                 ''
                                             ? Image.network(
-                                                "https://tssia.enirmaan.com//tssia_assets/images/rupee_logo.png")
+                                                "https://tssia.enirmaan.com//tssia_assets/images/Bharat_Logo.png")
                                             : Image.network(
                                                 "${NotificationController.notification[index]['image']}"),
                                       ),

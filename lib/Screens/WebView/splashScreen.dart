@@ -43,7 +43,7 @@ class _SplahsScreenState extends State<SplahsScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CommonImage(
-              url: 'assets/images/rupee_logo.png',
+              url: 'assets/images/Bharat_Logo.png',
               height: 30.h,
               width: 30.h,
             ),

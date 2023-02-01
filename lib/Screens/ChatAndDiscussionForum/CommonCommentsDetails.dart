@@ -98,7 +98,7 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                   },
                 ),
                 CommonImage(
-                  url: 'assets/images/rupee_logo.png',
+                  url: 'assets/images/Bharat_Logo.png',
                   height: 6.h,
                   width: 6.h,
                 ),
