@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // LocalNotification.initialize();
-    // // For Forground State ( NOTIFICATION )      
+    // // For Forground State ( NOTIFICATION )
     // FirebaseMessaging.onMessage.listen((RemoteMessage message) {
     //   LocalNotification.showNotification(message);
     // });
@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           home: SplahsScreen(),
+          // darkTheme: ThemeData(fontFamily: ),
           title: '',
         );
       },
