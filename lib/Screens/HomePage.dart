@@ -268,7 +268,7 @@ class _HomePageState extends State<HomePage> {
         }
         return Container(
           margin: EdgeInsets.symmetric(vertical: 1.5.h, horizontal: 1.5.h),
-          height: 24.h,
+          height: 18.h,
           width: 70.h,
           child: CarouselSlider.builder(
             itemCount: 1,
@@ -276,20 +276,20 @@ class _HomePageState extends State<HomePage> {
               return Container(
                 width: 100.h,
                 decoration: BoxDecoration(
-                  color: PWhite,
+                    color: PWhite,
+                    borderRadius: BorderRadius.circular(6),
+                    boxShadow: Mainboxshadow,
+                    border: Border.all(width: 0.5, color: Color(0xffe4e4e4))),
+                child: ClipRRect(
                   borderRadius: BorderRadius.circular(6),
-                  boxShadow: Mainboxshadow,
-                  image: DecorationImage(
+                  child: SvgPicture.asset(
+                    "assets/images/Second_Banner.svg",
                     fit: BoxFit.fill,
-                    image: AssetImage(
-                      "assets/images/banner1.svg",
-                    ),
                   ),
                 ),
               );
             },
             options: CarouselOptions(
-              autoPlay: true,
               pauseAutoPlayOnManualNavigate: true,
               pauseAutoPlayOnTouch: true,
               viewportFraction: 1,
