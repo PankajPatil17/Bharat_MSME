@@ -54,9 +54,6 @@ class _CommonBottomBarState extends State<CommonBottomBar> {
                       : 'assets/images/Home.svg',
                   height: 2.9.h,
                   width: 2.9.h,
-                  // color: widget.TapColor == 'Home'
-                  //     ? mainBlue
-                  //     : Colors.grey.shade400,
                 ),
                 Text(
                   'Home',
@@ -89,9 +86,6 @@ class _CommonBottomBarState extends State<CommonBottomBar> {
                       : 'assets/images/Partners.svg',
                   height: 2.9.h,
                   width: 2.9.h,
-                  // color: widget.TapColor == 'Partners'
-                  //     ? mainBlue
-                  //     : Colors.grey.shade400,
                 ),
                 Text(
                   'Partners',
@@ -124,9 +118,6 @@ class _CommonBottomBarState extends State<CommonBottomBar> {
                       : 'assets/images/chat.svg',
                   height: 2.9.h,
                   width: 2.9.h,
-                  // color: widget.TapColor == 'Chat'
-                  //     ? mainBlue
-                  //     : Colors.grey.shade400,
                 ),
                 Text(
                   'Chat',
@@ -159,9 +150,6 @@ class _CommonBottomBarState extends State<CommonBottomBar> {
                       : 'assets/images/Publication.svg',
                   height: 2.9.h,
                   width: 2.9.h,
-                  // color: widget.TapColor == 'Publication'
-                  //     ? mainBlue
-                  //     : Colors.grey.shade400,
                 ),
                 Text(
                   'Publication',
@@ -194,9 +182,6 @@ class _CommonBottomBarState extends State<CommonBottomBar> {
                       : 'assets/images/Profile.svg',
                   height: 2.9.h,
                   width: 2.9.h,
-                  // color: widget.TapColor == 'Profile'
-                  //     ? mainBlue
-                  //     : Colors.grey.shade400,
                 ),
                 Text(
                   'Profile',
