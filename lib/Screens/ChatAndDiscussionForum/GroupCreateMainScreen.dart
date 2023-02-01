@@ -149,72 +149,77 @@ class _GroupCreateMainScreenState extends State<GroupCreateMainScreen> {
     return FutureBuilder(
       future: ChatForumController.GetALLGroup(),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-        return ListView.builder(
-          itemCount: ChatForumController.GetAllGroupList.length,
-          shrinkWrap: true,
-          controller: ScrollController(),
-          itemBuilder: (BuildContext context, int index) {
-            return Container(
-              width: 100.w,
-              margin: EdgeInsets.all(1.h),
-              padding: EdgeInsets.all(1.h),
-              decoration: BoxDecoration(
-                  color: PWhite,
-                  boxShadow: Mainboxshadow,
-                  borderRadius: MainBorderRadius),
-              child: Row(
-                children: [
-                  Container(
-                    height: 6.0.h,
-                    width: 6.0.h,
-                    margin: EdgeInsets.only(right: 1.h),
+        return ChatForumController.GetAllGroupList.length == 0 &&
+                // ignore: unnecessary_null_comparison
+                ChatForumController.GetAllGroupList.length == null
+            ? Text('No chat')
+            : ListView.builder(
+                itemCount: ChatForumController.GetAllGroupList.length,
+                shrinkWrap: true,
+                controller: ScrollController(),
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    width: 100.w,
+                    margin: EdgeInsets.all(1.h),
+                    padding: EdgeInsets.all(1.h),
                     decoration: BoxDecoration(
-                        border:
-                            Border.all(width: 0.5, color: Color(0xffe4e4e4)),
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            image: NetworkImage(
-                                'https://cdn-icons-png.flaticon.com/512/681/681392.png'))),
-                  ),
-                  SizedBox(
-                    width: 1.w,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: 75.w,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        color: PWhite,
+                        boxShadow: Mainboxshadow,
+                        borderRadius: MainBorderRadius),
+                    child: Row(
+                      children: [
+                        Container(
+                          height: 6.0.h,
+                          width: 6.0.h,
+                          margin: EdgeInsets.only(right: 1.h),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  width: 0.5, color: Color(0xffe4e4e4)),
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                      'https://cdn-icons-png.flaticon.com/512/681/681392.png'))),
+                        ),
+                        SizedBox(
+                          width: 1.w,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CommonText(
-                              label: ChatForumController.GetAllGroupList[index]
-                                      ['name']
-                                  .toString()
-                                  .capitalizeFirst,
-                              colorT: Colors.black,
-                              fontw8: FontWeight.w500,
-                              size: 11.sp,
-                            ),
-                            CommonText(
-                              label: ChatForumController.GetAllGroupList[index]
-                                      ['created_at']
-                                  .toString()
-                                  .replaceRange(9, 18, ''),
-                              colorT: Colors.black,
-                              fontw8: FontWeight.w400,
-                              size: 9.sp,
+                            SizedBox(
+                              width: 75.w,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  CommonText(
+                                    label: ChatForumController
+                                        .GetAllGroupList[index]['name']
+                                        .toString()
+                                        .capitalizeFirst,
+                                    colorT: Colors.black,
+                                    fontw8: FontWeight.w500,
+                                    size: 11.sp,
+                                  ),
+                                  CommonText(
+                                    label: ChatForumController
+                                        .GetAllGroupList[index]['created_at']
+                                        .toString()
+                                        .replaceRange(9, 18, ''),
+                                    colorT: Colors.black,
+                                    fontw8: FontWeight.w400,
+                                    size: 9.sp,
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            );
-          },
-        );
+                        )
+                      ],
+                    ),
+                  );
+                },
+              );
       },
     );
   }
