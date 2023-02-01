@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-import 'package:tssia_replica/Generic/Common/CommonText.dart';
 
 class WellnessComingSoon extends StatefulWidget {
   const WellnessComingSoon({super.key});
