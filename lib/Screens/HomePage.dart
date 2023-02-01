@@ -576,15 +576,7 @@ class _HomePageState extends State<HomePage> {
       future: HomePageController.HomePageApi(),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Container(
-            height: 24.h,
-            width: 100.w,
-            child: CustomLoader(),
-            decoration: BoxDecoration(
-              color: PWhite,
-              borderRadius: BorderRadius.circular(6),
-            ),
-          );
+          return CustomLoader();
         }
         return Container(
           padding: EdgeInsets.symmetric(horizontal: 2.h, vertical: 1.5.h),
