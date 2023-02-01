@@ -67,17 +67,17 @@ class HomeController extends GetxController {
   ];
 
   List ServicesModulesName = [
-    'Hall Booking',
-    'E - COO',
-    'Blood Bank',
-    'Visa Letter',
+    'Finance',
+    'Compliance',
+    'Subsidies',
+    'HealthCare',
   ];
 
   List ServicesModulesImage = [
-    'assets/images/Hall Booking.svg',
-    'assets/images/E - COO.svg',
-    'assets/images/Blood Bank.svg',
-    'assets/images/Visa Recommendation.svg',
+    'assets/images/Finance.svg',
+    'assets/images/Compliance.svg',
+    'assets/images/Subsidies.svg',
+    'assets/images/healthcare.svg',
   ];
 
   List ServicesModulesColor = [

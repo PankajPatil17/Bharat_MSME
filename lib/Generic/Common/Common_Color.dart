@@ -9,6 +9,6 @@ const Mainboxshadow = [
       blurRadius: 2,
       spreadRadius: 2,
       color: Colors.black12,
-      offset: Offset(0, 2))
+      offset: Offset(0, 1))
 ];
 const MainBorderRadius = BorderRadius.all(Radius.circular(12));

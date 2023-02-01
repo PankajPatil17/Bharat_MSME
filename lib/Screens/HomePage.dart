@@ -657,7 +657,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               Center(
                 child: CommonText(
-                  label: 'Explore Services',
+                  label: 'Support System',
                   fontw8: FontWeight.w500,
                   size: 12.sp,
                   colorT: Color(0xff003C5E),
@@ -668,7 +668,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Container(
                 // padding: EdgeInsets.all(2.h),
-                height: 13.h,
+                height: 13.5.h,
 
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -693,7 +693,8 @@ class _HomePageState extends State<HomePage> {
                       child: Container(
                         padding: EdgeInsets.all(1.5.h),
                         width: 15.h,
-                        margin: EdgeInsets.only(left: 2.h),
+                        margin: EdgeInsets.only(
+                            right: 2.h, bottom: 0.5.h, top: 0.5.h),
                         decoration: BoxDecoration(
                             color: PWhite,
                             boxShadow: Mainboxshadow,

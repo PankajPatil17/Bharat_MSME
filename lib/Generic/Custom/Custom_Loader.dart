@@ -7,7 +7,7 @@ class CustomLoader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: CircularProgressIndicator(
-        color: Color(0xff39f1e0),
+        color: Color.fromARGB(255, 244, 79, 87),
         strokeWidth: 2.75,
       ),
     );
