@@ -16,13 +16,10 @@ import 'package:tssia_replica/Screens/Circulars/Circulars.dart';
 import 'package:tssia_replica/Screens/Committee/Coming_soon.dart';
 import 'package:tssia_replica/Screens/Events/Event_Details.dart';
 import 'package:tssia_replica/Screens/Events/Events.dart';
-import 'package:tssia_replica/Screens/HelpOthers/HelpOthers.dart';
-import 'package:tssia_replica/Screens/Members/Members.dart';
 import 'package:tssia_replica/Screens/Our_Services.dart/Blood_Bank.dart';
 import 'package:tssia_replica/Screens/Our_Services.dart/Ecoo.dart';
 import 'package:tssia_replica/Screens/Our_Services.dart/Hall_Booking.dart';
 import 'package:tssia_replica/Screens/Our_Services.dart/Visa_Recommendation.dart';
-import 'ChatAndDiscussionForum/SingleandGroupCreateScreen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -178,7 +175,13 @@ class _HomePageState extends State<HomePage> {
                     return GestureDetector(
                         onTap: () {
                           if (index == 0) {
-                            Get.to(Members(), transition: transitonEffect);
+                            // Get.to(Members(), transition: transitonEffect);
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return WellnessComingSoon();
+                              },
+                            );
                           } else if (index == 1) {
                             // Get.to(Committee(), transition: transitonEffect);
 
@@ -193,11 +196,23 @@ class _HomePageState extends State<HomePage> {
                           } else if (index == 4) {
                             Get.to(Circulars(), transition: transitonEffect);
                           } else if (index == 5) {
-                            Get.to(SingleandGroupCreateScreen(),
-                                transition: transitonEffect);
+                            // Get.to(SingleandGroupCreateScreen(),
+                            //     transition: transitonEffect);
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return WellnessComingSoon();
+                              },
+                            );
                           } else if (index == 2) {
-                            Get.to(HelpOtherJoin(),
-                                transition: transitonEffect);
+                            // Get.to(HelpOtherJoin(),
+                            //     transition: transitonEffect);
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return WellnessComingSoon();
+                              },
+                            );
                           }
                         },
                         child: Column(
@@ -712,73 +727,6 @@ class _HomePageState extends State<HomePage> {
                     );
                   },
                 ),
-                // child: GridView.builder(
-                //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                //     crossAxisCount: 2,
-                //     crossAxisSpacing: 20.0,
-                //     mainAxisSpacing: 20.0,
-                //     childAspectRatio: 1.5,
-                //   ),
-                //   physics: NeverScrollableScrollPhysics(),
-                //   shrinkWrap: true,
-                //   itemCount: HomePageController.Services.length,
-                //   itemBuilder: (context, index) {
-                //     return GestureDetector(
-                // onTap: () {
-                //   if (index == 0) {
-                //     Get.to(HallBookingPage(),
-                //         transition: transitonEffect);
-                //   } else if (index == 1) {
-                //     Get.to(VisaRecomendationPage(),
-                //         transition: transitonEffect);
-                //   } else if (index == 2) {
-                //     Get.to(EcooPage(), transition: transitonEffect);
-                //   } else if (index == 3) {
-                //     Get.to(BloodBankPage(),
-                //         transition: transitonEffect);
-                //   }
-                // },
-                //         child: Container(
-                //           padding: EdgeInsets.symmetric(horizontal: 0.5.h),
-                //           decoration: BoxDecoration(
-                //             color: PWhite,
-                //             boxShadow: [
-                //               BoxShadow(
-                //                   color: Colors.black12,
-                //                   blurRadius: 2,
-                //                   offset: Offset(0, 4))
-                //             ],
-                //             border: Border.all(
-                //                 width: 0.5, color: Color(0xffe4e4e4)),
-                //             borderRadius: BorderRadius.circular(9),
-                //           ),
-                //           child: Column(
-                //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //             children: [
-                //               Container(
-                //                 height: 5.h,
-                //                 width: 5.h,
-                //                 child: CommonImage(
-                //                   url: HomePageController.Services[index]
-                //                       ['image'],
-                //                 ),
-                //               ),
-                //               Text(
-                //                 "${HomePageController.Services[index]['name']}",
-                //                 maxLines: 1,
-                //                 textAlign: TextAlign.center,
-                //                 overflow: TextOverflow.ellipsis,
-                //                 style: TextStyle(
-                //                     color: Colors.black,
-                //                     fontFamily: 'Poppins',
-                //                     fontSize: 9.sp,
-                //                     fontWeight: FontWeight.w400),
-                //               )
-                //             ],
-                //           ),
-                //         ));
-                //   },
-                // ),
               ),
             ],
           ),

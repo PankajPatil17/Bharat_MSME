@@ -17,25 +17,6 @@ class _WellnessComingSoonState extends State<WellnessComingSoon> {
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CommonText(
-                colorT: Colors.black,
-                fontw8: FontWeight.w400,
-                label: 'Coming Soon',
-                size: 15.sp,
-              ),
-              IconButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  icon: Icon(
-                    Icons.close_rounded,
-                    color: Colors.black,
-                  ))
-            ],
-          ),
           Container(
             height: 25.h,
             width: 25.h,
