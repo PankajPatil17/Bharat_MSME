@@ -64,6 +64,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   BannerImages(),
                   HomeSixModules(),
+                  SecondBanner(),
                   UpcomingEvents(),
                   OurServices(),
                   // Gallery(),
@@ -162,17 +163,18 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: 1.5.h,
                 ),
-                GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 20.0,
-                    mainAxisSpacing: 20.0,
-                    childAspectRatio: 1.1,
-                  ),
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
+                CarouselSlider.builder(
+                  options: CarouselOptions(
+                      autoPlay: true,
+                      height: 13.h,
+                      disableCenter: true,
+                      viewportFraction: 0.32,
+                      aspectRatio: 9 / 9,
+                      initialPage: 0,
+                      autoPlayInterval: Duration(seconds: 5)),
                   itemCount: HomePageController.HomeSixModulesColor.length,
-                  itemBuilder: (context, index) {
+                  itemBuilder:
+                      (BuildContext context, int index, int realIndex) {
                     return GestureDetector(
                         onTap: () {
                           if (index == 0) {
@@ -202,10 +204,10 @@ class _HomePageState extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Container(
-                              margin: EdgeInsets.only(bottom: 1.5.h),
+                              margin:
+                                  EdgeInsets.only(bottom: 1.h, right: 1.5.h),
                               decoration: BoxDecoration(
-                                  color: Color(HomePageController
-                                      .HomeSixModulesColor[index]),
+                                  color: Color(0xffffffff),
                                   border: Border.all(
                                       width: 0.5, color: Color(0xffe4e4e4)),
                                   borderRadius: BorderRadius.circular(10),
@@ -225,16 +227,19 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                             ),
-                            Text(
-                              "${HomePageController.HomeSixModulesName[index]}",
-                              maxLines: 1,
-                              textAlign: TextAlign.center,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Poppins',
-                                  fontSize: 9.sp,
-                                  fontWeight: FontWeight.w400),
+                            Padding(
+                              padding: EdgeInsets.only(right: 1.5.h),
+                              child: Text(
+                                "${HomePageController.HomeSixModulesName[index]}",
+                                maxLines: 2,
+                                textAlign: TextAlign.center,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontFamily: 'Poppins',
+                                    fontSize: 9.sp,
+                                    fontWeight: FontWeight.w500),
+                              ),
                             ),
                           ],
                         ));
@@ -244,6 +249,58 @@ class _HomePageState extends State<HomePage> {
             ),
           );
         });
+  }
+
+  SecondBanner() {
+    return FutureBuilder(
+      future: HomePageController.HomePageApi(),
+      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Container(
+            height: 24.h,
+            width: 100.w,
+            child: CustomLoader(),
+            decoration: BoxDecoration(
+              color: PWhite,
+              borderRadius: BorderRadius.circular(6),
+            ),
+          );
+        }
+        return Container(
+          margin: EdgeInsets.symmetric(vertical: 1.5.h, horizontal: 1.5.h),
+          height: 24.h,
+          width: 70.h,
+          child: CarouselSlider.builder(
+            itemCount: 1,
+            itemBuilder: (BuildContext context, int index, int realIndex) {
+              return Container(
+                width: 100.h,
+                decoration: BoxDecoration(
+                  color: PWhite,
+                  borderRadius: BorderRadius.circular(6),
+                  boxShadow: Mainboxshadow,
+                  image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: AssetImage(
+                      "assets/images/banner1.svg",
+                    ),
+                  ),
+                ),
+              );
+            },
+            options: CarouselOptions(
+              autoPlay: true,
+              pauseAutoPlayOnManualNavigate: true,
+              pauseAutoPlayOnTouch: true,
+              viewportFraction: 1,
+              aspectRatio: 16 / 9,
+              initialPage: 0,
+              autoPlayInterval: Duration(days: 4),
+            ),
+          ),
+        );
+      },
+    );
   }
 
   UpcomingEvents() {
