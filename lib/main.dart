@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           home: SplahsScreen(),
-          // darkTheme: ThemeData(fontFamily: ),
-          title: '',
+          darkTheme: ThemeData(fontFamily: 'Poppins'),
+          title: 'Bharat MSME',
         );
       },
     );
