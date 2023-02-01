@@ -12,7 +12,6 @@ import 'package:tssia_replica/Generic/Custom/Custom_Drawer.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Loader.dart';
 import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:tssia_replica/Screens/My_Profile/Contact_Us.dart';
-import 'package:tssia_replica/Screens/My_Profile/Milestones.dart';
 import 'package:tssia_replica/Screens/Order_History.dart';
 import 'package:tssia_replica/Screens/Sign_Up/LoginScreen.dart';
 import 'package:tssia_replica/Screens/WebView/WebView.dart';
@@ -38,9 +37,9 @@ class _MyProfileState extends State<MyProfile> {
 
   List images = [
     'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Order_History.svg',
-    'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Legacy of Tssia.svg',
-    'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Milestones.svg',
-    'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Activities.svg',
+    // 'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Legacy of Tssia.svg',
+    // 'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Milestones.svg',
+    // 'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Activities.svg',
     'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Contact Us.svg',
     'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Terms_and_Conditions.svg',
     'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Privacy_Policy.svg',
@@ -48,9 +47,9 @@ class _MyProfileState extends State<MyProfile> {
   ];
   List titles = [
     'Order History',
-    'Legacy of Tssia',
-    'Milestones',
-    'Activities',
+    // 'Legacy of Tssia',
+    // 'Milestones',
+    // 'Activities',
     'Contact Us',
     'Terms & Condition',
     'Privacy Policy',
@@ -163,33 +162,37 @@ class _MyProfileState extends State<MyProfile> {
                           if (index == 0) {
                             Get.to(OrderHistoryPage(),
                                 transition: transitonEffect);
-                          } else if (index == 1) {
-                            Get.to(WebviewScreen(
-                              label: 'Legacy of Tssia',
-                              url:
-                                  'https://tssia.enirmaan.com/ts_lagacyoftssia',
-                            ));
-                          } else if (index == 2) {
-                            Get.to(MileStones(), transition: transitonEffect);
-                          } else if (index == 3) {
-                            Get.to(WebviewScreen(
-                              label: 'Activities',
-                              url: 'https://tssia.enirmaan.com/ts_activities',
-                            ));
-                          } else if (index == 4) {
+                          }
+                          // else if (index == 1) {
+                          //   Get.to(WebviewScreen(
+                          //     label: 'Legacy of Tssia',
+                          //     url:
+                          //         'https://tssia.enirmaan.com/ts_lagacyoftssia',
+                          //   ));
+                          // }
+                          // else if (index == 2) {
+                          //   Get.to(MileStones(), transition: transitonEffect);
+                          // }
+                          //  else if (index == 3) {
+                          //   Get.to(WebviewScreen(
+                          //     label: 'Activities',
+                          //     url: 'https://tssia.enirmaan.com/ts_activities',
+                          //   ));
+                          // }
+                          else if (index == 1) {
                             Get.to(ContactUs());
-                          } else if (index == 5) {
+                          } else if (index == 2) {
                             Get.to(WebviewScreen(
                               url:
                                   'https://tssia.enirmaan.com/terms-and-conditions',
                               label: 'Terms And Conditions',
                             ));
-                          } else if (index == 6) {
+                          } else if (index == 3) {
                             Get.to(WebviewScreen(
                               label: 'Privacy Policy',
                               url: 'https://tssia.enirmaan.com/privacy-policy',
                             ));
-                          } else if (index == 7) {
+                          } else if (index == 4) {
                             SharedPreferences prefs =
                                 await SharedPreferences.getInstance();
                             prefs.clear();
@@ -213,7 +216,10 @@ class _MyProfileState extends State<MyProfile> {
                               SizedBox(
                                 width: 1.h,
                               ),
-                              SvgPicture.network(images[index]),
+                              SvgPicture.network(
+                                "${images[index]}",
+                                color: Color(0xffBF2025),
+                              ),
                               SizedBox(
                                 width: 2.h,
                               ),
