@@ -18,7 +18,7 @@ class ChatAndDiscussionController extends GetxController {
     final response = await http.post(
       Uri.parse('${BaseURL}api/Chat_Controller/post_list'),
       body: {
-        'user_id': userId.toString(),
+        // 'user_id': userId.toString(),
       },
     );
     var decodedResponse = json.decode(response.body);

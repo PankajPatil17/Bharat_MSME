@@ -155,100 +155,105 @@ class _SingleandGroupCreateScreenState
     return FutureBuilder(
       future: ChatForumController.AllPostList(),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-        return ListView.builder(
-          shrinkWrap: true,
-          controller: ScrollController(),
-          itemCount: ChatForumController.GetAllPosts.length,
-          itemBuilder: (BuildContext context, int index) {
-            return GestureDetector(
-              onTap: () {
-                Get.to(CommonCommentsDetails(
-                    userId: SigunpController.CurrentuserID.toString(),
-                    postID: ChatForumController.GetAllPosts[index]['id']
-                        .toString()));
-              },
-              child: Container(
-                  width: 100.w,
-                  margin: EdgeInsets.all(1.h),
-                  padding: EdgeInsets.all(1.5.h),
-                  decoration: BoxDecoration(
-                      color: PWhite,
-                      boxShadow: Mainboxshadow,
-                      borderRadius: MainBorderRadius),
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 6.h,
-                        width: 6.h,
-                        margin: EdgeInsets.only(right: 1.h),
+        return ChatForumController.GetAllPosts.length == 0 &&
+                // ignore: unnecessary_null_comparison
+                ChatForumController.GetAllPosts.length == null
+            ? Text('No chat')
+            : ListView.builder(
+                shrinkWrap: true,
+                controller: ScrollController(),
+                itemCount: ChatForumController.GetAllPosts.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Get.to(CommonCommentsDetails(
+                          userId: SigunpController.CurrentuserID.toString(),
+                          postID: ChatForumController.GetAllPosts[index]['id']
+                              .toString()));
+                    },
+                    child: Container(
+                        width: 100.w,
+                        margin: EdgeInsets.all(1.h),
+                        padding: EdgeInsets.all(1.5.h),
                         decoration: BoxDecoration(
-                            border: Border.all(
-                                width: 0.5, color: Color(0xffe4e4e4)),
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                    'https://cdn-icons-png.flaticon.com/512/3048/3048122.png'))),
-                      ),
-                      SizedBox(
-                        width: 1.w,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: 70.w,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            color: PWhite,
+                            boxShadow: Mainboxshadow,
+                            borderRadius: MainBorderRadius),
+                        child: Row(
+                          children: [
+                            Container(
+                              height: 6.h,
+                              width: 6.h,
+                              margin: EdgeInsets.only(right: 1.h),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: 0.5, color: Color(0xffe4e4e4)),
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                      image: NetworkImage(
+                                          'https://cdn-icons-png.flaticon.com/512/3048/3048122.png'))),
+                            ),
+                            SizedBox(
+                              width: 1.w,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                SizedBox(
+                                  width: 70.w,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      CommonText(
+                                        label: ChatForumController
+                                            .GetAllPosts[index]['founder_name']
+                                            .toString()
+                                            .capitalizeFirst,
+                                        colorT: Colors.black,
+                                        fontw8: FontWeight.w600,
+                                        size: 13.sp,
+                                      ),
+                                      CommonText(
+                                        label: ChatForumController
+                                            .GetAllPosts[index]['created_at']
+                                            .toString(),
+                                        colorT: Colors.black,
+                                        fontw8: FontWeight.w400,
+                                        size: 10.sp,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(vertical: 0.4.h),
+                                  child: CommonText(
+                                    label: ChatForumController
+                                        .GetAllPosts[index]['comp_name']
+                                        .toString()
+                                        .capitalizeFirst,
+                                    colorT: Colors.black,
+                                    fontw8: FontWeight.w500,
+                                    size: 11.sp,
+                                  ),
+                                ),
                                 CommonText(
                                   label: ChatForumController.GetAllPosts[index]
-                                          ['founder_name']
+                                          ['title']
                                       .toString()
                                       .capitalizeFirst,
                                   colorT: Colors.black,
-                                  fontw8: FontWeight.w600,
-                                  size: 13.sp,
-                                ),
-                                CommonText(
-                                  label: ChatForumController.GetAllPosts[index]
-                                          ['created_at']
-                                      .toString()
-                                      .replaceRange(9, 18, ''),
-                                  colorT: Colors.black,
                                   fontw8: FontWeight.w400,
-                                  size: 10.sp,
+                                  size: 11.sp,
                                 ),
                               ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 0.4.h),
-                            child: CommonText(
-                              label: ChatForumController.GetAllPosts[index]
-                                      ['comp_name']
-                                  .toString()
-                                  .capitalizeFirst,
-                              colorT: Colors.black,
-                              fontw8: FontWeight.w500,
-                              size: 11.sp,
-                            ),
-                          ),
-                          CommonText(
-                            label: ChatForumController.GetAllPosts[index]
-                                    ['title']
-                                .toString()
-                                .capitalizeFirst,
-                            colorT: Colors.black,
-                            fontw8: FontWeight.w400,
-                            size: 11.sp,
-                          ),
-                        ],
-                      )
-                    ],
-                  )),
-            );
-          },
-        );
+                            )
+                          ],
+                        )),
+                  );
+                },
+              );
       },
     );
   }
