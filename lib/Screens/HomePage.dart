@@ -354,7 +354,7 @@ class _HomePageState extends State<HomePage> {
                 height: 2.h,
               ),
               Container(
-                height: 36.h,
+                height: 17.h,
                 width: 100.h,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -363,276 +363,272 @@ class _HomePageState extends State<HomePage> {
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     return GestureDetector(
-                      onTap: () {
-                        Get.to(
-                            EventDetails(
-                              id: eventcontroller.EventsList[index]['id']
-                                  .toString(),
-                            ),
-                            transition: transitonEffect);
-                        eventcontroller.EventsDetailsApi(
-                            id: "${eventcontroller.EventsList[index]['id'].toString()}");
-                      },
-
-                      child: Container(
-                        width: 19.5.h,
-                        margin: EdgeInsets.only(left: 2.2.h, bottom: 1.5.h),
-                        decoration: BoxDecoration(
-                            color: PWhite,
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(
-                                width: 0.5, color: Color(0xffe4e4e4))),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              height: 16.h,
-                              width: 16.h,
-                              margin: EdgeInsets.only(
-                                  right: 1.5.h,
-                                  left: 1.5.h,
-                                  top: 1.5.h,
-                                  bottom: 1.5.h),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(6),
-                                  border: Border.all(
-                                      width: 0.5, color: Color(0xffe4e4e4)),
-                                  image: DecorationImage(
-                                      fit: BoxFit.fill,
-                                      image: AssetImage(
-                                          'assets/images/Event_Image.png'))),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 1.5.h),
-                              child: CommonText(
-                                label: 'Lorem ipsum dolor sit amet, consetetur',
-                                colorT: Colors.black,
-                                fontw8: FontWeight.w400,
-                                maxline: 2,
-                                size: 10.sp,
-                                overflow: TextOverflow.ellipsis,
+                        onTap: () {
+                          Get.to(
+                              EventDetails(
+                                id: eventcontroller.EventsList[index]['id']
+                                    .toString(),
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 1.5.h, vertical: 0.7.h),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  SvgPicture.asset(
-                                    'assets/images/clock.svg',
-                                    color: Color(0xff003C5E),
-                                  ),
-                                  SizedBox(
-                                    width: 1.h,
-                                  ),
-                                  SizedBox(
-                                    width: 10.h,
-                                    child: CommonText(
-                                      label:
-                                          '${eventcontroller.EventsList[index]['event_time']}',
-                                      colorT: Colors.black,
-                                      fontw8: FontWeight.w400,
-                                      maxline: 1,
-                                      size: 10.sp,
-                                      overflow: TextOverflow.ellipsis,
+                              transition: transitonEffect);
+                          eventcontroller.EventsDetailsApi(
+                              id: "${eventcontroller.EventsList[index]['id'].toString()}");
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    blurRadius: 2,
+                                    spreadRadius: 2,
+                                    color: Colors.black12)
+                              ],
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 16.h,
+                                width: 15.h,
+                                margin: EdgeInsets.all(1.2.h),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(6),
+                                    border: Border.all(
+                                        width: 0.5, color: Color(0xffe4e4e4)),
+                                    image: DecorationImage(
+                                        fit: BoxFit.fill,
+                                        image: AssetImage(
+                                            'assets/images/Event_Image.png'))),
+                              ),
+                              SizedBox(
+                                width: 43.w,
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.all(1.2.h),
+                                      child: Column(
+                                        children: [
+                                          CommonText(
+                                            label:
+                                                'Lorem ipsum dolor sit amet, consetetur',
+                                            colorT: Colors.black,
+                                            fontw8: FontWeight.w400,
+                                            maxline: 2,
+                                            size: 10.sp,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                          Row(
+                                            children: [
+                                              SvgPicture.asset(
+                                                'assets/images/clock.svg',
+                                                height: 1.5.h,
+                                                color: Color(0xff003C5E),
+                                              ),
+                                              SizedBox(
+                                                width: 0.5.h,
+                                              ),
+                                              CommonText(
+                                                label:
+                                                    '${eventcontroller.EventsList[index]['event_time']}',
+                                                colorT: Colors.black,
+                                                fontw8: FontWeight.w400,
+                                                maxline: 1,
+                                                size: 9.sp,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              SvgPicture.asset(
+                                                'assets/images/calendar.svg',
+                                                color: Color(0xffF3AE33),
+                                                height: 1.5.h,
+                                              ),
+                                              SizedBox(
+                                                width: 1.h,
+                                              ),
+                                              CommonText(
+                                                label:
+                                                    '${eventcontroller.EventsList[index]['event_date']}',
+                                                colorT: Colors.black,
+                                                fontw8: FontWeight.w400,
+                                                maxline: 1,
+                                                size: 9.sp,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 1.5.h,
-                              ),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  SvgPicture.asset(
-                                    'assets/images/calendar.svg',
-                                    color: Color(0xffF3AE33),
-                                  ),
-                                  SizedBox(
-                                    width: 1.h,
-                                  ),
-                                  SizedBox(
-                                    width: 10.h,
-                                    child: CommonText(
-                                      label:
-                                          '${eventcontroller.EventsList[index]['event_date']}',
-                                      colorT: Colors.black,
-                                      fontw8: FontWeight.w400,
-                                      maxline: 1,
-                                      size: 10.sp,
-                                      overflow: TextOverflow.ellipsis,
+                                    Spacer(),
+                                    Align(
+                                      alignment: Alignment.bottomRight,
+                                      child: Container(
+                                        padding: EdgeInsets.all(1.h),
+                                        decoration: BoxDecoration(
+                                            color: Color(0xffF67C80),
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(10),
+                                                bottomRight:
+                                                    Radius.circular(10))),
+                                        child: CommonText(
+                                          label:
+                                              'Paid Rs ${eventcontroller.EventsList[index]['event_price']}',
+                                          colorT: PWhite,
+                                          fontw8: FontWeight.w400,
+                                          maxline: 1,
+                                          size: 11.sp,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Spacer(),
-                            Container(
-                              alignment: Alignment.center,
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 1.h, horizontal: 1.5.h),
-                              decoration: BoxDecoration(
-                                  color: Color(0xff56CA6A),
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(10),
-                                    bottomRight: Radius.circular(10),
-                                  )),
-                              child: CommonText(
-                                label:
-                                    'Rs ${eventcontroller.EventsList[index]['event_price']}',
-                                colorT: PWhite,
-                                fontw8: FontWeight.w400,
-                                maxline: 1,
-                                size: 10.sp,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      // child: Container(
-                      //   width: 39.5.h,
-                      //   padding: EdgeInsets.all(1.3.h),
-                      //   margin: EdgeInsets.only(right: 2.2.h),
-                      //   decoration: BoxDecoration(
-                      //       boxShadow: [
-                      //         BoxShadow(
-                      //             color: Colors.black12,
-                      //             blurRadius: 2,
-                      //             offset: Offset(0, 4))
-                      //       ],
-                      //       color: PWhite,
-                      //       borderRadius: BorderRadius.circular(6),
-                      //       border: Border.all(
-                      //           width: 0.5, color: Color(0xffe4e4e4))),
-                      //   child: Row(
-                      //     children: [
-                      // Container(
-                      //   height: 12.h,
-                      //   width: 12.h,
-                      //   margin: EdgeInsets.only(right: 1.5.h),
-                      //   decoration: BoxDecoration(
-                      //       borderRadius: BorderRadius.circular(6),
-                      //       image: DecorationImage(
-                      //           fit: BoxFit.fill,
-                      //           image: NetworkImage(
-                      //               '${eventcontroller.EventsList[index]['event_url']}'))),
-                      // ),
-                      //       Expanded(
-                      //         child: Column(
-                      //           mainAxisAlignment:
-                      //               MainAxisAlignment.spaceBetween,
-                      //           crossAxisAlignment: CrossAxisAlignment.start,
-                      //           children: [
-                      //             CommonText(
-                      //               label:
-                      //                   '${eventcontroller.EventsList[index]['event_name']}'
-                      //                       .replaceAll('Tssia', ''),
-                      //               colorT: Colors.black,
-                      //               fontw8: FontWeight.w400,
-                      //               maxline: 2,
-                      //               size: 10.sp,
-                      //               overflow: TextOverflow.ellipsis,
-                      //             ),
-                      // Row(
-                      //   crossAxisAlignment:
-                      //       CrossAxisAlignment.center,
-                      //   mainAxisAlignment:
-                      //       MainAxisAlignment.spaceBetween,
-                      //   children: [
-                      //     Column(
-                      //       crossAxisAlignment:
-                      //           CrossAxisAlignment.start,
-                      //       children: [
-                      //         Row(
-                      //           crossAxisAlignment:
-                      //               CrossAxisAlignment.center,
-                      //           mainAxisAlignment:
-                      //               MainAxisAlignment.start,
-                      //           children: [
-                      //             SvgPicture.asset(
-                      //                 'assets/images/calendar.svg'),
-                      //             SizedBox(
-                      //               width: 1.h,
-                      //             ),
-                      //             CommonText(
-                      //               label:
-                      //                   '${eventcontroller.EventsList[index]['event_date']}',
-                      //               colorT: Colors.black,
-                      //               fontw8: FontWeight.w400,
-                      //               maxline: 2,
-                      //               size: 10.sp,
-                      //               overflow: TextOverflow.ellipsis,
-                      //             ),
-                      //           ],
-                      //         ),
-                      //         Row(
-                      //           crossAxisAlignment:
-                      //               CrossAxisAlignment.center,
-                      //           mainAxisAlignment:
-                      //               MainAxisAlignment.start,
-                      //           children: [
-                      //             SvgPicture.asset(
-                      //                 'assets/images/clock.svg'),
-                      //             SizedBox(
-                      //               width: 1.h,
-                      //             ),
-                      //             SizedBox(
-                      //               width: 10.h,
-                      //               child: CommonText(
-                      //                 label:
-                      //                     '${eventcontroller.EventsList[index]['event_time']}',
-                      //                 colorT: Colors.black,
-                      //                 fontw8: FontWeight.w400,
-                      //                 maxline: 1,
-                      //                 size: 10.sp,
-                      //                 overflow:
-                      //                     TextOverflow.ellipsis,
-                      //               ),
-                      //             ),
-                      //           ],
-                      //         )
-                      //       ],
-                      //     ),
-                      //                 Container(
-                      //                   alignment: Alignment.center,
-                      //                   padding: EdgeInsets.only(
-                      //                       top: 1.1.h,
-                      //                       bottom: 1.1.h,
-                      //                       left: 1.5.h,
-                      //                       right: 1.5.h),
-                      //                   decoration: BoxDecoration(
-                      //                       color: Color(0xffF89902),
-                      //                       borderRadius:
-                      //                           BorderRadius.circular(6),
-                      //                       border: Border.all(
-                      //                           width: 0.5,
-                      //                           color: Color(0xffe4e4e4))),
-                      //                   child: CommonText(
-                      //                     label:
-                      //                         'Rs ${eventcontroller.EventsList[index]['event_price']}',
-                      //                     colorT: PWhite,
-                      //                     fontw8: FontWeight.w400,
-                      //                     maxline: 2,
-                      //                     size: 10.sp,
-                      //                     overflow: TextOverflow.ellipsis,
-                      //                   ),
-                      //                 ),
-                      //               ],
-                      //             ),
-                      //           ],
-                      //         ),
-                      //       )
-                      //     ],
-                      //   ),
-                      // ),
-                    );
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                        // child: Container(
+                        //   width: 39.5.h,
+                        //   padding: EdgeInsets.all(1.3.h),
+                        //   margin: EdgeInsets.only(right: 2.2.h),
+                        //   decoration: BoxDecoration(
+                        //       boxShadow: [
+                        //         BoxShadow(
+                        //             color: Colors.black12,
+                        //             blurRadius: 2,
+                        //             offset: Offset(0, 4))
+                        //       ],
+                        //       color: PWhite,
+                        //       borderRadius: BorderRadius.circular(6),
+                        //       border: Border.all(
+                        //           width: 0.5, color: Color(0xffe4e4e4))),
+                        //   child: Row(
+                        //     children: [
+                        // Container(
+                        //   height: 12.h,
+                        //   width: 12.h,
+                        //   margin: EdgeInsets.only(right: 1.5.h),
+                        //   decoration: BoxDecoration(
+                        //       borderRadius: BorderRadius.circular(6),
+                        //       image: DecorationImage(
+                        //           fit: BoxFit.fill,
+                        //           image: NetworkImage(
+                        //               '${eventcontroller.EventsList[index]['event_url']}'))),
+                        // ),
+                        //       Expanded(
+                        //         child: Column(
+                        //           mainAxisAlignment:
+                        //               MainAxisAlignment.spaceBetween,
+                        //           crossAxisAlignment: CrossAxisAlignment.start,
+                        //           children: [
+                        //             CommonText(
+                        //               label:
+                        //                   '${eventcontroller.EventsList[index]['event_name']}'
+                        //                       .replaceAll('Tssia', ''),
+                        //               colorT: Colors.black,
+                        //               fontw8: FontWeight.w400,
+                        //               maxline: 2,
+                        //               size: 10.sp,
+                        //               overflow: TextOverflow.ellipsis,
+                        //             ),
+                        // Row(
+                        //   crossAxisAlignment:
+                        //       CrossAxisAlignment.center,
+                        //   mainAxisAlignment:
+                        //       MainAxisAlignment.spaceBetween,
+                        //   children: [
+                        //     Column(
+                        //       crossAxisAlignment:
+                        //           CrossAxisAlignment.start,
+                        //       children: [
+                        //         Row(
+                        //           crossAxisAlignment:
+                        //               CrossAxisAlignment.center,
+                        //           mainAxisAlignment:
+                        //               MainAxisAlignment.start,
+                        //           children: [
+                        //             SvgPicture.asset(
+                        //                 'assets/images/calendar.svg'),
+                        //             SizedBox(
+                        //               width: 1.h,
+                        //             ),
+                        //             CommonText(
+                        //               label:
+                        //                   '${eventcontroller.EventsList[index]['event_date']}',
+                        //               colorT: Colors.black,
+                        //               fontw8: FontWeight.w400,
+                        //               maxline: 2,
+                        //               size: 10.sp,
+                        //               overflow: TextOverflow.ellipsis,
+                        //             ),
+                        //           ],
+                        //         ),
+                        //         Row(
+                        //           crossAxisAlignment:
+                        //               CrossAxisAlignment.center,
+                        //           mainAxisAlignment:
+                        //               MainAxisAlignment.start,
+                        //           children: [
+                        //             SvgPicture.asset(
+                        //                 'assets/images/clock.svg'),
+                        //             SizedBox(
+                        //               width: 1.h,
+                        //             ),
+                        //             SizedBox(
+                        //               width: 10.h,
+                        //               child: CommonText(
+                        //                 label:
+                        //                     '${eventcontroller.EventsList[index]['event_time']}',
+                        //                 colorT: Colors.black,
+                        //                 fontw8: FontWeight.w400,
+                        //                 maxline: 1,
+                        //                 size: 10.sp,
+                        //                 overflow:
+                        //                     TextOverflow.ellipsis,
+                        //               ),
+                        //             ),
+                        //           ],
+                        //         )
+                        //       ],
+                        //     ),
+                        //                 Container(
+                        //                   alignment: Alignment.center,
+                        //                   padding: EdgeInsets.only(
+                        //                       top: 1.1.h,
+                        //                       bottom: 1.1.h,
+                        //                       left: 1.5.h,
+                        //                       right: 1.5.h),
+                        //                   decoration: BoxDecoration(
+                        //                       color: Color(0xffF89902),
+                        //                       borderRadius:
+                        //                           BorderRadius.circular(6),
+                        //                       border: Border.all(
+                        //                           width: 0.5,
+                        //                           color: Color(0xffe4e4e4))),
+                        //                   child: CommonText(
+                        //                     label:
+                        //                         'Rs ${eventcontroller.EventsList[index]['event_price']}',
+                        //                     colorT: PWhite,
+                        //                     fontw8: FontWeight.w400,
+                        //                     maxline: 2,
+                        //                     size: 10.sp,
+                        //                     overflow: TextOverflow.ellipsis,
+                        //                   ),
+                        //                 ),
+                        //               ],
+                        //             ),
+                        //           ],
+                        //         ),
+                        //       )
+                        //     ],
+                        //   ),
+                        // ),
+                        );
                   },
                 ),
               ),
