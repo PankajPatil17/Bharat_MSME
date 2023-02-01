@@ -9,7 +9,6 @@ import 'package:tssia_replica/Generic/Common/CommonText.dart';
 import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Loader.dart';
 import 'package:tssia_replica/Generic/Custom/variables.dart';
-import 'package:tssia_replica/Screens/My_Profile/Milestones.dart';
 import 'package:tssia_replica/Screens/Order_History.dart';
 import 'package:tssia_replica/Screens/Sign_Up/LoginScreen.dart';
 import 'package:tssia_replica/Screens/WebView/WebView.dart';
