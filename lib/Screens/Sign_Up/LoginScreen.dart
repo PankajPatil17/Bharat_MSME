@@ -261,7 +261,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   setState(() {
                                     Get.to(WebviewScreen(
                                       url:
-                                          https://msmebharatmanch.com/privacy-policy',
+                                          'https://msmebharatmanch.com/privacy-policy',
                                       label: 'Privacy Policy',
                                     ));
                                   });

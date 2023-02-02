@@ -301,7 +301,7 @@ class _HomePageState extends State<HomePage> {
               aspectRatio: 16 / 9,
               initialPage: 0,
               autoPlay: true,
-              autoPlayInterval: Duration(seconds: 4),
+              autoPlayInterval: Duration(days: 4),
             ),
           ),
         );
