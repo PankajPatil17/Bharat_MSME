@@ -678,7 +678,7 @@ class _HomePageState extends State<HomePage> {
                                           .HomeBannerAndSupportSection[
                                       'support_system'][index]['url'],
                                   label:
-                                      "${HomePageController.ServicesModulesName[index]}"));
+                                      "${HomePageController.HomeBannerAndSupportSection['support_system'][index]}"));
                             },
                             child: Container(
                               padding: EdgeInsets.all(1.5.h),
@@ -698,8 +698,8 @@ class _HomePageState extends State<HomePage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  SvgPicture.asset(
-                                      "${HomePageController.ServicesModulesImage[index]}"),
+                                  SvgPicture.network(
+                                      "${HomePageController.HomeBannerAndSupportSection['support_system'][index]['icon_url']}"),
                                   CommonText(
                                     colorT: Colors.black,
                                     fontw8: FontWeight.w400,
@@ -707,7 +707,7 @@ class _HomePageState extends State<HomePage> {
                                     overflow: TextOverflow.ellipsis,
                                     maxline: 2,
                                     label:
-                                        "${HomePageController.ServicesModulesName[index]}",
+                                        "${HomePageController.HomeBannerAndSupportSection['support_system'][index]['title']}",
                                   )
                                 ],
                               ),
