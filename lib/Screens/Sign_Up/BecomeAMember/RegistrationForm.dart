@@ -419,18 +419,35 @@ class _RegistrationFormState extends State<RegistrationForm> {
                       shape: const StadiumBorder(),
                     ),
                     onPressed: () {
-                      if (formKey.currentState!.validate()) {
-                        if (password.text == Confirmpassword.text) {
-                          SigunpController.SignUp(
-                              companyname: companyName.text,
-                              name: Username.text,
-                              email: email.text,
-                              mobile: mobile.text,
-                              pass: password.text,
-                              confirmpass: Confirmpassword.text,
-                              regtype: checkradio.toString(),
-                              context: context);
+                      if (password.text == Confirmpassword.text) {
+                        if (formKey.currentState!.validate()) {
+                          if (checkvalue == true) {
+                            Future.delayed(Duration(milliseconds: 100), () {
+                              SigunpController.SignUp(
+                                  companyname: companyName.text,
+                                  name: Username.text,
+                                  email: email.text,
+                                  mobile: mobile.text,
+                                  pass: password.text,
+                                  confirmpass: Confirmpassword.text,
+                                  regtype: checkradio.toString(),
+                                  context: context);
+                            });
+                          } else {
+                            Fluttertoast.showToast(
+                                msg: "Please accept conditions",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 2,
+                                textColor: Colors.white,
+                                fontSize: 16.0);
+                          }
                         }
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text(
+                              "Password Should match with Confirm Password"),
+                        ));
                       }
                     },
                     child: Padding(
