@@ -7,35 +7,98 @@ import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:tssia_replica/Screens/HomePage.dart';
 import 'package:tssia_replica/Screens/Sign_Up/Forget_Password/Forget_Password_OTP.dart';
 import 'package:tssia_replica/Screens/Sign_Up/LoginScreen.dart';
+import 'package:tssia_replica/Screens/Sign_Up/OtpVerification.dart';
 
 class signupcontroller extends GetxController {
   var CurrentuserID;
   var CurrentuserEmail;
   var MemberName;
+  var CurrentToken;
   bool isStopped = false;
+  var mobileForOTP;
 
   getIDfunction() async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     CurrentuserID = _prefs.getString('CurrentuserID');
     MemberName = _prefs.getString('MemberName');
+    CurrentuserEmail = _prefs.getString('MemberEmail');
+    CurrentToken = _prefs.getString('token');
+  }
+
+  Future SignUp(
+      {regtype,
+      companyname,
+      email,
+      name,
+      pass,
+      confirmpass,
+      mobile,
+      context}) async {
+    final response = await http.post(
+      Uri.parse('${MSMEURL}api/user-register'),
+      body: {
+        'register_type': regtype,
+        'company_name': companyname,
+        'email': email,
+        'name': name,
+        'password': pass,
+        'conf_password': confirmpass,
+        'mobile_number': mobile
+      },
+    );
+    var decodedResponse = json.decode(response.body);
+    print(response.body);
+    if (response.statusCode == 200) {
+      Get.to(OtpVerification());
+      mobileForOTP = mobile;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("${decodedResponse['message']}"),
+      ));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("${decodedResponse['fields']['email'][0]}"),
+      ));
+    }
+  }
+
+  Future OtpVerify({otp, context}) async {
+    final response = await http.post(
+      Uri.parse('${MSMEURL}api/verify-otp'),
+      body: {'otp': otp, 'mobile_number': mobileForOTP},
+    );
+    var decodedResponse = json.decode(response.body);
+    print(response.body);
+    if (response.statusCode == 200) {
+      Get.to(LoginScreen());
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("${decodedResponse['message']}"),
+      ));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("${decodedResponse['message']}"),
+      ));
+    }
   }
 
   Future Signin({empId, pass}) async {
     final response = await http.post(
-      Uri.parse('${BaseURL}api/Common_Controller/login'),
-      body: {'user_name': empId, 'password': pass, 'login_type': '2'},
+      Uri.parse('${MSMEURL}api/user-login'),
+      body: {'email': empId, 'password': pass},
     );
     var decodedResponse = json.decode(response.body);
-    if (decodedResponse['status'] == 200) {
+    if (response.statusCode == 200) {
       SharedPreferences _prefs = await SharedPreferences.getInstance();
       _prefs.setString(
           'CurrentuserID', decodedResponse['data']['user_id'].toString());
       _prefs.setString(
-          'MemberName', decodedResponse['data']['user_name'].toString());
-      _prefs.setString('MemberEmail', empId.toString());
+          'MemberName', decodedResponse['data']['name'].toString());
+      _prefs.setString(
+          'MemberEmail', decodedResponse['data']['mobile_number'].toString());
+      _prefs.setString('token', decodedResponse['data']['token'].toString());
       CurrentuserID = _prefs.getString('CurrentuserID');
       CurrentuserEmail = _prefs.getString('MemberEmail');
-      print('token--${CurrentuserID}');
+      CurrentToken = _prefs.getString('token');
+      print('token--${CurrentToken}');
       Get.offAll(HomePage());
     }
   }

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+import 'package:tssia_replica/Controller/SigupController.dart';
 import 'package:tssia_replica/Generic/Common/CommonText.dart';
-import 'package:tssia_replica/Screens/Sign_Up/BecomeAMember/MemberForm01.dart';
-import 'package:tssia_replica/Screens/Sign_Up/OtpVerification.dart';
 
 class RegistrationForm extends StatefulWidget {
   const RegistrationForm({super.key});
@@ -18,8 +17,9 @@ class _RegistrationFormState extends State<RegistrationForm> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController Confirmpassword = TextEditingController();
-  var checkradio = 'Association';
-
+  TextEditingController mobile = TextEditingController();
+  var checkradio = 'group';
+  var SigunpController = Get.put(signupcontroller());
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -126,6 +126,37 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         fontFamily: 'Poppins'),
                   ),
                 ),
+                MemberHeaderText('Mobile Number'),
+                TextFormField(
+                  controller: mobile,
+                  maxLength: 10,
+                  validator: (val) {
+                    if (val!.isEmpty) {
+                      return 'Please Enter Mobile Number';
+                    } else if (val.length != 10) {
+                      return "Please Enter Mobile Number";
+                    }
+                    return null;
+                  },
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    counterText: '',
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 10.0,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(6.0),
+                      borderSide: BorderSide(
+                        color: Color(0xffe4e4e4),
+                      ),
+                    ),
+                    hintText: 'Enter Your Mobile Number',
+                    hintStyle: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 11.sp,
+                        fontFamily: 'Poppins'),
+                  ),
+                ),
                 MemberHeaderText('Password'),
                 TextFormField(
                   controller: password,
@@ -189,7 +220,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                           ? IconButton(
                               onPressed: () {
                                 setState(() {
-                                  checkradio = 'Association';
+                                  checkradio = 'group';
                                 });
                               },
                               icon: Icon(
@@ -209,7 +240,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         fontw8: FontWeight.w400,
                         size: 12.sp,
                       ),
-                      checkradio == 'Association'
+                      checkradio == 'group'
                           ? IconButton(
                               onPressed: () {
                                 setState(() {
@@ -246,8 +277,22 @@ class _RegistrationFormState extends State<RegistrationForm> {
                     ),
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        // Get.to(MemberForm01());
-                        Get.to(OtpVerification());
+                        if (password.text == Confirmpassword.text) {
+                          SigunpController.SignUp(
+                              companyname: companyName.text,
+                              name: Username.text,
+                              email: email.text,
+                              mobile: mobile.text,
+                              pass: password.text,
+                              confirmpass: Confirmpassword.text,
+                              regtype: checkradio.toString(),
+                              context: context);
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text(
+                                "Password Should match with Confirm Password"),
+                          ));
+                        }
                       }
                     },
                     child: Padding(

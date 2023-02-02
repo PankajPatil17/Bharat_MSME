@@ -2,9 +2,6 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
-import 'package:tssia_replica/Screens/Sign_Up/BecomeAMember/RegistrationForm.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:tssia_replica/Screens/WebView/WebView.dart';
 import 'package:tssia_replica/Generic/Common/CommonText.dart';
 import 'package:tssia_replica/Controller/SigupController.dart';
 import 'package:tssia_replica/Generic/Common/Common_Color.dart';
@@ -21,7 +18,6 @@ class _OtpVerificationState extends State<OtpVerification> {
 
   var SigunpController = Get.put(signupcontroller());
   final formKey = GlobalKey<FormState>();
-  bool checkvalue = false;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +38,7 @@ class _OtpVerificationState extends State<OtpVerification> {
                     padding: EdgeInsets.all(2.h),
                     child: SvgPicture.asset(
                       'assets/images/Login_Image.svg',
-                      height: 30.h,
+                      height: 42.h,
                     ),
                   ),
                 ),
@@ -61,10 +57,11 @@ class _OtpVerificationState extends State<OtpVerification> {
                     elevation: 3.0,
                     borderRadius: BorderRadius.circular(24),
                     child: TextFormField(
+                      maxLength: 6,
                       validator: (val) {
                         if (val!.isEmpty) {
                           return 'Please Enter Your OTP';
-                        } else if (val.length == 6) {
+                        } else if (val.length != 6) {
                           return "Please Enter Your OTP";
                         }
                         return null;
@@ -72,6 +69,7 @@ class _OtpVerificationState extends State<OtpVerification> {
                       controller: OTP,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
+                        counterText: '',
                         contentPadding: EdgeInsets.symmetric(
                           horizontal: 20.0,
                         ),
@@ -107,7 +105,10 @@ class _OtpVerificationState extends State<OtpVerification> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        if (formKey.currentState!.validate()) {}
+                        if (formKey.currentState!.validate()) {
+                          SigunpController.OtpVerify(
+                              otp: OTP.text, context: context);
+                        }
                       });
                     },
                     child: Container(
@@ -118,7 +119,7 @@ class _OtpVerificationState extends State<OtpVerification> {
                           borderRadius: MainBorderRadius),
                       child: Center(
                         child: CommonText(
-                            label: 'Login',
+                            label: 'Verify',
                             colorT: Colors.white,
                             fontw8: FontWeight.w400,
                             size: 12.sp),
