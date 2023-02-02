@@ -9,7 +9,6 @@ import 'package:tssia_replica/Screens/Committee/Coming_soon.dart';
 import 'package:tssia_replica/Screens/HomePage.dart';
 import 'package:tssia_replica/Screens/My_Profile/My_Profile.dart';
 import 'package:tssia_replica/Screens/Partners/Partners.dart';
-import 'package:tssia_replica/Screens/Publications/Publications.dart';
 
 class CommonBottomBar extends StatefulWidget {
   final TapColor;
