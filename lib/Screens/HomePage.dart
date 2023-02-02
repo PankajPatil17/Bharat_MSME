@@ -17,10 +17,6 @@ import 'package:tssia_replica/Screens/Circulars/Circulars.dart';
 import 'package:tssia_replica/Screens/Committee/Coming_soon.dart';
 import 'package:tssia_replica/Screens/Events/Event_Details.dart';
 import 'package:tssia_replica/Screens/Events/Events.dart';
-import 'package:tssia_replica/Screens/Our_Services.dart/Blood_Bank.dart';
-import 'package:tssia_replica/Screens/Our_Services.dart/Ecoo.dart';
-import 'package:tssia_replica/Screens/Our_Services.dart/Hall_Booking.dart';
-import 'package:tssia_replica/Screens/Our_Services.dart/Visa_Recommendation.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -671,16 +667,9 @@ class _HomePageState extends State<HomePage> {
                     return GestureDetector(
                       onTap: () {
                         if (index == 0) {
-                          Get.to(HallBookingPage(),
-                              transition: transitonEffect);
-                        } else if (index == 3) {
-                          Get.to(VisaRecomendationPage(),
-                              transition: transitonEffect);
                         } else if (index == 1) {
-                          Get.to(EcooPage(), transition: transitonEffect);
                         } else if (index == 2) {
-                          Get.to(BloodBankPage(), transition: transitonEffect);
-                        }
+                        } else if (index == 3) {}
                       },
                       child: Container(
                         padding: EdgeInsets.all(1.5.h),
