@@ -671,6 +671,9 @@ class _HomePageState extends State<HomePage> {
                     future: HomePageController.HomeBannerSupportSection(),
                     builder: (BuildContext context,
                         AsyncSnapshot<dynamic> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return CustomLoader();
+                      }
                       return ListView.builder(
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,

@@ -8,7 +8,6 @@ import 'package:tssia_replica/Screens/WebView/WebView.dart';
 import 'package:tssia_replica/Generic/Common/CommonText.dart';
 import 'package:tssia_replica/Controller/SigupController.dart';
 import 'package:tssia_replica/Generic/Common/Common_Color.dart';
-import 'package:tssia_replica/Screens/Sign_Up/Forget_Password/ForgetPassword.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -66,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 1.h,
                 ),
                 CommonText(
-                  label: 'Username',
+                  label: 'Email',
                   size: 11.sp,
                   colorT: Colors.black,
                   fontw8: FontWeight.w400,
@@ -186,22 +185,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(ForgetPassword());
-                        },
-                        child: CommonText(
-                          label: 'Forget Password',
-                          fontw8: FontWeight.w400,
-                          size: 10.sp,
-                          colorT: Color(0xffAAAAAA),
-                        ),
-                      )
-                    ]),
+                // Row(
+                //     crossAxisAlignment: CrossAxisAlignment.end,
+                //     mainAxisAlignment: MainAxisAlignment.end,
+                //     children: [
+                //       GestureDetector(
+                //         onTap: () {
+                //           Get.to(ForgetPassword());
+                //         },
+                //         child: CommonText(
+                //           label: 'Forget Password',
+                //           fontw8: FontWeight.w400,
+                //           size: 10.sp,
+                //           colorT: Color(0xffAAAAAA),
+                //         ),
+                //       )
+                //     ]),
                 Row(
                   children: [
                     Checkbox(
