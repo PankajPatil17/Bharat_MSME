@@ -33,7 +33,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     HomePageController.HomePageApi();
-    eventcontroller.UpcomingEventsListApi();
     tapcolor = 'Home';
     super.initState();
   }
@@ -180,6 +179,7 @@ class _HomePageState extends State<HomePage> {
                             );
                           } else if (index == 3) {
                             Get.to(Events(), transition: transitonEffect);
+                            eventcontroller.UpcomingEventsListApi();
                           } else if (index == 4) {
                             Get.to(Circulars(), transition: transitonEffect);
                           } else if (index == 5) {

@@ -9,28 +9,22 @@ class EventsController extends GetxController {
   List eventdetail = [].obs;
   var razorpaykey;
 
-  @override
-  void onInit() {
-    UpcomingEventsListApi();
-    super.onInit();
-  }
-
-  UpcomingEventsListApi() async {
+  Future AllEventsListApi() async {
     http.Response response = await http.get(
       Uri.parse('${MSMEURL}api/get-all-events'),
     );
 
     var decodedResponse = json.decode(response.body);
     AllEventsList = decodedResponse['data']['all_events'];
-    print(AllEventsList);
   }
 
-  AllEventsListApi() async {
+  Future UpcomingEventsListApi() async {
     http.Response response = await http.get(
       Uri.parse('${MSMEURL}api/get-upcoming-events'),
     );
 
     var decodedResponse = json.decode(response.body);
     UpcomingList = decodedResponse['data']['upcoming_events'];
+    print(decodedResponse);
   }
 }

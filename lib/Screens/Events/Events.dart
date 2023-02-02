@@ -260,7 +260,7 @@ class _EventsState extends State<Events> {
                                         left: 1.5.h,
                                         right: 1.5.h),
                                     decoration: BoxDecoration(
-                                        color: Color(0xffF89902),
+                                        color: Color(0xffBF2025),
                                         borderRadius: BorderRadius.circular(6),
                                         border: Border.all(
                                             width: 0.5,
@@ -451,7 +451,7 @@ class _EventsState extends State<Events> {
                                               left: 1.5.h,
                                               right: 1.5.h),
                                           decoration: BoxDecoration(
-                                              color: Color(0xffF89902),
+                                              color: Color(0xffBF2025),
                                               borderRadius:
                                                   BorderRadius.circular(6),
                                               border: Border.all(
