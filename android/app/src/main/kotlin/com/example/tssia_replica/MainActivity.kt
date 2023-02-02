@@ -1,4 +1,4 @@
-package com.example.tssia_replica
+package com.msmebharat
 
 import io.flutter.embedding.android.FlutterActivity
 
