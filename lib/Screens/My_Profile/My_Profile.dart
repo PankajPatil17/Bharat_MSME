@@ -135,7 +135,7 @@ class _MyProfileState extends State<MyProfile> {
                         onTap: () async {
                           if (index == 0) {
                             Get.to(ContactUs());
-                          } else if (index == 0) {
+                          } else if (index == 1) {
                             Get.to(WebviewScreen(
                               url: 'https://msmebharatmanch.com/term-condition',
                               label: 'Terms And Conditions',

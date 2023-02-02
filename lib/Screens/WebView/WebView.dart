@@ -63,6 +63,8 @@ class WebviewScreen extends StatelessWidget {
                       "document.getElementsByClassName('mob-fix-foot-wrap fixed-bottom')[0].style.display='none'");
                   await controller.runJavascript(
                       "document.getElementsByTagName('footer')[0].style.display='none'");
+                  await controller.runJavascript(
+                      "document.getElementsByClassName('rev-footer-wrapper')[0].style.display='none'");
                 },
                 onPageFinished: (webAddress) async {
                   controller.runJavascript(
@@ -81,6 +83,8 @@ class WebviewScreen extends StatelessWidget {
                       "document.getElementsByClassName('mob-fix-foot-wrap fixed-bottom')[0].style.display='none'");
                   await controller.runJavascript(
                       "document.getElementsByTagName('footer')[0].style.display='none'");
+                  await controller.runJavascript(
+                      "document.getElementsByClassName('rev-footer-wrapper')[0].style.display='none'");
                 },
               ),
             ],
