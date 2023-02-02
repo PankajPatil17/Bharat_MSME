@@ -160,9 +160,9 @@ class _HomePageState extends State<HomePage> {
                 CarouselSlider.builder(
                   options: CarouselOptions(
                       autoPlay: true,
-                      height: 13.h,
+                      height: 13.5.h,
                       disableCenter: true,
-                      viewportFraction: 0.32,
+                      viewportFraction: 0.34,
                       aspectRatio: 9 / 9,
                       initialPage: 0,
                       autoPlayInterval: Duration(seconds: 5)),
