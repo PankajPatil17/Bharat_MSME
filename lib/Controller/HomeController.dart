@@ -10,6 +10,7 @@ class HomeController extends GetxController {
   List Services = [].obs;
   List GalleryImage = [].obs;
   List notification = [].obs;
+  var HomeBannerAndSupportSection;
   var SignController = Get.put(signupcontroller());
 
   HomePageApi() async {
@@ -21,6 +22,14 @@ class HomeController extends GetxController {
     HomeModules = decodedResponse['tiles'];
     Services = decodedResponse['our_services'];
     GalleryImage = decodedResponse['gallery'];
+  }
+
+  Future HomeBannerSupportSection() async {
+    http.Response response = await http.get(
+      Uri.parse('${MSMEURL}api/home-support-section'),
+    );
+    var decodedResponse = json.decode(response.body);
+    HomeBannerAndSupportSection = decodedResponse['data'];
   }
 
   Future NotificationList() async {
