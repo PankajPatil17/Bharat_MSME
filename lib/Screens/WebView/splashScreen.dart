@@ -20,7 +20,7 @@ class _SplahsScreenState extends State<SplahsScreen> {
   void initState() {
     SigunpController.getIDfunction();
     Future.delayed(Duration(seconds: 3), () {
-      print('${SigunpController.CurrentuserID}<---Token');
+      print('${SigunpController.CurrentToken}<---Token');
       Get.offAll(
           SigunpController.CurrentuserID == null ? LoginScreen() : HomePage());
     });
