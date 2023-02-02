@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tssia_replica/Controller/SigupController.dart';
 import 'package:tssia_replica/Generic/Common/CommonText.dart';
@@ -49,95 +49,156 @@ class _LoginScreenState extends State<LoginScreen> {
                 Align(
                   alignment: Alignment.center,
                   child: Padding(
-                    padding: EdgeInsets.all(3.h),
-                    child: Lottie.asset('assets/Lottie/Login_Gif.json'),
+                    padding: EdgeInsets.all(2.h),
+                    child: SvgPicture.asset('assets/images/Login_Image.svg'),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.center,
-                  child: CommonText(
-                    label: 'Welcome Back',
-                    fontw8: FontWeight.w400,
-                    size: 16.sp,
-                  ),
+                CommonText(
+                  label: 'Login',
+                  colorT: Color(0xffD82A1B),
+                  fontw8: FontWeight.w500,
+                  size: 14.sp,
+                ),
+                SizedBox(
+                  height: 1.h,
+                ),
+                CommonText(
+                  label: 'Username',
+                  size: 11.sp,
+                  colorT: Colors.black,
+                  fontw8: FontWeight.w400,
                 ),
                 Padding(
-                  padding: EdgeInsets.only(bottom: 1.2.h, top: 2.h),
-                  child: TextFormField(
-                    validator: (val) {
-                      if (val!.isEmpty) {
-                        return 'Please Enter Your email';
-                      } else if (val.length < 4) {
-                        return "Please enter valid email";
-                      }
-                      return null;
-                    },
-                    controller: email,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: 20.0,
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(6.0),
-                        borderSide: BorderSide(
-                          color: Color(0xffe4e4e4),
+                  padding: EdgeInsets.only(bottom: 1.2.h, top: 1.h),
+                  child: Material(
+                    elevation: 3.0,
+                    borderRadius: BorderRadius.circular(24),
+                    child: TextFormField(
+                      validator: (val) {
+                        if (val!.isEmpty) {
+                          return 'Please Enter Your email';
+                        } else if (val.length < 4) {
+                          return "Please enter valid email";
+                        }
+                        return null;
+                      },
+                      controller: email,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 20.0,
                         ),
+                        fillColor: PWhite,
+                        filled: true,
+                        focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.transparent, width: 0.5),
+                            borderRadius: BorderRadius.circular(24)),
+                        errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.transparent, width: 0.5),
+                            borderRadius: BorderRadius.circular(24)),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.transparent, width: 0.5),
+                            borderRadius: BorderRadius.circular(24)),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.transparent, width: 0.5),
+                            borderRadius: BorderRadius.circular(24)),
+                        hintText: 'Enter Your Email',
+                        hintStyle: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 11.sp,
+                            fontFamily: 'Poppins'),
                       ),
-                      hintText: 'Enter Your Email',
-                      hintStyle: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 11.sp,
-                          fontFamily: 'Poppins'),
                     ),
                   ),
+                ),
+                CommonText(
+                  label: 'Password',
+                  size: 11.sp,
+                  colorT: Colors.black,
+                  fontw8: FontWeight.w400,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 1.2.h),
-                  child: TextFormField(
-                    obscureText: !_passwordVisible,
-                    validator: (v) {
-                      if (v!.isEmpty) {
-                        return 'Please Enter Your Password';
-                      } else if (v.length < 2) {
-                        return "Please enter valid password";
-                      }
-                      return null;
-                    },
-                    controller: pass,
-                    keyboardType: TextInputType.visiblePassword,
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: 20.0,
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(6.0),
-                        borderSide: BorderSide(
-                          color: Color(0xffe4e4e4),
+                  child: Material(
+                    elevation: 3.0,
+                    borderRadius: BorderRadius.circular(24),
+                    child: TextFormField(
+                      obscureText: !_passwordVisible,
+                      validator: (v) {
+                        if (v!.isEmpty) {
+                          return 'Please Enter Your Password';
+                        } else if (v.length < 2) {
+                          return "Please enter valid password";
+                        }
+                        return null;
+                      },
+                      controller: pass,
+                      keyboardType: TextInputType.visiblePassword,
+                      decoration: InputDecoration(
+                        fillColor: PWhite,
+                        filled: true,
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 20.0,
                         ),
-                      ),
-                      hintText: 'Enter Your Password',
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          _passwordVisible
-                              ? Icons.visibility
-                              : Icons.visibility_off,
-                          color: Color(0xffBF2025),
+                        focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.transparent, width: 0.5),
+                            borderRadius: BorderRadius.circular(24)),
+                        errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.transparent, width: 0.5),
+                            borderRadius: BorderRadius.circular(24)),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.transparent, width: 0.5),
+                            borderRadius: BorderRadius.circular(24)),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.transparent, width: 0.5),
+                            borderRadius: BorderRadius.circular(24)),
+                        hintText: 'Enter Your Password',
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _passwordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: Color(0xffBF2025),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _passwordVisible = !_passwordVisible;
+                            });
+                          },
                         ),
-                        onPressed: () {
-                          setState(() {
-                            _passwordVisible = !_passwordVisible;
-                          });
-                        },
+                        hintStyle: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12.sp,
+                            color: Colors.black54,
+                            fontFamily: 'Poppins'),
                       ),
-                      hintStyle: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 12.sp,
-                          color: Colors.black54,
-                          fontFamily: 'Poppins'),
                     ),
                   ),
                 ),
+                Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Get.to(ForgetPassword());
+                        },
+                        child: CommonText(
+                          label: 'Forget Password',
+                          fontw8: FontWeight.w400,
+                          size: 10.sp,
+                          colorT: Color(0xffAAAAAA),
+                        ),
+                      )
+                    ]),
                 Row(
                   children: [
                     Checkbox(
@@ -174,7 +235,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: Text(
                                   'Terms & Condition ',
                                   style: TextStyle(
-                                      decoration: TextDecoration.underline,
                                       fontSize: 10.sp,
                                       fontFamily: 'Poppins',
                                       color: Color(0xffBF2025),
@@ -184,6 +244,37 @@ class _LoginScreenState extends State<LoginScreen> {
                             ],
                           ),
                         ),
+                        Container(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CommonText(
+                                label: 'and ',
+                                fontw8: FontWeight.w400,
+                                size: 10.sp,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    Get.to(WebviewScreen(
+                                      url:
+                                          'https://odinassure.com/odin-privacy-policy',
+                                      label: 'Privacy Policy',
+                                    ));
+                                  });
+                                },
+                                child: Text(
+                                  'Privacy Policy',
+                                  style: TextStyle(
+                                      fontSize: 10.sp,
+                                      fontFamily: 'Poppins',
+                                      color: Color(0xffBF2025),
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
                       ],
                     )
                   ],
@@ -214,6 +305,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Container(
                       height: 5.h,
                       width: 32.w,
+                      margin: EdgeInsets.only(top: 2.h, bottom: 2.h),
                       decoration: BoxDecoration(
                           color: Color(0xffBF2025),
                           borderRadius: MainBorderRadius),
@@ -227,39 +319,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 2.h),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(ForgetPassword());
-                        },
-                        child: CommonText(
-                          label: 'Forgot Password',
-                          fontw8: FontWeight.w600,
-                          size: 12.sp,
-                        ),
-                      ),
-                      Container(
-                        height: 2.h,
-                        width: 0.5.w,
-                        color: mainColor,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(MemberForm01());
-                        },
-                        child: CommonText(
-                          label: 'Become a Member',
-                          fontw8: FontWeight.w600,
-                          size: 12.sp,
-                        ),
-                      )
-                    ],
+                Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.to(MemberForm01());
+                    },
+                    child: CommonText(
+                      label: 'Become a Member',
+                      colorT: Color(0xffD82A1B),
+                      fontw8: FontWeight.w500,
+                      size: 12.sp,
+                    ),
                   ),
-                )
+                ),
               ],
             ),
           ),
