@@ -38,7 +38,7 @@ class _CommonBottomBarState extends State<CommonBottomBar> {
           border:
               Border(top: BorderSide(color: Color(0xffe4e4e4), width: 1.0))),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           InkWell(
             onTap: () {
@@ -142,38 +142,38 @@ class _CommonBottomBarState extends State<CommonBottomBar> {
               ],
             ),
           ),
-          InkWell(
-            onTap: () {
-              SigunpController.isStopped = true;
-              Get.to(() => Publications(), transition: Transition.noTransition);
-            },
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SvgPicture.asset(
-                  widget.TapColor == 'Publication'
-                      ? 'assets/images/Publication-fill.svg'
-                      : 'assets/images/Publication.svg',
-                  height: 2.9.h,
-                  width: 2.9.h,
-                ),
-                Text(
-                  'Publication',
-                  style: widget.TapColor == 'Publication'
-                      ? TextStyle(
-                          color: mainBlue,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400,
-                          fontSize: 10.sp)
-                      : TextStyle(
-                          color: Colors.black,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400,
-                          fontSize: 10.sp),
-                )
-              ],
-            ),
-          ),
+          // InkWell(
+          //   onTap: () {
+          //     SigunpController.isStopped = true;
+          //     Get.to(() => Publications(), transition: Transition.noTransition);
+          //   },
+          //   child: Column(
+          //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //     children: [
+          //       SvgPicture.asset(
+          //         widget.TapColor == 'Publication'
+          //             ? 'assets/images/Publication-fill.svg'
+          //             : 'assets/images/Publication.svg',
+          //         height: 2.9.h,
+          //         width: 2.9.h,
+          //       ),
+          //       Text(
+          //         'Publication',
+          //         style: widget.TapColor == 'Publication'
+          //             ? TextStyle(
+          //                 color: mainBlue,
+          //                 fontFamily: 'Poppins',
+          //                 fontWeight: FontWeight.w400,
+          //                 fontSize: 10.sp)
+          //             : TextStyle(
+          //                 color: Colors.black,
+          //                 fontFamily: 'Poppins',
+          //                 fontWeight: FontWeight.w400,
+          //                 fontSize: 10.sp),
+          //       )
+          //     ],
+          //   ),
+          // ),
           InkWell(
             onTap: () {
               SigunpController.isStopped = true;
