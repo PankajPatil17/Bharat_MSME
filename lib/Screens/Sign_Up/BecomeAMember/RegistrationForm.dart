@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tssia_replica/Generic/Common/CommonText.dart';
-import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Screens/Sign_Up/BecomeAMember/MemberForm01.dart';
 
 class RegistrationForm extends StatefulWidget {
