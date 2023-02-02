@@ -58,10 +58,6 @@ class _MyProfileState extends State<MyProfile> {
           Expanded(
               child: Container(
             width: 100.h,
-            padding: EdgeInsets.only(
-              top: 2.2.h,
-              right: 4.5.h,
-            ),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -158,38 +154,13 @@ class _MyProfileState extends State<MyProfile> {
                           }
                         },
                         child: Container(
-                          padding: EdgeInsets.all(1.7.h),
-                          margin: EdgeInsets.only(bottom: 2.1.h),
+                          margin:
+                              EdgeInsets.only(left: 2.h, right: 2.h, top: 2.h),
                           decoration: BoxDecoration(
-                              color: PWhite,
-                              boxShadow: Mainboxshadow,
                               borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(16),
-                                  bottomRight: Radius.circular(16))),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                width: 1.h,
-                              ),
-                              SvgPicture.asset(
-                                "${images[index]}",
-                              ),
-                              SizedBox(
-                                width: 2.h,
-                              ),
-                              Text(
-                                '${titles[index]}',
-                                maxLines: 1,
-                                style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 11.sp,
-                                    color: Colors.black),
-                              )
-                            ],
-                          ),
+                            topRight: Radius.circular(18),
+                            bottomRight: Radius.circular(18),
+                          )),
                         ),
                       );
                     },

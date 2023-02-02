@@ -34,11 +34,13 @@ class _RegistrationFormState extends State<RegistrationForm> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CommonText(
-                  label: 'Registration Form',
-                  fontw8: FontWeight.bold,
-                  size: 13.sp,
-                  colorT: Color(0xffBF2025),
+                Center(
+                  child: CommonText(
+                    label: 'Registration Form',
+                    fontw8: FontWeight.w600,
+                    size: 13.sp,
+                    colorT: Color(0xffBF2025),
+                  ),
                 ),
                 SizedBox(
                   height: 0.5.h,
