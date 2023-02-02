@@ -12,7 +12,6 @@ import 'package:tssia_replica/Generic/Custom/Custom_Drawer.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Loader.dart';
 import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:tssia_replica/Screens/My_Profile/Contact_Us.dart';
-import 'package:tssia_replica/Screens/Order_History.dart';
 import 'package:tssia_replica/Screens/Sign_Up/LoginScreen.dart';
 import 'package:tssia_replica/Screens/WebView/WebView.dart';
 
@@ -36,20 +35,12 @@ class _MyProfileState extends State<MyProfile> {
   }
 
   List images = [
-    'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Order_History.svg',
-    // 'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Legacy of Tssia.svg',
-    // 'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Milestones.svg',
-    // 'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Activities.svg',
     'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Contact Us.svg',
     'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Terms_and_Conditions.svg',
     'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Privacy_Policy.svg',
     'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/logout.svg',
   ];
   List titles = [
-    'Order History',
-    // 'Legacy of Tssia',
-    // 'Milestones',
-    // 'Activities',
     'Contact Us',
     'Terms & Condition',
     'Privacy Policy',
@@ -160,38 +151,18 @@ class _MyProfileState extends State<MyProfile> {
                       return GestureDetector(
                         onTap: () async {
                           if (index == 0) {
-                            Get.to(OrderHistoryPage(),
-                                transition: transitonEffect);
-                          }
-                          // else if (index == 1) {
-                          //   Get.to(WebviewScreen(
-                          //     label: 'Legacy of Tssia',
-                          //     url:
-                          //         'https://tssia.enirmaan.com/ts_lagacyoftssia',
-                          //   ));
-                          // }
-                          // else if (index == 2) {
-                          //   Get.to(MileStones(), transition: transitonEffect);
-                          // }
-                          //  else if (index == 3) {
-                          //   Get.to(WebviewScreen(
-                          //     label: 'Activities',
-                          //     url: 'https://tssia.enirmaan.com/ts_activities',
-                          //   ));
-                          // }
-                          else if (index == 1) {
                             Get.to(ContactUs());
-                          } else if (index == 2) {
+                          } else if (index == 0) {
                             Get.to(WebviewScreen(
                               url: 'https://msmebharatmanch.com/term-condition',
                               label: 'Terms And Conditions',
                             ));
-                          } else if (index == 3) {
+                          } else if (index == 2) {
                             Get.to(WebviewScreen(
                               label: 'Privacy Policy',
                               url: 'https://msmebharatmanch.com/privacy-policy',
                             ));
-                          } else if (index == 4) {
+                          } else if (index == 3) {
                             SharedPreferences prefs =
                                 await SharedPreferences.getInstance();
                             prefs.clear();

@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tssia_replica/Controller/SigupController.dart';
 import 'package:tssia_replica/Generic/Common/CommonImage.dart';
-import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:tssia_replica/Screens/HomePage.dart';
 import 'package:tssia_replica/Screens/Sign_Up/LoginScreen.dart';
 
@@ -16,10 +15,6 @@ class SplahsScreen extends StatefulWidget {
 
 class _SplahsScreenState extends State<SplahsScreen> {
   var SigunpController = Get.put(signupcontroller());
-  void showNotification() async {
-    String? fcmKey = await getFcmToken();
-    print('FCM Key : $fcmKey');
-  }
 
   @override
   void initState() {
@@ -34,7 +29,6 @@ class _SplahsScreenState extends State<SplahsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    showNotification();
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
