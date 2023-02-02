@@ -678,7 +678,7 @@ class _HomePageState extends State<HomePage> {
                                           .HomeBannerAndSupportSection[
                                       'support_system'][index]['url'],
                                   label:
-                                      "${HomePageController.HomeBannerAndSupportSection['support_system'][index]}"));
+                                      "${HomePageController.HomeBannerAndSupportSection['support_system'][index]['title']}"));
                             },
                             child: Container(
                               padding: EdgeInsets.all(1.5.h),
