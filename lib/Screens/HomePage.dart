@@ -16,6 +16,7 @@ import 'package:tssia_replica/Screens/Circulars/Circulars.dart';
 import 'package:tssia_replica/Screens/Committee/Coming_soon.dart';
 import 'package:tssia_replica/Screens/Events/Event_Details.dart';
 import 'package:tssia_replica/Screens/Events/Events.dart';
+import 'package:tssia_replica/Screens/WebView/WebView.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -73,7 +74,7 @@ class _HomePageState extends State<HomePage> {
 
   BannerImages() {
     return FutureBuilder(
-      future: HomePageController.HomePageApi(),
+      future: HomePageController.HomeBannerSupportSection(),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Container(
@@ -91,7 +92,8 @@ class _HomePageState extends State<HomePage> {
           height: 24.h,
           width: 70.h,
           child: CarouselSlider.builder(
-            itemCount: HomePageController.bannerImages.length,
+            itemCount: HomePageController
+                .HomeBannerAndSupportSection['slider_1'].length,
             itemBuilder: (BuildContext context, int index, int realIndex) {
               return Container(
                 width: 100.h,
@@ -101,8 +103,8 @@ class _HomePageState extends State<HomePage> {
                   boxShadow: Mainboxshadow,
                   image: DecorationImage(
                     fit: BoxFit.fill,
-                    image: AssetImage(
-                      "${HomePageController.bannerImages[index]}",
+                    image: NetworkImage(
+                      "https://${HomePageController.HomeBannerAndSupportSection['slider_1'][index]['url']}",
                     ),
                   ),
                 ),
@@ -261,7 +263,7 @@ class _HomePageState extends State<HomePage> {
 
   SecondBanner() {
     return FutureBuilder(
-      future: HomePageController.HomePageApi(),
+      future: HomePageController.HomeBannerSupportSection(),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Container(
@@ -276,10 +278,11 @@ class _HomePageState extends State<HomePage> {
         }
         return Container(
           margin: EdgeInsets.symmetric(vertical: 1.5.h, horizontal: 1.5.h),
-          height: 18.h,
+          height: 24.h,
           width: 70.h,
           child: CarouselSlider.builder(
-            itemCount: 1,
+            itemCount: HomePageController
+                .HomeBannerAndSupportSection['slider_2'].length,
             itemBuilder: (BuildContext context, int index, int realIndex) {
               return Container(
                 width: 100.h,
@@ -290,9 +293,8 @@ class _HomePageState extends State<HomePage> {
                     border: Border.all(width: 0.5, color: Color(0xffe4e4e4))),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(6),
-                  child: SvgPicture.asset(
-                    "assets/images/Second_Banner.svg",
-                    fit: BoxFit.fill,
+                  child: Image.network(
+                    "https://${HomePageController.HomeBannerAndSupportSection['slider_2'][index]['url']}",
                   ),
                 ),
               );
@@ -303,7 +305,8 @@ class _HomePageState extends State<HomePage> {
               viewportFraction: 1,
               aspectRatio: 16 / 9,
               initialPage: 0,
-              autoPlayInterval: Duration(days: 4),
+              autoPlay: true,
+              autoPlayInterval: Duration(seconds: 4),
             ),
           ),
         );
@@ -660,57 +663,65 @@ class _HomePageState extends State<HomePage> {
                 height: 2.h,
               ),
               Container(
-                // padding: EdgeInsets.all(2.h),
-                height: 13.5.h,
-
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemCount: HomePageController.ServicesModulesColor.length,
-                  controller: ScrollController(),
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        if (index == 0) {
-                        } else if (index == 1) {
-                        } else if (index == 2) {
-                        } else if (index == 3) {}
-                      },
-                      child: Container(
-                        padding: EdgeInsets.all(1.5.h),
-                        width: 15.h,
-                        margin: EdgeInsets.only(
-                            right: 2.h, bottom: 0.5.h, top: 0.5.h),
-                        decoration: BoxDecoration(
-                            color: PWhite,
-                            boxShadow: Mainboxshadow,
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(
-                                width: 1.0,
-                                color: Color(HomePageController
-                                    .ServicesModulesColor[index]))),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            SvgPicture.asset(
-                                "${HomePageController.ServicesModulesImage[index]}"),
-                            CommonText(
-                              colorT: Colors.black,
-                              fontw8: FontWeight.w400,
-                              size: 9.sp,
-                              overflow: TextOverflow.ellipsis,
-                              maxline: 2,
-                              label:
-                                  "${HomePageController.ServicesModulesName[index]}",
-                            )
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
+                  // padding: EdgeInsets.all(2.h),
+                  height: 13.5.h,
+                  child: FutureBuilder(
+                    future: HomePageController.HomeBannerSupportSection(),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<dynamic> snapshot) {
+                      return ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        itemCount:
+                            HomePageController.ServicesModulesColor.length,
+                        controller: ScrollController(),
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () {
+                              Get.to(WebviewScreen(
+                                  url: HomePageController
+                                          .HomeBannerAndSupportSection[
+                                      'support_system'][index]['url'],
+                                  label:
+                                      "${HomePageController.ServicesModulesName[index]}"));
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(1.5.h),
+                              width: 15.h,
+                              margin: EdgeInsets.only(
+                                  right: 2.h, bottom: 0.5.h, top: 0.5.h),
+                              decoration: BoxDecoration(
+                                  color: PWhite,
+                                  boxShadow: Mainboxshadow,
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                      width: 1.0,
+                                      color: Color(HomePageController
+                                          .ServicesModulesColor[index]))),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  SvgPicture.asset(
+                                      "${HomePageController.ServicesModulesImage[index]}"),
+                                  CommonText(
+                                    colorT: Colors.black,
+                                    fontw8: FontWeight.w400,
+                                    size: 9.sp,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxline: 2,
+                                    label:
+                                        "${HomePageController.ServicesModulesName[index]}",
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  )),
             ],
           ),
         );

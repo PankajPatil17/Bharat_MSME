@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
-import 'BecomeAMember/MemberForm01.dart';
+import 'package:tssia_replica/Screens/Sign_Up/BecomeAMember/RegistrationForm.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:tssia_replica/Screens/WebView/WebView.dart';
 import 'package:tssia_replica/Generic/Common/CommonText.dart';
@@ -50,7 +50,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   alignment: Alignment.center,
                   child: Padding(
                     padding: EdgeInsets.all(2.h),
-                    child: SvgPicture.asset('assets/images/Login_Image.svg'),
+                    child: SvgPicture.asset(
+                      'assets/images/Login_Image.svg',
+                      height: 30.h,
+                    ),
                   ),
                 ),
                 CommonText(
@@ -322,10 +325,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 Center(
                   child: GestureDetector(
                     onTap: () {
-                      Get.to(MemberForm01());
+                      Get.to(RegistrationForm());
                     },
                     child: CommonText(
-                      label: 'Become a Member',
+                      label: 'Create Account',
                       colorT: Color(0xffD82A1B),
                       fontw8: FontWeight.w500,
                       size: 12.sp,
