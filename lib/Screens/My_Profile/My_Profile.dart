@@ -67,10 +67,10 @@ class _MyProfileState extends State<MyProfile> {
                     margin: EdgeInsets.only(bottom: 2.5.h),
                     decoration: BoxDecoration(
                         boxShadow: Mainboxshadow,
-                        color: PWhite,
+                        color: Color(0xffFFF7F7),
                         borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(24),
-                            topRight: Radius.circular(24))),
+                          bottomRight: Radius.circular(40),
+                        )),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
