@@ -1,14 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-import 'package:tssia_replica/Controller/SigupController.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:flutter/material.dart';
+import 'BecomeAMember/MemberForm01.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:tssia_replica/Screens/WebView/WebView.dart';
 import 'package:tssia_replica/Generic/Common/CommonText.dart';
+import 'package:tssia_replica/Controller/SigupController.dart';
 import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Screens/Sign_Up/Forget_Password/ForgetPassword.dart';
-import 'package:tssia_replica/Screens/WebView/WebView.dart';
-import 'BecomeAMember/MemberForm01.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
