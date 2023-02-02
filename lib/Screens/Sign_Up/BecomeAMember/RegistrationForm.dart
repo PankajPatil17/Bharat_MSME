@@ -25,21 +25,6 @@ class _RegistrationFormState extends State<RegistrationForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniStartTop,
-      floatingActionButton: Container(
-        height: 8.h,
-        width: 8.h,
-        padding: EdgeInsets.only(top: 2.h, left: 1.h),
-        child: FloatingActionButton(
-            onPressed: () {
-              Get.back();
-            },
-            backgroundColor: mainColor,
-            child: Icon(
-              Icons.keyboard_backspace,
-              color: Colors.white,
-            )),
-      ),
       body: SafeArea(
           child: Form(
         key: formKey,
@@ -49,13 +34,13 @@ class _RegistrationFormState extends State<RegistrationForm> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: 8.h,
-                ),
-                CommonText(
-                  label: 'Registration Form',
-                  fontw8: FontWeight.bold,
-                  size: 15.sp,
+                Center(
+                  child: CommonText(
+                    label: 'Registration Form',
+                    fontw8: FontWeight.w600,
+                    size: 13.sp,
+                    colorT: Color(0xffBF2025),
+                  ),
                 ),
                 SizedBox(
                   height: 0.5.h,
@@ -204,7 +189,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                           ? IconButton(
                               onPressed: () {
                                 setState(() {
-                                  checkradio = 'Group';
+                                  checkradio = 'Association';
                                 });
                               },
                               icon: Icon(
@@ -220,11 +205,11 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                 color: Colors.red,
                               )),
                       CommonText(
-                        label: 'Group',
+                        label: 'Association',
                         fontw8: FontWeight.w400,
                         size: 12.sp,
                       ),
-                      checkradio == 'Group'
+                      checkradio == 'Association'
                           ? IconButton(
                               onPressed: () {
                                 setState(() {
@@ -255,8 +240,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                   alignment: Alignment.center,
                   child: TextButton(
                     style: TextButton.styleFrom(
-                      elevation: 2,
-                      backgroundColor: mainColor,
+                      elevation: 1,
+                      backgroundColor: Color(0xffBF2025),
                       shape: const StadiumBorder(),
                     ),
                     onPressed: () {
@@ -271,8 +256,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         'REGISTER',
                         style: TextStyle(
                           color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 13.sp,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 11.sp,
                         ),
                       ),
                     ),

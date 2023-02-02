@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+import 'package:tssia_replica/Controller/HomeController.dart';
 import 'package:tssia_replica/Controller/SigupController.dart';
 import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Screens/Committee/Coming_soon.dart';
 import 'package:tssia_replica/Screens/HomePage.dart';
 import 'package:tssia_replica/Screens/My_Profile/My_Profile.dart';
-import 'package:tssia_replica/Screens/Partners/Partners.dart';
+import 'package:tssia_replica/Screens/WebView/WebView.dart';
 
 class CommonBottomBar extends StatefulWidget {
   final TapColor;
@@ -21,6 +22,7 @@ class CommonBottomBar extends StatefulWidget {
 
 class _CommonBottomBarState extends State<CommonBottomBar> {
   var SigunpController = Get.put(signupcontroller());
+  var HomePageController = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -73,8 +75,12 @@ class _CommonBottomBarState extends State<CommonBottomBar> {
           ),
           InkWell(
             onTap: () {
-              SigunpController.isStopped = true;
-              Get.to(() => Partners(), transition: Transition.noTransition);
+              setState(() {
+                print("${HomePageController.partnerLink}");
+                Get.to(WebviewScreen(
+                    url: "${HomePageController.partnerLink}",
+                    label: 'Partners'));
+              });
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

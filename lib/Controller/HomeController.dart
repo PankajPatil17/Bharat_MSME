@@ -10,6 +10,7 @@ class HomeController extends GetxController {
   List Services = [].obs;
   List GalleryImage = [].obs;
   List notification = [].obs;
+  var partnerLink;
   var HomeBannerAndSupportSection;
   var SignController = Get.put(signupcontroller());
 
@@ -30,6 +31,7 @@ class HomeController extends GetxController {
     );
     var decodedResponse = json.decode(response.body);
     HomeBannerAndSupportSection = decodedResponse['data'];
+    partnerLink = decodedResponse['data']['partner']['url'];
   }
 
   Future NotificationList() async {
