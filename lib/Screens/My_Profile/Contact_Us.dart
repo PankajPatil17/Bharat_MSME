@@ -40,8 +40,8 @@ class _ContactUsState extends State<ContactUs> {
           padding: EdgeInsets.only(top: 1.5.h, bottom: 1.5.h),
           child: CommonImage(
             url: 'assets/images/Bharat_Logo.png',
-            height: 5.h,
-            width: 5.h,
+            height: 7.h,
+            width: 7.h,
           ),
         ),
         titleTextStyle: TextStyle(

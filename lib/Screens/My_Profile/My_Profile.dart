@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
@@ -66,10 +67,10 @@ class _MyProfileState extends State<MyProfile> {
                     margin: EdgeInsets.only(bottom: 2.5.h),
                     decoration: BoxDecoration(
                         boxShadow: Mainboxshadow,
-                        color: PWhite,
+                        color: Color(0xffFFF7F7),
                         borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(23),
-                            topRight: Radius.circular(23))),
+                          bottomRight: Radius.circular(40),
+                        )),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -101,7 +102,7 @@ class _MyProfileState extends State<MyProfile> {
                                   child: CommonText(
                                     label:
                                         '${SigunpController.MemberName == null ? '' : SigunpController.MemberName}',
-                                    size: 12.sp,
+                                    size: 11.sp,
                                     fontw8: FontWeight.w500,
                                     colorT: Colors.black,
                                     maxline: 1,
@@ -134,7 +135,7 @@ class _MyProfileState extends State<MyProfile> {
                         onTap: () async {
                           if (index == 0) {
                             Get.to(ContactUs());
-                          } else if (index == 0) {
+                          } else if (index == 1) {
                             Get.to(WebviewScreen(
                               url: 'https://msmebharatmanch.com/term-condition',
                               label: 'Terms And Conditions',
@@ -153,13 +154,42 @@ class _MyProfileState extends State<MyProfile> {
                           }
                         },
                         child: Container(
+                          alignment: Alignment.center,
                           margin:
                               EdgeInsets.only(left: 2.h, right: 2.h, top: 2.h),
                           decoration: BoxDecoration(
+                              color: PWhite,
+                              boxShadow: [
+                                BoxShadow(
+                                    blurRadius: 2,
+                                    spreadRadius: 2,
+                                    color: Color.fromARGB(255, 244, 225, 219),
+                                    offset: Offset(0, 1))
+                              ],
                               borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(18),
-                            bottomRight: Radius.circular(18),
-                          )),
+                                topRight: Radius.circular(18),
+                                bottomRight: Radius.circular(18),
+                              )),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 0.5.h,
+                                margin: EdgeInsets.only(right: 2.h),
+                                height: 7.h,
+                                color: Color(0xffBF2025),
+                              ),
+                              SvgPicture.asset("${images[index]}"),
+                              SizedBox(
+                                width: 2.h,
+                              ),
+                              CommonText(
+                                colorT: Colors.black,
+                                fontw8: FontWeight.w500,
+                                label: "${titles[index]}",
+                                size: 10.sp,
+                              )
+                            ],
+                          ),
                         ),
                       );
                     },

@@ -682,11 +682,10 @@ class _HomePageState extends State<HomePage> {
                           return GestureDetector(
                             onTap: () {
                               Get.to(WebviewScreen(
-                                  url: HomePageController
-                                          .HomeBannerAndSupportSection[
-                                      'support_system'][index]['url'],
+                                  url:
+                                      "${HomePageController.HomeBannerAndSupportSection['support_system'][index]['url']}",
                                   label:
-                                      "${HomePageController.HomeBannerAndSupportSection['support_system'][index]}"));
+                                      "${HomePageController.HomeBannerAndSupportSection['support_system'][index]['title']}"));
                             },
                             child: Container(
                               padding: EdgeInsets.only(top: 2.h),
