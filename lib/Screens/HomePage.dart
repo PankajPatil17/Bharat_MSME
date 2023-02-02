@@ -12,6 +12,7 @@ import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Drawer.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Loader.dart';
 import 'package:tssia_replica/Generic/Custom/variables.dart';
+import 'package:tssia_replica/Screens/ChatAndDiscussionForum/ChatScreen.dart';
 import 'package:tssia_replica/Screens/Circulars/Circulars.dart';
 import 'package:tssia_replica/Screens/Committee/Coming_soon.dart';
 import 'package:tssia_replica/Screens/Events/Event_Details.dart';
@@ -161,9 +162,9 @@ class _HomePageState extends State<HomePage> {
                 CarouselSlider.builder(
                   options: CarouselOptions(
                       autoPlay: true,
-                      height: 13.5.h,
+                      height: 13.h,
                       disableCenter: true,
-                      viewportFraction: 0.34,
+                      viewportFraction: 0.32,
                       aspectRatio: 9 / 9,
                       initialPage: 0,
                       autoPlayInterval: Duration(seconds: 5)),
@@ -194,13 +195,7 @@ class _HomePageState extends State<HomePage> {
                           } else if (index == 4) {
                             Get.to(Circulars(), transition: transitonEffect);
                           } else if (index == 5) {
-                            // Get.to(ChatScreen(), transition: transitonEffect);
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return WellnessComingSoon();
-                              },
-                            );
+                            Get.to(ChatScreen(), transition: transitonEffect);
                           } else if (index == 2) {
                             showDialog(
                               context: context,
