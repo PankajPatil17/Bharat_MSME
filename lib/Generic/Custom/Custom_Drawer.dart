@@ -207,24 +207,21 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Get.offAll(LoginScreen(), transition: transitonEffect);
                   });
                 },
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 3.5.h),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SvgPicture.asset(
-                        'assets/images/logout.svg',
-                      ),
-                      SizedBox(
-                        width: 1.5.h,
-                      ),
-                      CommonText(
-                        label: 'Logout',
-                        size: 12.sp,
-                        fontw8: FontWeight.w400,
-                      )
-                    ],
-                  ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SvgPicture.asset(
+                      'assets/images/logout.svg',
+                    ),
+                    SizedBox(
+                      width: 1.5.h,
+                    ),
+                    CommonText(
+                      label: 'Logout',
+                      size: 12.sp,
+                      fontw8: FontWeight.w400,
+                    )
+                  ],
                 ),
               )
             ]),
