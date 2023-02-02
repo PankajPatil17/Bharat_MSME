@@ -15,7 +15,6 @@ import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:tssia_replica/Screens/ChatAndDiscussionForum/ChatScreen.dart';
 import 'package:tssia_replica/Screens/Circulars/Circulars.dart';
 import 'package:tssia_replica/Screens/Committee/Coming_soon.dart';
-import 'package:tssia_replica/Screens/Events/Event_Details.dart';
 import 'package:tssia_replica/Screens/Events/Events.dart';
 import 'package:tssia_replica/Screens/WebView/WebView.dart';
 
@@ -684,7 +683,7 @@ class _HomePageState extends State<HomePage> {
                                           .HomeBannerAndSupportSection[
                                       'support_system'][index]['url'],
                                   label:
-                                      "${HomePageController.HomeBannerAndSupportSection['support_system'][index]['title']}"));
+                                      "${HomePageController.HomeBannerAndSupportSection['support_system'][index]}"));
                             },
                             child: Container(
                               padding: EdgeInsets.only(top: 2.h),
