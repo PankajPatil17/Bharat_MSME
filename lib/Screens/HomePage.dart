@@ -193,7 +193,13 @@ class _HomePageState extends State<HomePage> {
                           } else if (index == 4) {
                             Get.to(Circulars(), transition: transitonEffect);
                           } else if (index == 5) {
-                            Get.to(ChatScreen(), transition: transitonEffect);
+                            // Get.to(ChatScreen(), transition: transitonEffect);
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return WellnessComingSoon();
+                              },
+                            );
                           } else if (index == 2) {
                             showDialog(
                               context: context,
