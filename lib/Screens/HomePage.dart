@@ -225,8 +225,8 @@ class _HomePageState extends State<HomePage> {
                                   ]),
                               child: Container(
                                 padding: EdgeInsets.all(2.h),
-                                height: 8.5.h,
-                                width: 8.5.h,
+                                height: 7.5.h,
+                                width: 7.5.h,
                                 child: SvgPicture.asset(
                                   "${HomePageController.HomeSixModulesImage[index]}",
                                 ),

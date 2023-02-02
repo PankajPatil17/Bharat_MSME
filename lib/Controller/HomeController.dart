@@ -59,7 +59,7 @@ class HomeController extends GetxController {
 
   List HomeSixModulesColor = [
     0xffFFF5E2,
-    0xfdE6FFEA,
+    0xffdE6FFEA,
     0xffE1F4FF,
     0xffE1F4FF,
     0xffFFF5E2,
@@ -68,7 +68,7 @@ class HomeController extends GetxController {
 
   List HomeSixModulesName = [
     'Members',
-    'Commmittees',
+    'Committees',
     'Help Other Join',
     'Events',
     'Circulars',
