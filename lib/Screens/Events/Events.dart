@@ -43,70 +43,112 @@ class _EventsState extends State<Events> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              eventTap = 'upcoming';
-                            });
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            width: 20.h,
-                            padding: EdgeInsets.only(top: 1.5.h, bottom: 1.5.h),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(6),
-                                boxShadow: Mainboxshadow,
-                                color: eventTap == 'upcoming'
-                                    ? Color(0xffFFF7F7)
-                                    : Colors.white,
-                                border: Border.all(
-                                    width: 0.5, color: Color(0xffe4e4e4))),
-                            child: CommonText(
-                              label: 'Upcoming Events',
-                              colorT: eventTap == 'upcoming'
-                                  ? Colors.red.shade700
-                                  : Colors.black,
-                              fontw8: FontWeight.w400,
-                              overflow: TextOverflow.ellipsis,
-                              size: 11.sp,
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                eventTap = 'upcoming';
+                              });
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              width: 20.h,
+                              margin: EdgeInsets.only(right: 2.h),
+                              padding:
+                                  EdgeInsets.only(top: 1.5.h, bottom: 1.5.h),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  boxShadow: Mainboxshadow,
+                                  color: eventTap == 'upcoming'
+                                      ? Color(0xffFFF7F7)
+                                      : Colors.white,
+                                  border: Border.all(
+                                      width: 0.5, color: Color(0xffe4e4e4))),
+                              child: CommonText(
+                                label: 'Upcoming Events',
+                                colorT: eventTap == 'upcoming'
+                                    ? Colors.red.shade700
+                                    : Colors.black,
+                                fontw8: FontWeight.w400,
+                                overflow: TextOverflow.ellipsis,
+                                size: 11.sp,
+                              ),
                             ),
                           ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              eventTap = 'all';
-                            });
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            width: 20.h,
-                            padding: EdgeInsets.only(top: 1.5.h, bottom: 1.5.h),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(6),
-                                boxShadow: Mainboxshadow,
-                                color: eventTap == 'all'
-                                    ? Color(0xffFFF7F7)
-                                    : Colors.white,
-                                border: Border.all(
-                                    width: 0.5, color: Color(0xffe4e4e4))),
-                            child: CommonText(
-                              label: 'All Events',
-                              colorT: eventTap == 'all'
-                                  ? Colors.red.shade700
-                                  : Colors.black,
-                              fontw8: FontWeight.w400,
-                              overflow: TextOverflow.ellipsis,
-                              size: 11.sp,
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                eventTap = 'all';
+                              });
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              width: 20.h,
+                              margin: EdgeInsets.only(right: 2.h),
+                              padding:
+                                  EdgeInsets.only(top: 1.5.h, bottom: 1.5.h),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  boxShadow: Mainboxshadow,
+                                  color: eventTap == 'all'
+                                      ? Color(0xffFFF7F7)
+                                      : Colors.white,
+                                  border: Border.all(
+                                      width: 0.5, color: Color(0xffe4e4e4))),
+                              child: CommonText(
+                                label: 'All Events',
+                                colorT: eventTap == 'all'
+                                    ? Colors.red.shade700
+                                    : Colors.black,
+                                fontw8: FontWeight.w400,
+                                overflow: TextOverflow.ellipsis,
+                                size: 11.sp,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                eventTap = 'latest';
+                              });
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              width: 20.h,
+                              padding:
+                                  EdgeInsets.only(top: 1.5.h, bottom: 1.5.h),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  boxShadow: Mainboxshadow,
+                                  color: eventTap == 'latest'
+                                      ? Color(0xffFFF7F7)
+                                      : Colors.white,
+                                  border: Border.all(
+                                      width: 0.5, color: Color(0xffe4e4e4))),
+                              child: CommonText(
+                                label: 'Latest Events',
+                                colorT: eventTap == 'latest'
+                                    ? Colors.red.shade700
+                                    : Colors.black,
+                                fontw8: FontWeight.w400,
+                                overflow: TextOverflow.ellipsis,
+                                size: 11.sp,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    eventTap == 'upcoming' ? UpcomingEvents() : AllEvents()
+                    eventTap == 'upcoming'
+                        ? UpcomingEvents()
+                        : eventTap == 'all'
+                            ? AllEvents()
+                            : eventTap == 'latest'
+                                ? LatestEvents()
+                                : UpcomingEvents()
                   ],
                 ),
               ),
@@ -268,6 +310,178 @@ class _EventsState extends State<Events> {
                                     child: CommonText(
                                       label:
                                           'Rs ${eventcontroller.AllEventsList[index]['price']}',
+                                      colorT: PWhite,
+                                      fontw8: FontWeight.w400,
+                                      maxline: 2,
+                                      size: 10.sp,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
+        });
+  }
+
+  LatestEvents() {
+    return FutureBuilder(
+        future: eventcontroller.LatestEventsListApi(),
+        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Container(
+              height: 24.h,
+              width: 100.w,
+              child: CustomLoader(),
+              decoration: BoxDecoration(
+                color: PWhite,
+                borderRadius: BorderRadius.circular(6),
+              ),
+            );
+          }
+          return ListView.builder(
+            controller: ScrollController(),
+            itemCount: eventcontroller.LatestList.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return WellnessComingSoon();
+                    },
+                  );
+                  // Get.to(
+                  //     EventDetails(
+                  //       id: eventcontroller.LatestList[index]['id'].toString(),
+                  //     ),
+                  //     transition: transitonEffect);
+                  // eventcontroller.EventsDetailsApi(
+                  //     id: "${eventcontroller.LatestList[index]['id']}");
+                },
+                child: Container(
+                  padding: EdgeInsets.all(1.5.h),
+                  margin: EdgeInsets.only(top: 2.2.h),
+                  decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 2,
+                            offset: Offset(0, 4))
+                      ],
+                      color: PWhite,
+                      borderRadius: BorderRadius.circular(6),
+                      border: Border.all(width: 0.5, color: Color(0xffe4e4e4))),
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 12.h,
+                        width: 12.h,
+                        margin: EdgeInsets.only(right: 1.5.h),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(6),
+                            image: DecorationImage(
+                                fit: BoxFit.fill,
+                                image: NetworkImage(
+                                    '${eventcontroller.LatestList[index]['image']}'))),
+                      ),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CommonText(
+                              label:
+                                  '${eventcontroller.LatestList[index]['event_name']}',
+                              colorT: Colors.black,
+                              fontw8: FontWeight.w400,
+                              maxline: 2,
+                              size: 10.sp,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        SvgPicture.asset(
+                                            'assets/images/calendar.svg'),
+                                        SizedBox(
+                                          width: 1.h,
+                                        ),
+                                        CommonText(
+                                          label:
+                                              '${eventcontroller.LatestList[index]['date']}',
+                                          colorT: Colors.black,
+                                          fontw8: FontWeight.w400,
+                                          maxline: 2,
+                                          size: 10.sp,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        SvgPicture.asset(
+                                            'assets/images/clock.svg'),
+                                        SizedBox(
+                                          width: 1.h,
+                                        ),
+                                        SizedBox(
+                                          width: 10.h,
+                                          child: CommonText(
+                                            label:
+                                                '${eventcontroller.LatestList[index]['time']}',
+                                            colorT: Colors.black,
+                                            fontw8: FontWeight.w400,
+                                            maxline: 1,
+                                            size: 10.sp,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    padding: EdgeInsets.only(
+                                        top: 1.1.h,
+                                        bottom: 1.1.h,
+                                        left: 1.5.h,
+                                        right: 1.5.h),
+                                    decoration: BoxDecoration(
+                                        color: Color(0xffBF2025),
+                                        borderRadius: BorderRadius.circular(6),
+                                        border: Border.all(
+                                            width: 0.5,
+                                            color: Color(0xffe4e4e4))),
+                                    child: CommonText(
+                                      label:
+                                          'Rs ${eventcontroller.LatestList[index]['price']}',
                                       colorT: PWhite,
                                       fontw8: FontWeight.w400,
                                       maxline: 2,

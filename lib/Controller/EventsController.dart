@@ -7,6 +7,7 @@ class EventsController extends GetxController {
   List AllEventsList = [].obs;
   List UpcomingList = [].obs;
   List eventdetail = [].obs;
+  List LatestList = [].obs;
   var razorpaykey;
 
   Future AllEventsListApi() async {
@@ -25,5 +26,14 @@ class EventsController extends GetxController {
 
     var decodedResponse = json.decode(response.body);
     UpcomingList = decodedResponse['data']['upcoming_events'];
+  }
+
+  Future LatestEventsListApi() async {
+    http.Response response = await http.get(
+      Uri.parse('${MSMEURL}api/get-latest-events'),
+    );
+
+    var decodedResponse = json.decode(response.body);
+    LatestList = decodedResponse['data']['latest_events'];
   }
 }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tssia_replica/Controller/SigupController.dart';
 import 'package:tssia_replica/Generic/Common/CommonText.dart';
 import 'package:tssia_replica/Generic/Common/Common_Color.dart';
+import 'package:tssia_replica/Screens/WebView/WebView.dart';
 
 class RegistrationForm extends StatefulWidget {
   const RegistrationForm({super.key});
@@ -22,6 +24,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
   var checkradio = 'group';
   var SigunpController = Get.put(signupcontroller());
   final formKey = GlobalKey<FormState>();
+  bool checkvalue = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -275,7 +278,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                   child: Row(
                     children: [
                       MemberHeaderText('Register as'),
-                      checkradio == 'Member'
+                      checkradio == 'member'
                           ? IconButton(
                               onPressed: () {
                                 setState(() {
@@ -303,7 +306,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                           ? IconButton(
                               onPressed: () {
                                 setState(() {
-                                  checkradio = 'Member';
+                                  checkradio = 'member';
                                 });
                               },
                               icon: Icon(
@@ -326,6 +329,87 @@ class _RegistrationFormState extends State<RegistrationForm> {
                     ],
                   ),
                 ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Checkbox(
+                      checkColor: Color(0xffFFFFFF),
+                      fillColor: MaterialStateProperty.all(Color(0xffBF2025)),
+                      value: checkvalue,
+                      onChanged: (checkboxValue) {
+                        setState(() {
+                          checkvalue = checkboxValue ?? false;
+                        });
+                      },
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CommonText(
+                                label: 'I have read and accept the ',
+                                fontw8: FontWeight.w400,
+                                size: 10.sp,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    Get.to(WebviewScreen(
+                                        url:
+                                            'https://msmebharatmanch.com/term-condition',
+                                        label: 'Terms & Condition'));
+                                  });
+                                },
+                                child: Text(
+                                  'Terms & Condition ',
+                                  style: TextStyle(
+                                      fontSize: 10.sp,
+                                      fontFamily: 'Poppins',
+                                      color: Color(0xffBF2025),
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CommonText(
+                                label: 'and ',
+                                fontw8: FontWeight.w400,
+                                size: 10.sp,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    Get.to(WebviewScreen(
+                                      url:
+                                          'https://msmebharatmanch.com/privacy-policy',
+                                      label: 'Privacy Policy',
+                                    ));
+                                  });
+                                },
+                                child: Text(
+                                  'Privacy Policy',
+                                  style: TextStyle(
+                                      fontSize: 10.sp,
+                                      fontFamily: 'Poppins',
+                                      color: Color(0xffBF2025),
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
                 Align(
                   alignment: Alignment.center,
                   child: TextButton(
@@ -346,11 +430,6 @@ class _RegistrationFormState extends State<RegistrationForm> {
                               confirmpass: Confirmpassword.text,
                               regtype: checkradio.toString(),
                               context: context);
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text(
-                                "Password Should match with Confirm Password"),
-                          ));
                         }
                       }
                     },
