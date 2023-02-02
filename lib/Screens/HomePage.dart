@@ -33,6 +33,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     HomePageController.HomePageApi();
+    eventcontroller.UpcomingEventsListApi();
     tapcolor = 'Home';
     super.initState();
   }
@@ -286,7 +287,7 @@ class _HomePageState extends State<HomePage> {
 
   UpcomingEvents() {
     return FutureBuilder(
-      future: eventcontroller.EventsListApi(),
+      future: eventcontroller.UpcomingEventsListApi(),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Container(
@@ -325,19 +326,19 @@ class _HomePageState extends State<HomePage> {
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   controller: ScrollController(),
-                  itemCount: eventcontroller.EventsList.length,
+                  itemCount: eventcontroller.UpcomingList.length,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     return GestureDetector(
                         onTap: () {
                           // Get.to(
                           //     EventDetails(
-                          //       id: eventcontroller.EventsList[index]['id']
+                          //       id: eventcontroller.UpcomingList[index]['id']
                           //           .toString(),
                           //     ),
                           //     transition: transitonEffect);
                           // eventcontroller.EventsDetailsApi(
-                          //     id: "${eventcontroller.EventsList[index]['id'].toString()}");
+                          //     id: "${eventcontroller.UpcomingList[index]['id'].toString()}");
                           showDialog(
                             context: context,
                             builder: (BuildContext context) {
@@ -346,6 +347,7 @@ class _HomePageState extends State<HomePage> {
                           );
                         },
                         child: Container(
+                          margin: EdgeInsets.only(right: 2.h),
                           decoration: BoxDecoration(
                               color: Colors.white,
                               boxShadow: [
@@ -367,8 +369,8 @@ class _HomePageState extends State<HomePage> {
                                         width: 0.5, color: Color(0xffe4e4e4)),
                                     image: DecorationImage(
                                         fit: BoxFit.fill,
-                                        image: AssetImage(
-                                            'assets/images/Event_Image.png'))),
+                                        image: NetworkImage(
+                                            '${eventcontroller.UpcomingList[index]['image']}'))),
                               ),
                               SizedBox(
                                 width: 43.w,
@@ -403,7 +405,7 @@ class _HomePageState extends State<HomePage> {
                                               ),
                                               CommonText(
                                                 label:
-                                                    '${eventcontroller.EventsList[index]['event_time']}',
+                                                    '${eventcontroller.UpcomingList[index]['time']}',
                                                 colorT: Color(0xffBF2025),
                                                 fontw8: FontWeight.w400,
                                                 maxline: 1,
@@ -431,7 +433,7 @@ class _HomePageState extends State<HomePage> {
                                               ),
                                               CommonText(
                                                 label:
-                                                    '${eventcontroller.EventsList[index]['event_date']}',
+                                                    '${eventcontroller.UpcomingList[index]['date']}',
                                                 colorT: Color(0xffBF2025),
                                                 fontw8: FontWeight.w400,
                                                 maxline: 1,
@@ -456,7 +458,7 @@ class _HomePageState extends State<HomePage> {
                                                     Radius.circular(10))),
                                         child: CommonText(
                                           label:
-                                              'Paid Rs ${eventcontroller.EventsList[index]['event_price']}',
+                                              'Paid Rs ${eventcontroller.UpcomingList[index]['price']}',
                                           colorT: PWhite,
                                           fontw8: FontWeight.w400,
                                           maxline: 1,

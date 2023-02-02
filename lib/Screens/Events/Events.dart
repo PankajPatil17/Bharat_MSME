@@ -11,8 +11,7 @@ import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Drawer.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Loader.dart';
-import 'package:tssia_replica/Generic/Custom/variables.dart';
-import 'package:tssia_replica/Screens/Events/Event_Details.dart';
+import 'package:tssia_replica/Screens/Committee/Coming_soon.dart';
 
 class Events extends StatefulWidget {
   const Events({super.key});
@@ -121,7 +120,7 @@ class _EventsState extends State<Events> {
 
   AllEvents() {
     return FutureBuilder(
-        future: eventcontroller.EventsListApi(),
+        future: eventcontroller.AllEventsListApi(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Container(
@@ -136,18 +135,24 @@ class _EventsState extends State<Events> {
           }
           return ListView.builder(
             controller: ScrollController(),
-            itemCount: eventcontroller.EventsList.length,
+            itemCount: eventcontroller.AllEventsList.length,
             shrinkWrap: true,
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
-                  Get.to(
-                      EventDetails(
-                        id: eventcontroller.EventsList[index]['id'].toString(),
-                      ),
-                      transition: transitonEffect);
-                  eventcontroller.EventsDetailsApi(
-                      id: "${eventcontroller.EventsList[index]['id']}");
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return WellnessComingSoon();
+                    },
+                  );
+                  // Get.to(
+                  //     EventDetails(
+                  //       id: eventcontroller.AllEventsList[index]['id'].toString(),
+                  //     ),
+                  //     transition: transitonEffect);
+                  // eventcontroller.EventsDetailsApi(
+                  //     id: "${eventcontroller.AllEventsList[index]['id']}");
                 },
                 child: Container(
                   padding: EdgeInsets.all(1.5.h),
@@ -173,7 +178,7 @@ class _EventsState extends State<Events> {
                             image: DecorationImage(
                                 fit: BoxFit.fill,
                                 image: NetworkImage(
-                                    '${eventcontroller.EventsList[index]['event_url']}'))),
+                                    '${eventcontroller.AllEventsList[index]['image']}'))),
                       ),
                       Expanded(
                         child: Column(
@@ -182,8 +187,7 @@ class _EventsState extends State<Events> {
                           children: [
                             CommonText(
                               label:
-                                  '${eventcontroller.EventsList[index]['event_name']}'
-                                      .replaceAll('Tssia', ''),
+                                  '${eventcontroller.AllEventsList[index]['event_name']}',
                               colorT: Colors.black,
                               fontw8: FontWeight.w400,
                               maxline: 2,
@@ -210,7 +214,7 @@ class _EventsState extends State<Events> {
                                         ),
                                         CommonText(
                                           label:
-                                              '${eventcontroller.EventsList[index]['event_date']}',
+                                              '${eventcontroller.AllEventsList[index]['date']}',
                                           colorT: Colors.black,
                                           fontw8: FontWeight.w400,
                                           maxline: 2,
@@ -234,7 +238,7 @@ class _EventsState extends State<Events> {
                                           width: 10.h,
                                           child: CommonText(
                                             label:
-                                                '${eventcontroller.EventsList[index]['event_time']}',
+                                                '${eventcontroller.AllEventsList[index]['time']}',
                                             colorT: Colors.black,
                                             fontw8: FontWeight.w400,
                                             maxline: 1,
@@ -263,7 +267,7 @@ class _EventsState extends State<Events> {
                                             color: Color(0xffe4e4e4))),
                                     child: CommonText(
                                       label:
-                                          'Rs ${eventcontroller.EventsList[index]['event_price']}',
+                                          'Rs ${eventcontroller.AllEventsList[index]['price']}',
                                       colorT: PWhite,
                                       fontw8: FontWeight.w400,
                                       maxline: 2,
@@ -288,7 +292,7 @@ class _EventsState extends State<Events> {
 
   UpcomingEvents() {
     return FutureBuilder(
-        future: eventcontroller.EventsListApi(),
+        future: eventcontroller.UpcomingEventsListApi(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Container(
@@ -320,14 +324,20 @@ class _EventsState extends State<Events> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        Get.to(
-                            EventDetails(
-                              id: eventcontroller.UpcomingList[index]['id']
-                                  .toString(),
-                            ),
-                            transition: transitonEffect);
-                        eventcontroller.EventsDetailsApi(
-                            id: "${eventcontroller.UpcomingList[index]['id']}");
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return WellnessComingSoon();
+                          },
+                        );
+                        // Get.to(
+                        //     EventDetails(
+                        //       id: eventcontroller.UpcomingList[index]['id']
+                        //           .toString(),
+                        //     ),
+                        //     transition: transitonEffect);
+                        // eventcontroller.EventsDetailsApi(
+                        //     id: "${eventcontroller.UpcomingList[index]['id']}");
                       },
                       child: Container(
                         padding: EdgeInsets.all(1.5.h),
@@ -354,7 +364,7 @@ class _EventsState extends State<Events> {
                                   image: DecorationImage(
                                       fit: BoxFit.fill,
                                       image: NetworkImage(
-                                          '${eventcontroller.UpcomingList[index]['event_url']}'))),
+                                          '${eventcontroller.UpcomingList[index]['image']}'))),
                             ),
                             Expanded(
                               child: Column(
@@ -394,7 +404,7 @@ class _EventsState extends State<Events> {
                                               ),
                                               CommonText(
                                                 label:
-                                                    '${eventcontroller.UpcomingList[index]['event_date']}',
+                                                    '${eventcontroller.UpcomingList[index]['date']}',
                                                 colorT: Colors.black,
                                                 fontw8: FontWeight.w400,
                                                 maxline: 2,
@@ -418,7 +428,7 @@ class _EventsState extends State<Events> {
                                                 width: 10.h,
                                                 child: CommonText(
                                                   label:
-                                                      '${eventcontroller.UpcomingList[index]['event_time']}',
+                                                      '${eventcontroller.UpcomingList[index]['time']}',
                                                   colorT: Colors.black,
                                                   fontw8: FontWeight.w400,
                                                   maxline: 1,
@@ -449,7 +459,7 @@ class _EventsState extends State<Events> {
                                                   color: Color(0xffe4e4e4))),
                                           child: CommonText(
                                             label:
-                                                'Rs ${eventcontroller.UpcomingList[index]['event_price']}',
+                                                'Rs ${eventcontroller.UpcomingList[index]['price']}',
                                             colorT: PWhite,
                                             fontw8: FontWeight.w400,
                                             maxline: 2,
