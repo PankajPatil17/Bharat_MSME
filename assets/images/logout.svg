@@ -1,0 +1,17 @@
+<svg id="logout" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <rect id="Rectangle_169197" data-name="Rectangle 169197" width="24" height="24" fill="none"/>
+  <g id="exit" transform="translate(0 2)">
+    <g id="Group_160250" data-name="Group 160250" transform="translate(10)">
+      <path id="Path_190296" data-name="Path 190296" d="M9,11A5,5,0,1,0,4,6,5.006,5.006,0,0,0,9,11ZM9,2A4,4,0,1,1,5,6,4,4,0,0,1,9,2Z" transform="translate(-4 -1)" fill="#bf2025"/>
+    </g>
+    <g id="Group_160251" data-name="Group 160251" transform="translate(6 12)">
+      <path id="Path_190297" data-name="Path 190297" d="M.5,22h17a.5.5,0,0,0,.5-.5v-4A4.505,4.505,0,0,0,13.5,13h-9A4.505,4.505,0,0,0,0,17.5v4A.5.5,0,0,0,.5,22ZM17,21H1V17.5A3.5,3.5,0,0,1,4.5,14h9A3.5,3.5,0,0,1,17,17.5Z" transform="translate(0 -13)" fill="#bf2025"/>
+    </g>
+    <g id="Group_160252" data-name="Group 160252" transform="translate(0 9)">
+      <path id="Path_190298" data-name="Path 190298" d="M15.5,11h8a.5.5,0,0,0,0-1h-8a.5.5,0,0,0,0,1Z" transform="translate(-15 -10)" fill="#060709"/>
+    </g>
+    <g id="Group_160253" data-name="Group 160253" transform="translate(0.001 5.002)">
+      <path id="Path_190299" data-name="Path 190299" d="M23.5,15a.5.5,0,0,0,.354-.853L20.207,10.5l3.646-3.646a.5.5,0,0,0-.707-.707l-4,4a.5.5,0,0,0,0,.707l4,4A.5.5,0,0,0,23.5,15Z" transform="translate(-19 -6.002)" fill="#060709"/>
+    </g>
+  </g>
+</svg>

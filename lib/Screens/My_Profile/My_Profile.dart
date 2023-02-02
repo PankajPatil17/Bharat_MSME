@@ -5,7 +5,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tssia_replica/Controller/SigupController.dart';
 import 'package:tssia_replica/Generic/Common/CommonText.dart';
-import 'package:tssia_replica/Generic/Common/Common_AppBar.dart';
 import 'package:tssia_replica/Generic/Common/Common_BottomBar.dart';
 import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Drawer.dart';
@@ -35,10 +34,10 @@ class _MyProfileState extends State<MyProfile> {
   }
 
   List images = [
-    'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Contact Us.svg',
-    'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Terms_and_Conditions.svg',
-    'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Privacy_Policy.svg',
-    'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/logout.svg',
+    'assets/images/Contact Us.svg',
+    'assets/images/Terms & conditions.svg',
+    'assets/images/Privacy Policy.svg',
+    'assets/images/logout.svg',
   ];
   List titles = [
     'Contact Us',
@@ -49,13 +48,9 @@ class _MyProfileState extends State<MyProfile> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.emailId);
     return Scaffold(
       backgroundColor: PWhite,
       drawer: CustomDrawer(),
-      appBar: PreferredSize(
-          child: SafeArea(child: CommonAppBar()),
-          preferredSize: Size(100.h, 20.h)),
       body: SafeArea(
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,15 +99,7 @@ class _MyProfileState extends State<MyProfile> {
                                   AsyncSnapshot<dynamic> snapshot) {
                                 if (snapshot.connectionState ==
                                     ConnectionState.waiting) {
-                                  return Container(
-                                    height: 24.h,
-                                    width: 100.w,
-                                    child: CustomLoader(),
-                                    decoration: BoxDecoration(
-                                      color: PWhite,
-                                      borderRadius: BorderRadius.circular(6),
-                                    ),
-                                  );
+                                  return CustomLoader();
                                 }
                                 return SizedBox(
                                   width: 30.h,
@@ -186,9 +173,8 @@ class _MyProfileState extends State<MyProfile> {
                               SizedBox(
                                 width: 1.h,
                               ),
-                              SvgPicture.network(
+                              SvgPicture.asset(
                                 "${images[index]}",
-                                color: Color(0xffBF2025),
                               ),
                               SizedBox(
                                 width: 2.h,

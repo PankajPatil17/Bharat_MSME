@@ -60,9 +60,8 @@ class _HomePageState extends State<HomePage> {
                   BannerImages(),
                   HomeSixModules(),
                   SecondBanner(),
-                  UpcomingEvents(),
                   OurServices(),
-                  // Gallery(),
+                  UpcomingEvents(),
                 ],
               ),
             ),
@@ -105,7 +104,7 @@ class _HomePageState extends State<HomePage> {
                   image: DecorationImage(
                     fit: BoxFit.fill,
                     image: NetworkImage(
-                      "https://${HomePageController.HomeBannerAndSupportSection['slider_1'][index]['url']}",
+                      "${HomePageController.HomeBannerAndSupportSection['slider_1'][index]['url']}",
                     ),
                   ),
                 ),
@@ -148,17 +147,6 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(
-                  child: CommonText(
-                    fontw8: FontWeight.w400,
-                    label: 'Lorem ipsum',
-                    size: 11.sp,
-                    colorT: Color(0xff003C5E),
-                  ),
-                ),
-                SizedBox(
-                  height: 1.5.h,
-                ),
                 CarouselSlider.builder(
                   options: CarouselOptions(
                       autoPlay: true,
@@ -262,7 +250,7 @@ class _HomePageState extends State<HomePage> {
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Container(
-            height: 24.h,
+            height: 16.h,
             width: 100.w,
             child: CustomLoader(),
             decoration: BoxDecoration(
@@ -272,37 +260,25 @@ class _HomePageState extends State<HomePage> {
           );
         }
         return Container(
-          margin: EdgeInsets.symmetric(vertical: 1.5.h, horizontal: 1.5.h),
-          height: 24.h,
-          width: 70.h,
-          child: CarouselSlider.builder(
+          height: 16.h,
+          width: 100.w,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            physics: BouncingScrollPhysics(),
             itemCount: HomePageController
                 .HomeBannerAndSupportSection['slider_2'].length,
-            itemBuilder: (BuildContext context, int index, int realIndex) {
+            itemBuilder: (context, index) {
               return Container(
-                width: 100.h,
-                decoration: BoxDecoration(
-                    color: PWhite,
-                    borderRadius: BorderRadius.circular(6),
-                    boxShadow: Mainboxshadow,
-                    border: Border.all(width: 0.5, color: Color(0xffe4e4e4))),
+                width: 100.w,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(6),
                   child: Image.network(
-                    "https://${HomePageController.HomeBannerAndSupportSection['slider_2'][index]['url']}",
+                    "${HomePageController.HomeBannerAndSupportSection['slider_2'][index]['url']}",
                   ),
                 ),
               );
             },
-            options: CarouselOptions(
-              pauseAutoPlayOnManualNavigate: true,
-              pauseAutoPlayOnTouch: true,
-              viewportFraction: 1,
-              aspectRatio: 16 / 9,
-              initialPage: 0,
-              autoPlay: true,
-              autoPlayInterval: Duration(days: 4),
-            ),
           ),
         );
       },
@@ -345,7 +321,7 @@ class _HomePageState extends State<HomePage> {
                 height: 2.h,
               ),
               Container(
-                height: 17.h,
+                height: 14.h,
                 width: 100.h,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -355,14 +331,20 @@ class _HomePageState extends State<HomePage> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                         onTap: () {
-                          Get.to(
-                              EventDetails(
-                                id: eventcontroller.EventsList[index]['id']
-                                    .toString(),
-                              ),
-                              transition: transitonEffect);
-                          eventcontroller.EventsDetailsApi(
-                              id: "${eventcontroller.EventsList[index]['id'].toString()}");
+                          // Get.to(
+                          //     EventDetails(
+                          //       id: eventcontroller.EventsList[index]['id']
+                          //           .toString(),
+                          //     ),
+                          //     transition: transitonEffect);
+                          // eventcontroller.EventsDetailsApi(
+                          //     id: "${eventcontroller.EventsList[index]['id'].toString()}");
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return WellnessComingSoon();
+                            },
+                          );
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -377,8 +359,8 @@ class _HomePageState extends State<HomePage> {
                           child: Row(
                             children: [
                               Container(
-                                height: 16.h,
-                                width: 15.h,
+                                height: 12.h,
+                                width: 11.h,
                                 margin: EdgeInsets.all(1.2.h),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(6),
@@ -397,21 +379,25 @@ class _HomePageState extends State<HomePage> {
                                       padding: EdgeInsets.all(1.2.h),
                                       child: Column(
                                         children: [
-                                          CommonText(
-                                            label:
-                                                'Lorem ipsum dolor sit amet, consetetur',
-                                            colorT: Colors.black,
-                                            fontw8: FontWeight.w400,
-                                            maxline: 2,
-                                            size: 10.sp,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
+                                          // CommonText(
+                                          //   label:
+                                          //       'Lorem ipsum dolor sit amet, consetetur',
+                                          //   colorT: Colors.black,
+                                          //   fontw8: FontWeight.w400,
+                                          //   maxline: 2,
+                                          //   size: 10.sp,
+                                          //   overflow: TextOverflow.ellipsis,
+                                          // ),
                                           Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
                                             children: [
                                               SvgPicture.asset(
                                                 'assets/images/clock.svg',
-                                                height: 1.5.h,
-                                                color: Color(0xff003C5E),
+                                                height: 2.5.h,
+                                                color: Color(0xffFFB932),
                                               ),
                                               SizedBox(
                                                 width: 0.5.h,
@@ -419,24 +405,27 @@ class _HomePageState extends State<HomePage> {
                                               CommonText(
                                                 label:
                                                     '${eventcontroller.EventsList[index]['event_time']}',
-                                                colorT: Colors.black,
+                                                colorT: Color(0xffBF2025),
                                                 fontw8: FontWeight.w400,
                                                 maxline: 1,
-                                                size: 9.sp,
+                                                size: 10.sp,
                                                 overflow: TextOverflow.ellipsis,
                                               ),
                                             ],
                                           ),
+                                          SizedBox(
+                                            height: 1.2.h,
+                                          ),
                                           Row(
                                             crossAxisAlignment:
-                                                CrossAxisAlignment.center,
+                                                CrossAxisAlignment.start,
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
                                             children: [
                                               SvgPicture.asset(
                                                 'assets/images/calendar.svg',
-                                                color: Color(0xffF3AE33),
-                                                height: 1.5.h,
+                                                color: Color(0xffFFB932),
+                                                height: 2.5.h,
                                               ),
                                               SizedBox(
                                                 width: 1.h,
@@ -444,10 +433,10 @@ class _HomePageState extends State<HomePage> {
                                               CommonText(
                                                 label:
                                                     '${eventcontroller.EventsList[index]['event_date']}',
-                                                colorT: Colors.black,
+                                                colorT: Color(0xffBF2025),
                                                 fontw8: FontWeight.w400,
                                                 maxline: 1,
-                                                size: 9.sp,
+                                                size: 10.sp,
                                                 overflow: TextOverflow.ellipsis,
                                               ),
                                             ],
@@ -461,7 +450,7 @@ class _HomePageState extends State<HomePage> {
                                       child: Container(
                                         padding: EdgeInsets.all(1.h),
                                         decoration: BoxDecoration(
-                                            color: Color(0xffF67C80),
+                                            color: Color(0xffBF2025),
                                             borderRadius: BorderRadius.only(
                                                 topLeft: Radius.circular(10),
                                                 bottomRight:
@@ -646,20 +635,37 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(
-                child: CommonText(
-                  label: 'Support System',
-                  fontw8: FontWeight.w500,
-                  size: 12.sp,
-                  colorT: Color(0xff003C5E),
-                ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 5.h,
+                    height: 0.1.h,
+                    color: Color(0xffBF2025),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 1.h),
+                    child: CommonText(
+                      label: 'Growth Facilitators',
+                      fontw8: FontWeight.w500,
+                      size: 12.sp,
+                      colorT: Color(0xff003C5E),
+                    ),
+                  ),
+                  Container(
+                    width: 5.h,
+                    height: 0.1.h,
+                    color: Color(0xffBF2025),
+                  ),
+                ],
               ),
               SizedBox(
                 height: 2.h,
               ),
               Container(
                   // padding: EdgeInsets.all(2.h),
-                  height: 13.5.h,
+                  height: 12.5.h,
                   child: FutureBuilder(
                     future: HomePageController.HomeBannerSupportSection(),
                     builder: (BuildContext context,
@@ -678,36 +684,43 @@ class _HomePageState extends State<HomePage> {
                                           .HomeBannerAndSupportSection[
                                       'support_system'][index]['url'],
                                   label:
-                                      "${HomePageController.HomeBannerAndSupportSection['support_system'][index]}"));
+                                      "${HomePageController.HomeBannerAndSupportSection['support_system'][index]['title']}"));
                             },
                             child: Container(
-                              padding: EdgeInsets.all(1.5.h),
-                              width: 15.h,
+                              padding: EdgeInsets.only(top: 2.h),
+                              width: 12.h,
                               margin: EdgeInsets.only(
                                   right: 2.h, bottom: 0.5.h, top: 0.5.h),
                               decoration: BoxDecoration(
-                                  color: PWhite,
-                                  boxShadow: Mainboxshadow,
-                                  borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(
-                                      width: 1.0,
-                                      color: Color(HomePageController
-                                          .ServicesModulesColor[index]))),
+                                color: PWhite,
+                                boxShadow: Mainboxshadow,
+                                borderRadius: BorderRadius.circular(14),
+                              ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   SvgPicture.network(
                                       "${HomePageController.HomeBannerAndSupportSection['support_system'][index]['icon_url']}"),
-                                  CommonText(
-                                    colorT: Colors.black,
-                                    fontw8: FontWeight.w400,
-                                    size: 9.sp,
-                                    overflow: TextOverflow.ellipsis,
-                                    maxline: 2,
-                                    label:
-                                        "${HomePageController.HomeBannerAndSupportSection['support_system'][index]['title']}",
+                                  Container(
+                                    alignment: Alignment.center,
+                                    width: 13.h,
+                                    padding: EdgeInsets.all(0.8.h),
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            fit: BoxFit.fill,
+                                            image: AssetImage(
+                                                'assets/images/shape.png'))),
+                                    child: CommonText(
+                                      colorT: Color(0xffBF2025),
+                                      fontw8: FontWeight.w400,
+                                      size: 9.sp,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxline: 2,
+                                      label:
+                                          "${HomePageController.HomeBannerAndSupportSection['support_system'][index]['title']}",
+                                    ),
                                   )
                                 ],
                               ),
