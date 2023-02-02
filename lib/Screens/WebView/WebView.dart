@@ -51,6 +51,8 @@ class WebviewScreen extends StatelessWidget {
                   controller.runJavascript(
                       "document.getElementsByClassName('header-wraper')[0].style.display='none'");
                   controller.runJavascript(
+                      "document.getElementsByClassName('header-wrapper')[0].style.display='none'");
+                  controller.runJavascript(
                       "document.getElementsByTagName('footer')[0].style.display='none'");
 
                   await controller.runJavascript(
@@ -71,6 +73,8 @@ class WebviewScreen extends StatelessWidget {
                       "document.getElementsByTagName('header')[0].style.display='none'");
                   controller.runJavascript(
                       "document.getElementsByClassName('header-wraper')[0].style.display='none'");
+                  controller.runJavascript(
+                      "document.getElementsByClassName('header-wrapper')[0].style.display='none'");
                   controller.runJavascript(
                       "document.getElementsByTagName('footer')[0].style.display='none'");
                   await controller.runJavascript(
