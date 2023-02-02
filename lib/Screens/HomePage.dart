@@ -162,9 +162,9 @@ class _HomePageState extends State<HomePage> {
                 CarouselSlider.builder(
                   options: CarouselOptions(
                       autoPlay: true,
-                      height: 13.h,
+                      height: 13.5.h,
                       disableCenter: true,
-                      viewportFraction: 0.32,
+                      viewportFraction: 0.34,
                       aspectRatio: 9 / 9,
                       initialPage: 0,
                       autoPlayInterval: Duration(seconds: 5)),
@@ -224,7 +224,7 @@ class _HomePageState extends State<HomePage> {
                                         color: Color(0xffe4e4e4))
                                   ]),
                               child: Container(
-                                padding: EdgeInsets.all(1.5.h),
+                                padding: EdgeInsets.all(2.h),
                                 height: 8.5.h,
                                 width: 8.5.h,
                                 child: SvgPicture.asset(

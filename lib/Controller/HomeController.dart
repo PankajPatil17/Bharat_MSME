@@ -50,7 +50,7 @@ class HomeController extends GetxController {
 
   List HomeSixModulesImage = [
     'assets/images/Members.svg',
-    'assets/images/Commmittees.svg',
+    'assets/images/Committees.svg',
     'assets/images/Help-Other-Join.svg',
     'assets/images/Events.svg',
     'assets/images/Circulars.svg',
