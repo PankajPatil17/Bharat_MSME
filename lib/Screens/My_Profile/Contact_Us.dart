@@ -1,7 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sizer/sizer.dart';
@@ -10,7 +9,6 @@ import 'package:tssia_replica/Generic/Common/CommonText.dart';
 import 'package:tssia_replica/Generic/Common/Common_BottomBar.dart';
 import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Screens/HomePage.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ContactUs extends StatefulWidget {
   const ContactUs({super.key});
@@ -212,84 +210,6 @@ class _ContactUsState extends State<ContactUs> {
                                 size: 12.sp),
                           ),
                         ),
-                      ),
-                    ),
-                    CommonText(
-                      colorT: mainBlue,
-                      fontw8: FontWeight.w400,
-                      label: 'Get in Touch',
-                      size: 14.sp,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 1.h),
-                      child: CommonText(
-                        colorT: mainBlue,
-                        fontw8: FontWeight.w400,
-                        label: 'Address',
-                        size: 12.sp,
-                      ),
-                    ),
-                    CommonText(
-                      colorT: Colors.black,
-                      fontw8: FontWeight.w400,
-                      label:
-                          'TSSIA House, Plot No. P-26, Road No. 16/T, Wagle Indl. Estate, Thane (W)- 400604',
-                      size: 12.sp,
-                      maxline: 4,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 1.h),
-                      child: CommonText(
-                        colorT: mainBlue,
-                        fontw8: FontWeight.w400,
-                        label: 'Contact Us',
-                        size: 12.sp,
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        launch('tel: +91 22 2081 6601');
-                      },
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          SvgPicture.asset('assets/images/call.svg'),
-                          SizedBox(
-                            width: 2.h,
-                          ),
-                          CommonText(
-                            colorT: Colors.black,
-                            fontw8: FontWeight.w400,
-                            label: '+91 22 2081 6601',
-                            size: 12.sp,
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 0.7.h,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        launch("tel: +91 22 2582 2493");
-                      },
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          SvgPicture.asset('assets/images/call.svg'),
-                          SizedBox(
-                            width: 2.h,
-                          ),
-                          CommonText(
-                            colorT: Colors.black,
-                            fontw8: FontWeight.w400,
-                            label: '+91 22 2582 2493',
-                            size: 12.sp,
-                          ),
-                        ],
                       ),
                     ),
                   ],
