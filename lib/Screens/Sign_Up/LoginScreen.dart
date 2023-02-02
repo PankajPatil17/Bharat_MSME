@@ -231,7 +231,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   setState(() {
                                     Get.to(WebviewScreen(
                                         url:
-                                            'https://tssia.enirmaan.com/terms-and-conditions',
+                                            'https://msmebharatmanch.com/term-condition',
                                         label: 'Terms & Condition'));
                                   });
                                 },
@@ -261,7 +261,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   setState(() {
                                     Get.to(WebviewScreen(
                                       url:
-                                          'https://odinassure.com/odin-privacy-policy',
+                                          https://msmebharatmanch.com/privacy-policy',
                                       label: 'Privacy Policy',
                                     ));
                                   });

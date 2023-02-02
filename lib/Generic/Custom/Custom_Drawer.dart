@@ -226,7 +226,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               GestureDetector(
                 onTap: () {
                   Get.to(WebviewScreen(
-                    url: 'https://tssia.enirmaan.com/terms-and-conditions',
+                    url: 'https://msmebharatmanch.com/term-condition',
                     label: 'Terms And Conditions',
                   ));
                 },
@@ -253,7 +253,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   onTap: () {
                     Get.to(WebviewScreen(
                       label: 'Privacy Policy',
-                      url: 'https://tssia.enirmaan.com/privacy-policy',
+                      url: 'https://msmebharatmanch.com/privacy-policy',
                     ));
                   },
                   child: Row(
