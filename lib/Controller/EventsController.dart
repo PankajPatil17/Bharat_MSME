@@ -25,6 +25,5 @@ class EventsController extends GetxController {
 
     var decodedResponse = json.decode(response.body);
     UpcomingList = decodedResponse['data']['upcoming_events'];
-    print(decodedResponse);
   }
 }

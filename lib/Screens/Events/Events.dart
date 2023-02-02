@@ -60,14 +60,14 @@ class _EventsState extends State<Events> {
                                 borderRadius: BorderRadius.circular(6),
                                 boxShadow: Mainboxshadow,
                                 color: eventTap == 'upcoming'
-                                    ? Color(0xff2EE8DE)
+                                    ? Color(0xffFFF7F7)
                                     : Colors.white,
                                 border: Border.all(
                                     width: 0.5, color: Color(0xffe4e4e4))),
                             child: CommonText(
                               label: 'Upcoming Events',
                               colorT: eventTap == 'upcoming'
-                                  ? Colors.white
+                                  ? Colors.red.shade700
                                   : Colors.black,
                               fontw8: FontWeight.w400,
                               overflow: TextOverflow.ellipsis,
@@ -89,14 +89,14 @@ class _EventsState extends State<Events> {
                                 borderRadius: BorderRadius.circular(6),
                                 boxShadow: Mainboxshadow,
                                 color: eventTap == 'all'
-                                    ? Color(0xff2EE8DE)
+                                    ? Color(0xffFFF7F7)
                                     : Colors.white,
                                 border: Border.all(
                                     width: 0.5, color: Color(0xffe4e4e4))),
                             child: CommonText(
                               label: 'All Events',
                               colorT: eventTap == 'all'
-                                  ? Colors.white
+                                  ? Colors.red.shade700
                                   : Colors.black,
                               fontw8: FontWeight.w400,
                               overflow: TextOverflow.ellipsis,
