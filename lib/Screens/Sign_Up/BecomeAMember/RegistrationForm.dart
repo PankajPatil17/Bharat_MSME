@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tssia_replica/Generic/Common/CommonText.dart';
 import 'package:tssia_replica/Screens/Sign_Up/BecomeAMember/MemberForm01.dart';
+import 'package:tssia_replica/Screens/Sign_Up/OtpVerification.dart';
 
 class RegistrationForm extends StatefulWidget {
   const RegistrationForm({super.key});
@@ -17,7 +18,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController Confirmpassword = TextEditingController();
-  var checkradio = 'Group';
+  var checkradio = 'Association';
 
   final formKey = GlobalKey<FormState>();
   @override
@@ -33,16 +34,16 @@ class _RegistrationFormState extends State<RegistrationForm> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(
-                  child: CommonText(
-                    label: 'Registration Form',
-                    fontw8: FontWeight.w600,
-                    size: 13.sp,
-                    colorT: Color(0xffBF2025),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 1.2.h),
+                  child: Center(
+                    child: CommonText(
+                      label: 'Registration Form',
+                      fontw8: FontWeight.w600,
+                      size: 13.sp,
+                      colorT: Color(0xffBF2025),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 0.5.h,
                 ),
                 MemberHeaderText('Company Name'),
                 TextFormField(
@@ -245,7 +246,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                     ),
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        Get.to(MemberForm01());
+                        // Get.to(MemberForm01());
+                        Get.to(OtpVerification());
                       }
                     },
                     child: Padding(
