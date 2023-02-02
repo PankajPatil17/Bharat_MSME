@@ -3,13 +3,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
-import 'package:store_redirect/store_redirect.dart';
 import 'package:tssia_replica/Controller/SigupController.dart';
 import 'package:tssia_replica/Generic/Common/CommonText.dart';
 import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Loader.dart';
 import 'package:tssia_replica/Generic/Custom/variables.dart';
-import 'package:tssia_replica/Screens/Order_History.dart';
+import 'package:tssia_replica/Screens/My_Profile/Contact_Us.dart';
 import 'package:tssia_replica/Screens/Sign_Up/LoginScreen.dart';
 import 'package:tssia_replica/Screens/WebView/WebView.dart';
 
@@ -129,97 +128,24 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               GestureDetector(
                 onTap: () {
-                  Get.to(OrderHistoryPage(), transition: transitonEffect);
+                  Get.to(ContactUs());
                 },
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SvgPicture.network(
-                      'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Order_History.svg',
-                      color: mainBlue,
+                    SvgPicture.asset(
+                      'assets/images/Contact Us.svg',
                     ),
                     SizedBox(
                       width: 1.5.h,
                     ),
                     CommonText(
-                        label: 'Order History',
+                        label: 'Contact Us',
                         size: 12.sp,
                         fontw8: FontWeight.w400)
                   ],
                 ),
               ),
-              // Padding(
-              //   padding: EdgeInsets.symmetric(vertical: 3.5.h),
-              //   child: GestureDetector(
-              //     onTap: () {
-              //       Get.to(WebviewScreen(
-              //         label: 'Legacy of Tssia',
-              //         url: 'https://tssia.enirmaan.com/ts_lagacyoftssia',
-              //       ));
-              //     },
-              //     child: Row(
-              //       crossAxisAlignment: CrossAxisAlignment.start,
-              //       children: [
-              //         SvgPicture.network(
-              //           'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Legacy of Tssia.svg',
-              //         ),
-              //         SizedBox(
-              //           width: 1.5.h,
-              //         ),
-              //         CommonText(
-              //             label: 'Legacy of Tssia',
-              //             size: 12.sp,
-              //             fontw8: FontWeight.w400)
-              //       ],
-              //     ),
-              //   ),
-              // ),
-              // GestureDetector(
-              //   onTap: () {
-              //     Get.to(MileStones(), transition: transitonEffect);
-              //   },
-              //   child: Row(
-              //     crossAxisAlignment: CrossAxisAlignment.start,
-              //     children: [
-              //       SvgPicture.network(
-              //         'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Milestones.svg',
-              //       ),
-              //       SizedBox(
-              //         width: 1.5.h,
-              //       ),
-              //       CommonText(
-              //           label: 'Milestone',
-              //           size: 12.sp,
-              //           fontw8: FontWeight.w400)
-              //     ],
-              //   ),
-              // ),
-              // Padding(
-              //   padding: EdgeInsets.symmetric(vertical: 3.5.h),
-              //   child: GestureDetector(
-              //     onTap: () {
-              //       Get.to(WebviewScreen(
-              //         label: 'Activities',
-              //         url: 'https://tssia.enirmaan.com/ts_activities',
-              //       ));
-              //     },
-              //     child: Row(
-              //       crossAxisAlignment: CrossAxisAlignment.start,
-              //       children: [
-              //         SvgPicture.network(
-              //           'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Activities.svg',
-              //         ),
-              //         SizedBox(
-              //           width: 1.5.h,
-              //         ),
-              //         CommonText(
-              //             label: 'Activities',
-              //             size: 12.sp,
-              //             fontw8: FontWeight.w400)
-              //       ],
-              //     ),
-              //   ),
-              // ),
               SizedBox(
                 height: 3.5.h,
               ),
@@ -233,9 +159,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SvgPicture.network(
-                      'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Terms_and_Conditions.svg',
-                      color: mainBlue,
+                    SvgPicture.asset(
+                      'assets/images/Terms & conditions.svg',
                     ),
                     SizedBox(
                       width: 1.5.h,
@@ -259,9 +184,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SvgPicture.network(
-                        'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/Privacy_Policy.svg',
-                        color: mainBlue,
+                      SvgPicture.asset(
+                        'assets/images/Privacy Policy.svg',
                       ),
                       SizedBox(
                         width: 1.5.h,
@@ -272,29 +196,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
                           fontw8: FontWeight.w400)
                     ],
                   ),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    StoreRedirect.redirect(
-                        androidAppId: 'com.medibhai',
-                        iOSAppId: 'com.example.medibhaiproject');
-                  });
-                },
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SvgPicture.asset(
-                      'assets/images/Rate_Us.svg',
-                      color: mainBlue,
-                    ),
-                    SizedBox(
-                      width: 1.5.h,
-                    ),
-                    CommonText(
-                        label: 'Rate Us', size: 12.sp, fontw8: FontWeight.w400)
-                  ],
                 ),
               ),
               GestureDetector(
@@ -311,9 +212,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SvgPicture.network(
-                        'https://tssia.enirmaan.com/tssia/images/Home_Grid_Imgs/api_images/logout.svg',
-                        color: mainBlue,
+                      SvgPicture.asset(
+                        'assets/images/logout.svg',
                       ),
                       SizedBox(
                         width: 1.5.h,
