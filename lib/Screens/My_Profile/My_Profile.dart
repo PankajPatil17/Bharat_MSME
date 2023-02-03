@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
+import 'package:store_redirect/store_redirect.dart';
 import 'package:tssia_replica/Controller/SigupController.dart';
 import 'package:tssia_replica/Generic/Common/CommonText.dart';
 import 'package:tssia_replica/Generic/Common/Common_BottomBar.dart';
@@ -37,12 +38,14 @@ class _MyProfileState extends State<MyProfile> {
     'assets/images/Contact Us.svg',
     'assets/images/Terms & conditions.svg',
     'assets/images/Privacy Policy.svg',
+    'assets/images/Rate_Us.svg',
     'assets/images/logout.svg',
   ];
   List titles = [
     'Contact Us',
     'Terms & Condition',
     'Privacy Policy',
+    'Rate Us',
     'Logout',
   ];
 
@@ -63,12 +66,18 @@ class _MyProfileState extends State<MyProfile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
+                    alignment: Alignment.center,
+                    height: 16.h,
+                    child: Image.asset('assets/images/Profile.gif'),
+                  ),
+                  Container(
                     padding: EdgeInsets.all(2.5.h),
-                    margin: EdgeInsets.only(bottom: 2.5.h),
+                    margin: EdgeInsets.only(bottom: 2.5.h, top: 3.h),
                     decoration: BoxDecoration(
                         boxShadow: Mainboxshadow,
                         color: Color(0xffFFF7F7),
                         borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(40),
                           bottomRight: Radius.circular(40),
                         )),
                     child: Row(
@@ -146,6 +155,10 @@ class _MyProfileState extends State<MyProfile> {
                               url: 'https://msmebharatmanch.com/privacy-policy',
                             ));
                           } else if (index == 3) {
+                            StoreRedirect.redirect(
+                                androidAppId: 'com.msmebharat',
+                                iOSAppId: '1639780511');
+                          } else if (index == 4) {
                             SharedPreferences prefs =
                                 await SharedPreferences.getInstance();
                             prefs.clear();
