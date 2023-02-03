@@ -39,7 +39,7 @@ class HelpOtherJoin extends StatelessWidget {
                   height: 25,
                 ),
                 Text(
-                  'Please Scan This Code For any Help',
+                  'Please Scan This Code to join us',
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,

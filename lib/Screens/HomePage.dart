@@ -618,7 +618,7 @@ class _HomePageState extends State<HomePage> {
       future: HomePageController.LatestUpdateApi(),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         return Container(
-          height: 16.h,
+          height: 18.5.h,
           width: 100.w,
           child: ListView.builder(
             itemCount: HomePageController.latestupdatelist.length,
@@ -660,7 +660,7 @@ class _HomePageState extends State<HomePage> {
                         child: CommonText(
                           label:
                               "${HomePageController.latestupdatelist[index]['description']}",
-                          maxline: 2,
+                          maxline: 3,
                           overflow: TextOverflow.ellipsis,
                           size: 10.sp,
                           colorT: Color(0xff5E5E5E),
