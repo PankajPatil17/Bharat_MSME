@@ -37,7 +37,14 @@ class HelpOtherJoin extends StatelessWidget {
                 SizedBox(
                   height: 25,
                 ),
-                Text('Please Scan This Code For any Help'),
+                Text(
+                  'Please Scan This Code For any Help',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    fontSize: 13.sp,
+                  ),
+                ),
               ],
             ),
           )),
