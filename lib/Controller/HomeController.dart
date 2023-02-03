@@ -97,7 +97,7 @@ class HomeController extends GetxController {
 
   Future LatestUpdateApi() async {
     http.Response response = await http.get(
-      Uri.parse('${MSMEURL}api/home-support-section'),
+      Uri.parse('${MSMEURL}api/get-latest-updates'),
     );
     var decodedResponse = json.decode(response.body);
     latestupdatelist = decodedResponse['data']['latest_updates'];
