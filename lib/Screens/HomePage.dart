@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,6 +18,7 @@ import 'package:tssia_replica/Screens/Circulars/Circulars.dart';
 import 'package:tssia_replica/Screens/Committee/Coming_soon.dart';
 import 'package:tssia_replica/Screens/Events/Events.dart';
 import 'package:tssia_replica/Screens/WebView/WebView.dart';
+import 'package:upgrader/upgrader.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -45,27 +48,40 @@ class _HomePageState extends State<HomePage> {
           child: SafeArea(child: CommonAppBar()),
           preferredSize: Size(100.h, 20.h)),
       body: SafeArea(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-              child: Container(
-            width: 100.h,
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BannerImages(),
-                  HomeSixModules(),
-                  SecondBanner(),
-                  OurServices(),
-                  UpcomingEvents(),
-                ],
+          child: UpgradeAlert(
+        upgrader: Upgrader(
+            durationUntilAlertAgain: Duration(minutes: 1),
+            debugDisplayAlways: false,
+            showReleaseNotes: false,
+            showIgnore: false,
+            shouldPopScope: () => true,
+            showLater: false,
+            dialogStyle: Platform.isIOS
+                ? UpgradeDialogStyle.cupertino
+                : UpgradeDialogStyle.material,
+            canDismissDialog: false),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+                child: Container(
+              width: 100.h,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BannerImages(),
+                    HomeSixModules(),
+                    SecondBanner(),
+                    OurServices(),
+                    UpcomingEvents(),
+                  ],
+                ),
               ),
-            ),
-          )),
-          CommonBottomBar(TapColor: tapcolor)
-        ],
+            )),
+            CommonBottomBar(TapColor: tapcolor)
+          ],
+        ),
       )),
     );
   }
@@ -336,20 +352,11 @@ class _HomePageState extends State<HomePage> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                         onTap: () {
-                          // Get.to(
-                          //     EventDetails(
-                          //       id: eventcontroller.UpcomingList[index]['id']
-                          //           .toString(),
-                          //     ),
-                          //     transition: transitonEffect);
-                          // eventcontroller.EventsDetailsApi(
-                          //     id: "${eventcontroller.UpcomingList[index]['id'].toString()}");
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return WellnessComingSoon();
-                            },
-                          );
+                          Get.to(WebviewScreen(
+                            label: "Events",
+                            url:
+                                "${eventcontroller.UpcomingList[index]['url']}",
+                          ));
                         },
                         child: Container(
                           margin: EdgeInsets.only(right: 2.h),

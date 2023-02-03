@@ -11,7 +11,7 @@ import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Drawer.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Loader.dart';
-import 'package:tssia_replica/Screens/Committee/Coming_soon.dart';
+import 'package:tssia_replica/Screens/WebView/WebView.dart';
 
 class Events extends StatefulWidget {
   const Events({super.key});
@@ -182,19 +182,10 @@ class _EventsState extends State<Events> {
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return WellnessComingSoon();
-                    },
-                  );
-                  // Get.to(
-                  //     EventDetails(
-                  //       id: eventcontroller.AllEventsList[index]['id'].toString(),
-                  //     ),
-                  //     transition: transitonEffect);
-                  // eventcontroller.EventsDetailsApi(
-                  //     id: "${eventcontroller.AllEventsList[index]['id']}");
+                  Get.to(WebviewScreen(
+                    label: "Events",
+                    url: "${eventcontroller.AllEventsList[index]['url']}",
+                  ));
                 },
                 child: Container(
                   padding: EdgeInsets.all(1.5.h),
@@ -354,19 +345,10 @@ class _EventsState extends State<Events> {
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return WellnessComingSoon();
-                    },
-                  );
-                  // Get.to(
-                  //     EventDetails(
-                  //       id: eventcontroller.LatestList[index]['id'].toString(),
-                  //     ),
-                  //     transition: transitonEffect);
-                  // eventcontroller.EventsDetailsApi(
-                  //     id: "${eventcontroller.LatestList[index]['id']}");
+                  Get.to(WebviewScreen(
+                    label: "Events",
+                    url: "${eventcontroller.LatestList[index]['url']}",
+                  ));
                 },
                 child: Container(
                   padding: EdgeInsets.all(1.5.h),
@@ -538,20 +520,10 @@ class _EventsState extends State<Events> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return WellnessComingSoon();
-                          },
-                        );
-                        // Get.to(
-                        //     EventDetails(
-                        //       id: eventcontroller.UpcomingList[index]['id']
-                        //           .toString(),
-                        //     ),
-                        //     transition: transitonEffect);
-                        // eventcontroller.EventsDetailsApi(
-                        //     id: "${eventcontroller.UpcomingList[index]['id']}");
+                        Get.to(WebviewScreen(
+                          label: "Events",
+                          url: "${eventcontroller.UpcomingList[index]['url']}",
+                        ));
                       },
                       child: Container(
                         padding: EdgeInsets.all(1.5.h),
