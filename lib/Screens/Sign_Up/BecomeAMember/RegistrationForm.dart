@@ -21,7 +21,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
   TextEditingController password = TextEditingController();
   TextEditingController Confirmpassword = TextEditingController();
   TextEditingController mobile = TextEditingController();
-  var checkradio = 'group';
+  var checkradio = 'member';
   var SigunpController = Get.put(signupcontroller());
   final formKey = GlobalKey<FormState>();
   bool checkvalue = false;
@@ -298,7 +298,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                 color: Colors.red,
                               )),
                       CommonText(
-                        label: 'Association',
+                        label: 'Group',
                         fontw8: FontWeight.w400,
                         size: 12.sp,
                       ),
