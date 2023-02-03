@@ -34,7 +34,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
           Container(
             padding: EdgeInsets.all(1.2.h),
             decoration: BoxDecoration(
-              color: Color(0xffd8f9ff),
+              color: Color(0xffFFF7F7),
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(6),
                   bottomRight: Radius.circular(6)),
