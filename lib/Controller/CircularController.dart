@@ -7,10 +7,11 @@ class CircularController extends GetxController {
   List CircularList = [].obs;
   List SearchResult = [].obs;
   CircularListApi() async {
-    http.Response response = await http
-        .post(Uri.parse('${BaseURL}api/Common_Controller/circular'), body: {});
+    http.Response response = await http.get(
+      Uri.parse('${MSMEURL}api/get-circular'),
+    );
 
     var decodedResponse = json.decode(response.body);
-    CircularList = decodedResponse['circular_details'];
+    CircularList = decodedResponse['data']['circular'];
   }
 }

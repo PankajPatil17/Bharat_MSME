@@ -129,7 +129,7 @@ class _CircularsState extends State<Circulars> {
                     label: 'Circular',
                     fontw8: FontWeight.w500,
                     size: 13.sp,
-                    colorT: Color(0xff2479ab),
+                    colorT: mainColor,
                   ),
                   SizedBox(
                     height: 1.5.h,
@@ -139,15 +139,7 @@ class _CircularsState extends State<Circulars> {
                     builder: (BuildContext context,
                         AsyncSnapshot<dynamic> snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Container(
-                          height: 24.h,
-                          width: 100.w,
-                          child: CustomLoader(),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                        );
+                        return CustomLoader();
                       }
                       return search.text == ''
                           ? ListView.builder(
@@ -171,7 +163,7 @@ class _CircularsState extends State<Circulars> {
                                     margin: EdgeInsets.only(bottom: 2.h),
                                     decoration: BoxDecoration(
                                         gradient: LinearGradient(colors: [
-                                          Color(0xffBEFEFA),
+                                          Color.fromARGB(255, 241, 230, 230),
                                           Color(0xffFFFFFF),
                                         ]),
                                         boxShadow: Mainboxshadow,
@@ -184,8 +176,8 @@ class _CircularsState extends State<Circulars> {
                                           CrossAxisAlignment.center,
                                       children: [
                                         Container(
-                                          height: 9.h,
-                                          width: 9.h,
+                                          height: 6.h,
+                                          width: 6.h,
                                           margin: EdgeInsets.only(right: 1.3.h),
                                           decoration: BoxDecoration(
                                             borderRadius:
@@ -205,7 +197,7 @@ class _CircularsState extends State<Circulars> {
                                                 size: 11.sp,
                                                 maxline: 2,
                                                 label:
-                                                    '${circularcontroller.CircularList[index]['name']}',
+                                                    '${circularcontroller.CircularList[index]['circular_name']}',
                                               ),
                                               CommonText(
                                                 colorT: Colors.grey.shade600,
@@ -213,14 +205,16 @@ class _CircularsState extends State<Circulars> {
                                                 size: 11.sp,
                                                 maxline: 1,
                                                 label:
-                                                    '${circularcontroller.CircularList[index]['circular_date']}',
+                                                    '${circularcontroller.CircularList[index]['issue_date']}',
                                               )
                                             ],
                                           ),
                                         ),
                                         Spacer(),
                                         SvgPicture.asset(
-                                            'assets/images/downloading.svg'),
+                                          'assets/images/downloading.svg',
+                                          color: mainColor,
+                                        ),
                                       ],
                                     ),
                                   ),

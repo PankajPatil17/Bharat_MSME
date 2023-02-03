@@ -197,10 +197,7 @@ class _ContactUsState extends State<ContactUs> {
                           width: 32.w,
                           margin: EdgeInsets.only(top: 2.5.h, bottom: 2.5.h),
                           decoration: BoxDecoration(
-                              gradient: LinearGradient(colors: [
-                                Color(0xffB65EBA),
-                                Color(0xff2A8DE1),
-                              ]),
+                              color: Color(0xffBF2025),
                               borderRadius: MainBorderRadius),
                           child: Center(
                             child: CommonText(

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,11 +14,12 @@ import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Drawer.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Loader.dart';
 import 'package:tssia_replica/Generic/Custom/variables.dart';
-import 'package:tssia_replica/Screens/ChatAndDiscussionForum/ChatScreen.dart';
 import 'package:tssia_replica/Screens/Circulars/Circulars.dart';
 import 'package:tssia_replica/Screens/Committee/Coming_soon.dart';
 import 'package:tssia_replica/Screens/Events/Events.dart';
+import 'package:tssia_replica/Screens/HelpOthers/HelpOthers.dart';
 import 'package:tssia_replica/Screens/WebView/WebView.dart';
+import 'package:upgrader/upgrader.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -46,27 +49,41 @@ class _HomePageState extends State<HomePage> {
           child: SafeArea(child: CommonAppBar()),
           preferredSize: Size(100.h, 20.h)),
       body: SafeArea(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-              child: Container(
-            width: 100.h,
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BannerImages(),
-                  HomeSixModules(),
-                  SecondBanner(),
-                  OurServices(),
-                  UpcomingEvents(),
-                ],
+          child: UpgradeAlert(
+        upgrader: Upgrader(
+            durationUntilAlertAgain: Duration(minutes: 1),
+            debugDisplayAlways: false,
+            showReleaseNotes: false,
+            showIgnore: false,
+            shouldPopScope: () => true,
+            showLater: false,
+            dialogStyle: Platform.isIOS
+                ? UpgradeDialogStyle.cupertino
+                : UpgradeDialogStyle.material,
+            canDismissDialog: false),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+                child: Container(
+              width: 100.h,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BannerImages(),
+                    HomeSixModules(),
+                    // SecondBanner(),
+                    LatestUpdate(),
+                    OurServices(),
+                    UpcomingEvents(),
+                  ],
+                ),
               ),
-            ),
-          )),
-          CommonBottomBar(TapColor: tapcolor)
-        ],
+            )),
+            CommonBottomBar(TapColor: tapcolor)
+          ],
+        ),
       )),
     );
   }
@@ -183,14 +200,16 @@ class _HomePageState extends State<HomePage> {
                           } else if (index == 4) {
                             Get.to(Circulars(), transition: transitonEffect);
                           } else if (index == 5) {
-                            Get.to(ChatScreen(), transition: transitonEffect);
-                          } else if (index == 2) {
+                            // Get.to(ChatScreen(), transition: transitonEffect);
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
                                 return WellnessComingSoon();
                               },
                             );
+                          } else if (index == 2) {
+                            Get.to(HelpOtherJoin(),
+                                transition: transitonEffect);
                           }
                         },
                         child: Column(
@@ -331,20 +350,11 @@ class _HomePageState extends State<HomePage> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                         onTap: () {
-                          // Get.to(
-                          //     EventDetails(
-                          //       id: eventcontroller.UpcomingList[index]['id']
-                          //           .toString(),
-                          //     ),
-                          //     transition: transitonEffect);
-                          // eventcontroller.EventsDetailsApi(
-                          //     id: "${eventcontroller.UpcomingList[index]['id'].toString()}");
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return WellnessComingSoon();
-                            },
-                          );
+                          Get.to(WebviewScreen(
+                            label: "Events",
+                            url:
+                                "${eventcontroller.UpcomingList[index]['url']}",
+                          ));
                         },
                         child: Container(
                           margin: EdgeInsets.only(right: 2.h),
@@ -472,144 +482,7 @@ class _HomePageState extends State<HomePage> {
                               )
                             ],
                           ),
-                        )
-                        // child: Container(
-                        //   width: 39.5.h,
-                        //   padding: EdgeInsets.all(1.3.h),
-                        //   margin: EdgeInsets.only(right: 2.2.h),
-                        //   decoration: BoxDecoration(
-                        //       boxShadow: [
-                        //         BoxShadow(
-                        //             color: Colors.black12,
-                        //             blurRadius: 2,
-                        //             offset: Offset(0, 4))
-                        //       ],
-                        //       color: PWhite,
-                        //       borderRadius: BorderRadius.circular(6),
-                        //       border: Border.all(
-                        //           width: 0.5, color: Color(0xffe4e4e4))),
-                        //   child: Row(
-                        //     children: [
-                        // Container(
-                        //   height: 12.h,
-                        //   width: 12.h,
-                        //   margin: EdgeInsets.only(right: 1.5.h),
-                        //   decoration: BoxDecoration(
-                        //       borderRadius: BorderRadius.circular(6),
-                        //       image: DecorationImage(
-                        //           fit: BoxFit.fill,
-                        //           image: NetworkImage(
-                        //               '${eventcontroller.EventsList[index]['event_url']}'))),
-                        // ),
-                        //       Expanded(
-                        //         child: Column(
-                        //           mainAxisAlignment:
-                        //               MainAxisAlignment.spaceBetween,
-                        //           crossAxisAlignment: CrossAxisAlignment.start,
-                        //           children: [
-                        //             CommonText(
-                        //               label:
-                        //                   '${eventcontroller.EventsList[index]['event_name']}'
-                        //                       .replaceAll('Tssia', ''),
-                        //               colorT: Colors.black,
-                        //               fontw8: FontWeight.w400,
-                        //               maxline: 2,
-                        //               size: 10.sp,
-                        //               overflow: TextOverflow.ellipsis,
-                        //             ),
-                        // Row(
-                        //   crossAxisAlignment:
-                        //       CrossAxisAlignment.center,
-                        //   mainAxisAlignment:
-                        //       MainAxisAlignment.spaceBetween,
-                        //   children: [
-                        //     Column(
-                        //       crossAxisAlignment:
-                        //           CrossAxisAlignment.start,
-                        //       children: [
-                        //         Row(
-                        //           crossAxisAlignment:
-                        //               CrossAxisAlignment.center,
-                        //           mainAxisAlignment:
-                        //               MainAxisAlignment.start,
-                        //           children: [
-                        //             SvgPicture.asset(
-                        //                 'assets/images/calendar.svg'),
-                        //             SizedBox(
-                        //               width: 1.h,
-                        //             ),
-                        //             CommonText(
-                        //               label:
-                        //                   '${eventcontroller.EventsList[index]['event_date']}',
-                        //               colorT: Colors.black,
-                        //               fontw8: FontWeight.w400,
-                        //               maxline: 2,
-                        //               size: 10.sp,
-                        //               overflow: TextOverflow.ellipsis,
-                        //             ),
-                        //           ],
-                        //         ),
-                        //         Row(
-                        //           crossAxisAlignment:
-                        //               CrossAxisAlignment.center,
-                        //           mainAxisAlignment:
-                        //               MainAxisAlignment.start,
-                        //           children: [
-                        //             SvgPicture.asset(
-                        //                 'assets/images/clock.svg'),
-                        //             SizedBox(
-                        //               width: 1.h,
-                        //             ),
-                        //             SizedBox(
-                        //               width: 10.h,
-                        //               child: CommonText(
-                        //                 label:
-                        //                     '${eventcontroller.EventsList[index]['event_time']}',
-                        //                 colorT: Colors.black,
-                        //                 fontw8: FontWeight.w400,
-                        //                 maxline: 1,
-                        //                 size: 10.sp,
-                        //                 overflow:
-                        //                     TextOverflow.ellipsis,
-                        //               ),
-                        //             ),
-                        //           ],
-                        //         )
-                        //       ],
-                        //     ),
-                        //                 Container(
-                        //                   alignment: Alignment.center,
-                        //                   padding: EdgeInsets.only(
-                        //                       top: 1.1.h,
-                        //                       bottom: 1.1.h,
-                        //                       left: 1.5.h,
-                        //                       right: 1.5.h),
-                        //                   decoration: BoxDecoration(
-                        //                       color: Color(0xffF89902),
-                        //                       borderRadius:
-                        //                           BorderRadius.circular(6),
-                        //                       border: Border.all(
-                        //                           width: 0.5,
-                        //                           color: Color(0xffe4e4e4))),
-                        //                   child: CommonText(
-                        //                     label:
-                        //                         'Rs ${eventcontroller.EventsList[index]['event_price']}',
-                        //                     colorT: PWhite,
-                        //                     fontw8: FontWeight.w400,
-                        //                     maxline: 2,
-                        //                     size: 10.sp,
-                        //                     overflow: TextOverflow.ellipsis,
-                        //                   ),
-                        //                 ),
-                        //               ],
-                        //             ),
-                        //           ],
-                        //         ),
-                        //       )
-                        //     ],
-                        //   ),
-                        // ),
-                        );
+                        ));
                   },
                 ),
               ),
@@ -734,6 +607,93 @@ class _HomePageState extends State<HomePage> {
                     },
                   )),
             ],
+          ),
+        );
+      },
+    );
+  }
+
+  LatestUpdate() {
+    return FutureBuilder(
+      future: HomePageController.LatestUpdateApi(),
+      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        return Container(
+          height: 16.h,
+          width: 100.w,
+          child: ListView.builder(
+            itemCount: HomePageController.latestupdatelist.length,
+            shrinkWrap: true,
+            controller: ScrollController(),
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  Get.to(WebviewScreen(
+                    url: "${HomePageController.latestupdatelist[index]['url']}",
+                    label:
+                        "${HomePageController.latestupdatelist[index]['title']}",
+                  ));
+                },
+                child: Container(
+                  width: 100.w,
+                  padding: EdgeInsets.all(2.h),
+                  margin: EdgeInsets.only(right: 2.h),
+                  decoration: BoxDecoration(
+                      // color: PWhite,
+                      image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: AssetImage(
+                              'assets/images/Latest_Update_BG.png'))),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CommonText(
+                        label:
+                            "${HomePageController.latestupdatelist[index]['title']}",
+                        maxline: 1,
+                        overflow: TextOverflow.ellipsis,
+                        size: 12.sp,
+                        fontw8: FontWeight.w500,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 0.5.h, bottom: 0.5.h),
+                        child: CommonText(
+                          label:
+                              "${HomePageController.latestupdatelist[index]['description']}",
+                          maxline: 2,
+                          overflow: TextOverflow.ellipsis,
+                          size: 10.sp,
+                          colorT: Color(0xff5E5E5E),
+                          fontw8: FontWeight.w500,
+                        ),
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          CommonText(
+                            label: 'Posted on ',
+                            size: 10.sp,
+                            fontw8: FontWeight.w400,
+                            maxline: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          CommonText(
+                            label:
+                                "${HomePageController.latestupdatelist[index]['date']}",
+                            size: 10.sp,
+                            colorT: Color(0xffBF2025),
+                            fontw8: FontWeight.w400,
+                            maxline: 1,
+                            overflow: TextOverflow.ellipsis,
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              );
+            },
           ),
         );
       },

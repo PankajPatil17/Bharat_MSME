@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 // import 'package:tssia_replica/Controller/Local_Notification_Controller.dart';
 import 'package:tssia_replica/Screens/WebView/splashScreen.dart';
+import 'package:upgrader/upgrader.dart';
 
 Future<void> main() async {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -22,16 +23,18 @@ class MyApp extends StatelessWidget {
     // FirebaseMessaging.onMessage.listen((RemoteMessage message) {
     //   LocalNotification.showNotification(message);
     // });
-    return Sizer(
-      builder: (BuildContext context, Orientation orientation,
-          DeviceType deviceType) {
-        return GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: SplahsScreen(),
-          darkTheme: ThemeData(fontFamily: 'Poppins'),
-          title: 'Bharat MSME',
-        );
-      },
+    return UpgradeAlert(
+      child: Sizer(
+        builder: (BuildContext context, Orientation orientation,
+            DeviceType deviceType) {
+          return GetMaterialApp(
+            debugShowCheckedModeBanner: false,
+            home: SplahsScreen(),
+            darkTheme: ThemeData(fontFamily: 'Poppins'),
+            title: 'Bharat MSME',
+          );
+        },
+      ),
     );
   }
 }
