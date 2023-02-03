@@ -93,20 +93,12 @@ class _HomePageState extends State<HomePage> {
       future: HomePageController.HomeBannerSupportSection(),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Container(
-            height: 24.h,
-            width: 100.w,
-            child: CustomLoader(),
-            decoration: BoxDecoration(
-              color: PWhite,
-              borderRadius: BorderRadius.circular(6),
-            ),
-          );
+          return CustomLoader();
         }
         return Container(
+          height: 19.h,
+          width: 100.w,
           margin: EdgeInsets.symmetric(vertical: 1.5.h, horizontal: 1.5.h),
-          height: 24.h,
-          width: 70.h,
           child: CarouselSlider.builder(
             itemCount: HomePageController
                 .HomeBannerAndSupportSection['slider_1'].length,
@@ -166,10 +158,10 @@ class _HomePageState extends State<HomePage> {
                 CarouselSlider.builder(
                   options: CarouselOptions(
                       autoPlay: true,
-                      height: 13.5.h,
+                      height: 12.5.h,
                       disableCenter: true,
-                      viewportFraction: 0.34,
-                      aspectRatio: 9 / 9,
+                      viewportFraction: 0.32,
+                      aspectRatio: 4 / 9,
                       initialPage: 0,
                       autoPlayInterval: Duration(seconds: 5)),
                   itemCount: HomePageController.HomeSixModulesColor.length,
@@ -217,7 +209,7 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Container(
                               margin:
-                                  EdgeInsets.only(bottom: 1.h, right: 1.5.h),
+                                  EdgeInsets.only(bottom: 1.h, right: 0.5.h),
                               decoration: BoxDecoration(
                                   color: Color(0xffffffff),
                                   border: Border.all(
@@ -240,7 +232,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(right: 1.5.h),
+                              padding: EdgeInsets.only(right: 0.5.h),
                               child: Text(
                                 "${HomePageController.HomeSixModulesName[index]}",
                                 maxLines: 2,
@@ -617,84 +609,118 @@ class _HomePageState extends State<HomePage> {
     return FutureBuilder(
       future: HomePageController.LatestUpdateApi(),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-        return Container(
-          height: 18.5.h,
-          width: 100.w,
-          child: ListView.builder(
-            itemCount: HomePageController.latestupdatelist.length,
-            shrinkWrap: true,
-            controller: ScrollController(),
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  Get.to(WebviewScreen(
-                    url: "${HomePageController.latestupdatelist[index]['url']}",
-                    label:
-                        "${HomePageController.latestupdatelist[index]['title']}",
-                  ));
-                },
-                child: Container(
-                  width: 100.w,
-                  padding: EdgeInsets.all(2.h),
-                  margin: EdgeInsets.only(right: 2.h),
-                  decoration: BoxDecoration(
-                      // color: PWhite,
-                      image: DecorationImage(
-                          fit: BoxFit.fill,
-                          image: AssetImage(
-                              'assets/images/Latest_Update_BG.png'))),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CommonText(
-                        label:
-                            "${HomePageController.latestupdatelist[index]['title']}",
-                        maxline: 1,
-                        overflow: TextOverflow.ellipsis,
-                        size: 12.sp,
-                        fontw8: FontWeight.w500,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 0.5.h, bottom: 0.5.h),
-                        child: CommonText(
-                          label:
-                              "${HomePageController.latestupdatelist[index]['description']}",
-                          maxline: 3,
-                          overflow: TextOverflow.ellipsis,
-                          size: 10.sp,
-                          colorT: Color(0xff5E5E5E),
-                          fontw8: FontWeight.w500,
-                        ),
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          CommonText(
-                            label: 'Posted on ',
-                            size: 10.sp,
-                            fontw8: FontWeight.w400,
-                            maxline: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          CommonText(
-                            label:
-                                "${HomePageController.latestupdatelist[index]['date']}",
-                            size: 10.sp,
-                            colorT: Color(0xffBF2025),
-                            fontw8: FontWeight.w400,
-                            maxline: 1,
-                            overflow: TextOverflow.ellipsis,
-                          )
-                        ],
-                      )
-                    ],
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 5.h,
+                  height: 0.1.h,
+                  color: Color(0xffBF2025),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 1.h),
+                  child: CommonText(
+                    label: 'Latest Updates',
+                    fontw8: FontWeight.w500,
+                    size: 12.sp,
+                    colorT: Color(0xff003C5E),
                   ),
                 ),
-              );
-            },
-          ),
+                Container(
+                  width: 5.h,
+                  height: 0.1.h,
+                  color: Color(0xffBF2025),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 1.h,
+            ),
+            Container(
+              height: 18.5.h,
+              width: 100.w,
+              child: ListView.builder(
+                itemCount: HomePageController.latestupdatelist.length,
+                shrinkWrap: true,
+                controller: ScrollController(),
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Get.to(WebviewScreen(
+                        url:
+                            "${HomePageController.latestupdatelist[index]['url']}",
+                        label:
+                            "${HomePageController.latestupdatelist[index]['title']}",
+                      ));
+                    },
+                    child: Container(
+                      width: 100.w,
+                      padding: EdgeInsets.all(2.h),
+                      margin: EdgeInsets.only(right: 2.h),
+                      decoration: BoxDecoration(
+                          // color: PWhite,
+                          image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: AssetImage(
+                                  "${HomePageController.latestupdatelist[index]['image']}"))),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CommonText(
+                            label:
+                                "${HomePageController.latestupdatelist[index]['title']}",
+                            maxline: 1,
+                            overflow: TextOverflow.ellipsis,
+                            size: 12.sp,
+                            fontw8: FontWeight.w500,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 0.5.h, bottom: 0.5.h),
+                            child: CommonText(
+                              label:
+                                  "${HomePageController.latestupdatelist[index]['description']}",
+                              maxline: 3,
+                              overflow: TextOverflow.ellipsis,
+                              size: 10.sp,
+                              colorT: Color(0xff5E5E5E),
+                              fontw8: FontWeight.w500,
+                            ),
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              CommonText(
+                                label: 'Posted on ',
+                                size: 10.sp,
+                                fontw8: FontWeight.w400,
+                                maxline: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              CommonText(
+                                label:
+                                    "${HomePageController.latestupdatelist[index]['date']}",
+                                size: 10.sp,
+                                colorT: Color(0xffBF2025),
+                                fontw8: FontWeight.w400,
+                                maxline: 1,
+                                overflow: TextOverflow.ellipsis,
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
         );
       },
     );
