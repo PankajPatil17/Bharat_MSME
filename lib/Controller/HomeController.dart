@@ -11,6 +11,7 @@ class HomeController extends GetxController {
   List GalleryImage = [].obs;
   List notification = [].obs;
   var partnerLink;
+  List latestupdatelist = [].obs;
   var HomeBannerAndSupportSection;
   var SignController = Get.put(signupcontroller());
 
@@ -93,4 +94,12 @@ class HomeController extends GetxController {
     0xffE6492D,
     0xff769ED8,
   ];
+
+  Future LatestUpdateApi() async {
+    http.Response response = await http.get(
+      Uri.parse('${MSMEURL}api/home-support-section'),
+    );
+    var decodedResponse = json.decode(response.body);
+    latestupdatelist = decodedResponse['data']['latest_updates'];
+  }
 }

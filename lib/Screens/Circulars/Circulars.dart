@@ -139,15 +139,7 @@ class _CircularsState extends State<Circulars> {
                     builder: (BuildContext context,
                         AsyncSnapshot<dynamic> snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Container(
-                          height: 24.h,
-                          width: 100.w,
-                          child: CustomLoader(),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                        );
+                        return CustomLoader();
                       }
                       return search.text == ''
                           ? ListView.builder(
