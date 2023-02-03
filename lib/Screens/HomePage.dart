@@ -382,15 +382,6 @@ class _HomePageState extends State<HomePage> {
                                       padding: EdgeInsets.all(1.2.h),
                                       child: Column(
                                         children: [
-                                          // CommonText(
-                                          //   label:
-                                          //       'Lorem ipsum dolor sit amet, consetetur',
-                                          //   colorT: Colors.black,
-                                          //   fontw8: FontWeight.w400,
-                                          //   maxline: 2,
-                                          //   size: 10.sp,
-                                          //   overflow: TextOverflow.ellipsis,
-                                          // ),
                                           Row(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
