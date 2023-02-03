@@ -658,14 +658,14 @@ class _HomePageState extends State<HomePage> {
                       ));
                     },
                     child: Container(
-                      width: 100.w,
+                      width: 94.w,
                       padding: EdgeInsets.all(2.h),
-                      margin: EdgeInsets.only(right: 2.h),
+                      margin: EdgeInsets.only(right: 2.h, left: 1.h),
                       decoration: BoxDecoration(
                           // color: PWhite,
                           image: DecorationImage(
                               fit: BoxFit.fill,
-                              image: AssetImage(
+                              image: NetworkImage(
                                   "${HomePageController.latestupdatelist[index]['image']}"))),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
