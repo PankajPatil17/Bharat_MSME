@@ -459,8 +459,7 @@ class _HomePageState extends State<HomePage> {
                                                 bottomRight:
                                                     Radius.circular(10))),
                                         child: CommonText(
-                                          label:
-                                              'Paid Rs ${eventcontroller.UpcomingList[index]['price']}',
+                                          label: 'View Details',
                                           colorT: PWhite,
                                           fontw8: FontWeight.w400,
                                           maxline: 1,
