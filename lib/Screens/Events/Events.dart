@@ -426,8 +426,7 @@ class _EventsState extends State<Events> {
                                             width: 0.5,
                                             color: Color(0xffe4e4e4))),
                                     child: CommonText(
-                                      label:
-                                          'Rs ${eventcontroller.UpcomingList[index]['price']}',
+                                      label: 'View Details',
                                       colorT: PWhite,
                                       fontw8: FontWeight.w400,
                                       maxline: 2,
