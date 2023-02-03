@@ -17,6 +17,7 @@ import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:tssia_replica/Screens/Circulars/Circulars.dart';
 import 'package:tssia_replica/Screens/Committee/Coming_soon.dart';
 import 'package:tssia_replica/Screens/Events/Events.dart';
+import 'package:tssia_replica/Screens/HelpOthers/HelpOthers.dart';
 import 'package:tssia_replica/Screens/WebView/WebView.dart';
 import 'package:upgrader/upgrader.dart';
 
@@ -206,12 +207,8 @@ class _HomePageState extends State<HomePage> {
                               },
                             );
                           } else if (index == 2) {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return WellnessComingSoon();
-                              },
-                            );
+                            Get.to(HelpOtherJoin(),
+                                transition: transitonEffect);
                           }
                         },
                         child: Column(

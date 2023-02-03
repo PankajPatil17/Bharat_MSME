@@ -46,10 +46,6 @@ class HomeController extends GetxController {
     notification = decodedResponse['notification_deatils'];
   }
 
-  List bannerImages = [
-    'assets/images/Banner1.png',
-  ];
-
   List HomeSixModulesImage = [
     'assets/images/Members.svg',
     'assets/images/Committees.svg',

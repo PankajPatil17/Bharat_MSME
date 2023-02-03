@@ -28,7 +28,7 @@ class HelpOtherJoin extends StatelessWidget {
               children: [
                 Center(
                   child: QrImage(
-                    data: "https://tssia.enirmaan.com/",
+                    data: "https://www.msmebharatmanch.com/",
                     version: QrVersions.auto,
                     foregroundColor: Colors.black,
                     size: 250.0,
