@@ -288,6 +288,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       setState(() {
                         if (formKey.currentState!.validate()) {
                           if (checkvalue == true) {
+                            LoginLoader();
                             Future.delayed(Duration(milliseconds: 100), () {
                               SigunpController.Signin(
                                   empId: email.text, pass: pass.text);
@@ -339,6 +340,37 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
       )),
+    );
+  }
+
+  LoginLoader() {
+    return showDialog(
+      barrierColor: Colors.transparent,
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          contentPadding: EdgeInsets.all(8),
+          content: Container(
+            color: Colors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CommonText(label: 'Please Wait'),
+                SizedBox(
+                  width: 1.5.h,
+                ),
+                CircularProgressIndicator(
+                  color: Color(0xffD82A1B),
+                  strokeWidth: 2.75,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

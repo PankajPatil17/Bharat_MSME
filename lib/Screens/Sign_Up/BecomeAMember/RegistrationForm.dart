@@ -422,6 +422,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                       if (password.text == Confirmpassword.text) {
                         if (formKey.currentState!.validate()) {
                           if (checkvalue == true) {
+                            LoginLoader();
                             Future.delayed(Duration(milliseconds: 100), () {
                               SigunpController.SignUp(
                                   companyname: companyName.text,
@@ -480,6 +481,37 @@ class _RegistrationFormState extends State<RegistrationForm> {
         fontw8: FontWeight.w400,
         size: 11.sp,
       ),
+    );
+  }
+
+  LoginLoader() {
+    return showDialog(
+      barrierColor: Colors.transparent,
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          contentPadding: EdgeInsets.all(8),
+          content: Container(
+            color: Colors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CommonText(label: 'Please Wait'),
+                SizedBox(
+                  width: 1.5.h,
+                ),
+                CircularProgressIndicator(
+                  color: Color(0xffD82A1B),
+                  strokeWidth: 2.75,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

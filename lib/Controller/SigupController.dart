@@ -101,6 +101,7 @@ class signupcontroller extends GetxController {
       CurrentuserID = _prefs.getString('CurrentuserID');
       CurrentuserEmail = _prefs.getString('MemberEmail');
       CurrentToken = _prefs.getString('token');
+      MemberName = _prefs.getString('MemberName');
       print('token--${CurrentToken}');
       Get.offAll(HomePage());
     }
