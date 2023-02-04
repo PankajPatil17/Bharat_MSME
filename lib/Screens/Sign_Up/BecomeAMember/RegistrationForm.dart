@@ -49,6 +49,62 @@ class _RegistrationFormState extends State<RegistrationForm> {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: EdgeInsets.only(top: 1.2.h),
+                  child: Row(
+                    children: [
+                      MemberHeaderText('Register as'),
+                      checkradio == 'member'
+                          ? IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  checkradio = 'group';
+                                });
+                              },
+                              icon: Icon(
+                                Icons.radio_button_off,
+                                size: 3.h,
+                                color: Colors.red,
+                              ))
+                          : IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.radio_button_checked,
+                                size: 3.h,
+                                color: Colors.red,
+                              )),
+                      CommonText(
+                        label: 'Group',
+                        fontw8: FontWeight.w400,
+                        size: 12.sp,
+                      ),
+                      checkradio == 'group'
+                          ? IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  checkradio = 'member';
+                                });
+                              },
+                              icon: Icon(
+                                Icons.radio_button_off,
+                                size: 3.h,
+                                color: Colors.red,
+                              ))
+                          : IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.radio_button_checked,
+                                size: 3.h,
+                                color: Colors.red,
+                              )),
+                      CommonText(
+                        label: 'Member',
+                        fontw8: FontWeight.w400,
+                        size: 12.sp,
+                      ),
+                    ],
+                  ),
+                ),
                 MemberHeaderText('Company Name'),
                 Material(
                   elevation: 3.0,
@@ -271,62 +327,6 @@ class _RegistrationFormState extends State<RegistrationForm> {
                           fontSize: 11.sp,
                           fontFamily: 'Poppins'),
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 1.2.h),
-                  child: Row(
-                    children: [
-                      MemberHeaderText('Register as'),
-                      checkradio == 'member'
-                          ? IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  checkradio = 'group';
-                                });
-                              },
-                              icon: Icon(
-                                Icons.radio_button_off,
-                                size: 3.h,
-                                color: Colors.red,
-                              ))
-                          : IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.radio_button_checked,
-                                size: 3.h,
-                                color: Colors.red,
-                              )),
-                      CommonText(
-                        label: 'Group',
-                        fontw8: FontWeight.w400,
-                        size: 12.sp,
-                      ),
-                      checkradio == 'group'
-                          ? IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  checkradio = 'member';
-                                });
-                              },
-                              icon: Icon(
-                                Icons.radio_button_off,
-                                size: 3.h,
-                                color: Colors.red,
-                              ))
-                          : IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.radio_button_checked,
-                                size: 3.h,
-                                color: Colors.red,
-                              )),
-                      CommonText(
-                        label: 'Member',
-                        fontw8: FontWeight.w400,
-                        size: 12.sp,
-                      ),
-                    ],
                   ),
                 ),
                 Row(

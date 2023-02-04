@@ -31,7 +31,7 @@ class _CircularsState extends State<Circulars> {
 
   SearchFunction() {
     final result = circularcontroller.CircularList.where((movie) {
-      final movietitle = movie['name'].toString().toLowerCase();
+      final movietitle = movie['circular_name'].toString().toLowerCase();
       final input = search.text.toLowerCase();
       return movietitle.contains(input);
     }).toList();
@@ -230,7 +230,7 @@ class _CircularsState extends State<Circulars> {
                                   onTap: () {
                                     setState(() {
                                       _url = Uri.parse(circularcontroller
-                                          .SearchResult[index]['url']);
+                                          .CircularList[index]['url']);
                                       Future.delayed(
                                           Duration(milliseconds: 100), () {
                                         _launchUrl(_url);
@@ -276,7 +276,7 @@ class _CircularsState extends State<Circulars> {
                                                 size: 11.sp,
                                                 maxline: 2,
                                                 label:
-                                                    '${circularcontroller.SearchResult[index]['name']}',
+                                                    '${circularcontroller.SearchResult[index]['circular_name']}',
                                               ),
                                               CommonText(
                                                 colorT: Colors.grey.shade600,
@@ -284,7 +284,7 @@ class _CircularsState extends State<Circulars> {
                                                 size: 11.sp,
                                                 maxline: 1,
                                                 label:
-                                                    '${circularcontroller.SearchResult[index]['circular_date']}',
+                                                    '${circularcontroller.SearchResult[index]['issue_date']}',
                                               )
                                             ],
                                           ),
