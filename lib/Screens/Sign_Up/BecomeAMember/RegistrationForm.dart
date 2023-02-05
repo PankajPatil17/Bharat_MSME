@@ -22,6 +22,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
   TextEditingController Confirmpassword = TextEditingController();
   TextEditingController mobile = TextEditingController();
   var checkradio = 'member';
+  bool _passwordVisible = false;
+  bool _confirmpasswordVisible = false;
   var SigunpController = Get.put(signupcontroller());
   final formKey = GlobalKey<FormState>();
   bool checkvalue = false;
@@ -262,6 +264,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                   elevation: 3.0,
                   borderRadius: BorderRadius.circular(24),
                   child: TextFormField(
+                    obscureText: !_passwordVisible,
                     controller: password,
                     validator: (val) {
                       if (val!.isEmpty) {
@@ -290,6 +293,19 @@ class _RegistrationFormState extends State<RegistrationForm> {
                           fontWeight: FontWeight.w400,
                           fontSize: 11.sp,
                           fontFamily: 'Poppins'),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _passwordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: Color(0xffBF2025),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _passwordVisible = !_passwordVisible;
+                          });
+                        },
+                      ),
                     ),
                   ),
                 ),
@@ -298,6 +314,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                   elevation: 3.0,
                   borderRadius: BorderRadius.circular(24),
                   child: TextFormField(
+                    obscureText: !_confirmpasswordVisible,
                     controller: Confirmpassword,
                     validator: (val) {
                       if (val!.isEmpty) {
@@ -326,6 +343,19 @@ class _RegistrationFormState extends State<RegistrationForm> {
                           fontWeight: FontWeight.w400,
                           fontSize: 11.sp,
                           fontFamily: 'Poppins'),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _confirmpasswordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: Color(0xffBF2025),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _confirmpasswordVisible = !_confirmpasswordVisible;
+                          });
+                        },
+                      ),
                     ),
                   ),
                 ),
