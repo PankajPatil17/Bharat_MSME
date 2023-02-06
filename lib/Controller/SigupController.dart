@@ -105,39 +105,4 @@ class signupcontroller extends GetxController {
       Get.offAll(HomePage());
     }
   }
-
-  // //Forgot Password
-
-  // Future ForgotPasswordSendOtpToMail({email, context}) async {
-  //   final response = await http.post(
-  //     Uri.parse('${BaseURL}api/Common_Controller/send_otp'),
-  //     body: {'email_id': email},
-  //   );
-  //   var decodedResponse = json.decode(response.body);
-  //   if (decodedResponse['status'] == 200) {
-  //     Get.to(ForgetPasswordotp(email: email));
-  //   } else {
-  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //       content: Text("The Email ID field must contain a valid email address."),
-  //     ));
-  //   }
-  // }
-
-  // Future ForgotPasswordVerify({email, context, password, otp}) async {
-  //   final response = await http.post(
-  //     Uri.parse('${BaseURL}api/Common_Controller/validate_otp'),
-  //     body: {'email_id': email, 'password': password, 'otp_code': otp},
-  //   );
-  //   var decodedResponse = json.decode(response.body);
-  //   if (decodedResponse['status'] == 200) {
-  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //       content: Text("Password reset succefully"),
-  //     ));
-  //     Get.to(LoginScreen());
-  //   } else {
-  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //       content: Text("${decodedResponse['message']}"),
-  //     ));
-  //   }
-  // }
 }
