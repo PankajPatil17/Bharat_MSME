@@ -123,21 +123,21 @@ class signupcontroller extends GetxController {
   //   }
   // }
 
-  Future ForgotPasswordVerify({email, context, password, otp}) async {
-    final response = await http.post(
-      Uri.parse('${BaseURL}api/Common_Controller/validate_otp'),
-      body: {'email_id': email, 'password': password, 'otp_code': otp},
-    );
-    var decodedResponse = json.decode(response.body);
-    if (decodedResponse['status'] == 200) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Password reset succefully"),
-      ));
-      Get.to(LoginScreen());
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("${decodedResponse['message']}"),
-      ));
-    }
-  }
+  // Future ForgotPasswordVerify({email, context, password, otp}) async {
+  //   final response = await http.post(
+  //     Uri.parse('${BaseURL}api/Common_Controller/validate_otp'),
+  //     body: {'email_id': email, 'password': password, 'otp_code': otp},
+  //   );
+  //   var decodedResponse = json.decode(response.body);
+  //   if (decodedResponse['status'] == 200) {
+  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+  //       content: Text("Password reset succefully"),
+  //     ));
+  //     Get.to(LoginScreen());
+  //   } else {
+  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+  //       content: Text("${decodedResponse['message']}"),
+  //     ));
+  //   }
+  // }
 }
