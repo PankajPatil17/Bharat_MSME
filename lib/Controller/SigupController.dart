@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:tssia_replica/Screens/HomePage.dart';
-import 'package:tssia_replica/Screens/Sign_Up/LoginScreen.dart';
 import 'package:tssia_replica/Screens/Sign_Up/OtpVerification.dart';
 
 class signupcontroller extends GetxController {
@@ -24,24 +23,55 @@ class signupcontroller extends GetxController {
     CurrentToken = _prefs.getString('token');
   }
 
-  Future SignUp(
-      {regtype,
-      companyname,
-      email,
+  Future RegSignUpGroup(
+      {regtype, email, name, mobile, groupname, context}) async {
+    final response = await http.post(
+      Uri.parse('${MSMEURL}api/user-register'),
+      body: {
+        'register_type': regtype,
+        'email': email,
+        'name': name,
+        'mobile_number': mobile,
+        'group_name': groupname
+      },
+    );
+    var decodedResponse = json.decode(response.body);
+    print(response.body);
+    if (response.statusCode == 200) {
+      Get.to(OtpVerification());
+      mobileForOTP = mobile;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("${decodedResponse['message']}"),
+      ));
+    } else {
+      Get.back();
+      await ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("${decodedResponse['fields']['mobile_number'][0]}"),
+      ));
+      await ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("${decodedResponse['fields']['email'][0]}"),
+      ));
+    }
+  }
+
+  Future RegSignUpMember(
+      {companyname,
       name,
-      pass,
-      confirmpass,
+      pancard,
+      email,
+      referral,
       mobile,
-      context}) async {
+      context,
+      regtype}) async {
     final response = await http.post(
       Uri.parse('${MSMEURL}api/user-register'),
       body: {
         'register_type': regtype,
         'company_name': companyname,
-        'email': email,
         'name': name,
-        'password': pass,
-        'conf_password': confirmpass,
+        'pan_card_number': pancard,
+        'email': email,
+        'referral_code': referral,
         'mobile_number': mobile
       },
     );
@@ -54,12 +84,24 @@ class signupcontroller extends GetxController {
         content: Text("${decodedResponse['message']}"),
       ));
     } else {
-      await ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("${decodedResponse['fields']['email'][0]}"),
-      ));
+      Get.back();
       await ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("${decodedResponse['fields']['mobile_number'][0]}"),
       ));
+      await ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("${decodedResponse['fields']['email'][0]}"),
+      ));
+    }
+  }
+
+  Future Signin({mobilenum}) async {
+    final response = await http.post(
+      Uri.parse('${MSMEURL}api/generate-otp'),
+      body: {'mobile_number': mobilenum, 'is_login': 'true'},
+    );
+    if (response.statusCode == 200) {
+      mobileForOTP = mobilenum;
+      Get.to(OtpVerification());
     }
   }
 
@@ -70,24 +112,6 @@ class signupcontroller extends GetxController {
     );
     var decodedResponse = json.decode(response.body);
     print(response.body);
-    if (response.statusCode == 200) {
-      Get.to(LoginScreen());
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("${decodedResponse['message']}"),
-      ));
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("${decodedResponse['message']}"),
-      ));
-    }
-  }
-
-  Future Signin({empId, pass}) async {
-    final response = await http.post(
-      Uri.parse('${MSMEURL}api/user-login'),
-      body: {'email': empId, 'password': pass},
-    );
-    var decodedResponse = json.decode(response.body);
     if (response.statusCode == 200) {
       SharedPreferences _prefs = await SharedPreferences.getInstance();
       _prefs.setString(
@@ -103,41 +127,13 @@ class signupcontroller extends GetxController {
       MemberName = _prefs.getString('MemberName');
       print('token--${CurrentToken}');
       Get.offAll(HomePage());
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("${decodedResponse['message']}"),
+      ));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("${decodedResponse['message']}"),
+      ));
     }
   }
-
-  // //Forgot Password
-
-  // Future ForgotPasswordSendOtpToMail({email, context}) async {
-  //   final response = await http.post(
-  //     Uri.parse('${BaseURL}api/Common_Controller/send_otp'),
-  //     body: {'email_id': email},
-  //   );
-  //   var decodedResponse = json.decode(response.body);
-  //   if (decodedResponse['status'] == 200) {
-  //     Get.to(ForgetPasswordotp(email: email));
-  //   } else {
-  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //       content: Text("The Email ID field must contain a valid email address."),
-  //     ));
-  //   }
-  // }
-
-  // Future ForgotPasswordVerify({email, context, password, otp}) async {
-  //   final response = await http.post(
-  //     Uri.parse('${BaseURL}api/Common_Controller/validate_otp'),
-  //     body: {'email_id': email, 'password': password, 'otp_code': otp},
-  //   );
-  //   var decodedResponse = json.decode(response.body);
-  //   if (decodedResponse['status'] == 200) {
-  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //       content: Text("Password reset succefully"),
-  //     ));
-  //     Get.to(LoginScreen());
-  //   } else {
-  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //       content: Text("${decodedResponse['message']}"),
-  //     ));
-  //   }
-  // }
 }

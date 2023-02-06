@@ -17,20 +17,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController email = TextEditingController();
-  TextEditingController pass = TextEditingController();
-
+  TextEditingController mobile = TextEditingController();
   var SigunpController = Get.put(signupcontroller());
   final formKey = GlobalKey<FormState>();
   bool checkvalue = false;
-
-  bool _passwordVisible = true;
-
-  @override
-  void initState() {
-    _passwordVisible = false;
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 1.h,
                 ),
                 CommonText(
-                  label: 'Email',
+                  label: 'Enter Mobile Number',
                   size: 11.sp,
                   colorT: Colors.black,
                   fontw8: FontWeight.w400,
@@ -76,17 +66,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     elevation: 3.0,
                     borderRadius: BorderRadius.circular(24),
                     child: TextFormField(
+                      controller: mobile,
+                      maxLength: 10,
                       validator: (val) {
                         if (val!.isEmpty) {
-                          return 'Please Enter Your email';
-                        } else if (val.length < 4) {
-                          return "Please enter valid email";
+                          return 'Please Enter Mobile Number';
+                        } else if (val.length != 10) {
+                          return "Please Enter Mobile Number";
                         }
                         return null;
                       },
-                      controller: email,
-                      keyboardType: TextInputType.emailAddress,
+                      keyboardType: TextInputType.number,
                       decoration: InputDecoration(
+                        counterText: '',
                         contentPadding: EdgeInsets.symmetric(
                           horizontal: 20.0,
                         ),
@@ -108,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             borderSide: BorderSide(
                                 color: Colors.transparent, width: 0.5),
                             borderRadius: BorderRadius.circular(24)),
-                        hintText: 'Enter Your Email',
+                        hintText: 'Enter Your Mobile Number',
                         hintStyle: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 11.sp,
@@ -117,90 +109,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                CommonText(
-                  label: 'Password',
-                  size: 11.sp,
-                  colorT: Colors.black,
-                  fontw8: FontWeight.w400,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 1.2.h),
-                  child: Material(
-                    elevation: 3.0,
-                    borderRadius: BorderRadius.circular(24),
-                    child: TextFormField(
-                      obscureText: !_passwordVisible,
-                      validator: (v) {
-                        if (v!.isEmpty) {
-                          return 'Please Enter Your Password';
-                        } else if (v.length < 2) {
-                          return "Please enter valid password";
-                        }
-                        return null;
-                      },
-                      controller: pass,
-                      keyboardType: TextInputType.visiblePassword,
-                      decoration: InputDecoration(
-                        fillColor: PWhite,
-                        filled: true,
-                        contentPadding: EdgeInsets.symmetric(
-                          horizontal: 20.0,
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.transparent, width: 0.5),
-                            borderRadius: BorderRadius.circular(24)),
-                        errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.transparent, width: 0.5),
-                            borderRadius: BorderRadius.circular(24)),
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.transparent, width: 0.5),
-                            borderRadius: BorderRadius.circular(24)),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.transparent, width: 0.5),
-                            borderRadius: BorderRadius.circular(24)),
-                        hintText: 'Enter Your Password',
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            _passwordVisible
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                            color: Color(0xffBF2025),
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              _passwordVisible = !_passwordVisible;
-                            });
-                          },
-                        ),
-                        hintStyle: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12.sp,
-                            color: Colors.black54,
-                            fontFamily: 'Poppins'),
-                      ),
-                    ),
-                  ),
-                ),
-                // Row(
-                //     crossAxisAlignment: CrossAxisAlignment.end,
-                //     mainAxisAlignment: MainAxisAlignment.end,
-                //     children: [
-                //       GestureDetector(
-                //         onTap: () {
-                //           Get.to(ForgetPassword());
-                //         },
-                //         child: CommonText(
-                //           label: 'Forget Password',
-                //           fontw8: FontWeight.w400,
-                //           size: 10.sp,
-                //           colorT: Color(0xffAAAAAA),
-                //         ),
-                //       )
-                //     ]),
                 Row(
                   children: [
                     Checkbox(
@@ -290,8 +198,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           if (checkvalue == true) {
                             LoginLoader();
                             Future.delayed(Duration(milliseconds: 100), () {
-                              SigunpController.Signin(
-                                  empId: email.text, pass: pass.text);
+                              SigunpController.Signin(mobilenum: mobile.text);
                             });
                           } else {
                             Fluttertoast.showToast(
