@@ -109,61 +109,61 @@ class signupcontroller extends GetxController {
 
 //Become a member function
 
-  BeMemberFunction(
-      {EstName,
-      EstNature,
-      Estmobile,
-      EstAddress,
-      EstEmail,
-      OwnerName,
-      OwnerAdress,
-      ownerMobile,
-      ownerEmail,
-      udyam,
-      specialFac,
-      product,
-      industry,
-      PersonName,
-      PesronsDesignation,
-      file,
-      filetype,
-      fileremark,
-      context}) async {
-    var request = http.MultipartRequest(
-        'POST', Uri.parse('${BaseURL}/api/Common_Controller/save_bmemeber'));
-    request.fields['bmem_estab_name'] = '${EstName}';
-    request.fields['bmem_estab_nature'] = '${EstNature}';
-    request.fields['bmem_estab_mobile'] = "${Estmobile}";
-    request.fields['bmem_estab_address'] = '${EstAddress}';
-    request.fields['bmem_estab_email'] = EstEmail;
-    request.fields['bmem_owner_name'] = OwnerName;
-    request.fields['bmem_owner_address'] = OwnerAdress;
-    request.fields['bmem_owner_mobile'] = ownerMobile;
-    request.fields['bmem_owner_email'] = ownerEmail;
-    request.fields['bmem_owner_gstno_udyam'] = udyam;
-    request.fields['bmem_special_facilities'] = specialFac;
-    request.fields['bmem_product'] = product;
-    request.fields['bmem_industry'] = industry;
-    request.fields['bmem_name_person'] = PersonName;
-    request.fields['bmem_designation'] = PesronsDesignation;
-    request.fields['attachment_type[0]'] = filetype;
-    request.fields['attachment_remark[0]'] = fileremark;
+  // BeMemberFunction(
+  //     {EstName,
+  //     EstNature,
+  //     Estmobile,
+  //     EstAddress,
+  //     EstEmail,
+  //     OwnerName,
+  //     OwnerAdress,
+  //     ownerMobile,
+  //     ownerEmail,
+  //     udyam,
+  //     specialFac,
+  //     product,
+  //     industry,
+  //     PersonName,
+  //     PesronsDesignation,
+  //     file,
+  //     filetype,
+  //     fileremark,
+  //     context}) async {
+  //   var request = http.MultipartRequest(
+  //       'POST', Uri.parse('${BaseURL}/api/Common_Controller/save_bmemeber'));
+  //   request.fields['bmem_estab_name'] = '${EstName}';
+  //   request.fields['bmem_estab_nature'] = '${EstNature}';
+  //   request.fields['bmem_estab_mobile'] = "${Estmobile}";
+  //   request.fields['bmem_estab_address'] = '${EstAddress}';
+  //   request.fields['bmem_estab_email'] = EstEmail;
+  //   request.fields['bmem_owner_name'] = OwnerName;
+  //   request.fields['bmem_owner_address'] = OwnerAdress;
+  //   request.fields['bmem_owner_mobile'] = ownerMobile;
+  //   request.fields['bmem_owner_email'] = ownerEmail;
+  //   request.fields['bmem_owner_gstno_udyam'] = udyam;
+  //   request.fields['bmem_special_facilities'] = specialFac;
+  //   request.fields['bmem_product'] = product;
+  //   request.fields['bmem_industry'] = industry;
+  //   request.fields['bmem_name_person'] = PersonName;
+  //   request.fields['bmem_designation'] = PesronsDesignation;
+  //   request.fields['attachment_type[0]'] = filetype;
+  //   request.fields['attachment_remark[0]'] = fileremark;
 
-    request.files
-        .add(await http.MultipartFile.fromPath("attachment[0]", "${file}"));
-    var response = await request.send();
-    var responsed = await http.Response.fromStream(response);
-    var decodedResponse = json.decode(responsed.body);
-    print(decodedResponse);
-    if (decodedResponse['status'] == 200) {
-      print('resbeco${responsed.body}');
-      Get.to(LoginScreen());
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("All fields and valid Document are required."),
-      ));
-    }
-  }
+  //   request.files
+  //       .add(await http.MultipartFile.fromPath("attachment[0]", "${file}"));
+  //   var response = await request.send();
+  //   var responsed = await http.Response.fromStream(response);
+  //   var decodedResponse = json.decode(responsed.body);
+  //   print(decodedResponse);
+  //   if (decodedResponse['status'] == 200) {
+  //     print('resbeco${responsed.body}');
+  //     Get.to(LoginScreen());
+  //   } else {
+  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+  //       content: Text("All fields and valid Document are required."),
+  //     ));
+  //   }
+  // }
 
   //Forgot Password
 
