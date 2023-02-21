@@ -100,12 +100,19 @@ class signupcontroller extends GetxController {
       await ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("${decodedResponse['message']}"),
       ));
-      await ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("${decodedResponse['fields']['mobile_number'][0]}"),
-      ));
-      await ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("${decodedResponse['fields']['email'][0]}"),
-      ));
+      if (decodedResponse['fields']['mobile_number'].length != 0) {
+        await ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text("${decodedResponse['fields']['mobile_number'][0]}"),
+        ));
+      } else if (decodedResponse['fields']['email'].length != 0) {
+        await ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text("${decodedResponse['fields']['email'][0]}"),
+        ));
+      } else if (decodedResponse['fields']['pan_card_number'].length != 0) {
+        await ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text("${decodedResponse['fields']['pan_card_number'][0]}"),
+        ));
+      }
     }
   }
 
