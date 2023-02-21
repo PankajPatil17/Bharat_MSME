@@ -1,10 +1,12 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:tssia_replica/Screens/HomePage.dart';
+import 'package:tssia_replica/Screens/Sign_Up/LoginScreen.dart';
 import 'package:tssia_replica/Screens/Sign_Up/OtpVerification.dart';
 
 class signupcontroller extends GetxController {
@@ -14,6 +16,7 @@ class signupcontroller extends GetxController {
   var CurrentToken;
   bool isStopped = false;
   var mobileForOTP;
+  var PlatformNum;
 
   getIDfunction() async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
@@ -21,24 +24,31 @@ class signupcontroller extends GetxController {
     MemberName = _prefs.getString('MemberName');
     CurrentuserEmail = _prefs.getString('MemberEmail');
     CurrentToken = _prefs.getString('token');
+    if (Platform.isAndroid) {
+      PlatformNum = 2;
+    } else {
+      PlatformNum = 3;
+    }
   }
 
   Future RegSignUpGroup(
       {regtype, email, name, mobile, groupname, context}) async {
     final response = await http.post(
-      Uri.parse('${MSMEURL}api/user-register'),
+      Uri.parse('${MSMEURL}api/registration'),
+      headers: {'api-token': secToken},
       body: {
         'register_type': regtype,
         'email': email,
-        'name': name,
+        'username': name,
         'mobile_number': mobile,
-        'group_name': groupname
+        'group_name': groupname,
+        'is_registered_by': PlatformNum.toString()
       },
     );
     var decodedResponse = json.decode(response.body);
     print(response.body);
     if (response.statusCode == 200) {
-      Get.to(OtpVerification());
+      Get.to(LoginScreen());
       mobileForOTP = mobile;
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("${decodedResponse['message']}"),
@@ -64,27 +74,32 @@ class signupcontroller extends GetxController {
       context,
       regtype}) async {
     final response = await http.post(
-      Uri.parse('${MSMEURL}api/user-register'),
+      Uri.parse('${MSMEURL}api/registration'),
+      headers: {'api-token': secToken},
       body: {
         'register_type': regtype,
         'company_name': companyname,
-        'name': name,
+        'username': name,
         'pan_card_number': pancard,
         'email': email,
         'referral_code': referral,
-        'mobile_number': mobile
+        'mobile_number': mobile,
+        'is_registered_by': PlatformNum.toString()
       },
     );
     var decodedResponse = json.decode(response.body);
-    print(response.body);
+    print(PlatformNum.toString());
     if (response.statusCode == 200) {
-      Get.to(OtpVerification());
+      Get.to(LoginScreen());
       mobileForOTP = mobile;
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("${decodedResponse['message']}"),
       ));
     } else {
       Get.back();
+      await ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("${decodedResponse['message']}"),
+      ));
       await ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("${decodedResponse['fields']['mobile_number'][0]}"),
       ));
@@ -94,24 +109,32 @@ class signupcontroller extends GetxController {
     }
   }
 
-  Future Signin({mobilenum}) async {
+  Future Signin({mobilenum, context}) async {
     final response = await http.post(
       Uri.parse('${MSMEURL}api/generate-otp'),
+      headers: {'api-token': secToken},
       body: {'mobile_number': mobilenum, 'is_login': 'true'},
     );
+    var decodedResponse = json.decode(response.body);
     if (response.statusCode == 200) {
       mobileForOTP = mobilenum;
       Get.to(OtpVerification());
+    } else {
+      Get.back();
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("${decodedResponse['message']}"),
+      ));
     }
   }
 
   Future OtpVerify({otp, context}) async {
     final response = await http.post(
       Uri.parse('${MSMEURL}api/verify-otp'),
+      headers: {'api-token': secToken},
       body: {'otp': otp, 'mobile_number': mobileForOTP},
     );
     var decodedResponse = json.decode(response.body);
-    print(response.body);
+    print(response.headers['authorization']);
     if (response.statusCode == 200) {
       SharedPreferences _prefs = await SharedPreferences.getInstance();
       _prefs.setString(
@@ -120,7 +143,7 @@ class signupcontroller extends GetxController {
           'MemberName', decodedResponse['data']['name'].toString());
       _prefs.setString(
           'MemberEmail', decodedResponse['data']['mobile_number'].toString());
-      _prefs.setString('token', decodedResponse['data']['token'].toString());
+      _prefs.setString('token', response.headers['authorization'].toString());
       CurrentuserID = _prefs.getString('CurrentuserID');
       CurrentuserEmail = _prefs.getString('MemberEmail');
       CurrentToken = _prefs.getString('token');

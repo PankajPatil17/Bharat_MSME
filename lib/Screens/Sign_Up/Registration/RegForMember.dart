@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -5,7 +7,9 @@ import 'package:sizer/sizer.dart';
 import 'package:tssia_replica/Controller/SigupController.dart';
 import 'package:tssia_replica/Generic/Common/CommonText.dart';
 import 'package:tssia_replica/Generic/Common/Common_Color.dart';
+import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:tssia_replica/Screens/WebView/WebView.dart';
+import 'package:http/http.dart' as http;
 
 class RegForMember extends StatefulWidget {
   const RegForMember({super.key});
@@ -24,6 +28,7 @@ class _RegForMemberState extends State<RegForMember> {
   TextEditingController email = TextEditingController();
   TextEditingController mobile = TextEditingController();
   TextEditingController refferal = TextEditingController();
+  var Panverify = 'no';
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -351,12 +356,13 @@ class _RegForMemberState extends State<RegForMember> {
                 backgroundColor: Color(0xffBF2025),
                 shape: const StadiumBorder(),
               ),
-              onPressed: () {
+              onPressed: () async {
                 if (formKey.currentState!.validate()) {
                   if (checkvalue == true) {
                     LoginLoader();
-                    Future.delayed(Duration(milliseconds: 100), () {
-                      SigunpController.RegSignUpMember(
+                    await PanVerify();
+                    if (Panverify == 'yes') {
+                      await SigunpController.RegSignUpMember(
                           companyname: companyName.text,
                           email: email.text,
                           mobile: mobile.text,
@@ -365,7 +371,7 @@ class _RegForMemberState extends State<RegForMember> {
                           referral: refferal.text,
                           regtype: 'member',
                           context: context);
-                    });
+                    }
                   } else {
                     Fluttertoast.showToast(
                         msg: "Please accept conditions",
@@ -436,5 +442,25 @@ class _RegForMemberState extends State<RegForMember> {
         );
       },
     );
+  }
+
+  Future PanVerify() async {
+    final response = await http.post(
+      Uri.parse('${MSMEURL}api/member/pan-verification'),
+      headers: {'api-token': secToken},
+      body: {
+        'pan_card_number': PanCard.text,
+      },
+    );
+    var decodedResponse = json.decode(response.body);
+    if (decodedResponse['status'] == false) {
+      Panverify = 'no';
+      Get.back();
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("${decodedResponse['message']}"),
+      ));
+    } else {
+      Panverify = 'yes';
+    }
   }
 }
