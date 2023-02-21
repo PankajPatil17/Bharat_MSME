@@ -191,12 +191,6 @@ class _RegForMemberState extends State<RegForMember> {
             borderRadius: BorderRadius.circular(24),
             child: TextFormField(
               controller: refferal,
-              validator: (val) {
-                if (val!.isEmpty) {
-                  return 'Please Enter Referral code';
-                }
-                return null;
-              },
               keyboardType: TextInputType.emailAddress,
               textCapitalization: TextCapitalization.characters,
               decoration: InputDecoration(
