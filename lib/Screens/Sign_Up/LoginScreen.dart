@@ -39,6 +39,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: EdgeInsets.all(5.h),
                 margin: EdgeInsets.only(bottom: 2.5.h),
                 decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                          blurRadius: 1,
+                          spreadRadius: 1,
+                          color: Color(0xffFFEAE1),
+                          offset: Offset(0, 1))
+                    ],
                     color: Color(0xffFFF7F7),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(50),

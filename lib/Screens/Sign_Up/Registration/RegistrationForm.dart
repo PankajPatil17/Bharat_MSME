@@ -41,7 +41,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SvgPicture.asset(
+                  SvgPicture.network(
                     '${ImagePath}Registration.svg',
                   ),
                   SizedBox(
