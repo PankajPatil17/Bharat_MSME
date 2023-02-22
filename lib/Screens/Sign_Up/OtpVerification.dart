@@ -47,77 +47,96 @@ class _OtpVerificationState extends State<OtpVerification> {
                   ),
                 ),
               ),
-              Align(
-                alignment: Alignment.center,
-                child: CommonText(
-                  label: 'Verify OTP',
-                  colorT: Color(0xffD82A1B),
-                  fontw8: FontWeight.w500,
-                  size: 14.sp,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    bottom: 2.4.h, top: 2.h, left: 2.h, right: 2.h),
-                child: TextFormField(
-                  maxLength: 6,
-                  validator: (val) {
-                    if (val!.isEmpty) {
-                      return 'Please Enter Your OTP';
-                    } else if (val.length != 6) {
-                      return "Please Enter Your OTP";
-                    }
-                    return null;
-                  },
-                  controller: OTP,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    counterText: '',
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 1.0,
-                    ),
-                    fillColor: PWhite,
-                    filled: true,
-                    focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xffe4e4e4))),
-                    enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xffe4e4e4))),
-                    hintText: 'Enter Your OTP',
-                    hintStyle: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 11.sp,
-                        fontFamily: 'Poppins'),
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      if (formKey.currentState!.validate()) {
-                        SigunpController.OtpVerify(
-                            otp: OTP.text, context: context);
-                      }
-                    });
-                  },
-                  child: Container(
-                    margin: EdgeInsets.only(top: 3.h),
-                    height: 5.h,
-                    width: 32.w,
-                    decoration: BoxDecoration(
-                        color: Color(0xffBF2025),
-                        borderRadius: BorderRadius.circular(8)),
-                    child: Center(
+              Container(
+                padding: EdgeInsets.all(1.5.h),
+                margin: EdgeInsets.only(left: 1.5.h, right: 1.5.h),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: PWhite,
+                    boxShadow: [
+                      BoxShadow(
+                          blurRadius: 2,
+                          spreadRadius: 1,
+                          color: Color(0xffFFEAE1),
+                          offset: Offset(0, 1))
+                    ]),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Align(
+                      alignment: Alignment.center,
                       child: CommonText(
-                          label: 'Verify',
-                          colorT: Colors.white,
-                          fontw8: FontWeight.w400,
-                          size: 12.sp),
+                        label: 'Verify OTP',
+                        colorT: Color(0xffD82A1B),
+                        fontw8: FontWeight.w500,
+                        size: 14.sp,
+                      ),
                     ),
-                  ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          bottom: 2.4.h, top: 2.h, left: 2.h, right: 2.h),
+                      child: TextFormField(
+                        maxLength: 6,
+                        validator: (val) {
+                          if (val!.isEmpty) {
+                            return 'Please Enter Your OTP';
+                          } else if (val.length != 6) {
+                            return "Please Enter Your OTP";
+                          }
+                          return null;
+                        },
+                        controller: OTP,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          counterText: '',
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: 1.0,
+                          ),
+                          fillColor: PWhite,
+                          filled: true,
+                          focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Color(0xffe4e4e4))),
+                          enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Color(0xffe4e4e4))),
+                          hintText: 'Enter Your OTP',
+                          hintStyle: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 11.sp,
+                              fontFamily: 'Poppins'),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            if (formKey.currentState!.validate()) {
+                              SigunpController.OtpVerify(
+                                  otp: OTP.text, context: context);
+                            }
+                          });
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(top: 3.h),
+                          height: 5.h,
+                          width: 32.w,
+                          decoration: BoxDecoration(
+                              color: Color(0xffBF2025),
+                              borderRadius: BorderRadius.circular(8)),
+                          child: Center(
+                            child: CommonText(
+                                label: 'Verify',
+                                colorT: Colors.white,
+                                fontw8: FontWeight.w400,
+                                size: 12.sp),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
+              )
             ],
           ),
         ),
