@@ -30,164 +30,128 @@ class _RegForGroupState extends State<RegForGroup> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MemberHeaderText('Group Name'),
-          Material(
-            elevation: 3.0,
-            borderRadius: BorderRadius.circular(24),
-            child: TextFormField(
-              controller: GroupName,
-              validator: (val) {
-                if (val!.isEmpty) {
-                  return 'Please Enter Group Name';
-                }
-                return null;
-              },
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.transparent, width: 0.5),
-                    borderRadius: BorderRadius.circular(24)),
-                fillColor: PWhite,
-                filled: true,
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 10.0,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6.0),
-                  borderSide: BorderSide(
-                    color: Color(0xffe4e4e4),
-                  ),
-                ),
-                hintText: 'Enter Group Name',
-                hintStyle: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 11.sp,
-                    fontFamily: 'Poppins'),
+          TextFormField(
+            controller: GroupName,
+            validator: (val) {
+              if (val!.isEmpty) {
+                return 'Please Enter Group Name';
+              }
+              return null;
+            },
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffcdcdcd))),
+              enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffcdcdcd))),
+              fillColor: PWhite,
+              filled: true,
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 1.0,
               ),
+              hintText: 'Enter Group Name',
+              hintStyle: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 11.sp,
+                  fontFamily: 'Poppins'),
             ),
           ),
           MemberHeaderText('Username'),
-          Material(
-            elevation: 3.0,
-            borderRadius: BorderRadius.circular(24),
-            child: TextFormField(
-              controller: Username,
-              validator: (val) {
-                if (val!.isEmpty) {
-                  return 'Please Enter Name of Username';
-                }
-                return null;
-              },
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.transparent, width: 0.5),
-                    borderRadius: BorderRadius.circular(24)),
-                fillColor: PWhite,
-                filled: true,
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 10.0,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6.0),
-                  borderSide: BorderSide(
-                    color: Color(0xffe4e4e4),
-                  ),
-                ),
-                hintText: 'Enter Your Username',
-                hintStyle: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 11.sp,
-                    fontFamily: 'Poppins'),
+          TextFormField(
+            controller: Username,
+            validator: (val) {
+              if (val!.isEmpty) {
+                return 'Please Enter Name of Username';
+              }
+              return null;
+            },
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffcdcdcd))),
+              enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffcdcdcd))),
+              fillColor: PWhite,
+              filled: true,
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 1.0,
               ),
+              hintText: 'Enter Your Username',
+              hintStyle: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 11.sp,
+                  fontFamily: 'Poppins'),
             ),
           ),
           MemberHeaderText('Email'),
-          Material(
-            elevation: 3.0,
-            borderRadius: BorderRadius.circular(24),
-            child: TextFormField(
-              controller: email,
-              validator: (val) {
-                if (val!.isEmpty) {
-                  return 'Please Enter Email';
-                }
-                return null;
-              },
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.transparent, width: 0.5),
-                    borderRadius: BorderRadius.circular(24)),
-                fillColor: PWhite,
-                filled: true,
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 10.0,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6.0),
-                  borderSide: BorderSide(
-                    color: Color(0xffe4e4e4),
-                  ),
-                ),
-                hintText: 'Enter Your Email',
-                hintStyle: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 11.sp,
-                    fontFamily: 'Poppins'),
+          TextFormField(
+            controller: email,
+            validator: (val) {
+              if (val!.isEmpty) {
+                return 'Please Enter Email';
+              }
+              return null;
+            },
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffcdcdcd))),
+              enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffcdcdcd))),
+              fillColor: PWhite,
+              filled: true,
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 1.0,
               ),
+              hintText: 'Enter Your Email',
+              hintStyle: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 11.sp,
+                  fontFamily: 'Poppins'),
             ),
           ),
           MemberHeaderText('Mobile Number'),
-          Material(
-            elevation: 3.0,
-            borderRadius: BorderRadius.circular(24),
-            child: TextFormField(
-              controller: mobile,
-              maxLength: 10,
-              validator: (val) {
-                if (val!.isEmpty) {
-                  return 'Please Enter Mobile Number';
-                } else if (val.length != 10) {
-                  return "Please Enter Mobile Number";
-                }
-                return null;
-              },
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.transparent, width: 0.5),
-                    borderRadius: BorderRadius.circular(24)),
-                fillColor: PWhite,
-                filled: true,
-                counterText: '',
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 10.0,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6.0),
-                  borderSide: BorderSide(
-                    color: Color(0xffe4e4e4),
-                  ),
-                ),
-                hintText: 'Enter Your Mobile Number',
-                hintStyle: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 11.sp,
-                    fontFamily: 'Poppins'),
+          TextFormField(
+            controller: mobile,
+            maxLength: 10,
+            validator: (val) {
+              if (val!.isEmpty) {
+                return 'Please Enter Mobile Number';
+              } else if (val.length != 10) {
+                return "Please Enter Mobile Number";
+              }
+              return null;
+            },
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              counterText: '',
+              focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffcdcdcd))),
+              enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffcdcdcd))),
+              fillColor: PWhite,
+              filled: true,
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 1.0,
               ),
+              hintText: 'Enter Your Mobile Number',
+              hintStyle: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 11.sp,
+                  fontFamily: 'Poppins'),
             ),
           ),
           SizedBox(
             height: 1.4.h,
           ),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Checkbox(
+                side: BorderSide(
+                    style: BorderStyle.solid,
+                    strokeAlign: 1.0,
+                    color: mainColor),
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 checkColor: Color(0xffFFFFFF),
                 fillColor: MaterialStateProperty.all(Color(0xffBF2025)),
                 value: checkvalue,
@@ -207,7 +171,7 @@ class _RegForGroupState extends State<RegForGroup> {
                         CommonText(
                           label: 'I have read and accept the ',
                           fontw8: FontWeight.w400,
-                          size: 10.sp,
+                          size: 9.sp,
                         ),
                         GestureDetector(
                           onTap: () {
@@ -221,7 +185,7 @@ class _RegForGroupState extends State<RegForGroup> {
                           child: Text(
                             'Terms & Condition ',
                             style: TextStyle(
-                                fontSize: 10.sp,
+                                fontSize: 9.sp,
                                 fontFamily: 'Poppins',
                                 color: Color(0xffBF2025),
                                 fontWeight: FontWeight.w400),
@@ -237,7 +201,7 @@ class _RegForGroupState extends State<RegForGroup> {
                         CommonText(
                           label: 'and ',
                           fontw8: FontWeight.w400,
-                          size: 10.sp,
+                          size: 9.sp,
                         ),
                         GestureDetector(
                           onTap: () {
@@ -252,7 +216,7 @@ class _RegForGroupState extends State<RegForGroup> {
                           child: Text(
                             'Privacy Policy',
                             style: TextStyle(
-                                fontSize: 10.sp,
+                                fontSize: 9.sp,
                                 fontFamily: 'Poppins',
                                 color: Color(0xffBF2025),
                                 fontWeight: FontWeight.w400),
@@ -265,41 +229,39 @@ class _RegForGroupState extends State<RegForGroup> {
               )
             ],
           ),
-          Align(
-            alignment: Alignment.center,
-            child: TextButton(
-              style: TextButton.styleFrom(
-                elevation: 1,
-                backgroundColor: Color(0xffBF2025),
-                shape: const StadiumBorder(),
-              ),
-              onPressed: () {
-                if (formKey.currentState!.validate()) {
-                  if (checkvalue == true) {
-                    LoginLoader();
-                    Future.delayed(Duration(milliseconds: 100), () {
-                      SigunpController.RegSignUpGroup(
-                          email: email.text,
-                          groupname: GroupName.text,
-                          mobile: mobile.text,
-                          name: Username.text,
-                          regtype: 'group',
-                          context: context);
-                    });
-                  } else {
-                    Fluttertoast.showToast(
-                        msg: "Please accept conditions",
-                        toastLength: Toast.LENGTH_SHORT,
-                        gravity: ToastGravity.BOTTOM,
-                        timeInSecForIosWeb: 2,
-                        textColor: Colors.white,
-                        fontSize: 16.0);
-                  }
+          GestureDetector(
+            onTap: () {
+              if (formKey.currentState!.validate()) {
+                if (checkvalue == true) {
+                  LoginLoader();
+                  Future.delayed(Duration(milliseconds: 100), () {
+                    SigunpController.RegSignUpGroup(
+                        email: email.text,
+                        groupname: GroupName.text,
+                        mobile: mobile.text,
+                        name: Username.text,
+                        regtype: 'group',
+                        context: context);
+                  });
+                } else {
+                  Fluttertoast.showToast(
+                      msg: "Please accept conditions",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.BOTTOM,
+                      timeInSecForIosWeb: 2,
+                      textColor: Colors.white,
+                      fontSize: 16.0);
                 }
-              },
-              child: Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: 1.9.h, vertical: 0.2.h),
+              }
+            },
+            child: Center(
+              child: Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.only(top: 1.5.h),
+                height: 5.h,
+                width: 16.h,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8), color: mainColor),
                 child: Text(
                   'REGISTER',
                   style: TextStyle(
@@ -318,7 +280,7 @@ class _RegForGroupState extends State<RegForGroup> {
 
   MemberHeaderText(memberLabel) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 1.8.h),
+      padding: EdgeInsets.symmetric(vertical: 1.h),
       child: CommonText(
         label: memberLabel,
         fontw8: FontWeight.w400,

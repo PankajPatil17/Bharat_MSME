@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tssia_replica/Generic/Common/CommonImage.dart';
@@ -48,15 +47,15 @@ class _CommonAppBarState extends State<CommonAppBar> {
             width: 8.h,
           ),
           Spacer(),
-          GestureDetector(
-            onTap: () {
-              // Get.to(NotificationPage(), transition: transitonEffect);
-            },
-            child: SvgPicture.asset(
-              'assets/images/Notification.svg',
-              color: mainBlue,
-            ),
-          )
+          // GestureDetector(
+          //   onTap: () {
+          //     // Get.to(NotificationPage(), transition: transitonEffect);
+          //   },
+          //   child: SvgPicture.asset(
+          //     'assets/images/Notification.svg',
+          //     color: mainBlue,
+          //   ),
+          // )
         ],
       ),
     );

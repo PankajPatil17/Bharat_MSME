@@ -37,234 +37,178 @@ class _RegForMemberState extends State<RegForMember> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MemberHeaderText('Company Name'),
-          Material(
-            elevation: 3.0,
-            borderRadius: BorderRadius.circular(24),
-            child: TextFormField(
-              controller: companyName,
-              validator: (val) {
-                if (val!.isEmpty) {
-                  return 'Please Enter Company Name';
-                }
-                return null;
-              },
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.transparent, width: 0.5),
-                    borderRadius: BorderRadius.circular(24)),
-                fillColor: PWhite,
-                filled: true,
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 10.0,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6.0),
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                  ),
-                ),
-                hintText: 'Enter Your Company Name',
-                hintStyle: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 11.sp,
-                    fontFamily: 'Poppins'),
+          TextFormField(
+            controller: companyName,
+            validator: (val) {
+              if (val!.isEmpty) {
+                return 'Please Enter Company Name';
+              }
+              return null;
+            },
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffcdcdcd))),
+              enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffcdcdcd))),
+              fillColor: PWhite,
+              filled: true,
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 1.0,
               ),
+              hintText: 'Enter Your Company Name',
+              hintStyle: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 11.sp,
+                  fontFamily: 'Poppins'),
             ),
           ),
           MemberHeaderText('Username'),
-          Material(
-            elevation: 3.0,
-            borderRadius: BorderRadius.circular(24),
-            child: TextFormField(
-              controller: Username,
-              validator: (val) {
-                if (val!.isEmpty) {
-                  return 'Please Enter Name of Username';
-                }
-                return null;
-              },
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.transparent, width: 0.5),
-                    borderRadius: BorderRadius.circular(24)),
-                fillColor: PWhite,
-                filled: true,
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 10.0,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6.0),
-                  borderSide: BorderSide(
-                    color: Color(0xffe4e4e4),
-                  ),
-                ),
-                hintText: 'Enter Your Username',
-                hintStyle: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 11.sp,
-                    fontFamily: 'Poppins'),
+          TextFormField(
+            controller: Username,
+            validator: (val) {
+              if (val!.isEmpty) {
+                return 'Please Enter Name of Username';
+              }
+              return null;
+            },
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffcdcdcd))),
+              enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffcdcdcd))),
+              fillColor: PWhite,
+              filled: true,
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 1.0,
               ),
+              hintText: 'Enter Your Username',
+              hintStyle: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 11.sp,
+                  fontFamily: 'Poppins'),
             ),
           ),
           MemberHeaderText('PanCard'),
-          Material(
-            elevation: 3.0,
-            borderRadius: BorderRadius.circular(24),
-            child: TextFormField(
-              controller: PanCard,
-              validator: (val) {
-                if (val!.isEmpty) {
-                  return 'Please Enter PanCard';
-                }
-                return null;
-              },
-              keyboardType: TextInputType.text,
-              textCapitalization: TextCapitalization.characters,
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.transparent, width: 0.5),
-                    borderRadius: BorderRadius.circular(24)),
-                fillColor: PWhite,
-                filled: true,
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 10.0,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6.0),
-                  borderSide: BorderSide(
-                    color: Color(0xffe4e4e4),
-                  ),
-                ),
-                hintText: 'Enter Your PanCard',
-                hintStyle: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 11.sp,
-                    fontFamily: 'Poppins'),
+          TextFormField(
+            controller: PanCard,
+            validator: (val) {
+              if (val!.isEmpty) {
+                return 'Please Enter PanCard';
+              }
+              return null;
+            },
+            keyboardType: TextInputType.text,
+            textCapitalization: TextCapitalization.characters,
+            decoration: InputDecoration(
+              focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffcdcdcd))),
+              enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffcdcdcd))),
+              fillColor: PWhite,
+              filled: true,
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 1.0,
               ),
+              hintText: 'Enter Your PanCard',
+              hintStyle: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 11.sp,
+                  fontFamily: 'Poppins'),
             ),
           ),
           MemberHeaderText('Email'),
-          Material(
-            elevation: 3.0,
-            borderRadius: BorderRadius.circular(24),
-            child: TextFormField(
-              controller: email,
-              validator: (val) {
-                if (val!.isEmpty) {
-                  return 'Please Enter Email';
-                }
-                return null;
-              },
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.transparent, width: 0.5),
-                    borderRadius: BorderRadius.circular(24)),
-                fillColor: PWhite,
-                filled: true,
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 10.0,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6.0),
-                  borderSide: BorderSide(
-                    color: Color(0xffe4e4e4),
-                  ),
-                ),
-                hintText: 'Enter Your Email',
-                hintStyle: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 11.sp,
-                    fontFamily: 'Poppins'),
+          TextFormField(
+            controller: email,
+            validator: (val) {
+              if (val!.isEmpty) {
+                return 'Please Enter Email';
+              }
+              return null;
+            },
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffcdcdcd))),
+              enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffcdcdcd))),
+              fillColor: PWhite,
+              filled: true,
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 1.0,
               ),
+              hintText: 'Enter Your Email',
+              hintStyle: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 11.sp,
+                  fontFamily: 'Poppins'),
             ),
           ),
           MemberHeaderText('Enter Referral'),
-          Material(
-            elevation: 3.0,
-            borderRadius: BorderRadius.circular(24),
-            child: TextFormField(
-              controller: refferal,
-              keyboardType: TextInputType.emailAddress,
-              textCapitalization: TextCapitalization.characters,
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.transparent, width: 0.5),
-                    borderRadius: BorderRadius.circular(24)),
-                fillColor: PWhite,
-                filled: true,
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 10.0,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6.0),
-                  borderSide: BorderSide(
-                    color: Color(0xffe4e4e4),
-                  ),
-                ),
-                hintText: 'Enter Your Referral code',
-                hintStyle: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 11.sp,
-                    fontFamily: 'Poppins'),
+          TextFormField(
+            controller: refferal,
+            keyboardType: TextInputType.emailAddress,
+            textCapitalization: TextCapitalization.characters,
+            decoration: InputDecoration(
+              focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffcdcdcd))),
+              enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffcdcdcd))),
+              fillColor: PWhite,
+              filled: true,
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 1.0,
               ),
+              hintText: 'Enter Your Referral code',
+              hintStyle: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 11.sp,
+                  fontFamily: 'Poppins'),
             ),
           ),
           MemberHeaderText('Mobile Number'),
-          Material(
-            elevation: 3.0,
-            borderRadius: BorderRadius.circular(24),
-            child: TextFormField(
-              controller: mobile,
-              maxLength: 10,
-              validator: (val) {
-                if (val!.isEmpty) {
-                  return 'Please Enter Mobile Number';
-                } else if (val.length != 10) {
-                  return "Please Enter Mobile Number";
-                }
-                return null;
-              },
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.transparent, width: 0.5),
-                    borderRadius: BorderRadius.circular(24)),
-                fillColor: PWhite,
-                filled: true,
-                counterText: '',
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 10.0,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6.0),
-                  borderSide: BorderSide(
-                    color: Color(0xffe4e4e4),
-                  ),
-                ),
-                hintText: 'Enter Your Mobile Number',
-                hintStyle: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 11.sp,
-                    fontFamily: 'Poppins'),
+          TextFormField(
+            controller: mobile,
+            maxLength: 10,
+            validator: (val) {
+              if (val!.isEmpty) {
+                return 'Please Enter Mobile Number';
+              } else if (val.length != 10) {
+                return "Please Enter Mobile Number";
+              }
+              return null;
+            },
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              counterText: "",
+              focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffcdcdcd))),
+              enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffcdcdcd))),
+              fillColor: PWhite,
+              filled: true,
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 1.0,
               ),
+              hintText: 'Enter Your Mobile Number',
+              hintStyle: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 11.sp,
+                  fontFamily: 'Poppins'),
             ),
           ),
           SizedBox(
             height: 1.4.h,
           ),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Checkbox(
+                side: BorderSide(
+                    style: BorderStyle.solid,
+                    strokeAlign: 1.0,
+                    color: mainColor),
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 checkColor: Color(0xffFFFFFF),
                 fillColor: MaterialStateProperty.all(Color(0xffBF2025)),
                 value: checkvalue,
@@ -284,7 +228,7 @@ class _RegForMemberState extends State<RegForMember> {
                         CommonText(
                           label: 'I have read and accept the ',
                           fontw8: FontWeight.w400,
-                          size: 10.sp,
+                          size: 9.sp,
                         ),
                         GestureDetector(
                           onTap: () {
@@ -298,7 +242,7 @@ class _RegForMemberState extends State<RegForMember> {
                           child: Text(
                             'Terms & Condition ',
                             style: TextStyle(
-                                fontSize: 10.sp,
+                                fontSize: 9.sp,
                                 fontFamily: 'Poppins',
                                 color: Color(0xffBF2025),
                                 fontWeight: FontWeight.w400),
@@ -314,7 +258,7 @@ class _RegForMemberState extends State<RegForMember> {
                         CommonText(
                           label: 'and ',
                           fontw8: FontWeight.w400,
-                          size: 10.sp,
+                          size: 9.sp,
                         ),
                         GestureDetector(
                           onTap: () {
@@ -329,7 +273,7 @@ class _RegForMemberState extends State<RegForMember> {
                           child: Text(
                             'Privacy Policy',
                             style: TextStyle(
-                                fontSize: 10.sp,
+                                fontSize: 9.sp,
                                 fontFamily: 'Poppins',
                                 color: Color(0xffBF2025),
                                 fontWeight: FontWeight.w400),
@@ -344,13 +288,8 @@ class _RegForMemberState extends State<RegForMember> {
           ),
           Align(
             alignment: Alignment.center,
-            child: TextButton(
-              style: TextButton.styleFrom(
-                elevation: 1,
-                backgroundColor: Color(0xffBF2025),
-                shape: const StadiumBorder(),
-              ),
-              onPressed: () async {
+            child: GestureDetector(
+              onTap: () async {
                 if (formKey.currentState!.validate()) {
                   if (checkvalue == true) {
                     LoginLoader();
@@ -377,9 +316,13 @@ class _RegForMemberState extends State<RegForMember> {
                   }
                 }
               },
-              child: Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: 1.9.h, vertical: 0.2.h),
+              child: Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.only(top: 1.5.h),
+                height: 5.h,
+                width: 16.h,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8), color: mainColor),
                 child: Text(
                   'REGISTER',
                   style: TextStyle(
@@ -398,7 +341,7 @@ class _RegForMemberState extends State<RegForMember> {
 
   MemberHeaderText(memberLabel) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 1.8.h),
+      padding: EdgeInsets.symmetric(vertical: 1.h),
       child: CommonText(
         label: memberLabel,
         fontw8: FontWeight.w400,

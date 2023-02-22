@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:tssia_replica/Screens/Sign_Up/Registration/RegistrationForm.dart';
@@ -36,6 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Container(
                 height: 30.h,
                 width: 100.w,
+                padding: EdgeInsets.all(5.h),
                 margin: EdgeInsets.only(bottom: 2.5.h),
                 decoration: BoxDecoration(
                     color: Color(0xffFFF7F7),
@@ -45,8 +45,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     )),
                 child: Align(
                   alignment: Alignment.center,
-                  child: SvgPicture.asset(
-                    'assets/images/Login_Image.svg',
+                  child: Image.asset(
+                    'assets/images/Login_Image.png',
                   ),
                 ),
               ),
@@ -67,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     boxShadow: [
                       BoxShadow(
                           blurRadius: 2,
-                          spreadRadius: 2,
+                          spreadRadius: 1,
                           color: Color(0xffFFEAE1),
                           offset: Offset(0, 1))
                     ]),
@@ -104,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Color(0xffe4e4e4))),
                           enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xffc0c0c0))),
+                              borderSide: BorderSide(color: Color(0xffe4e4e4))),
                           hintText: 'Enter Your Mobile Number',
                           hintStyle: TextStyle(
                               fontWeight: FontWeight.w400,
@@ -116,6 +116,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       children: [
                         Checkbox(
+                          side: BorderSide(
+                              style: BorderStyle.solid,
+                              strokeAlign: 1.0,
+                              color: mainColor),
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
                           checkColor: Color(0xffFFFFFF),
                           fillColor:
                               MaterialStateProperty.all(Color(0xffBF2025)),
@@ -136,7 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   CommonText(
                                     label: 'I have read and accept the ',
                                     fontw8: FontWeight.w400,
-                                    size: 10.sp,
+                                    size: 9.sp,
                                   ),
                                   GestureDetector(
                                     onTap: () {
@@ -150,7 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: Text(
                                       'Terms & Condition ',
                                       style: TextStyle(
-                                          fontSize: 10.sp,
+                                          fontSize: 9.sp,
                                           fontFamily: 'Poppins',
                                           color: Color(0xffBF2025),
                                           fontWeight: FontWeight.w400),
@@ -166,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   CommonText(
                                     label: 'and ',
                                     fontw8: FontWeight.w400,
-                                    size: 10.sp,
+                                    size: 9.sp,
                                   ),
                                   GestureDetector(
                                     onTap: () {
@@ -181,7 +187,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: Text(
                                       'Privacy Policy',
                                       style: TextStyle(
-                                          fontSize: 10.sp,
+                                          fontSize: 9.sp,
                                           fontFamily: 'Poppins',
                                           color: Color(0xffBF2025),
                                           fontWeight: FontWeight.w400),
@@ -221,19 +227,30 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Container(
                           height: 5.h,
                           width: 32.w,
-                          margin: EdgeInsets.only(top: 2.h, bottom: 2.h),
+                          margin: EdgeInsets.only(top: 2.h, bottom: 1.5.h),
                           decoration: BoxDecoration(
                               color: Color(0xffBF2025),
-                              borderRadius: MainBorderRadius),
+                              borderRadius: BorderRadius.circular(8)),
                           child: Center(
                             child: CommonText(
-                                label: 'Login',
+                                label: 'CONTINUE',
                                 colorT: Colors.white,
                                 fontw8: FontWeight.w400,
                                 size: 12.sp),
                           ),
                         ),
                       ),
+                    ),
+                    Center(
+                      child: CommonText(
+                        label: 'Or',
+                        colorT: Colors.black,
+                        fontw8: FontWeight.w500,
+                        size: 10.sp,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 1.5.h,
                     ),
                     Center(
                       child: GestureDetector(
