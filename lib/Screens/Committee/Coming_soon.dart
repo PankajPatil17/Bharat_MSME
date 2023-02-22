@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:tssia_replica/Generic/Custom/variables.dart';
 
 class WellnessComingSoon extends StatefulWidget {
   const WellnessComingSoon({super.key});
@@ -18,7 +19,7 @@ class _WellnessComingSoonState extends State<WellnessComingSoon> {
           Container(
             height: 25.h,
             width: 25.h,
-            child: Image.asset('assets/images/Coming_Soon.gif'),
+            child: Image.network('${ImagePath}Coming_Soon.gif'),
           ),
         ],
       ),

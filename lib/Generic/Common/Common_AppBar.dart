@@ -51,8 +51,8 @@ class _CommonAppBarState extends State<CommonAppBar> {
           //   onTap: () {
           //     // Get.to(NotificationPage(), transition: transitonEffect);
           //   },
-          //   child: SvgPicture.asset(
-          //     'assets/images/Notification.svg',
+          //   child: SvgPicture.network(
+          //     '${ImagePath}Notification.svg',
           //     color: mainBlue,
           //   ),
           // )

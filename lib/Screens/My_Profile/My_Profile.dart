@@ -35,11 +35,11 @@ class _MyProfileState extends State<MyProfile> {
   }
 
   List images = [
-    'assets/images/Contact Us.svg',
-    'assets/images/Terms & conditions.svg',
-    'assets/images/Privacy Policy.svg',
-    'assets/images/Rate_Us.svg',
-    'assets/images/logout.svg',
+    '${ImagePath}Contact Us.svg',
+    '${ImagePath}Terms & conditions.svg',
+    '${ImagePath}Privacy Policy.svg',
+    '${ImagePath}Rate_Us.svg',
+    '${ImagePath}logout.svg',
   ];
   List titles = [
     'Contact Us',
@@ -68,7 +68,7 @@ class _MyProfileState extends State<MyProfile> {
                   Container(
                     alignment: Alignment.center,
                     height: 16.h,
-                    child: Image.asset('assets/images/Profile.gif'),
+                    child: Image.network('${ImagePath}Profile.gif'),
                   ),
                   Container(
                     padding: EdgeInsets.all(2.5.h),
@@ -191,7 +191,7 @@ class _MyProfileState extends State<MyProfile> {
                                 height: 7.h,
                                 color: Color(0xffBF2025),
                               ),
-                              SvgPicture.asset("${images[index]}"),
+                              SvgPicture.network("${images[index]}"),
                               SizedBox(
                                 width: 2.h,
                               ),

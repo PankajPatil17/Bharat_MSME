@@ -11,6 +11,7 @@ import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Drawer.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Loader.dart';
+import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:tssia_replica/Screens/WebView/WebView.dart';
 
 class Events extends StatefulWidget {
@@ -204,8 +205,8 @@ class _EventsState extends State<Events> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
-                                        SvgPicture.asset(
-                                            'assets/images/calendar.svg'),
+                                        SvgPicture.network(
+                                            '${ImagePath}calendar.svg'),
                                         SizedBox(
                                           width: 1.h,
                                         ),
@@ -226,8 +227,8 @@ class _EventsState extends State<Events> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
-                                        SvgPicture.asset(
-                                            'assets/images/clock.svg'),
+                                        SvgPicture.network(
+                                            '${ImagePath}clock.svg'),
                                         SizedBox(
                                           width: 1.h,
                                         ),
@@ -366,8 +367,8 @@ class _EventsState extends State<Events> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
-                                        SvgPicture.asset(
-                                            'assets/images/calendar.svg'),
+                                        SvgPicture.network(
+                                            '${ImagePath}calendar.svg'),
                                         SizedBox(
                                           width: 1.h,
                                         ),
@@ -388,8 +389,8 @@ class _EventsState extends State<Events> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
-                                        SvgPicture.asset(
-                                            'assets/images/clock.svg'),
+                                        SvgPicture.network(
+                                            '${ImagePath}clock.svg'),
                                         SizedBox(
                                           width: 1.h,
                                         ),

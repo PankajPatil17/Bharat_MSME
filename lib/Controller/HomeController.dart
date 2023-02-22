@@ -48,21 +48,12 @@ class HomeController extends GetxController {
   }
 
   List HomeSixModulesImage = [
-    'assets/images/Members.svg',
-    'assets/images/Committees.svg',
-    'assets/images/Help-Other-Join.svg',
-    'assets/images/Events.svg',
-    'assets/images/Circulars.svg',
-    'assets/images/Discussion-Forum.svg',
-  ];
-
-  List HomeSixModulesColor = [
-    0xffFFF5E2,
-    0xffdE6FFEA,
-    0xffE1F4FF,
-    0xffE1F4FF,
-    0xffFFF5E2,
-    0xfdE6FFEA,
+    '${ImagePath}Members.svg',
+    '${ImagePath}Committees.svg',
+    '${ImagePath}Help-Other-Join.svg',
+    '${ImagePath}Events.svg',
+    '${ImagePath}Circulars.svg',
+    '${ImagePath}Discussion-Forum.svg',
   ];
 
   List HomeSixModulesName = [
@@ -72,20 +63,6 @@ class HomeController extends GetxController {
     'Events',
     'Circulars',
     'Discussion Forum',
-  ];
-
-  List ServicesModulesName = [
-    'Finance',
-    'Compliance',
-    'Subsidies',
-    'HealthCare',
-  ];
-
-  List ServicesModulesImage = [
-    'assets/images/Finance.svg',
-    'assets/images/Compliance.svg',
-    'assets/images/Subsidies.svg',
-    'assets/images/healthcare.svg',
   ];
 
   List ServicesModulesColor = [

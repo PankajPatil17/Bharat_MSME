@@ -6,6 +6,7 @@ import 'package:sizer/sizer.dart';
 import 'package:tssia_replica/Controller/HomeController.dart';
 import 'package:tssia_replica/Controller/SigupController.dart';
 import 'package:tssia_replica/Generic/Common/Common_Color.dart';
+import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:tssia_replica/Screens/Committee/Coming_soon.dart';
 import 'package:tssia_replica/Screens/HomePage.dart';
 import 'package:tssia_replica/Screens/My_Profile/My_Profile.dart';
@@ -49,10 +50,10 @@ class _CommonBottomBarState extends State<CommonBottomBar> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SvgPicture.asset(
+                SvgPicture.network(
                   widget.TapColor == 'Home'
-                      ? 'assets/images/Home-fill.svg'
-                      : 'assets/images/Home.svg',
+                      ? '${ImagePath}Home-fill.svg'
+                      : '${ImagePath}Home.svg',
                   height: 2.9.h,
                   width: 2.9.h,
                 ),
@@ -85,10 +86,10 @@ class _CommonBottomBarState extends State<CommonBottomBar> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SvgPicture.asset(
+                SvgPicture.network(
                   widget.TapColor == 'Partners'
-                      ? 'assets/images/Partners-fill.svg'
-                      : 'assets/images/Partners.svg',
+                      ? '${ImagePath}Partners-fill.svg'
+                      : '${ImagePath}Partners.svg',
                   height: 2.9.h,
                   width: 2.9.h,
                 ),
@@ -123,10 +124,10 @@ class _CommonBottomBarState extends State<CommonBottomBar> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SvgPicture.asset(
+                SvgPicture.network(
                   widget.TapColor == 'Chat'
-                      ? 'assets/images/chat-fill.svg'
-                      : 'assets/images/chat.svg',
+                      ? '${ImagePath}chat-fill.svg'
+                      : '${ImagePath}chat.svg',
                   height: 2.9.h,
                   width: 2.9.h,
                 ),
@@ -155,10 +156,10 @@ class _CommonBottomBarState extends State<CommonBottomBar> {
           //   child: Column(
           //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           //     children: [
-          //       SvgPicture.asset(
+          //       SvgPicture.network(
           //         widget.TapColor == 'Publication'
-          //             ? 'assets/images/Publication-fill.svg'
-          //             : 'assets/images/Publication.svg',
+          //             ? '${ImagePath}Publication-fill.svg'
+          //             : '${ImagePath}Publication.svg',
           //         height: 2.9.h,
           //         width: 2.9.h,
           //       ),
@@ -187,10 +188,10 @@ class _CommonBottomBarState extends State<CommonBottomBar> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SvgPicture.asset(
+                SvgPicture.network(
                   widget.TapColor == 'Profile'
-                      ? 'assets/images/Profile-fill.svg'
-                      : 'assets/images/Profile.svg',
+                      ? '${ImagePath}Profile-fill.svg'
+                      : '${ImagePath}Profile.svg',
                   height: 2.9.h,
                   width: 2.9.h,
                 ),

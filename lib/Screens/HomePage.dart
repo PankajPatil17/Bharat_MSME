@@ -164,7 +164,7 @@ class _HomePageState extends State<HomePage> {
                       aspectRatio: 4 / 9,
                       initialPage: 0,
                       autoPlayInterval: Duration(seconds: 5)),
-                  itemCount: HomePageController.HomeSixModulesColor.length,
+                  itemCount: HomePageController.HomeSixModulesImage.length,
                   itemBuilder:
                       (BuildContext context, int index, int realIndex) {
                     return GestureDetector(
@@ -388,8 +388,8 @@ class _HomePageState extends State<HomePage> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
                                             children: [
-                                              SvgPicture.asset(
-                                                'assets/images/clock.svg',
+                                              SvgPicture.network(
+                                                '${ImagePath}clock.svg',
                                                 height: 2.5.h,
                                                 color: Color(0xffFFB932),
                                               ),
@@ -416,8 +416,8 @@ class _HomePageState extends State<HomePage> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
                                             children: [
-                                              SvgPicture.asset(
-                                                'assets/images/calendar.svg',
+                                              SvgPicture.network(
+                                                '${ImagePath}calendar.svg',
                                                 color: Color(0xffFFB932),
                                                 height: 2.5.h,
                                               ),
@@ -569,7 +569,7 @@ class _HomePageState extends State<HomePage> {
                                         image: DecorationImage(
                                             fit: BoxFit.fill,
                                             image: AssetImage(
-                                                'assets/images/shape.png'))),
+                                                '${ImagePath}shape.png'))),
                                     child: CommonText(
                                       colorT: Color(0xffBF2025),
                                       fontw8: FontWeight.w400,

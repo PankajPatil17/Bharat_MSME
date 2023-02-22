@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tssia_replica/Generic/Common/CommonText.dart';
 import 'package:tssia_replica/Generic/Common/Common_Color.dart';
+import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:tssia_replica/Screens/Sign_Up/Registration/RegForGroup.dart';
 import 'package:tssia_replica/Screens/Sign_Up/Registration/RegForMember.dart';
 
@@ -41,7 +42,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SvgPicture.asset(
-                    'assets/images/Registration.svg',
+                    '${ImagePath}Registration.svg',
                   ),
                   SizedBox(
                     width: 2.5.h,

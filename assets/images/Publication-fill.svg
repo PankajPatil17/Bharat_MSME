@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-  <g id="Publication-fill" transform="translate(12692 13923.135)">
-    <g id="newspaper" transform="translate(-12724 -13955.135)">
-      <rect id="Rectangle_168053" data-name="Rectangle 168053" width="4" height="5" rx="2" transform="translate(35 35.131)" fill="none"/>
-      <path id="Path_115669" data-name="Path 115669" d="M418.341,112H416v13.685a1.44,1.44,0,0,0,2.881,0V112.54A.54.54,0,0,0,418.341,112Z" transform="translate(-366.881 -76.566)" fill="#bf2025"/>
-      <path id="Path_115670" data-name="Path 115670" d="M49.8,51.9a2.862,2.862,0,0,1-2.1-2.757V32.536A.535.535,0,0,0,47.163,32H32.535a.535.535,0,0,0-.535.536V49.5A2.5,2.5,0,0,0,34.5,52H49.788a.051.051,0,0,0,.013-.1ZM34.854,39.857V35.571h4.281v4.286Zm9.99,8.571h-9.99V47h9.99Zm0-2.857h-9.99V44.143h9.99Zm0-2.857h-9.99V41.286h9.99Zm0-2.857H40.563V38.429h4.281Zm0-2.857H40.563V35.571h4.281Z" fill="#bf2025"/>
-    </g>
-  </g>
-</svg>

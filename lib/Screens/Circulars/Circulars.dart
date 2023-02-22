@@ -9,6 +9,7 @@ import 'package:tssia_replica/Generic/Common/Common_BottomBar.dart';
 import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Drawer.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Loader.dart';
+import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Circulars extends StatefulWidget {
@@ -183,8 +184,8 @@ class _CircularsState extends State<Circulars> {
                                             borderRadius:
                                                 BorderRadius.circular(6),
                                           ),
-                                          child: SvgPicture.asset(
-                                              'assets/images/pdf-file.svg'),
+                                          child: SvgPicture.network(
+                                              '${ImagePath}pdf-file.svg'),
                                         ),
                                         Expanded(
                                           child: Column(
@@ -211,8 +212,8 @@ class _CircularsState extends State<Circulars> {
                                           ),
                                         ),
                                         Spacer(),
-                                        SvgPicture.asset(
-                                          'assets/images/downloading.svg',
+                                        SvgPicture.network(
+                                          '${ImagePath}downloading.svg',
                                           color: mainColor,
                                         ),
                                       ],
@@ -262,8 +263,8 @@ class _CircularsState extends State<Circulars> {
                                             borderRadius:
                                                 BorderRadius.circular(6),
                                           ),
-                                          child: SvgPicture.asset(
-                                              'assets/images/pdf-file.svg'),
+                                          child: SvgPicture.network(
+                                              '${ImagePath}pdf-file.svg'),
                                         ),
                                         Expanded(
                                           child: Column(
@@ -290,8 +291,8 @@ class _CircularsState extends State<Circulars> {
                                           ),
                                         ),
                                         Spacer(),
-                                        SvgPicture.asset(
-                                            'assets/images/downloading.svg'),
+                                        SvgPicture.network(
+                                            '${ImagePath}downloading.svg'),
                                       ],
                                     ),
                                   ),

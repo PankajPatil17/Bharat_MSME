@@ -9,6 +9,7 @@ import 'package:tssia_replica/Generic/Common/Common_AppBar.dart';
 import 'package:tssia_replica/Generic/Common/Common_BottomBar.dart';
 import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Drawer.dart';
+import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:tssia_replica/Screens/ChatAndDiscussionForum/CommonCommentsDetails.dart';
 import 'package:tssia_replica/Screens/ChatAndDiscussionForum/DiscussionForum.dart';
 import 'package:tssia_replica/Screens/ChatAndDiscussionForum/GroupCreateMainScreen.dart';
@@ -80,8 +81,8 @@ class _SingleandGroupCreateScreenState
                           offset: Offset(0, 2)),
                     ],
                     border: Border.all(color: Color(0xffF3AE33))),
-                child: SvgPicture.asset(
-                  'assets/images/chat_new.svg',
+                child: SvgPicture.network(
+                  '${ImagePath}chat_new.svg',
                   height: 4.h,
                   width: 4.h,
                 ),
@@ -107,8 +108,8 @@ class _SingleandGroupCreateScreenState
                     shape: BoxShape.circle,
                     boxShadow: Mainboxshadow,
                   ),
-                  child: SvgPicture.asset(
-                    'assets/images/groupchat_new.svg',
+                  child: SvgPicture.network(
+                    'a${ImagePath}groupchat_new.svg',
                     height: 4.h,
                     width: 4.h,
                   ),
@@ -141,10 +142,10 @@ class _SingleandGroupCreateScreenState
           onPressed: () {
             Get.to(DiscussionForum());
           },
-          child: SvgPicture.asset(
+          child: SvgPicture.network(
             height: 4.h,
             width: 4.h,
-            'assets/images/newchat_new.svg',
+            '${ImagePath}newchat_new.svg',
           )),
     );
   }

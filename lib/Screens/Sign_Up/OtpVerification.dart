@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tssia_replica/Generic/Common/CommonText.dart';
 import 'package:tssia_replica/Controller/SigupController.dart';
 import 'package:tssia_replica/Generic/Common/Common_Color.dart';
+import 'package:tssia_replica/Generic/Custom/variables.dart';
 
 class OtpVerification extends StatefulWidget {
   const OtpVerification({super.key});
@@ -42,8 +43,8 @@ class _OtpVerificationState extends State<OtpVerification> {
                     )),
                 child: Align(
                   alignment: Alignment.center,
-                  child: Image.asset(
-                    'assets/images/Login_Image.png',
+                  child: Image.network(
+                    '${ImagePath}Login_Image.png',
                   ),
                 ),
               ),

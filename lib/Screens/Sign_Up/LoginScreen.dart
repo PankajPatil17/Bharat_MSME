@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:tssia_replica/Screens/Sign_Up/Registration/RegistrationForm.dart';
 import 'package:tssia_replica/Screens/WebView/WebView.dart';
 import 'package:tssia_replica/Generic/Common/CommonText.dart';
@@ -45,8 +46,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     )),
                 child: Align(
                   alignment: Alignment.center,
-                  child: Image.asset(
-                    'assets/images/Login_Image.png',
+                  child: Image.network(
+                    '${ImagePath}Login_Image.png',
                   ),
                 ),
               ),

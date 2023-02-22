@@ -9,6 +9,7 @@ import 'package:tssia_replica/Generic/Common/Common_AppBar.dart';
 import 'package:tssia_replica/Generic/Common/Common_BottomBar.dart';
 import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Drawer.dart';
+import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:tssia_replica/Screens/ChatAndDiscussionForum/GroupChat/AddMemberToList.dart';
 import 'package:tssia_replica/Screens/ChatAndDiscussionForum/SingleandGroupCreateScreen.dart';
 
@@ -75,8 +76,8 @@ class _GroupCreateMainScreenState extends State<GroupCreateMainScreen> {
                     shape: BoxShape.circle,
                     boxShadow: Mainboxshadow,
                   ),
-                  child: SvgPicture.asset(
-                    'assets/images/chat_new.svg',
+                  child: SvgPicture.network(
+                    '${ImagePath}chat_new.svg',
                     height: 4.h,
                     width: 4.h,
                   ),
@@ -105,7 +106,7 @@ class _GroupCreateMainScreenState extends State<GroupCreateMainScreen> {
                           offset: Offset(0, 2)),
                     ],
                     border: Border.all(color: Color(0xff56CA6A))),
-                child: SvgPicture.asset('assets/images/groupchat_new.svg',
+                child: SvgPicture.network('${ImagePath}groupchat_new.svg',
                     height: 4.h, width: 4.h, color: Color(0xff56CA6A)),
               ),
               CommonText(
@@ -135,10 +136,10 @@ class _GroupCreateMainScreenState extends State<GroupCreateMainScreen> {
           onPressed: () {
             Get.to(AddMemberToList());
           },
-          child: SvgPicture.asset(
+          child: SvgPicture.network(
             height: 4.h,
             width: 4.h,
-            'assets/images/add-group_new.svg',
+            '${ImagePath}add-group_new.svg',
           )),
     );
   }

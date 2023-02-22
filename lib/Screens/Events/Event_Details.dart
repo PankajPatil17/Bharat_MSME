@@ -141,8 +141,8 @@
 //                                         overflow: TextOverflow.ellipsis,
 //                                       ),
 //                                       Spacer(),
-//                                       SvgPicture.asset(
-//                                         'assets/images/clock.svg',
+//                                       SvgPicture.network(
+//                                         '${ImagePath}clock.svg',
 //                                         height: 2.5.h,
 //                                         width: 2.5.h,
 //                                       ),
@@ -244,7 +244,7 @@
 //                                 //                 counter.value++;
 //                                 //               },
 //                                 //               child: SvgPicture.asset(
-//                                 //                   'assets/images/plus.svg'),
+//                                 //                   '${ImagePath}plus.svg'),
 //                                 //             ),
 //                                 //           ],
 //                                 //         ),

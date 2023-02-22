@@ -328,7 +328,7 @@
 //                                                 MainAxisAlignment.start,
 //                                             children: [
 //                                               SvgPicture.asset(
-//                                                   'assets/images/member_Profile.svg'),
+//                                                   '${ImagePath}member_Profile.svg'),
 //                                               SizedBox(
 //                                                 width: 1.h,
 //                                               ),
