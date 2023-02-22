@@ -341,7 +341,7 @@ class _RegForMemberState extends State<RegForMember> {
 
   MemberHeaderText(memberLabel) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 1.h),
+      padding: EdgeInsets.only(top: 1.h),
       child: CommonText(
         label: memberLabel,
         fontw8: FontWeight.w400,

@@ -152,7 +152,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
 
   MemberHeaderText(memberLabel) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 1.8.h),
+      padding: EdgeInsets.symmetric(vertical: 1.4.h),
       child: CommonText(
         label: memberLabel,
         fontw8: FontWeight.w400,
