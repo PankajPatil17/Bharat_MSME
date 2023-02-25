@@ -133,8 +133,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SvgPicture.asset(
-                      'assets/images/Contact Us.svg',
+                    SvgPicture.network(
+                      '${ImagePath}Contact Us.svg',
                     ),
                     SizedBox(
                       width: 1.5.h,
@@ -152,6 +152,108 @@ class _CustomDrawerState extends State<CustomDrawer> {
               GestureDetector(
                 onTap: () {
                   Get.to(WebviewScreen(
+                    url: 'https://www.msmebharatmanch.com/our-mission',
+                    label: 'Our Mission',
+                  ));
+                },
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SvgPicture.network(
+                      '${ImagePath}Terms & conditions.svg',
+                    ),
+                    SizedBox(
+                      width: 1.5.h,
+                    ),
+                    CommonText(
+                        label: 'Our Mission',
+                        size: 12.sp,
+                        fontw8: FontWeight.w400)
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 3.5.h,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.to(WebviewScreen(
+                    url: 'https://www.msmebharatmanch.com/the-board',
+                    label: 'The Board',
+                  ));
+                },
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SvgPicture.network(
+                      '${ImagePath}Terms & conditions.svg',
+                    ),
+                    SizedBox(
+                      width: 1.5.h,
+                    ),
+                    CommonText(
+                        label: 'The Board',
+                        size: 12.sp,
+                        fontw8: FontWeight.w400)
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 3.5.h,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.to(WebviewScreen(
+                    url: 'https://www.msmebharatmanch.com/our-partners',
+                    label: 'Our Partners',
+                  ));
+                },
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SvgPicture.network(
+                      '${ImagePath}Terms & conditions.svg',
+                    ),
+                    SizedBox(
+                      width: 1.5.h,
+                    ),
+                    CommonText(
+                        label: 'Our Partners',
+                        size: 12.sp,
+                        fontw8: FontWeight.w400)
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 3.5.h,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.to(WebviewScreen(
+                    url: 'https://www.msmebharatmanch.com/our-team',
+                    label: 'Our Team',
+                  ));
+                },
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SvgPicture.network(
+                      '${ImagePath}Terms & conditions.svg',
+                    ),
+                    SizedBox(
+                      width: 1.5.h,
+                    ),
+                    CommonText(
+                        label: 'Our Team', size: 12.sp, fontw8: FontWeight.w400)
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 3.5.h,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.to(WebviewScreen(
                     url: 'https://msmebharatmanch.com/term-condition',
                     label: 'Terms And Conditions',
                   ));
@@ -159,8 +261,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SvgPicture.asset(
-                      'assets/images/Terms & conditions.svg',
+                    SvgPicture.network(
+                      '${ImagePath}Terms & conditions.svg',
                     ),
                     SizedBox(
                       width: 1.5.h,
@@ -184,8 +286,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SvgPicture.asset(
-                        'assets/images/Privacy Policy.svg',
+                      SvgPicture.network(
+                        '${ImagePath}Privacy Policy.svg',
                       ),
                       SizedBox(
                         width: 1.5.h,
@@ -210,8 +312,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SvgPicture.asset(
-                      'assets/images/logout.svg',
+                    SvgPicture.network(
+                      '${ImagePath}logout.svg',
                     ),
                     SizedBox(
                       width: 1.5.h,

@@ -66,22 +66,26 @@ class _MyProfileState extends State<MyProfile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    alignment: Alignment.center,
                     height: 16.h,
-                    child: Image.network('${ImagePath}Profile.gif'),
-                  ),
-                  Container(
                     padding: EdgeInsets.all(2.5.h),
-                    margin: EdgeInsets.only(bottom: 2.5.h, top: 3.h),
+                    margin: EdgeInsets.only(
+                      bottom: 2.5.h,
+                    ),
                     decoration: BoxDecoration(
-                        boxShadow: Mainboxshadow,
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 2,
+                              spreadRadius: 2,
+                              color: Color.fromARGB(255, 244, 225, 219),
+                              offset: Offset(0, 1))
+                        ],
                         color: Color(0xffFFF7F7),
                         borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(40),
+                          bottomLeft: Radius.circular(40),
                           bottomRight: Radius.circular(40),
                         )),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
@@ -97,6 +101,7 @@ class _MyProfileState extends State<MyProfile> {
                                         'https://cdn-icons-png.flaticon.com/512/236/236832.png')))),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             FutureBuilder(
                               future: SigunpController.Signin(),
@@ -167,11 +172,16 @@ class _MyProfileState extends State<MyProfile> {
                           }
                         },
                         child: Container(
+                          width: 100.w,
                           alignment: Alignment.center,
                           margin:
                               EdgeInsets.only(left: 2.h, right: 2.h, top: 2.h),
                           decoration: BoxDecoration(
                               color: PWhite,
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(
+                                      'assets/images/Profile_Shape.png')),
                               boxShadow: [
                                 BoxShadow(
                                     blurRadius: 2,
@@ -200,7 +210,14 @@ class _MyProfileState extends State<MyProfile> {
                                 fontw8: FontWeight.w500,
                                 label: "${titles[index]}",
                                 size: 10.sp,
-                              )
+                              ),
+                              Spacer(),
+                              IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.arrow_forward_ios_rounded,
+                                    size: 2.5.h,
+                                  ))
                             ],
                           ),
                         ),

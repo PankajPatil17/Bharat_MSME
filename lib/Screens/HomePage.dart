@@ -226,7 +226,7 @@ class _HomePageState extends State<HomePage> {
                                 padding: EdgeInsets.all(2.h),
                                 height: 7.5.h,
                                 width: 7.5.h,
-                                child: SvgPicture.asset(
+                                child: SvgPicture.network(
                                   "${HomePageController.HomeSixModulesImage[index]}",
                                 ),
                               ),
@@ -568,7 +568,7 @@ class _HomePageState extends State<HomePage> {
                                     decoration: BoxDecoration(
                                         image: DecorationImage(
                                             fit: BoxFit.fill,
-                                            image: AssetImage(
+                                            image: NetworkImage(
                                                 '${ImagePath}shape.png'))),
                                     child: CommonText(
                                       colorT: Color(0xffBF2025),
