@@ -90,11 +90,25 @@ class signupcontroller extends GetxController {
     var decodedResponse = json.decode(response.body);
     print(PlatformNum.toString());
     if (response.statusCode == 200) {
-      Get.to(LoginScreen());
       mobileForOTP = mobile;
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("${decodedResponse['message']}"),
       ));
+
+      SharedPreferences _prefs = await SharedPreferences.getInstance();
+      _prefs.setString(
+          'CurrentuserID', decodedResponse['data']['user_id'].toString());
+      _prefs.setString(
+          'MemberName', decodedResponse['data']['name'].toString());
+      _prefs.setString(
+          'MemberEmail', decodedResponse['data']['mobile_number'].toString());
+      _prefs.setString('token', response.headers['authorization'].toString());
+      CurrentuserID = _prefs.getString('CurrentuserID');
+      CurrentuserEmail = _prefs.getString('MemberEmail');
+      CurrentToken = _prefs.getString('token');
+      MemberName = _prefs.getString('MemberName');
+      print('token--${CurrentToken}');
+      Get.offAll(HomePage());
     } else {
       Get.back();
       await ScaffoldMessenger.of(context).showSnackBar(SnackBar(
