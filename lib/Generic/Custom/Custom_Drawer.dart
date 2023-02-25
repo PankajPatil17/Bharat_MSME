@@ -159,8 +159,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SvgPicture.network(
-                      '${ImagePath}Terms & conditions.svg',
+                    SvgPicture.asset(
+                      'assets/images/mission.svg',
                     ),
                     SizedBox(
                       width: 1.5.h,
@@ -185,8 +185,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SvgPicture.network(
-                      '${ImagePath}Terms & conditions.svg',
+                    SvgPicture.asset(
+                      'assets/images/board.svg',
                     ),
                     SizedBox(
                       width: 1.5.h,
@@ -211,8 +211,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SvgPicture.network(
-                      '${ImagePath}Terms & conditions.svg',
+                    SvgPicture.asset(
+                      'assets/images/partner.svg',
                     ),
                     SizedBox(
                       width: 1.5.h,
@@ -237,8 +237,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SvgPicture.network(
-                      '${ImagePath}Terms & conditions.svg',
+                    SvgPicture.asset(
+                      'assets/images/team.svg',
                     ),
                     SizedBox(
                       width: 1.5.h,
