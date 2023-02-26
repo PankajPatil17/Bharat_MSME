@@ -248,32 +248,32 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 3.5.h,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Get.to(WebviewScreen(
-                    url: 'https://msmebharatmanch.com/term-condition',
-                    label: 'Terms And Conditions',
-                  ));
-                },
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SvgPicture.network(
-                      '${ImagePath}Terms & conditions.svg',
-                    ),
-                    SizedBox(
-                      width: 1.5.h,
-                    ),
-                    CommonText(
-                        label: 'Terms & Conditions',
-                        size: 12.sp,
-                        fontw8: FontWeight.w400)
-                  ],
-                ),
-              ),
+              // SizedBox(
+              //   height: 3.5.h,
+              // ),
+              // GestureDetector(
+              //   onTap: () {
+              //     Get.to(WebviewScreen(
+              //       url: 'https://msmebharatmanch.com/term-condition',
+              //       label: 'Terms And Conditions',
+              //     ));
+              //   },
+              //   child: Row(
+              //     crossAxisAlignment: CrossAxisAlignment.start,
+              //     children: [
+              //       SvgPicture.network(
+              //         '${ImagePath}Terms & conditions.svg',
+              //       ),
+              //       SizedBox(
+              //         width: 1.5.h,
+              //       ),
+              //       CommonText(
+              //           label: 'Terms & Conditions',
+              //           size: 12.sp,
+              //           fontw8: FontWeight.w400)
+              //     ],
+              //   ),
+              // ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 3.5.h),
                 child: GestureDetector(

@@ -36,14 +36,14 @@ class _MyProfileState extends State<MyProfile> {
 
   List images = [
     '${ImagePath}Contact Us.svg',
-    '${ImagePath}Terms & conditions.svg',
+    // '${ImagePath}Terms & conditions.svg',
     '${ImagePath}Privacy Policy.svg',
     '${ImagePath}Rate_Us.svg',
     '${ImagePath}logout.svg',
   ];
   List titles = [
     'Contact Us',
-    'Terms & Condition',
+    // 'Terms & Condition',
     'Privacy Policy',
     'Rate Us',
     'Logout',
@@ -151,19 +151,13 @@ class _MyProfileState extends State<MyProfile> {
                             Get.to(ContactUs());
                           } else if (index == 1) {
                             Get.to(WebviewScreen(
-                              url: 'https://msmebharatmanch.com/term-condition',
-                              label: 'Terms And Conditions',
-                            ));
-                          } else if (index == 2) {
-                            Get.to(WebviewScreen(
                               label: 'Privacy Policy',
                               url: 'https://msmebharatmanch.com/privacy-policy',
                             ));
-                          } else if (index == 3) {
+                          } else if (index == 2) {
                             StoreRedirect.redirect(
-                                androidAppId: 'com.msmebharat',
-                                iOSAppId: '1639780511');
-                          } else if (index == 4) {
+                                androidAppId: 'com.msmebharat', iOSAppId: '');
+                          } else if (index == 3) {
                             SharedPreferences prefs =
                                 await SharedPreferences.getInstance();
                             prefs.clear();

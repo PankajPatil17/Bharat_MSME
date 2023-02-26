@@ -234,36 +234,6 @@ class _RegForMemberState extends State<RegForMember> {
                           onTap: () {
                             setState(() {
                               Get.to(WebviewScreen(
-                                  url:
-                                      'https://msmebharatmanch.com/term-condition',
-                                  label: 'Terms & Condition'));
-                            });
-                          },
-                          child: Text(
-                            'Terms & Condition ',
-                            style: TextStyle(
-                                fontSize: 9.sp,
-                                fontFamily: 'Poppins',
-                                color: Color(0xffBF2025),
-                                fontWeight: FontWeight.w400),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CommonText(
-                          label: 'and ',
-                          fontw8: FontWeight.w400,
-                          size: 9.sp,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Get.to(WebviewScreen(
                                 url:
                                     'https://msmebharatmanch.com/privacy-policy',
                                 label: 'Privacy Policy',
@@ -281,7 +251,7 @@ class _RegForMemberState extends State<RegForMember> {
                         ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               )
             ],
