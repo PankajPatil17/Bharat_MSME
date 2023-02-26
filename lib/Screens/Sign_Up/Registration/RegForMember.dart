@@ -304,6 +304,8 @@ class _RegForMemberState extends State<RegForMember> {
                           referral: refferal.text,
                           regtype: 'member',
                           context: context);
+                      await SigunpController.Signin(
+                          context: context, mobilenum: mobile.text);
                     }
                   } else {
                     Fluttertoast.showToast(

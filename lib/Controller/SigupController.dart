@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tssia_replica/Generic/Common/SignIn_Alert.dart';
 import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:tssia_replica/Screens/HomePage.dart';
 import 'package:tssia_replica/Screens/Sign_Up/LoginScreen.dart';
@@ -91,24 +92,17 @@ class signupcontroller extends GetxController {
     print(PlatformNum.toString());
     if (response.statusCode == 200) {
       mobileForOTP = mobile;
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("${decodedResponse['message']}"),
-      ));
-
-      SharedPreferences _prefs = await SharedPreferences.getInstance();
-      _prefs.setString(
-          'CurrentuserID', decodedResponse['data']['user_id'].toString());
-      _prefs.setString(
-          'MemberName', decodedResponse['data']['name'].toString());
-      _prefs.setString(
-          'MemberEmail', decodedResponse['data']['mobile_number'].toString());
-      _prefs.setString('token', response.headers['authorization'].toString());
-      CurrentuserID = _prefs.getString('CurrentuserID');
-      CurrentuserEmail = _prefs.getString('MemberEmail');
-      CurrentToken = _prefs.getString('token');
-      MemberName = _prefs.getString('MemberName');
-      print('token--${CurrentToken}');
-      Get.offAll(HomePage());
+      // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      //   content: Text("${decodedResponse['message']}"),
+      // ));
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return SignInAlert(
+            message: "${decodedResponse['message']}",
+          );
+        },
+      );
     } else {
       Get.back();
       await ScaffoldMessenger.of(context).showSnackBar(SnackBar(
