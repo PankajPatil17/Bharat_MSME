@@ -17,7 +17,7 @@ class HomeController extends GetxController {
 
   HomePageApi() async {
     http.Response response = await http
-        .post(Uri.parse('${BaseURL}api/Common_Controller/home'), body: {});
+        .post(Uri.parse('${MSMEURL}api/Common_Controller/home'), body: {});
 
     var decodedResponse = json.decode(response.body);
     HomeImages = decodedResponse['slider'];

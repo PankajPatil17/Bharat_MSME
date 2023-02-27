@@ -7,6 +7,7 @@ import 'package:sizer/sizer.dart';
 import 'package:tssia_replica/Screens/WebView/splashScreen.dart';
 import 'package:upgrader/upgrader.dart';
 
+//MSMEW
 Future<void> main() async {
   // WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
