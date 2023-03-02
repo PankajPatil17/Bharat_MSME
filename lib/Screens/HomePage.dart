@@ -5,6 +5,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tssia_replica/Controller/EventsController.dart';
 import 'package:tssia_replica/Controller/HomeController.dart';
@@ -382,7 +383,7 @@ class _HomePageState extends State<HomePage> {
                                           image: DecorationImage(
                                               fit: BoxFit.fill,
                                               image: NetworkImage(
-                                                  '${eventcontroller.UpcomingList[index]['image']}'))),
+                                                  "${EventImagePath + eventcontroller.UpcomingList[index]['event_media']['image_path']}"))),
                                     ),
                                     SizedBox(
                                       width: 43.w,
@@ -407,8 +408,13 @@ class _HomePageState extends State<HomePage> {
                                                       width: 0.5.h,
                                                     ),
                                                     CommonText(
-                                                      label:
-                                                          '${eventcontroller.UpcomingList[index]['time']}',
+                                                      label: DateFormat.jm()
+                                                          .format(DateTime.parse(
+                                                              eventcontroller
+                                                                          .UpcomingList[
+                                                                      index][
+                                                                  'start_datetime']))
+                                                          .toString(),
                                                       colorT: Color(0xffBF2025),
                                                       fontw8: FontWeight.w400,
                                                       maxline: 1,
@@ -437,7 +443,10 @@ class _HomePageState extends State<HomePage> {
                                                     ),
                                                     CommonText(
                                                       label:
-                                                          '${eventcontroller.UpcomingList[index]['date']}',
+                                                          '${eventcontroller.UpcomingList[index]['start_datetime']}'
+                                                              .toString()
+                                                              .replaceRange(
+                                                                  11, 19, ''),
                                                       colorT: Color(0xffBF2025),
                                                       fontw8: FontWeight.w400,
                                                       maxline: 1,
