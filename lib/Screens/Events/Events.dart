@@ -141,163 +141,185 @@ class _EventsState extends State<Events> {
               ),
             );
           }
-          return ListView.builder(
-            controller: ScrollController(),
-            itemCount: eventcontroller.AllEventsList.length,
-            shrinkWrap: true,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  Get.to(WebviewScreen(
-                    label: "Events",
-                    url: "${eventcontroller.AllEventsList[index]['url']}",
-                  ));
-                },
-                child: Container(
-                  padding: EdgeInsets.all(1.5.h),
-                  margin: EdgeInsets.only(top: 2.2.h),
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 2,
-                            offset: Offset(0, 4))
-                      ],
-                      color: PWhite,
-                      borderRadius: BorderRadius.circular(6),
-                      border: Border.all(width: 0.5, color: Color(0xffe4e4e4))),
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 12.h,
-                        width: 12.h,
-                        margin: EdgeInsets.only(right: 1.5.h),
+          return eventcontroller.AllEventsList.length == 0 ||
+                  eventcontroller.AllEventsList.length == null
+              ? Padding(
+                  padding: EdgeInsets.only(top: 8.h),
+                  child: Center(
+                    child: CommonText(
+                      label: 'No Events',
+                    ),
+                  ),
+                )
+              : ListView.builder(
+                  controller: ScrollController(),
+                  itemCount: eventcontroller.AllEventsList.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Get.to(WebviewScreen(
+                          label: "Events",
+                          url: "${eventcontroller.AllEventsList[index]['url']}",
+                        ));
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(1.5.h),
+                        margin: EdgeInsets.only(top: 2.2.h),
                         decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.black12,
+                                  blurRadius: 2,
+                                  offset: Offset(0, 4))
+                            ],
+                            color: PWhite,
                             borderRadius: BorderRadius.circular(6),
-                            image: DecorationImage(
-                                fit: BoxFit.fill,
-                                image: NetworkImage(
-                                    "${EventImagePath + eventcontroller.AllEventsList[index]['event_media']['image_path']}"))),
-                      ),
-                      Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                            border: Border.all(
+                                width: 0.5, color: Color(0xffe4e4e4))),
+                        child: Row(
                           children: [
-                            CommonText(
-                              label:
-                                  '${eventcontroller.AllEventsList[index]['name']}',
-                              colorT: Colors.black,
-                              fontw8: FontWeight.w500,
-                              maxline: 2,
-                              size: 11.sp,
-                              overflow: TextOverflow.ellipsis,
+                            Container(
+                              height: 12.h,
+                              width: 12.h,
+                              margin: EdgeInsets.only(right: 1.5.h),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  image: DecorationImage(
+                                      fit: BoxFit.fill,
+                                      image: NetworkImage(
+                                          "${EventImagePath + eventcontroller.AllEventsList[index]['event_media']['image_path']}"))),
                             ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        SvgPicture.network(
-                                            '${ImagePath}calendar.svg'),
-                                        SizedBox(
-                                          width: 1.h,
-                                        ),
-                                        SizedBox(
-                                          width: 13.h,
-                                          child: CommonText(
-                                            label:
-                                                '${eventcontroller.AllEventsList[index]['start_datetime']}'
-                                                    .toString()
-                                                    .replaceRange(11, 19, ''),
-                                            colorT: Colors.black,
-                                            fontw8: FontWeight.w400,
-                                            maxline: 1,
-                                            size: 10.sp,
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CommonText(
+                                    label:
+                                        '${eventcontroller.AllEventsList[index]['name']}',
+                                    colorT: Colors.black,
+                                    fontw8: FontWeight.w500,
+                                    maxline: 2,
+                                    size: 11.sp,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              SvgPicture.network(
+                                                  '${ImagePath}calendar.svg'),
+                                              SizedBox(
+                                                width: 1.h,
+                                              ),
+                                              SizedBox(
+                                                width: 13.h,
+                                                child: CommonText(
+                                                  label:
+                                                      '${eventcontroller.AllEventsList[index]['start_datetime']}'
+                                                          .toString()
+                                                          .replaceRange(
+                                                              11, 19, ''),
+                                                  colorT: Colors.black,
+                                                  fontw8: FontWeight.w400,
+                                                  maxline: 1,
+                                                  size: 10.sp,
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        SvgPicture.network(
-                                            '${ImagePath}clock.svg'),
-                                        SizedBox(
-                                          width: 1.h,
-                                        ),
-                                        SizedBox(
-                                          width: 13.h,
-                                          child: CommonText(
-                                            label: DateFormat.jm()
-                                                .format(DateTime.parse(
-                                                    eventcontroller
-                                                                .AllEventsList[
-                                                            index]
-                                                        ['start_datetime']))
-                                                .toString(),
-                                            // '${eventcontroller.AllEventsList[index]['start_datetime']}'
-                                            //     .toString()
-                                            //     .replaceRange(1, 12, ''),
-                                            colorT: Colors.black,
-                                            fontw8: FontWeight.w400,
-                                            maxline: 1,
-                                            size: 10.sp,
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              SvgPicture.network(
+                                                  '${ImagePath}clock.svg'),
+                                              SizedBox(
+                                                width: 1.h,
+                                              ),
+                                              SizedBox(
+                                                width: 13.h,
+                                                child: CommonText(
+                                                  label: DateFormat.jm()
+                                                      .format(DateTime.parse(
+                                                          eventcontroller
+                                                                      .AllEventsList[
+                                                                  index][
+                                                              'start_datetime']))
+                                                      .toString(),
+                                                  //     .replaceRange(1, 12, ''),
+                                                  colorT: Colors.black,
+                                                  fontw8: FontWeight.w400,
+                                                  maxline: 1,
+                                                  size: 10.sp,
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {},
-                                      child: Container(
-                                        margin: EdgeInsets.only(top: 1.2.h),
-                                        alignment: Alignment.center,
-                                        padding: EdgeInsets.only(
-                                            top: 1.1.h,
-                                            bottom: 1.1.h,
-                                            left: 1.5.h,
-                                            right: 1.5.h),
-                                        decoration: BoxDecoration(
-                                            color: Color(0xffBF2025),
-                                            borderRadius:
-                                                BorderRadius.circular(6),
-                                            border: Border.all(
-                                                width: 0.5,
-                                                color: Color(0xffe4e4e4))),
-                                        child: CommonText(
-                                          label: 'View Details',
-                                          colorT: PWhite,
-                                          fontw8: FontWeight.w400,
-                                          maxline: 2,
-                                          size: 10.sp,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              Get.to(WebviewScreen(
+                                                label: "Events",
+                                                url:
+                                                    "${eventcontroller.AllEventsList[index]['url']}",
+                                              ));
+                                            },
+                                            child: Container(
+                                              margin:
+                                                  EdgeInsets.only(top: 1.2.h),
+                                              alignment: Alignment.center,
+                                              padding: EdgeInsets.only(
+                                                  top: 1.1.h,
+                                                  bottom: 1.1.h,
+                                                  left: 1.5.h,
+                                                  right: 1.5.h),
+                                              decoration: BoxDecoration(
+                                                  color: Color(0xffBF2025),
+                                                  borderRadius:
+                                                      BorderRadius.circular(6),
+                                                  border: Border.all(
+                                                      width: 0.5,
+                                                      color:
+                                                          Color(0xffe4e4e4))),
+                                              child: CommonText(
+                                                label: 'View Details',
+                                                colorT: PWhite,
+                                                fontw8: FontWeight.w400,
+                                                maxline: 2,
+                                                size: 10.sp,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            )
                           ],
                         ),
-                      )
-                    ],
-                  ),
-                ),
-              );
-            },
-          );
+                      ),
+                    );
+                  },
+                );
         });
   }
 
@@ -316,150 +338,184 @@ class _EventsState extends State<Events> {
               ),
             );
           }
-          return ListView.builder(
-            controller: ScrollController(),
-            itemCount: eventcontroller.UpcomingList.length,
-            shrinkWrap: true,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  Get.to(WebviewScreen(
-                    label: "Events",
-                    url: "${eventcontroller.UpcomingList[index]['url']}",
-                  ));
-                },
-                child: Container(
-                  padding: EdgeInsets.all(1.5.h),
-                  margin: EdgeInsets.only(top: 2.2.h),
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 2,
-                            offset: Offset(0, 4))
-                      ],
-                      color: PWhite,
-                      borderRadius: BorderRadius.circular(6),
-                      border: Border.all(width: 0.5, color: Color(0xffe4e4e4))),
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 12.h,
-                        width: 12.h,
-                        margin: EdgeInsets.only(right: 1.5.h),
+          return eventcontroller.UpcomingList.length == 0 ||
+                  eventcontroller.UpcomingList.length == null
+              ? Padding(
+                  padding: EdgeInsets.only(top: 8.h),
+                  child: Center(
+                    child: CommonText(
+                      label: 'No Events',
+                    ),
+                  ),
+                )
+              : ListView.builder(
+                  controller: ScrollController(),
+                  itemCount: eventcontroller.UpcomingList.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Get.to(WebviewScreen(
+                          label: "Events",
+                          url: "${eventcontroller.UpcomingList[index]['url']}",
+                        ));
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(1.5.h),
+                        margin: EdgeInsets.only(top: 2.2.h),
                         decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.black12,
+                                  blurRadius: 2,
+                                  offset: Offset(0, 4))
+                            ],
+                            color: PWhite,
                             borderRadius: BorderRadius.circular(6),
-                            image: DecorationImage(
-                                fit: BoxFit.fill,
-                                image: NetworkImage(
-                                    '${eventcontroller.UpcomingList[index]['image']}'))),
-                      ),
-                      Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                            border: Border.all(
+                                width: 0.5, color: Color(0xffe4e4e4))),
+                        child: Row(
                           children: [
-                            CommonText(
-                              label:
-                                  '${eventcontroller.UpcomingList[index]['event_name']}',
-                              colorT: Colors.black,
-                              fontw8: FontWeight.w400,
-                              maxline: 2,
-                              size: 10.sp,
-                              overflow: TextOverflow.ellipsis,
+                            Container(
+                              height: 12.h,
+                              width: 12.h,
+                              margin: EdgeInsets.only(right: 1.5.h),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  image: DecorationImage(
+                                      fit: BoxFit.fill,
+                                      image: NetworkImage(
+                                          "${EventImagePath + eventcontroller.UpcomingList[index]['event_media']['image_path']}"))),
                             ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        SvgPicture.network(
-                                            '${ImagePath}calendar.svg'),
-                                        SizedBox(
-                                          width: 1.h,
-                                        ),
-                                        CommonText(
-                                          label:
-                                              '${eventcontroller.UpcomingList[index]['date']}',
-                                          colorT: Colors.black,
-                                          fontw8: FontWeight.w400,
-                                          maxline: 2,
-                                          size: 10.sp,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        SvgPicture.network(
-                                            '${ImagePath}clock.svg'),
-                                        SizedBox(
-                                          width: 1.h,
-                                        ),
-                                        SizedBox(
-                                          width: 10.h,
-                                          child: CommonText(
-                                            label:
-                                                '${eventcontroller.UpcomingList[index]['time']}',
-                                            colorT: Colors.black,
-                                            fontw8: FontWeight.w400,
-                                            maxline: 1,
-                                            size: 10.sp,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                                GestureDetector(
-                                  onTap: () {},
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    padding: EdgeInsets.only(
-                                        top: 1.1.h,
-                                        bottom: 1.1.h,
-                                        left: 1.5.h,
-                                        right: 1.5.h),
-                                    decoration: BoxDecoration(
-                                        color: Color(0xffBF2025),
-                                        borderRadius: BorderRadius.circular(6),
-                                        border: Border.all(
-                                            width: 0.5,
-                                            color: Color(0xffe4e4e4))),
-                                    child: CommonText(
-                                      label: 'View Details',
-                                      colorT: PWhite,
-                                      fontw8: FontWeight.w400,
-                                      maxline: 2,
-                                      size: 10.sp,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CommonText(
+                                    label:
+                                        '${eventcontroller.UpcomingList[index]['name']}',
+                                    colorT: Colors.black,
+                                    fontw8: FontWeight.w500,
+                                    maxline: 2,
+                                    size: 11.sp,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
-                                ),
-                              ],
-                            ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              SvgPicture.network(
+                                                  '${ImagePath}calendar.svg'),
+                                              SizedBox(
+                                                width: 1.h,
+                                              ),
+                                              SizedBox(
+                                                width: 13.h,
+                                                child: CommonText(
+                                                  label:
+                                                      '${eventcontroller.UpcomingList[index]['start_datetime']}'
+                                                          .toString()
+                                                          .replaceRange(
+                                                              11, 19, ''),
+                                                  colorT: Colors.black,
+                                                  fontw8: FontWeight.w400,
+                                                  maxline: 1,
+                                                  size: 10.sp,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              SvgPicture.network(
+                                                  '${ImagePath}clock.svg'),
+                                              SizedBox(
+                                                width: 1.h,
+                                              ),
+                                              SizedBox(
+                                                width: 13.h,
+                                                child: CommonText(
+                                                  label: DateFormat.jm()
+                                                      .format(DateTime.parse(
+                                                          eventcontroller
+                                                                      .UpcomingList[
+                                                                  index][
+                                                              'start_datetime']))
+                                                      .toString(),
+                                                  colorT: Colors.black,
+                                                  fontw8: FontWeight.w400,
+                                                  maxline: 1,
+                                                  size: 10.sp,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              Get.to(WebviewScreen(
+                                                label: "Events",
+                                                url:
+                                                    "${eventcontroller.UpcomingList[index]['url']}",
+                                              ));
+                                            },
+                                            child: Container(
+                                              margin:
+                                                  EdgeInsets.only(top: 1.2.h),
+                                              alignment: Alignment.center,
+                                              padding: EdgeInsets.only(
+                                                  top: 1.1.h,
+                                                  bottom: 1.1.h,
+                                                  left: 1.5.h,
+                                                  right: 1.5.h),
+                                              decoration: BoxDecoration(
+                                                  color: Color(0xffBF2025),
+                                                  borderRadius:
+                                                      BorderRadius.circular(6),
+                                                  border: Border.all(
+                                                      width: 0.5,
+                                                      color:
+                                                          Color(0xffe4e4e4))),
+                                              child: CommonText(
+                                                label: 'View Details',
+                                                colorT: PWhite,
+                                                fontw8: FontWeight.w400,
+                                                maxline: 2,
+                                                size: 10.sp,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            )
                           ],
                         ),
-                      )
-                    ],
-                  ),
-                ),
-              );
-            },
-          );
+                      ),
+                    );
+                  },
+                );
         });
   }
 }

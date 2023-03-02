@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:io';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -330,143 +332,158 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 2.h,
               ),
-              Container(
-                height: 14.h,
-                width: 100.h,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  controller: ScrollController(),
-                  itemCount: eventcontroller.UpcomingList.length,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                        onTap: () {
-                          Get.to(WebviewScreen(
-                            label: "Events",
-                            url:
-                                "${eventcontroller.UpcomingList[index]['url']}",
-                          ));
-                        },
-                        child: Container(
-                          margin: EdgeInsets.only(right: 2.h),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                    blurRadius: 2,
-                                    spreadRadius: 2,
-                                    color: Colors.black12)
-                              ],
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 12.h,
-                                width: 11.h,
-                                margin: EdgeInsets.all(1.2.h),
+              eventcontroller.UpcomingList.length == 0 ||
+                      eventcontroller.UpcomingList.length == null
+                  ? CommonText(
+                      label: "No Events",
+                      fontw8: FontWeight.w500,
+                      size: 12.sp,
+                    )
+                  : Container(
+                      height: 14.h,
+                      width: 100.h,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        controller: ScrollController(),
+                        itemCount: eventcontroller.UpcomingList.length,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                              onTap: () {
+                                Get.to(WebviewScreen(
+                                  label: "Events",
+                                  url:
+                                      "${eventcontroller.UpcomingList[index]['url']}",
+                                ));
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(right: 2.h),
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(6),
-                                    border: Border.all(
-                                        width: 0.5, color: Color(0xffe4e4e4)),
-                                    image: DecorationImage(
-                                        fit: BoxFit.fill,
-                                        image: NetworkImage(
-                                            '${eventcontroller.UpcomingList[index]['image']}'))),
-                              ),
-                              SizedBox(
-                                width: 43.w,
-                                child: Column(
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                          blurRadius: 2,
+                                          spreadRadius: 2,
+                                          color: Colors.black12)
+                                    ],
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Row(
                                   children: [
-                                    Padding(
-                                      padding: EdgeInsets.all(1.2.h),
+                                    Container(
+                                      height: 12.h,
+                                      width: 11.h,
+                                      margin: EdgeInsets.all(1.2.h),
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                          border: Border.all(
+                                              width: 0.5,
+                                              color: Color(0xffe4e4e4)),
+                                          image: DecorationImage(
+                                              fit: BoxFit.fill,
+                                              image: NetworkImage(
+                                                  '${eventcontroller.UpcomingList[index]['image']}'))),
+                                    ),
+                                    SizedBox(
+                                      width: 43.w,
                                       child: Column(
                                         children: [
-                                          Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              SvgPicture.network(
-                                                '${ImagePath}clock.svg',
-                                                height: 2.5.h,
-                                                color: Color(0xffFFB932),
-                                              ),
-                                              SizedBox(
-                                                width: 0.5.h,
-                                              ),
-                                              CommonText(
-                                                label:
-                                                    '${eventcontroller.UpcomingList[index]['time']}',
-                                                colorT: Color(0xffBF2025),
+                                          Padding(
+                                            padding: EdgeInsets.all(1.2.h),
+                                            child: Column(
+                                              children: [
+                                                Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  children: [
+                                                    SvgPicture.network(
+                                                      '${ImagePath}clock.svg',
+                                                      height: 2.5.h,
+                                                      color: Color(0xffFFB932),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 0.5.h,
+                                                    ),
+                                                    CommonText(
+                                                      label:
+                                                          '${eventcontroller.UpcomingList[index]['time']}',
+                                                      colorT: Color(0xffBF2025),
+                                                      fontw8: FontWeight.w400,
+                                                      maxline: 1,
+                                                      size: 10.sp,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  height: 1.2.h,
+                                                ),
+                                                Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  children: [
+                                                    SvgPicture.network(
+                                                      '${ImagePath}calendar.svg',
+                                                      color: Color(0xffFFB932),
+                                                      height: 2.5.h,
+                                                    ),
+                                                    SizedBox(
+                                                      width: 1.h,
+                                                    ),
+                                                    CommonText(
+                                                      label:
+                                                          '${eventcontroller.UpcomingList[index]['date']}',
+                                                      colorT: Color(0xffBF2025),
+                                                      fontw8: FontWeight.w400,
+                                                      maxline: 1,
+                                                      size: 10.sp,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Spacer(),
+                                          Align(
+                                            alignment: Alignment.bottomRight,
+                                            child: Container(
+                                              padding: EdgeInsets.all(1.h),
+                                              decoration: BoxDecoration(
+                                                  color: Color(0xffBF2025),
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  10),
+                                                          bottomRight:
+                                                              Radius.circular(
+                                                                  10))),
+                                              child: CommonText(
+                                                label: 'View Details',
+                                                colorT: PWhite,
                                                 fontw8: FontWeight.w400,
                                                 maxline: 1,
-                                                size: 10.sp,
+                                                size: 11.sp,
                                                 overflow: TextOverflow.ellipsis,
                                               ),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 1.2.h,
-                                          ),
-                                          Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              SvgPicture.network(
-                                                '${ImagePath}calendar.svg',
-                                                color: Color(0xffFFB932),
-                                                height: 2.5.h,
-                                              ),
-                                              SizedBox(
-                                                width: 1.h,
-                                              ),
-                                              CommonText(
-                                                label:
-                                                    '${eventcontroller.UpcomingList[index]['date']}',
-                                                colorT: Color(0xffBF2025),
-                                                fontw8: FontWeight.w400,
-                                                maxline: 1,
-                                                size: 10.sp,
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                            ],
+                                            ),
                                           ),
                                         ],
                                       ),
-                                    ),
-                                    Spacer(),
-                                    Align(
-                                      alignment: Alignment.bottomRight,
-                                      child: Container(
-                                        padding: EdgeInsets.all(1.h),
-                                        decoration: BoxDecoration(
-                                            color: Color(0xffBF2025),
-                                            borderRadius: BorderRadius.only(
-                                                topLeft: Radius.circular(10),
-                                                bottomRight:
-                                                    Radius.circular(10))),
-                                        child: CommonText(
-                                          label: 'View Details',
-                                          colorT: PWhite,
-                                          fontw8: FontWeight.w400,
-                                          maxline: 1,
-                                          size: 11.sp,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ),
-                                    ),
+                                    )
                                   ],
                                 ),
-                              )
-                            ],
-                          ),
-                        ));
-                  },
-                ),
-              ),
+                              ));
+                        },
+                      ),
+                    ),
             ],
           ),
         );
