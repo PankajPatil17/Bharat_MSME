@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:tssia_replica/Controller/EventsController.dart';
 import 'package:tssia_replica/Generic/Common/CommonText.dart';
 import 'package:tssia_replica/Generic/Common/Common_AppBar.dart';
@@ -176,7 +177,7 @@ class _EventsState extends State<Events> {
                             image: DecorationImage(
                                 fit: BoxFit.fill,
                                 image: NetworkImage(
-                                    '${eventcontroller.AllEventsList[index]['image']}'))),
+                                    "${EventImagePath + eventcontroller.AllEventsList[index]['event_media']['image_path']}"))),
                       ),
                       Expanded(
                         child: Column(
@@ -185,11 +186,11 @@ class _EventsState extends State<Events> {
                           children: [
                             CommonText(
                               label:
-                                  '${eventcontroller.AllEventsList[index]['event_name']}',
+                                  '${eventcontroller.AllEventsList[index]['name']}',
                               colorT: Colors.black,
-                              fontw8: FontWeight.w400,
+                              fontw8: FontWeight.w500,
                               maxline: 2,
-                              size: 10.sp,
+                              size: 11.sp,
                               overflow: TextOverflow.ellipsis,
                             ),
                             Row(
@@ -210,14 +211,18 @@ class _EventsState extends State<Events> {
                                         SizedBox(
                                           width: 1.h,
                                         ),
-                                        CommonText(
-                                          label:
-                                              '${eventcontroller.AllEventsList[index]['date']}',
-                                          colorT: Colors.black,
-                                          fontw8: FontWeight.w400,
-                                          maxline: 2,
-                                          size: 10.sp,
-                                          overflow: TextOverflow.ellipsis,
+                                        SizedBox(
+                                          width: 13.h,
+                                          child: CommonText(
+                                            label:
+                                                '${eventcontroller.AllEventsList[index]['start_datetime']}'
+                                                    .toString()
+                                                    .replaceRange(11, 19, ''),
+                                            colorT: Colors.black,
+                                            fontw8: FontWeight.w400,
+                                            maxline: 1,
+                                            size: 10.sp,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -233,45 +238,54 @@ class _EventsState extends State<Events> {
                                           width: 1.h,
                                         ),
                                         SizedBox(
-                                          width: 10.h,
+                                          width: 13.h,
                                           child: CommonText(
-                                            label:
-                                                '${eventcontroller.AllEventsList[index]['time']}',
+                                            label: DateFormat.jm()
+                                                .format(DateTime.parse(
+                                                    eventcontroller
+                                                                .AllEventsList[
+                                                            index]
+                                                        ['start_datetime']))
+                                                .toString(),
+                                            // '${eventcontroller.AllEventsList[index]['start_datetime']}'
+                                            //     .toString()
+                                            //     .replaceRange(1, 12, ''),
                                             colorT: Colors.black,
                                             fontw8: FontWeight.w400,
                                             maxline: 1,
                                             size: 10.sp,
-                                            overflow: TextOverflow.ellipsis,
                                           ),
                                         ),
                                       ],
-                                    )
-                                  ],
-                                ),
-                                GestureDetector(
-                                  onTap: () {},
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    padding: EdgeInsets.only(
-                                        top: 1.1.h,
-                                        bottom: 1.1.h,
-                                        left: 1.5.h,
-                                        right: 1.5.h),
-                                    decoration: BoxDecoration(
-                                        color: Color(0xffBF2025),
-                                        borderRadius: BorderRadius.circular(6),
-                                        border: Border.all(
-                                            width: 0.5,
-                                            color: Color(0xffe4e4e4))),
-                                    child: CommonText(
-                                      label: 'View Details',
-                                      colorT: PWhite,
-                                      fontw8: FontWeight.w400,
-                                      maxline: 2,
-                                      size: 10.sp,
-                                      overflow: TextOverflow.ellipsis,
                                     ),
-                                  ),
+                                    GestureDetector(
+                                      onTap: () {},
+                                      child: Container(
+                                        margin: EdgeInsets.only(top: 1.2.h),
+                                        alignment: Alignment.center,
+                                        padding: EdgeInsets.only(
+                                            top: 1.1.h,
+                                            bottom: 1.1.h,
+                                            left: 1.5.h,
+                                            right: 1.5.h),
+                                        decoration: BoxDecoration(
+                                            color: Color(0xffBF2025),
+                                            borderRadius:
+                                                BorderRadius.circular(6),
+                                            border: Border.all(
+                                                width: 0.5,
+                                                color: Color(0xffe4e4e4))),
+                                        child: CommonText(
+                                          label: 'View Details',
+                                          colorT: PWhite,
+                                          fontw8: FontWeight.w400,
+                                          maxline: 2,
+                                          size: 10.sp,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
