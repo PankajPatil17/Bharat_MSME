@@ -263,7 +263,6 @@ class _EventsState extends State<Events> {
                                                                   index][
                                                               'start_datetime']))
                                                       .toString(),
-                                                  //     .replaceRange(1, 12, ''),
                                                   colorT: Colors.black,
                                                   fontw8: FontWeight.w400,
                                                   maxline: 1,
