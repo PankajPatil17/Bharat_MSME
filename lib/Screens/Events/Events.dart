@@ -187,8 +187,12 @@ class _EventsState extends State<Events> {
                                   borderRadius: BorderRadius.circular(6),
                                   image: DecorationImage(
                                       fit: BoxFit.fill,
-                                      image: NetworkImage(
-                                          "${EventImagePath + eventcontroller.AllEventsList[index]['event_media']['image_path']}"))),
+                                      image: NetworkImage(eventcontroller
+                                                      .AllEventsList[index]
+                                                  ['event_media'] ==
+                                              null
+                                          ? "https://cdn-icons-png.flaticon.com/512/2558/2558944.png"
+                                          : "${EventImagePath + eventcontroller.AllEventsList[index]['event_media']['image_path']}"))),
                             ),
                             Expanded(
                               child: Column(
@@ -383,8 +387,12 @@ class _EventsState extends State<Events> {
                                   borderRadius: BorderRadius.circular(6),
                                   image: DecorationImage(
                                       fit: BoxFit.fill,
-                                      image: NetworkImage(
-                                          "${EventImagePath + eventcontroller.UpcomingList[index]['event_media']['image_path']}"))),
+                                      image: NetworkImage(eventcontroller
+                                                      .UpcomingList[index]
+                                                  ['event_media'] ==
+                                              null
+                                          ? "https://cdn-icons-png.flaticon.com/512/2558/2558944.png"
+                                          : "${EventImagePath + eventcontroller.UpcomingList[index]['event_media']['image_path']}"))),
                             ),
                             Expanded(
                               child: Column(

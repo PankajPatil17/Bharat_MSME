@@ -382,8 +382,13 @@ class _HomePageState extends State<HomePage> {
                                               color: Color(0xffe4e4e4)),
                                           image: DecorationImage(
                                               fit: BoxFit.fill,
-                                              image: NetworkImage(
-                                                  "${EventImagePath + eventcontroller.UpcomingList[index]['event_media']['image_path']}"))),
+                                              image: NetworkImage(eventcontroller
+                                                                  .UpcomingList[
+                                                              index]
+                                                          ['event_media'] ==
+                                                      null
+                                                  ? "https://cdn-icons-png.flaticon.com/512/2558/2558944.png"
+                                                  : "${EventImagePath + eventcontroller.UpcomingList[index]['event_media']['image_path']}"))),
                                     ),
                                     SizedBox(
                                       width: 43.w,
