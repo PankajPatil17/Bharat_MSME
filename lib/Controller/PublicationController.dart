@@ -8,7 +8,7 @@ class PublicationController extends GetxController {
 
   PublicationListApi() async {
     http.Response response = await http.post(
-        Uri.parse('${BaseURL}api/Universal_search/publications'),
+        Uri.parse('${MSMEURL}api/Universal_search/publications'),
         body: {});
 
     var decodedResponse = json.decode(response.body);

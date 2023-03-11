@@ -8,7 +8,7 @@ class CommitteeController extends GetxController {
 
   CommitteeListApi() async {
     http.Response response = await http.post(
-        Uri.parse('${BaseURL}api/Common_Controller/committees'),
+        Uri.parse('${MSMEURL}api/Common_Controller/committees'),
         body: {});
 
     var decodedResponse = json.decode(response.body);

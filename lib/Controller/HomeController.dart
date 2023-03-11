@@ -37,7 +37,7 @@ class HomeController extends GetxController {
 
   Future NotificationList() async {
     final response = await http.post(
-      Uri.parse('${BaseURL}api/Common_Controller/notification'),
+      Uri.parse('${MSMEURL}api/Common_Controller/notification'),
       body: {
         "user_role_id": 3.toString(),
         "user_id": SignController.CurrentuserID.toString(),

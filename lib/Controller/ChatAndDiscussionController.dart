@@ -16,7 +16,7 @@ class ChatAndDiscussionController extends GetxController {
   var CommentsParentsWholedata;
   Future AllPostList({userId}) async {
     final response = await http.post(
-      Uri.parse('${BaseURL}api/Chat_Controller/post_list'),
+      Uri.parse('${MSMEURL}api/Chat_Controller/post_list'),
       body: {
         // 'user_id': userId.toString(),
       },
@@ -27,7 +27,7 @@ class ChatAndDiscussionController extends GetxController {
 
   Future AllPostwithCommentsList({userId, postID}) async {
     final response = await http.post(
-      Uri.parse('${BaseURL}api/Chat_Controller/single_post_with_comments'),
+      Uri.parse('${MSMEURL}api/Chat_Controller/single_post_with_comments'),
       body: {'user_id': userId.toString(), 'post_id': postID.toString()},
     );
     var decodedResponse = json.decode(response.body);
@@ -37,7 +37,7 @@ class ChatAndDiscussionController extends GetxController {
 
   AddNewConversation({userID, descrpition, title, file, context}) async {
     var request = http.MultipartRequest(
-        'POST', Uri.parse('${BaseURL}api/Chat_Controller/add_post'));
+        'POST', Uri.parse('${MSMEURL}api/Chat_Controller/add_post'));
     request.fields['user_id'] = '${userID}';
     request.fields['description'] = '${descrpition}';
     request.fields['title'] = "${title}";
@@ -66,7 +66,7 @@ class ChatAndDiscussionController extends GetxController {
   Future AddConversationWithoutAttachment(
       {userID, descrpition, title, context}) async {
     final response = await http.post(
-      Uri.parse('${BaseURL}api/Chat_Controller/add_post'),
+      Uri.parse('${MSMEURL}api/Chat_Controller/add_post'),
       body: {
         'user_id': userID.toString(),
         'description': descrpition.toString(),
@@ -93,7 +93,7 @@ class ChatAndDiscussionController extends GetxController {
   AddNewConversationwithParent(
       {userID, descrpition, title, file, context, parentID}) async {
     var request = http.MultipartRequest(
-        'POST', Uri.parse('${BaseURL}api/Chat_Controller/add_post'));
+        'POST', Uri.parse('${MSMEURL}api/Chat_Controller/add_post'));
     request.fields['user_id'] = '${userID}';
     request.fields['description'] = '${descrpition}';
     request.fields['title'] = "${title}";
@@ -123,7 +123,7 @@ class ChatAndDiscussionController extends GetxController {
   Future AddConversationWithoutAttachmentwithParent(
       {userID, descrpition, title, context, parentID}) async {
     final response = await http.post(
-      Uri.parse('${BaseURL}api/Chat_Controller/add_post'),
+      Uri.parse('${MSMEURL}api/Chat_Controller/add_post'),
       body: {
         'user_id': userID.toString(),
         'description': descrpition.toString(),
@@ -152,7 +152,7 @@ class ChatAndDiscussionController extends GetxController {
 
   Future GetALLGroup() async {
     final response = await http.post(
-      Uri.parse('${BaseURL}api/Common_Controller/group_list'),
+      Uri.parse('${MSMEURL}api/Common_Controller/group_list'),
       body: {},
     );
     var decodedResponse = json.decode(response.body);
@@ -162,7 +162,7 @@ class ChatAndDiscussionController extends GetxController {
 
   Future GetGropuMemberList() async {
     http.Response response = await http.get(
-      Uri.parse('${BaseURL}api/Chat_Controller/create_group_member_list'),
+      Uri.parse('${MSMEURL}api/Chat_Controller/create_group_member_list'),
     );
     var decodedResponse = json.decode(response.body);
     GetAllGroupMembers = decodedResponse['list'];
@@ -170,7 +170,7 @@ class ChatAndDiscussionController extends GetxController {
 
   CreateGroup({GroupName, UserID, file, context}) async {
     var request = http.MultipartRequest(
-        'POST', Uri.parse('${BaseURL}api/Common_Controller/create_group'));
+        'POST', Uri.parse('${MSMEURL}api/Common_Controller/create_group'));
     request.fields['group_name'] = '${GroupName}';
     request.fields['user_id'] = '${UserID}';
     request.fields['group_members'] = GrpMembersFinalArrayOfID.toString();
@@ -199,7 +199,7 @@ class ChatAndDiscussionController extends GetxController {
   //################################ Like API ###############################
   Future LikePost({status, PostID, UserID}) async {
     final response = await http.post(
-      Uri.parse('${BaseURL}api/Chat_Controller/update_post_like'),
+      Uri.parse('${MSMEURL}api/Chat_Controller/update_post_like'),
       body: {
         "status": "${status}",
         "post_id": "${PostID}",

@@ -8,7 +8,7 @@ class PartnerController extends GetxController {
 
   PartnerListApi() async {
     http.Response response = await http
-        .post(Uri.parse('${BaseURL}api/Common_Controller/partners'), body: {});
+        .post(Uri.parse('${MSMEURL}api/Common_Controller/partners'), body: {});
 
     var decodedResponse = json.decode(response.body);
     partnerList = decodedResponse['partners'];

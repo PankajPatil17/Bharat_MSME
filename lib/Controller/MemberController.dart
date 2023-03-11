@@ -20,7 +20,7 @@ class MemberController extends GetxController {
 
   Future MemberListApi() async {
     http.Response response = await http.post(
-        Uri.parse('${BaseURL}api/Common_Controller/members_list'),
+        Uri.parse('${MSMEURL}api/Common_Controller/members_list'),
         body: {});
 
     var decodedResponse = json.decode(response.body);
@@ -29,7 +29,7 @@ class MemberController extends GetxController {
 
   Future MemberDetails({id}) async {
     final response = await http.post(
-      Uri.parse('${BaseURL}api/Common_Controller/members_details'),
+      Uri.parse('${MSMEURL}api/Common_Controller/members_details'),
       body: {
         "id": id.toString(),
       },
