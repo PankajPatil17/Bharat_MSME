@@ -19,6 +19,7 @@ import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:tssia_replica/Screens/Circulars/Circulars.dart';
 import 'package:tssia_replica/Screens/Committee/Coming_soon.dart';
 import 'package:tssia_replica/Screens/Events/Events.dart';
+import 'package:tssia_replica/Screens/Growth_Facilators/Subsidies.dart';
 import 'package:tssia_replica/Screens/HelpOthers/HelpOthers.dart';
 import 'package:tssia_replica/Screens/WebView/WebView.dart';
 import 'package:upgrader/upgrader.dart';
@@ -568,12 +569,29 @@ class _HomePageState extends State<HomePage> {
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: () {
-                              Get.to(WebviewScreen(
-                                  url:
-                                      "${HomePageController.HomeBannerAndSupportSection['support_system'][index]['url']}",
-                                  label:
-                                      "${HomePageController.HomeBannerAndSupportSection['support_system'][index]['title']}"));
+                              if (index == 0) {
+                                Get.to(WebviewScreen(
+                                    url:
+                                        "${HomePageController.HomeBannerAndSupportSection['support_system'][0]['url']}",
+                                    label:
+                                        "${HomePageController.HomeBannerAndSupportSection['support_system'][0]['title']}"));
+                              } else if (index == 3) {
+                                Get.to(WebviewScreen(
+                                    url:
+                                        "${HomePageController.HomeBannerAndSupportSection['support_system'][3]['url']}",
+                                    label:
+                                        "${HomePageController.HomeBannerAndSupportSection['support_system'][3]['title']}"));
+                              } else if (index == 2) {
+                                Get.to(SubsidiesPage());
+                              }
                             },
+                            // onTap: () {
+                            // Get.to(WebviewScreen(
+                            //     url:
+                            //         "${HomePageController.HomeBannerAndSupportSection['support_system'][index]['url']}",
+                            //     label:
+                            //         "${HomePageController.HomeBannerAndSupportSection['support_system'][index]['title']}"));
+                            // },
                             child: Container(
                               padding: EdgeInsets.only(top: 2.h),
                               width: 12.h,
