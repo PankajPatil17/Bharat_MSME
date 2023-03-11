@@ -40,10 +40,18 @@ class _SubsidiesPageState extends State<SubsidiesPage> {
               height: 7.h,
               width: 100.h,
               padding: EdgeInsets.all(1.2.h),
-              decoration: BoxDecoration(color: PWhite, boxShadow: [
-                BoxShadow(
-                    color: Colors.black12, blurRadius: 2, offset: Offset(0, 4))
-              ]),
+              decoration: BoxDecoration(
+                  color: PWhite,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(24),
+                    bottomRight: Radius.circular(24),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 2,
+                        offset: Offset(0, 4))
+                  ]),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
