@@ -243,7 +243,7 @@ class _CircularsState extends State<Circulars> {
                                     margin: EdgeInsets.only(bottom: 2.h),
                                     decoration: BoxDecoration(
                                         gradient: LinearGradient(colors: [
-                                          Color(0xffBEFEFA),
+                                          Color.fromARGB(255, 241, 230, 230),
                                           Color(0xffFFFFFF),
                                         ]),
                                         boxShadow: Mainboxshadow,
@@ -256,8 +256,8 @@ class _CircularsState extends State<Circulars> {
                                           CrossAxisAlignment.center,
                                       children: [
                                         Container(
-                                          height: 9.h,
-                                          width: 9.h,
+                                          height: 6.h,
+                                          width: 6.h,
                                           margin: EdgeInsets.only(right: 1.3.h),
                                           decoration: BoxDecoration(
                                             borderRadius:
