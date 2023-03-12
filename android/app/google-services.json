@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "906392112049",
+    "project_id": "msme-bharatmanch",
+    "storage_bucket": "msme-bharatmanch.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:906392112049:android:b1e1659825778e9ebb0b90",
+        "android_client_info": {
+          "package_name": "com.msmebharat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "906392112049-chbsacv58uttg19vp1kki3sagn8qr5kq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDyPOTpxmWF0RCc61ErrBH8BRg4Kb-9K8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "906392112049-chbsacv58uttg19vp1kki3sagn8qr5kq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

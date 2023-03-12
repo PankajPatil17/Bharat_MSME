@@ -110,13 +110,13 @@ class _OtpVerificationState extends State<OtpVerification> {
                     Align(
                       alignment: Alignment.center,
                       child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            if (formKey.currentState!.validate()) {
-                              SigunpController.OtpVerify(
-                                  otp: OTP.text, context: context);
-                            }
-                          });
+                        onTap: () async {
+                          String? fcmKey = await getFcmToken();
+                          print('FCM Key : $fcmKey');
+                          if (formKey.currentState!.validate()) {
+                            SigunpController.OtpVerify(
+                                otp: OTP.text, context: context);
+                          }
                         },
                         child: Container(
                           margin: EdgeInsets.only(top: 3.h),

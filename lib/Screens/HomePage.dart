@@ -316,7 +316,9 @@ class _HomePageState extends State<HomePage> {
         }
         return Container(
           padding: EdgeInsets.symmetric(horizontal: 2.h, vertical: 1.5.h),
-          margin: EdgeInsets.only(bottom: 1.h, top: 1.h),
+          margin: EdgeInsets.only(
+            bottom: 1.h,
+          ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),
           ),
@@ -647,6 +649,9 @@ class _HomePageState extends State<HomePage> {
     return FutureBuilder(
       future: HomePageController.LatestUpdateApi(),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return CustomLoader();
+        }
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

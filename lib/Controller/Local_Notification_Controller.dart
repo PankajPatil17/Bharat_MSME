@@ -27,8 +27,8 @@ class LocalNotification {
   static void showNotification(RemoteMessage message) {
     final NotificationDetails notiDetails = NotificationDetails(
       android: AndroidNotificationDetails(
-        'com.tssia',
-        'TSSIA',
+        'com.msmebharat',
+        'MsmeBharatManch',
         importance: Importance.max,
         priority: Priority.high,
       ),
