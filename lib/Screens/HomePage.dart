@@ -80,6 +80,7 @@ class _HomePageState extends State<HomePage> {
                     LatestUpdate(),
                     OurServices(),
                     UpcomingEvents(),
+                    Gallery(),
                   ],
                 ),
               ),
@@ -764,6 +765,104 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ],
+        );
+      },
+    );
+  }
+
+  Gallery() {
+    return FutureBuilder(
+      // future: HomePageController.HomePageApi(),
+      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Container(
+            height: 24.h,
+            width: 100.w,
+            child: CustomLoader(),
+            decoration: BoxDecoration(
+              color: PWhite,
+              borderRadius: BorderRadius.circular(6),
+            ),
+          );
+        }
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: 2.h, vertical: 1.5.h),
+          margin: EdgeInsets.only(bottom: 2.h),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CommonText(
+                label: 'Gallery',
+                fontw8: FontWeight.w500,
+                size: 12.sp,
+              ),
+              SizedBox(
+                height: 2.h,
+              ),
+              Container(
+                height: 18.h,
+                width: 70.h,
+                child: CarouselSlider.builder(
+                  itemCount: 5,
+                  itemBuilder:
+                      (BuildContext context, int index, int realIndex) {
+                    return Container(
+                      width: 100.h,
+                      decoration: BoxDecoration(
+                          color: PWhite,
+                          borderRadius: BorderRadius.circular(12),
+                          image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage(
+                              'https://www.msmebharatmanch.com/images/msmelogo.png',
+                            ),
+                          ),
+                          boxShadow: Mainboxshadow,
+                          border:
+                              Border.all(width: 0.5, color: Color(0xffe4e4e4))),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(1.h),
+                            margin: EdgeInsets.only(
+                                left: 2.h, right: 2.h, top: 1.h),
+                            decoration: BoxDecoration(
+                                color: Colors.black,
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(6),
+                                    topRight: Radius.circular(6))),
+                            child: Text(
+                              'Gallery Name',
+                              textAlign: TextAlign.center,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 11.sp,
+                                  color: PWhite),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  options: CarouselOptions(
+                    enlargeCenterPage: true,
+                    autoPlay: true,
+                    pauseAutoPlayOnManualNavigate: true,
+                    pauseAutoPlayOnTouch: true,
+                    viewportFraction: 1,
+                    disableCenter: false,
+                    aspectRatio: 10 / 5,
+                    initialPage: 0,
+                    autoPlayInterval: Duration(seconds: 2),
+                  ),
+                ),
+              )
+            ],
+          ),
         );
       },
     );
