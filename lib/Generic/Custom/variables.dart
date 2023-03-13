@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tssia_replica/Generic/Common/CommonText.dart';
-import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 
 const UatURL = 'https://msme.enirmaan.com/';
 const MSMEURL = 'https://msmebharatmanch.com/';
@@ -21,26 +20,6 @@ Future<String?> getFcmToken() async {
   }
   String? fcmKey = await FirebaseMessaging.instance.getToken();
   return fcmKey;
-}
-
-Sequence({BoxColor, BorderColor, BoxNumber, NumberColor}) {
-  return Container(
-    padding: EdgeInsets.all(1.5.h),
-    margin: EdgeInsets.only(bottom: 3.h),
-    decoration: BoxDecoration(
-        boxShadow: Mainboxshadow,
-        shape: BoxShape.circle,
-        color: BoxColor,
-        border: Border.all(width: 1.0, color: BorderColor)),
-    child: Center(
-        child: CommonText(
-      label: BoxNumber,
-      fontw8: FontWeight.w500,
-      size: 10.sp,
-      colorT: NumberColor,
-      maxline: 1,
-    )),
-  );
 }
 
 HeaderText({Label}) {

@@ -8,6 +8,7 @@ import 'package:tssia_replica/Generic/Common/Common_BottomBar.dart';
 import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Drawer.dart';
 import 'package:tssia_replica/Generic/Custom/variables.dart';
+import 'package:tssia_replica/Screens/My_Profile/Common_Sequences.dart';
 import 'package:tssia_replica/Screens/My_Profile/MemberContactDetails.dart';
 
 class MemberAddressDetails extends StatefulWidget {
@@ -122,7 +123,7 @@ class _MemberAddressDetailsState extends State<MemberAddressDetails> {
                           ),
                         ),
                       ),
-                      NumberSequence(),
+                      CommonSequences(number: "2"),
                       AddressDetails(),
                       SaveButton()
                     ],
@@ -298,45 +299,6 @@ class _MemberAddressDetailsState extends State<MemberAddressDetails> {
           ),
         ),
       ),
-    );
-  }
-
-  NumberSequence() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Sequence(
-            BorderColor: Colors.transparent,
-            NumberColor: Colors.grey.shade500,
-            BoxNumber: "1",
-            BoxColor: PWhite),
-        Sequence(
-            BorderColor: mainBlue,
-            NumberColor: mainBlue,
-            BoxNumber: "2",
-            BoxColor: PWhite),
-        Sequence(
-            BorderColor: Colors.transparent,
-            NumberColor: Colors.grey.shade500,
-            BoxNumber: "3",
-            BoxColor: PWhite),
-        Sequence(
-            BorderColor: Colors.transparent,
-            NumberColor: Colors.grey.shade500,
-            BoxNumber: "4",
-            BoxColor: PWhite),
-        Sequence(
-            BorderColor: Colors.transparent,
-            NumberColor: Colors.grey.shade500,
-            BoxNumber: "5",
-            BoxColor: PWhite),
-        Sequence(
-            BorderColor: Colors.transparent,
-            NumberColor: Colors.grey.shade500,
-            BoxNumber: "6",
-            BoxColor: PWhite),
-      ],
     );
   }
 }

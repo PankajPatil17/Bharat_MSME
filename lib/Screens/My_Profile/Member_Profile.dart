@@ -1,5 +1,6 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tssia_replica/Controller/MemberController.dart';
@@ -10,6 +11,7 @@ import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Drawer.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Icon_Button.dart';
 import 'package:tssia_replica/Generic/Custom/variables.dart';
+import 'package:tssia_replica/Screens/My_Profile/Common_Sequences.dart';
 import 'package:tssia_replica/Screens/My_Profile/MemberAddressDetails.dart';
 
 class MemberProfile extends StatefulWidget {
@@ -141,7 +143,7 @@ class _MemberProfileState extends State<MemberProfile> {
                           ),
                         ),
                       ),
-                      NumberSequence(),
+                      CommonSequences(number: "1"),
                       CompanyDetails(),
                       SaveButton()
                     ],
@@ -153,45 +155,6 @@ class _MemberProfileState extends State<MemberProfile> {
           ],
         ),
       ),
-    );
-  }
-
-  NumberSequence() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Sequence(
-            BorderColor: mainBlue,
-            NumberColor: mainBlue,
-            BoxNumber: "1",
-            BoxColor: PWhite),
-        Sequence(
-            BorderColor: Colors.transparent,
-            NumberColor: Colors.grey.shade500,
-            BoxNumber: "2",
-            BoxColor: PWhite),
-        Sequence(
-            BorderColor: Colors.transparent,
-            NumberColor: Colors.grey.shade500,
-            BoxNumber: "3",
-            BoxColor: PWhite),
-        Sequence(
-            BorderColor: Colors.transparent,
-            NumberColor: Colors.grey.shade500,
-            BoxNumber: "4",
-            BoxColor: PWhite),
-        Sequence(
-            BorderColor: Colors.transparent,
-            NumberColor: Colors.grey.shade500,
-            BoxNumber: "5",
-            BoxColor: PWhite),
-        Sequence(
-            BorderColor: Colors.transparent,
-            NumberColor: Colors.grey.shade500,
-            BoxNumber: "6",
-            BoxColor: PWhite),
-      ],
     );
   }
 
@@ -744,7 +707,21 @@ class _MemberProfileState extends State<MemberProfile> {
       child: GestureDetector(
         onTap: () {
           if (formKey.currentState!.validate()) {
-            Get.to(MemberAddressDetails());
+            if (imgpath.value != '' ||
+                companyScale != null ||
+                constitution != null ||
+                importer != null ||
+                importerCountry != null ||
+                companyTurnover != null ||
+                noofemployee != null ||
+                industrytype != null) {
+              Get.to(MemberAddressDetails());
+            } else {
+              Fluttertoast.showToast(
+                  msg: 'Please fill all the details',
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.CENTER);
+            }
           }
         },
         child: Container(
