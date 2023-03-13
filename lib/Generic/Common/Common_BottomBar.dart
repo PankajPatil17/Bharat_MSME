@@ -7,7 +7,7 @@ import 'package:tssia_replica/Controller/HomeController.dart';
 import 'package:tssia_replica/Controller/SigupController.dart';
 import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Generic/Custom/variables.dart';
-import 'package:tssia_replica/Screens/Committee/Coming_soon.dart';
+import 'package:tssia_replica/Screens/ChatAndDiscussionForum/ChatScreen.dart';
 import 'package:tssia_replica/Screens/HomePage.dart';
 import 'package:tssia_replica/Screens/My_Profile/My_Profile.dart';
 import 'package:tssia_replica/Screens/WebView/WebView.dart';
@@ -113,13 +113,7 @@ class _CommonBottomBarState extends State<CommonBottomBar> {
           InkWell(
             onTap: () {
               SigunpController.isStopped = true;
-              // Get.to(() => ChatScreen(), transition: Transition.noTransition);
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return WellnessComingSoon();
-                },
-              );
+              Get.to(() => ChatScreen(), transition: Transition.noTransition);
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

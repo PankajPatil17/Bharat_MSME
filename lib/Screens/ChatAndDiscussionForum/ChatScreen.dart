@@ -62,7 +62,12 @@ class _ChatScreenState extends State<ChatScreen> {
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [DiscussonList()],
+                children: [
+                  CommonText(
+                    label: 'dfjksjdflkdfdjkldsfjlkd',
+                  ),
+                  DiscussonList()
+                ],
               ),
             ),
           ),

@@ -45,7 +45,7 @@ Sequence({BoxColor, BorderColor, BoxNumber, NumberColor}) {
 
 HeaderText({Label}) {
   return Padding(
-    padding: EdgeInsets.only(top: 1.3.h, bottom: 1.5.h),
+    padding: EdgeInsets.only(top: 1.6.h, bottom: 1.5.h),
     child: CommonText(
       label: Label.toString(),
       size: 11.sp,

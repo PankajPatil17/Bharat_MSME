@@ -16,6 +16,7 @@ import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Drawer.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Loader.dart';
 import 'package:tssia_replica/Generic/Custom/variables.dart';
+import 'package:tssia_replica/Screens/ChatAndDiscussionForum/ChatScreen.dart';
 import 'package:tssia_replica/Screens/Circulars/Circulars.dart';
 import 'package:tssia_replica/Screens/Committee/Coming_soon.dart';
 import 'package:tssia_replica/Screens/Events/Events.dart';
@@ -196,13 +197,8 @@ class _HomePageState extends State<HomePage> {
                           } else if (index == 4) {
                             Get.to(Circulars(), transition: transitonEffect);
                           } else if (index == 5) {
-                            // Get.to(ChatScreen(), transition: transitonEffect);
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return WellnessComingSoon();
-                              },
-                            );
+                            Get.to(ChatScreen(), transition: transitonEffect);
+                           
                           } else if (index == 2) {
                             Get.to(HelpOtherJoin(),
                                 transition: transitonEffect);

@@ -15,7 +15,7 @@ class MemberProfileController extends GetxController {
   List industryDetailsList = [].obs;
   List companyTypeDetailList = [].obs;
   List companySizeList = [].obs;
-
+  var companydetails;
   var SignController = Get.put(signupcontroller());
 
   List MasterAPI = [
@@ -51,25 +51,27 @@ class MemberProfileController extends GetxController {
       Uri.parse('${MSMEURL}${MasterAPI[6]}'),
     );
     var decodedResponse1 = json.decode(response1.body);
-    exportDetailList = decodedResponse1['data']['importExportDetails'];
+    exportDetailList = await decodedResponse1['data']['importExportDetails'];
 
-    var decodedResponse2 = json.decode(response1.body);
-    constitutionList = decodedResponse2;
+    var decodedResponse2 = json.decode(response2.body);
+    constitutionList = await decodedResponse2['data']['constitutionDetails'];
 
-    var decodedResponse3 = json.decode(response1.body);
-    countryDetailList = decodedResponse3['data']['importExportDetails'];
+    var decodedResponse3 = json.decode(response3.body);
+    countryDetailList = await decodedResponse3['data']['countryDetails'];
 
-    var decodedResponse4 = json.decode(response1.body);
-    turnOverList = decodedResponse4;
+    var decodedResponse4 = json.decode(response4.body);
+    turnOverList = await decodedResponse4['data']['turnOverDetails'];
+    ;
 
-    var decodedResponse5 = json.decode(response1.body);
-    industryDetailsList = decodedResponse5['data']['importExportDetails'];
+    var decodedResponse5 = json.decode(response5.body);
+    industryDetailsList = await decodedResponse5['data']['industryDetails'];
 
-    var decodedResponse6 = json.decode(response1.body);
-    companyTypeDetailList = decodedResponse6;
+    var decodedResponse6 = json.decode(response6.body);
+    companyTypeDetailList =
+        await decodedResponse6['data']['companyTypeDetails'];
 
-    var decodedResponse7 = json.decode(response1.body);
-    companySizeList = decodedResponse7['data']['importExportDetails'];
+    var decodedResponse7 = json.decode(response7.body);
+    companySizeList = await decodedResponse7['data']['companySize'];
   }
 
   Future getCompanyDetails() async {
@@ -83,6 +85,6 @@ class MemberProfileController extends GetxController {
       },
     );
     var decodedResponse = json.decode(response.body);
-    print(response.body);
+    companydetails = decodedResponse['data'];
   }
 }
