@@ -12,6 +12,7 @@ import 'package:tssia_replica/Generic/Custom/Custom_Drawer.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Loader.dart';
 import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:tssia_replica/Screens/My_Profile/Contact_Us.dart';
+import 'package:tssia_replica/Screens/My_Profile/Member_Profile.dart';
 import 'package:tssia_replica/Screens/Sign_Up/LoginScreen.dart';
 import 'package:tssia_replica/Screens/WebView/WebView.dart';
 
@@ -35,15 +36,15 @@ class _MyProfileState extends State<MyProfile> {
   }
 
   List images = [
+    '${ImagePath}Terms & conditions.svg',
     '${ImagePath}Contact Us.svg',
-    // '${ImagePath}Terms & conditions.svg',
     '${ImagePath}Privacy Policy.svg',
     '${ImagePath}Rate_Us.svg',
     '${ImagePath}logout.svg',
   ];
   List titles = [
+    'My Profile',
     'Contact Us',
-    // 'Terms & Condition',
     'Privacy Policy',
     'Rate Us',
     'Logout',
@@ -148,16 +149,18 @@ class _MyProfileState extends State<MyProfile> {
                       return GestureDetector(
                         onTap: () async {
                           if (index == 0) {
-                            Get.to(ContactUs());
+                            Get.to(MemberProfile());
                           } else if (index == 1) {
+                            Get.to(ContactUs());
+                          } else if (index == 2) {
                             Get.to(WebviewScreen(
                               label: 'Privacy Policy',
                               url: 'https://msmebharatmanch.com/privacy-policy',
                             ));
-                          } else if (index == 2) {
+                          } else if (index == 3) {
                             StoreRedirect.redirect(
                                 androidAppId: 'com.msmebharat', iOSAppId: '');
-                          } else if (index == 3) {
+                          } else if (index == 4) {
                             SharedPreferences prefs =
                                 await SharedPreferences.getInstance();
                             prefs.clear();
