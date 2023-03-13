@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-// import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tssia_replica/Generic/Common/CommonImage.dart';
 import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:tssia_replica/Screens/Notification_Page.dart';
-// import 'package:tssia_replica/Generic/Custom/variables.dart';
-// import 'package:tssia_replica/Screens/Notification_Page.dart';
 
 class CommonAppBar extends StatefulWidget {
   const CommonAppBar({super.key});
