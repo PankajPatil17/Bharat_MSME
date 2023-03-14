@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:tssia_replica/Generic/Custom/variables.dart';
+import 'package:tssia_replica/Screens/ChatAndDiscussionForum/GroupChat/GroupChatList.dart';
 
-import '../Screens/ChatAndDiscussionForum/GroupChat/GroupChatList.dart';
+import 'SigupController.dart';
 
 class ChatAndDiscussionController extends GetxController {
   List GetAllPosts = [].obs;
@@ -13,26 +14,24 @@ class ChatAndDiscussionController extends GetxController {
   List GetAllGroupMembers = [].obs;
   List GrpMembersFinalArrayOfName = [].obs;
   List GrpMembersFinalArrayOfID = [].obs;
+  List ChatSearchResult = [].obs;
   var CommentsParentsWholedata;
+  var SigunpController = Get.put(signupcontroller());
+
   Future AllPostList({userId}) async {
-    final response = await http.post(
-      Uri.parse('${MSMEURL}api/Chat_Controller/post_list'),
-      body: {
-        // 'user_id': userId.toString(),
-      },
-    );
+    final response = await http.get(Uri.parse('${MSMEURL}api/get-chats'),
+        headers: {'Authorization': SigunpController.CurrentToken.toString()});
     var decodedResponse = json.decode(response.body);
-    GetAllPosts = decodedResponse['post_list'];
+    GetAllPosts = decodedResponse['data']['data'];
   }
 
   Future AllPostwithCommentsList({userId, postID}) async {
-    final response = await http.post(
-      Uri.parse('${MSMEURL}api/Chat_Controller/single_post_with_comments'),
-      body: {'user_id': userId.toString(), 'post_id': postID.toString()},
-    );
+    final response = await http.get(
+        Uri.parse('${MSMEURL}api/get-replies/${postID}'),
+        headers: {'Authorization': SigunpController.CurrentToken.toString()});
     var decodedResponse = json.decode(response.body);
     CommentsParentsWholedata = decodedResponse;
-    GetPostWithComments = decodedResponse['post_details']['comments_details'];
+    GetPostWithComments = decodedResponse['data']['data'];
   }
 
   AddNewConversation({userID, descrpition, title, file, context}) async {
@@ -91,7 +90,13 @@ class ChatAndDiscussionController extends GetxController {
   }
 
   AddNewConversationwithParent(
-      {userID, descrpition, title, file, context, parentID}) async {
+      {userID,
+      descrpition,
+      title,
+      file,
+      context,
+      parentID,
+      Description}) async {
     var request = http.MultipartRequest(
         'POST', Uri.parse('${MSMEURL}api/Chat_Controller/add_post'));
     request.fields['user_id'] = '${userID}';
@@ -108,6 +113,7 @@ class ChatAndDiscussionController extends GetxController {
     if (decodedResponse['status'] == 200) {
       print(response.statusCode);
       print('resbeco${responsed.body}');
+      Description.clear();
       Get.back();
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("Conversation successfully posted"),
@@ -121,7 +127,7 @@ class ChatAndDiscussionController extends GetxController {
   }
 
   Future AddConversationWithoutAttachmentwithParent(
-      {userID, descrpition, title, context, parentID}) async {
+      {userID, descrpition, title, context, parentID, Description}) async {
     final response = await http.post(
       Uri.parse('${MSMEURL}api/Chat_Controller/add_post'),
       body: {
@@ -137,6 +143,7 @@ class ChatAndDiscussionController extends GetxController {
       print(response.statusCode);
       print('resbeco${response.body}');
       Get.back();
+      Description.clear();
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("Conversation successfully posted"),
       ));

@@ -69,7 +69,7 @@ class _CreateGroupFinalStepState extends State<CreateGroupFinalStep> {
         automaticallyImplyLeading: false,
         leading: BackButton(color: Colors.black),
         titleTextStyle: TextStyle(
-            fontFamily: 'Poppins',
+            fontFamily: 'OpenSans',
             fontWeight: FontWeight.w400,
             color: Colors.black,
             fontSize: 13.sp),
@@ -152,7 +152,7 @@ class _CreateGroupFinalStepState extends State<CreateGroupFinalStep> {
                         hintStyle: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 11.sp,
-                            fontFamily: 'Poppins',
+                            fontFamily: 'OpenSans',
                             color: Colors.grey),
                       ),
                     ),
@@ -178,7 +178,7 @@ class _CreateGroupFinalStepState extends State<CreateGroupFinalStep> {
                         hintStyle: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 11.sp,
-                            fontFamily: 'Poppins',
+                            fontFamily: 'OpenSans',
                             color: Colors.grey),
                       ),
                     ),

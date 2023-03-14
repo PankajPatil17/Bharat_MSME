@@ -38,7 +38,7 @@ class _GroupChatListState extends State<GroupChatList> {
         automaticallyImplyLeading: false,
         leading: BackButton(color: Colors.black),
         titleTextStyle: TextStyle(
-            fontFamily: 'Poppins',
+            fontFamily: 'OpenSans',
             fontWeight: FontWeight.w400,
             color: Colors.black,
             fontSize: 13.sp),
@@ -96,7 +96,7 @@ class _GroupChatListState extends State<GroupChatList> {
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
                                           image: NetworkImage(
-                                              'https://cdn-icons-png.flaticon.com/512/681/681392.png'))),
+                                              'https://tssia.enirmaan.com//assets/uploads/comp_logo/bright_engineers/group_img/${ChatForumController.GetAllGroupList[index]['group_img']}'))),
                                 ),
                                 SizedBox(
                                   width: 1.w,

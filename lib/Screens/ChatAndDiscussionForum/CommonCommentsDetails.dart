@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -151,13 +152,45 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                         border: Border.all(color: Colors.black12),
                         borderRadius: MainBorderRadius,
                         color: PWhite),
-                    child: CommonText(
-                      label: '${filename}',
-                      fontw8: FontWeight.w600,
-                      size: 10.sp,
-                      colorT: Colors.black,
-                      maxline: 1,
-                      overflow: TextOverflow.ellipsis,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        imgpath.value.contains('.jpeg') ||
+                                imgpath.value.contains('.jpg') ||
+                                imgpath.value.contains('.png')
+                            ? Image.file(
+                                File(imgpath.value),
+                                height: 35.h,
+                                width: 35.h,
+                                fit: BoxFit.cover,
+                              )
+                            : Expanded(
+                                child: CommonText(
+                                  label: '${filename}',
+                                  fontw8: FontWeight.w600,
+                                  size: 10.sp,
+                                  colorT: Colors.black,
+                                  maxline: 10,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                        InkWell(
+                          onTap: () {
+                            imgpath.value = '';
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(0.5.h),
+                            decoration: BoxDecoration(
+                                color: Colors.red, shape: BoxShape.circle),
+                            child: Icon(
+                              Icons.close,
+                              size: 2.8.h,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
             Row(
@@ -196,7 +229,7 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                       hintStyle: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 11.sp,
-                          fontFamily: 'Poppins',
+                          fontFamily: 'OpenSans',
                           color: Mainfentbackgrey),
                     ),
                   ),
@@ -228,6 +261,10 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                 Spacer(),
                 InkWell(
                   onTap: () {
+                    Future.delayed(Duration(seconds: 1), () {
+                      setState(() {});
+                      imgpath.value = '';
+                    });
                     showDialog(
                       barrierDismissible: false,
                       context: context,
@@ -238,7 +275,7 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             LottieBuilder.asset(
-                              'assets/Lottie/LoadingChat.json',
+                              'assets/Lottie/loaderChat.json',
                               width: 25.h,
                             ),
                             CommonText(
@@ -257,10 +294,13 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                                 .CommentsParentsWholedata['post_details']
                                     ['parent_details']['title']
                                 .toString(),
-                            descrpition: Description.text,
+                            descrpition: Description.text == ''
+                                ? filename
+                                : Description.text,
                             parentID: widget.postID.toString(),
                             file: imgpath.value,
-                            context: context)
+                            context: context,
+                            Description: Description)
                         : ChatForumController
                             .AddConversationWithoutAttachmentwithParent(
                                 userID:
@@ -271,7 +311,8 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                                     .toString(),
                                 descrpition: Description.text,
                                 parentID: widget.postID.toString(),
-                                context: context);
+                                context: context,
+                                Description: Description);
                   },
                   child: Icon(
                     Icons.send,
@@ -294,6 +335,7 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
       shrinkWrap: true,
       controller: ScrollController(),
       itemCount: ChatForumController.GetPostWithComments.length,
+      reverse: true,
       itemBuilder: (BuildContext context, int index) {
         return Container(
           width: 100.w,
@@ -301,32 +343,26 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
               top: 2.4.h, bottom: 2.4.h, right: 2.4.h, left: 12.h),
           padding: EdgeInsets.all(1.h),
           decoration: BoxDecoration(
-              color: Color(0xffF6FFF7),
-              boxShadow: [
-                BoxShadow(
-                    blurRadius: 2,
-                    spreadRadius: 1,
-                    color: Color.fromARGB(255, 147, 233, 161),
-                    offset: Offset(0, 1))
-              ],
+              color: PWhite,
+              boxShadow: Mainboxshadow,
               borderRadius: MainBorderRadius),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
-                  Container(
-                    height: 6.0.h,
-                    width: 6.0.h,
-                    margin: EdgeInsets.only(right: 1.h),
-                    decoration: BoxDecoration(
-                        border:
-                            Border.all(width: 0.5, color: Color(0xffe4e4e4)),
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            image: NetworkImage(
-                                'https://cdn-icons-png.flaticon.com/512/236/236832.png'))),
-                  ),
+                  // Container(
+                  //   height: 6.0.h,
+                  //   width: 6.0.h,
+                  //   margin: EdgeInsets.only(right: 1.h),
+                  //   decoration: BoxDecoration(
+                  //       border:
+                  //           Border.all(width: 0.5, color: Color(0xffe4e4e4)),
+                  //       shape: BoxShape.circle,
+                  //       image: DecorationImage(
+                  //           image: NetworkImage(
+                  //               'https://cdn-icons-png.flaticon.com/512/236/236832.png'))),
+                  // ),
                   SizedBox(
                     width: 1.w,
                   ),
@@ -340,6 +376,18 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                     size: 11.sp,
                   ),
                 ],
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 1.w),
+                child: CommonText(
+                  label: ChatForumController.GetPostWithComments[index]
+                          ['comp_name']
+                      .toString()
+                      .capitalizeFirst,
+                  colorT: Colors.black,
+                  fontw8: FontWeight.w500,
+                  size: 11.sp,
+                ),
               ),
               SizedBox(
                 height: 1.h,
@@ -375,20 +423,22 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                                     .contains('pdf')
                                 ? Row(
                                     children: [
-                                      Expanded(
-                                          child: Icon(
+                                      Icon(
                                         Icons.file_present_rounded,
                                         color: mainColor,
                                         size: 3.5.h,
-                                      )),
-                                      SizedBox(
-                                        width: 70.w,
-                                        child: CommonText(
-                                          label:
-                                              '${ChatForumController.GetPostWithComments[index]['attachment_file']}',
-                                          fontw8: FontWeight.w500,
-                                          maxline: 2,
-                                          overflow: TextOverflow.ellipsis,
+                                      ),
+                                      Expanded(
+                                        child: Container(
+                                          margin: EdgeInsets.only(left: 1.h),
+                                          width: 70.w,
+                                          child: CommonText(
+                                            label:
+                                                '${ChatForumController.GetPostWithComments[index]['attachment_file']}',
+                                            fontw8: FontWeight.w500,
+                                            maxline: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -405,7 +455,7 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                   label: ChatForumController.GetPostWithComments[index]
                           ['created_at']
                       .toString()
-                      .replaceRange(9, 18, ''),
+                      .replaceRange(10, 19, ''),
                   colorT: Colors.black,
                   fontw8: FontWeight.w400,
                   size: 9.sp,
@@ -428,196 +478,183 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
       margin: EdgeInsets.all(2.4.h),
       padding: EdgeInsets.all(1.h),
       decoration: BoxDecoration(
-          color: Color(0xffFFF5E2),
-          border: Border.all(color: Color(0xffF3AE33)),
-          boxShadow: [
-            BoxShadow(
-                blurRadius: 2,
-                spreadRadius: 2,
-                color: Color(0xffFFDEA2),
-                offset: Offset(0, 2))
-          ],
+          color: Color(0xffE4FFFD),
+          boxShadow: Mainboxshadow,
           borderRadius: MainBorderRadius),
-      child: Stack(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
             children: [
-              Row(
-                children: [
-                  Container(
-                    height: 6.0.h,
-                    width: 6.0.h,
-                    margin: EdgeInsets.only(right: 1.h),
-                    decoration: BoxDecoration(
-                        border:
-                            Border.all(width: 0.5, color: Color(0xffe4e4e4)),
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            image: NetworkImage(
-                                'https://cdn-icons-png.flaticon.com/512/236/236832.png'))),
-                  ),
-                  SizedBox(
-                    width: 1.w,
-                  ),
-                  CommonText(
-                    label: ChatForumController
-                        .CommentsParentsWholedata['post_details']
-                            ['parent_details']['founder_name']
-                        .toString()
-                        .capitalizeFirst,
-                    colorT: Colors.black,
-                    fontw8: FontWeight.w500,
-                    size: 11.sp,
-                  ),
-                ],
-              ),
+              // Container(
+              //   height: 6.0.h,
+              //   width: 6.0.h,
+              //   margin: EdgeInsets.only(right: 1.h),
+              //   decoration: BoxDecoration(
+              //       border: Border.all(width: 0.5, color: Color(0xffe4e4e4)),
+              //       shape: BoxShape.circle,
+              //       image: DecorationImage(
+              //           image: NetworkImage(
+              //               'https://cdn-icons-png.flaticon.com/512/236/236832.png'))),
+              // ),
               SizedBox(
-                height: 1.h,
+                width: 1.w,
               ),
               CommonText(
                 label: ChatForumController
                     .CommentsParentsWholedata['post_details']['parent_details']
-                        ['message']
+                        ['founder_name']
                     .toString()
                     .capitalizeFirst,
                 colorT: Colors.black,
-                fontw8: FontWeight.w400,
+                fontw8: FontWeight.w500,
                 size: 11.sp,
               ),
-              ChatForumController.CommentsParentsWholedata['post_details']
-                          ['parent_details']['attachment_file'] ==
-                      ''
-                  ? Container()
-                  : GestureDetector(
-                      onTap: () {
-                        _url = Uri.parse(
-                            '${ChatForumController.CommentsParentsWholedata['post_details']['parent_details']['attachment_file']}');
-                        Future.delayed(Duration(milliseconds: 100), () {
-                          _launchUrl(_url);
-                        });
-                      },
-                      child: Container(
-                        width: 100.w,
-                        margin: EdgeInsets.symmetric(vertical: 1.h),
-                        padding: EdgeInsets.all(0.5.h),
-                        decoration: BoxDecoration(
-                            color: Colors.transparent,
-                            borderRadius: MainBorderRadius),
-                        child:
-                            '${ChatForumController.CommentsParentsWholedata['post_details']['parent_details']['attachment_file']}'
-                                    .contains('pdf')
-                                ? Row(
-                                    children: [
-                                      Expanded(
-                                          child: Icon(
-                                        Icons.file_present_rounded,
-                                        color: mainColor,
-                                        size: 3.5.h,
-                                      )),
-                                      SizedBox(
-                                        width: 70.w,
-                                        child: CommonText(
-                                          label:
-                                              '${ChatForumController.CommentsParentsWholedata['post_details']['parent_details']['attachment_file']}',
-                                          fontw8: FontWeight.w500,
-                                          maxline: 2,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                                : Image.network(
-                                    height: 20.h,
-                                    '${ChatForumController.CommentsParentsWholedata['post_details']['parent_details']['attachment_file']}',
-                                  ),
-                      ),
-                    ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: CommonText(
-                  label: ChatForumController
-                      .CommentsParentsWholedata['post_details']
-                          ['parent_details']['created_at']
-                      .toString()
-                      .replaceRange(9, 18, ''),
-                  colorT: Colors.black,
-                  fontw8: FontWeight.w400,
-                  size: 9.sp,
-                ),
-              ),
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        statusCodelike = !statusCodelike;
-                        if (statusCodelike == false) {
-                          ChatForumController.LikePost(
-                              PostID: ChatForumController
-                                      .CommentsParentsWholedata['post_details']
-                                  ['parent_details']['id'],
-                              UserID: SigunpController.CurrentuserID.toString(),
-                              status: 0);
-                        } else {
-                          ChatForumController.LikePost(
-                              PostID: ChatForumController
-                                      .CommentsParentsWholedata['post_details']
-                                  ['parent_details']['id'],
-                              UserID: SigunpController.CurrentuserID.toString(),
-                              status: 1);
-                        }
-                      });
-                    },
-                    child: Container(
-                      margin: EdgeInsets.all(1.h),
-                      padding: EdgeInsets.all(1.h),
-                      decoration: BoxDecoration(
-                        color: PWhite,
-                        boxShadow: Mainboxshadow,
-                        shape: BoxShape.circle,
-                      ),
-                      child: statusCodelike == false
-                          ? Icon(
-                              Icons.favorite_border,
-                              size: 2.5.h,
-                            )
-                          : Icon(
-                              Icons.favorite,
-                              color: Colors.red,
-                              size: 2.5.h,
-                            ),
-                    ),
-                  ),
-                  CommonText(
-                    label:
-                        '${ChatForumController.CommentsParentsWholedata['post_details']['parent_details']['total_likes']}',
-                    fontw8: FontWeight.w500,
-                    size: 12.sp,
-                  ),
-                  Container(
-                    margin: EdgeInsets.all(1.h),
-                    padding: EdgeInsets.all(1.h),
-                    decoration: BoxDecoration(
-                      color: PWhite,
-                      boxShadow: Mainboxshadow,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(
-                      Icons.chat,
-                      size: 2.5.h,
-                    ),
-                  ),
-                  CommonText(
-                    label:
-                        '${ChatForumController.CommentsParentsWholedata['post_details']['no_of_comments']}',
-                    fontw8: FontWeight.w500,
-                    size: 12.sp,
-                  )
-                ],
-              )
             ],
           ),
+          SizedBox(
+            height: 1.h,
+          ),
+          CommonText(
+            label: ChatForumController.CommentsParentsWholedata['post_details']
+                    ['parent_details']['message']
+                .toString()
+                .capitalizeFirst,
+            colorT: Colors.black,
+            fontw8: FontWeight.w400,
+            size: 11.sp,
+          ),
+          ChatForumController.CommentsParentsWholedata['post_details']
+                      ['parent_details']['attachment_file'] ==
+                  ''
+              ? Container()
+              : GestureDetector(
+                  onTap: () {
+                    _url = Uri.parse(
+                        '${ChatForumController.CommentsParentsWholedata['post_details']['parent_details']['attachment_file']}');
+                    Future.delayed(Duration(milliseconds: 100), () {
+                      _launchUrl(_url);
+                    });
+                  },
+                  child: Container(
+                    width: 100.w,
+                    margin: EdgeInsets.symmetric(vertical: 1.h),
+                    padding: EdgeInsets.all(0.5.h),
+                    decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: MainBorderRadius),
+                    child:
+                        '${ChatForumController.CommentsParentsWholedata['post_details']['parent_details']['attachment_file']}'
+                                .contains('pdf')
+                            ? Row(
+                                children: [
+                                  Expanded(
+                                      child: Icon(
+                                    Icons.file_present_rounded,
+                                    color: mainColor,
+                                    size: 3.5.h,
+                                  )),
+                                  SizedBox(
+                                    width: 70.w,
+                                    child: CommonText(
+                                      label:
+                                          '${ChatForumController.CommentsParentsWholedata['post_details']['parent_details']['attachment_file']}',
+                                      fontw8: FontWeight.w500,
+                                      maxline: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
+                              )
+                            : Image.network(
+                                height: 20.h,
+                                '${ChatForumController.CommentsParentsWholedata['post_details']['parent_details']['attachment_file']}',
+                              ),
+                  ),
+                ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: CommonText(
+              label: ChatForumController
+                  .CommentsParentsWholedata['post_details']['parent_details']
+                      ['created_at']
+                  .toString()
+                  .replaceRange(10, 19, ''),
+              colorT: Colors.black,
+              fontw8: FontWeight.w400,
+              size: 9.sp,
+            ),
+          ),
+          Row(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    statusCodelike = !statusCodelike;
+                    if (statusCodelike == false) {
+                      ChatForumController.LikePost(
+                          PostID: ChatForumController
+                                  .CommentsParentsWholedata['post_details']
+                              ['parent_details']['id'],
+                          UserID: SigunpController.CurrentuserID.toString(),
+                          status: 0);
+                    } else {
+                      ChatForumController.LikePost(
+                          PostID: ChatForumController
+                                  .CommentsParentsWholedata['post_details']
+                              ['parent_details']['id'],
+                          UserID: SigunpController.CurrentuserID.toString(),
+                          status: 1);
+                    }
+                  });
+                },
+                child: Container(
+                  margin: EdgeInsets.all(1.h),
+                  padding: EdgeInsets.all(1.h),
+                  decoration: BoxDecoration(
+                    color: PWhite,
+                    boxShadow: Mainboxshadow,
+                    shape: BoxShape.circle,
+                  ),
+                  child: statusCodelike == false
+                      ? Icon(
+                          Icons.favorite_border,
+                          size: 2.5.h,
+                        )
+                      : Icon(
+                          Icons.favorite,
+                          color: Colors.red,
+                          size: 2.5.h,
+                        ),
+                ),
+              ),
+              CommonText(
+                label:
+                    '${ChatForumController.CommentsParentsWholedata['post_details']['parent_details']['total_likes']}',
+                fontw8: FontWeight.w500,
+                size: 12.sp,
+              ),
+              Container(
+                margin: EdgeInsets.all(1.h),
+                padding: EdgeInsets.all(1.h),
+                decoration: BoxDecoration(
+                  color: PWhite,
+                  boxShadow: Mainboxshadow,
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  Icons.chat,
+                  size: 2.5.h,
+                ),
+              ),
+              CommonText(
+                label:
+                    '${ChatForumController.CommentsParentsWholedata['post_details']['no_of_comments']}',
+                fontw8: FontWeight.w500,
+                size: 12.sp,
+              )
+            ],
+          )
         ],
       ),
     );

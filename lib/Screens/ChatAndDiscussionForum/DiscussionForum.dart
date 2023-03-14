@@ -1,9 +1,9 @@
 import 'dart:async';
-
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+import 'package:lottie/lottie.dart';
 import 'package:tssia_replica/Controller/ChatAndDiscussionController.dart';
 import 'package:tssia_replica/Controller/SigupController.dart';
 import 'package:tssia_replica/Generic/Common/CommonText.dart';
@@ -11,7 +11,6 @@ import 'package:tssia_replica/Generic/Common/Common_AppBar.dart';
 import 'package:tssia_replica/Generic/Common/Common_BottomBar.dart';
 import 'package:tssia_replica/Generic/Common/Common_Color.dart';
 import 'package:tssia_replica/Generic/Custom/Custom_Drawer.dart';
-import 'package:lottie/lottie.dart';
 import 'package:tssia_replica/Screens/ChatAndDiscussionForum/CommonCommentsDetails.dart';
 
 class DiscussionForum extends StatefulWidget {
@@ -35,14 +34,15 @@ class _DiscussionForumState extends State<DiscussionForum> {
 
   @override
   void initState() {
-    tapcolor = 'Chat';
+    tapcolor = 'chat';
     SigunpController.isStopped = false;
     sec5Timer();
+
     super.initState();
   }
 
   sec5Timer() {
-    Timer.periodic(Duration(seconds: 8), (timer) {
+    Timer.periodic(Duration(seconds: 5), (timer) {
       if (SigunpController.isStopped) {
         timer.cancel();
       } else {
@@ -60,7 +60,7 @@ class _DiscussionForumState extends State<DiscussionForum> {
   var TapColor;
   @override
   Widget build(BuildContext context) {
-    print('');
+    print('hit');
     return Scaffold(
       backgroundColor: Colors.white,
       drawer: CustomDrawer(),
@@ -70,9 +70,11 @@ class _DiscussionForumState extends State<DiscussionForum> {
       body: Column(
         children: [
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [PostBox()],
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [PostBox(), AllPostList()],
+              ),
             ),
           ),
           CommonBottomBar(TapColor: tapcolor)
@@ -109,18 +111,18 @@ class _DiscussionForumState extends State<DiscussionForum> {
                       borderRadius: MainBorderRadius),
                   child: Row(
                     children: [
-                      Container(
-                        height: 6.h,
-                        width: 6.h,
-                        margin: EdgeInsets.only(right: 1.h),
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                width: 0.5, color: Color(0xffe4e4e4)),
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                    'https://cdn-icons-png.flaticon.com/512/236/236832.png'))),
-                      ),
+                      // Container(
+                      //   height: 6.h,
+                      //   width: 6.h,
+                      //   margin: EdgeInsets.only(right: 1.h),
+                      //   decoration: BoxDecoration(
+                      //       border: Border.all(
+                      //           width: 0.5, color: Color(0xffe4e4e4)),
+                      //       shape: BoxShape.circle,
+                      //       image: DecorationImage(
+                      //           image: NetworkImage(
+                      //               'https://cdn-icons-png.flaticon.com/512/236/236832.png'))),
+                      // ),
                       SizedBox(
                         width: 1.w,
                       ),
@@ -128,7 +130,7 @@ class _DiscussionForumState extends State<DiscussionForum> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            width: 75.w,
+                            width: 86.w,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -144,8 +146,7 @@ class _DiscussionForumState extends State<DiscussionForum> {
                                 CommonText(
                                   label: ChatForumController.GetAllPosts[index]
                                           ['created_at']
-                                      .toString()
-                                      .replaceRange(9, 18, ''),
+                                      .toString(),
                                   colorT: Colors.black,
                                   fontw8: FontWeight.w400,
                                   size: 9.sp,
@@ -199,17 +200,17 @@ class _DiscussionForumState extends State<DiscussionForum> {
           children: [
             Row(
               children: [
-                Container(
-                  height: 6.0.h,
-                  width: 6.0.h,
-                  margin: EdgeInsets.only(right: 1.h),
-                  decoration: BoxDecoration(
-                      border: Border.all(width: 0.5, color: Color(0xffe4e4e4)),
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                          image: NetworkImage(
-                              'https://cdn-icons-png.flaticon.com/512/236/236832.png'))),
-                ),
+                // Container(
+                //   height: 6.0.h,
+                //   width: 6.0.h,
+                //   margin: EdgeInsets.only(right: 1.h),
+                //   decoration: BoxDecoration(
+                //       border: Border.all(width: 0.5, color: Color(0xffe4e4e4)),
+                //       shape: BoxShape.circle,
+                //       image: DecorationImage(
+                //           image: NetworkImage(
+                //               'https://cdn-icons-png.flaticon.com/512/236/236832.png'))),
+                // ),
                 SizedBox(
                   width: 2.w,
                 ),
@@ -252,13 +253,13 @@ class _DiscussionForumState extends State<DiscussionForum> {
                 hintStyle: TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 11.sp,
-                    fontFamily: 'Poppins',
+                    fontFamily: 'OpenSans',
                     color: Mainfentbackgrey),
               ),
             ),
             TextFormField(
               controller: Description,
-              maxLines: 6,
+              maxLines: 5,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.symmetric(
@@ -273,7 +274,7 @@ class _DiscussionForumState extends State<DiscussionForum> {
                 hintStyle: TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 11.sp,
-                    fontFamily: 'Poppins',
+                    fontFamily: 'OpenSans',
                     color: Mainfentbackgrey),
               ),
             ),
@@ -343,6 +344,12 @@ class _DiscussionForumState extends State<DiscussionForum> {
                         ),
                         InkWell(
                           onTap: () {
+                            Future.delayed(
+                              Duration(seconds: 2),
+                              () {
+                                setState(() {});
+                              },
+                            );
                             showDialog(
                               barrierDismissible: false,
                               context: context,
