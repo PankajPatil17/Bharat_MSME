@@ -11,7 +11,9 @@ import 'package:tssia_replica/Generic/Custom/variables.dart';
 import 'package:tssia_replica/Screens/My_Profile/Common_Sequences.dart';
 
 class MemberContactDetails extends StatefulWidget {
-  const MemberContactDetails({super.key});
+  final secondpageDetails;
+
+  const MemberContactDetails({super.key, required this.secondpageDetails});
 
   @override
   State<MemberContactDetails> createState() => _MemberContactDetailsState();
@@ -237,7 +239,7 @@ class _MemberContactDetailsState extends State<MemberContactDetails> {
           borderRadius: BorderRadius.circular(6),
           color: PWhite,
           child: TextFormField(
-            controller: mobilenumber,
+            controller: website,
             validator: (v) {
               if (v == null || v.isEmpty) {
                 return 'The Website is required';
@@ -275,7 +277,41 @@ class _MemberContactDetailsState extends State<MemberContactDetails> {
       child: GestureDetector(
         onTap: () {
           if (formKey.currentState!.validate()) {
-            membercontroller.updateMemberDetails();
+            // print(widget.secondpageDetails[0] +
+            //     widget.secondpageDetails[1] +
+            //     widget.secondpageDetails[2] +
+            //     widget.secondpageDetails[3] +
+            //     widget.secondpageDetails[4] +
+            //     widget.secondpageDetails[5] +
+            //     widget.secondpageDetails[6] +
+            //     widget.secondpageDetails[7] +
+            //     widget.secondpageDetails[8] +
+            //     widget.secondpageDetails[9] +
+            //     widget.secondpageDetails[10] +
+            //     widget.secondpageDetails[11] +
+            //     widget.secondpageDetails[12] +
+            //     widget.secondpageDetails[13] +
+            //     widget.secondpageDetails[14]);
+            membercontroller.updateMemberDetails(AllDetails: [
+              widget.secondpageDetails[0],
+              widget.secondpageDetails[1],
+              widget.secondpageDetails[2],
+              widget.secondpageDetails[3],
+              widget.secondpageDetails[4],
+              widget.secondpageDetails[5],
+              widget.secondpageDetails[6],
+              widget.secondpageDetails[7],
+              widget.secondpageDetails[8],
+              widget.secondpageDetails[9],
+              widget.secondpageDetails[10],
+              widget.secondpageDetails[11],
+              widget.secondpageDetails[12],
+              widget.secondpageDetails[13],
+              widget.secondpageDetails[14],
+              mobilenumber.text, //15
+              mailid.text, //16
+              website.text //17
+            ]);
           }
         },
         child: Container(

@@ -88,7 +88,7 @@ class MemberProfileController extends GetxController {
     companydetails = decodedResponse['data'];
   }
 
-  Future updateMemberDetails() async {
+  Future updateMemberDetails({AllDetails}) async {
     final response = await http.post(
       Uri.parse('${MSMEURL}api/member/update-member-details'),
       headers: {
@@ -96,27 +96,27 @@ class MemberProfileController extends GetxController {
       },
       body: {
         "user_id": SignController.CurrentuserID.toString(),
-        // "company_constitution": ,
-
-        //   "import_expoert_type": ,
-        //    "import_expoert_country": ,
-        //     "company_turnover": ,
-        //  "company_no_employee": ,
-        //      "company_membership_no": ,
-        //       "udyam_register": ,
-        //        "is_gst": ,
-        //         "gst_no": ,
-        //          "cin_no": ,
-        //          "pincode": ,
-        //           "state": ,
-        //            "city": ,
-        //            "address": ,
-        //             "company_desccription": ,
-        //             "industry_id": ,
-        //             "company_type": ,
-        //          "company_customer_care_no": ,
-        //            "company_email_id": ,
-        //            "company_website": ,
+        "company_desccription": AllDetails[0],
+        "company_type": AllDetails[1],
+        "company_constitution": AllDetails[2],
+        "import_expoert_type": AllDetails[3],
+        "import_expoert_country": AllDetails[4],
+        "company_turnover": AllDetails[5],
+        "company_no_employee": AllDetails[6],
+        "industry_id": AllDetails[7],
+        "company_membership_no": AllDetails[8],
+        "udyam_register": AllDetails[9],
+        "is_gst": AllDetails[10],
+        "gst_no": AllDetails[11],
+        "cin_no": AllDetails[12],
+        "company_logo": AllDetails[13],
+        "pincode": companydetails['company_detais']['zip'],
+        "state": companydetails['company_detais']['city'],
+        "city": companydetails['company_detais']['state'],
+        "address": AllDetails[14],
+        "company_customer_care_no": AllDetails[15],
+        "company_email_id": AllDetails[16],
+        "company_website": AllDetails[17],
       },
     );
     var decodedResponse = json.decode(response.body);

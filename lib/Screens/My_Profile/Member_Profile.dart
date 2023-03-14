@@ -46,11 +46,6 @@ class _MemberProfileState extends State<MemberProfile> {
   FilePickerResult? result;
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: PWhite,
@@ -333,7 +328,7 @@ class _MemberProfileState extends State<MemberProfile> {
                       items: membercontroller.constitutionList.map((item) {
                         return DropdownMenuItem(
                             enabled: true,
-                            value: item['name'].toString(),
+                            value: item['id'].toString(),
                             child: Text(
                               item['name'],
                               style: TextStyle(
@@ -433,7 +428,7 @@ class _MemberProfileState extends State<MemberProfile> {
                       items: membercontroller.countryDetailList.map((item) {
                         return DropdownMenuItem(
                             enabled: true,
-                            value: item['name'].toString(),
+                            value: item['id'].toString(),
                             child: Text(
                               item['name'],
                               style: TextStyle(
@@ -483,7 +478,7 @@ class _MemberProfileState extends State<MemberProfile> {
                       items: membercontroller.turnOverList.map((item) {
                         return DropdownMenuItem(
                             enabled: true,
-                            value: item['name'].toString(),
+                            value: item['id'].toString(),
                             child: Text(
                               item['name'],
                               style: TextStyle(
@@ -583,7 +578,7 @@ class _MemberProfileState extends State<MemberProfile> {
                       items: membercontroller.industryDetailsList.map((item) {
                         return DropdownMenuItem(
                             enabled: true,
-                            value: item['name'].toString(),
+                            value: item['id'].toString(),
                             child: Text(
                               item['name'],
                               style: TextStyle(
@@ -773,6 +768,36 @@ class _MemberProfileState extends State<MemberProfile> {
                         filled: true),
                   ),
                 ),
+                HeaderText(Label: 'CIN No'),
+                Material(
+                  elevation: 1,
+                  shadowColor: Color.fromARGB(255, 253, 124, 112),
+                  borderRadius: BorderRadius.circular(6),
+                  color: PWhite,
+                  child: TextFormField(
+                    controller: cinNo,
+                    decoration: InputDecoration(
+                        hintText: 'Enter CIN No',
+                        hintStyle: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 13,
+                            color: Colors.black54,
+                            fontFamily: 'Poppins'),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 2.h),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(6.0),
+                          borderSide: BorderSide(width: 0.5),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(6.0),
+                            borderSide: BorderSide(
+                              color: Color(0xffb2b2b2),
+                              width: 0.5,
+                            )),
+                        fillColor: Colors.white,
+                        filled: true),
+                  ),
+                ),
                 HeaderText(Label: 'GST No'),
                 Material(
                   elevation: 1,
@@ -888,7 +913,24 @@ class _MemberProfileState extends State<MemberProfile> {
                 companyTurnover != null ||
                 noofemployee != null ||
                 industrytype != null) {
-              Get.to(MemberAddressDetails());
+              Get.to(MemberAddressDetails(
+                firstpageDetails: [
+                  companyDesc.text, //0
+                  companyScale, //1
+                  constitution, //2
+                  importer, //3
+                  importerCountry, //4
+                  companyTurnover, //5
+                  noofemployee, //6
+                  industrytype, //7
+                  membershipNo.text, //8
+                  udyamregNo.text, //9
+                  one, //10
+                  gstNo.text, //11
+                  cinNo.text, //12
+                  imgpath.value.toString(), //13
+                ],
+              ));
             } else {
               Fluttertoast.showToast(
                   msg: 'Please fill all the details',
