@@ -12,7 +12,9 @@ import 'package:tssia_replica/Screens/My_Profile/Common_Sequences.dart';
 import 'package:tssia_replica/Screens/My_Profile/MemberContactDetails.dart';
 
 class MemberAddressDetails extends StatefulWidget {
-  const MemberAddressDetails({super.key});
+  final firstpageDetails;
+
+  const MemberAddressDetails({super.key, required this.firstpageDetails});
 
   @override
   State<MemberAddressDetails> createState() => _MemberAddressDetailsState();
@@ -277,7 +279,26 @@ class _MemberAddressDetailsState extends State<MemberAddressDetails> {
       child: GestureDetector(
         onTap: () {
           if (formKey.currentState!.validate()) {
-            Get.to(MemberContactDetails());
+            Get.to(MemberContactDetails(
+              secondpageDetails: [
+                widget.firstpageDetails[0],
+                widget.firstpageDetails[1],
+                widget.firstpageDetails[2],
+                widget.firstpageDetails[3],
+                widget.firstpageDetails[4],
+                widget.firstpageDetails[5],
+                widget.firstpageDetails[6],
+                widget.firstpageDetails[7],
+                widget.firstpageDetails[8],
+                widget.firstpageDetails[9],
+                widget.firstpageDetails[10],
+                widget.firstpageDetails[11],
+                widget.firstpageDetails[12],
+                widget.firstpageDetails[13],
+
+                companyAddress.text, //14
+              ],
+            ));
           }
         },
         child: Container(

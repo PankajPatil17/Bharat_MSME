@@ -26,6 +26,10 @@ class _MemberProfileState extends State<MemberProfile> {
 
   var membercontroller = Get.put(MemberProfileController());
   TextEditingController companyDesc = TextEditingController();
+  TextEditingController membershipNo = TextEditingController();
+  TextEditingController udyamregNo = TextEditingController();
+  TextEditingController gstNo = TextEditingController();
+  TextEditingController cinNo = TextEditingController();
 
   String? companyScale;
   String? constitution;
@@ -36,13 +40,10 @@ class _MemberProfileState extends State<MemberProfile> {
   String? industrytype;
 
   var imgpath = ''.obs;
+  int val = -1;
+  String? one;
 
   FilePickerResult? result;
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -203,6 +204,7 @@ class _MemberProfileState extends State<MemberProfile> {
         ),
         HeaderText(Label: 'Company Description'),
         Material(
+          elevation: 1,
           shadowColor: Color.fromARGB(255, 253, 124, 112),
           borderRadius: BorderRadius.circular(6),
           color: PWhite,
@@ -326,7 +328,7 @@ class _MemberProfileState extends State<MemberProfile> {
                       items: membercontroller.constitutionList.map((item) {
                         return DropdownMenuItem(
                             enabled: true,
-                            value: item['name'].toString(),
+                            value: item['id'].toString(),
                             child: Text(
                               item['name'],
                               style: TextStyle(
@@ -426,7 +428,7 @@ class _MemberProfileState extends State<MemberProfile> {
                       items: membercontroller.countryDetailList.map((item) {
                         return DropdownMenuItem(
                             enabled: true,
-                            value: item['name'].toString(),
+                            value: item['id'].toString(),
                             child: Text(
                               item['name'],
                               style: TextStyle(
@@ -476,7 +478,7 @@ class _MemberProfileState extends State<MemberProfile> {
                       items: membercontroller.turnOverList.map((item) {
                         return DropdownMenuItem(
                             enabled: true,
-                            value: item['name'].toString(),
+                            value: item['id'].toString(),
                             child: Text(
                               item['name'],
                               style: TextStyle(
@@ -576,7 +578,7 @@ class _MemberProfileState extends State<MemberProfile> {
                       items: membercontroller.industryDetailsList.map((item) {
                         return DropdownMenuItem(
                             enabled: true,
-                            value: item['name'].toString(),
+                            value: item['id'].toString(),
                             child: Text(
                               item['name'],
                               style: TextStyle(
@@ -694,6 +696,202 @@ class _MemberProfileState extends State<MemberProfile> {
                           );
                   }),
                 ),
+                HeaderText(Label: 'Membership No.'),
+                Material(
+                  elevation: 1,
+                  shadowColor: Color.fromARGB(255, 253, 124, 112),
+                  borderRadius: BorderRadius.circular(6),
+                  color: PWhite,
+                  child: TextFormField(
+                    controller: membershipNo,
+                    validator: (v) {
+                      if (v == null || v.isEmpty) {
+                        return 'The membership no is required';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                        hintText: 'Enter Membership No.',
+                        hintStyle: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 13,
+                            color: Colors.black54,
+                            fontFamily: 'Poppins'),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 2.h),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(6.0),
+                          borderSide: BorderSide(width: 0.5),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(6.0),
+                            borderSide: BorderSide(
+                              color: Color(0xffb2b2b2),
+                              width: 0.5,
+                            )),
+                        fillColor: Colors.white,
+                        filled: true),
+                  ),
+                ),
+                HeaderText(Label: 'Udyam Reg. No'),
+                Material(
+                  elevation: 1,
+                  shadowColor: Color.fromARGB(255, 253, 124, 112),
+                  borderRadius: BorderRadius.circular(6),
+                  color: PWhite,
+                  child: TextFormField(
+                    controller: udyamregNo,
+                    validator: (v) {
+                      if (v == null || v.isEmpty) {
+                        return 'The Udyam reg no is required';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                        hintText: 'Enter Udyam Reg. No',
+                        hintStyle: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 13,
+                            color: Colors.black54,
+                            fontFamily: 'Poppins'),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 2.h),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(6.0),
+                          borderSide: BorderSide(width: 0.5),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(6.0),
+                            borderSide: BorderSide(
+                              color: Color(0xffb2b2b2),
+                              width: 0.5,
+                            )),
+                        fillColor: Colors.white,
+                        filled: true),
+                  ),
+                ),
+                HeaderText(Label: 'CIN No'),
+                Material(
+                  elevation: 1,
+                  shadowColor: Color.fromARGB(255, 253, 124, 112),
+                  borderRadius: BorderRadius.circular(6),
+                  color: PWhite,
+                  child: TextFormField(
+                    controller: cinNo,
+                    decoration: InputDecoration(
+                        hintText: 'Enter CIN No',
+                        hintStyle: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 13,
+                            color: Colors.black54,
+                            fontFamily: 'Poppins'),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 2.h),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(6.0),
+                          borderSide: BorderSide(width: 0.5),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(6.0),
+                            borderSide: BorderSide(
+                              color: Color(0xffb2b2b2),
+                              width: 0.5,
+                            )),
+                        fillColor: Colors.white,
+                        filled: true),
+                  ),
+                ),
+                HeaderText(Label: 'GST No'),
+                Material(
+                  elevation: 1,
+                  shadowColor: Color.fromARGB(255, 253, 124, 112),
+                  borderRadius: BorderRadius.circular(6),
+                  color: PWhite,
+                  child: TextFormField(
+                    controller: gstNo,
+                    decoration: InputDecoration(
+                        hintText: 'Enter GST No',
+                        hintStyle: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 13,
+                            color: Colors.black54,
+                            fontFamily: 'Poppins'),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 2.h),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(6.0),
+                          borderSide: BorderSide(width: 0.5),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(6.0),
+                            borderSide: BorderSide(
+                              color: Color(0xffb2b2b2),
+                              width: 0.5,
+                            )),
+                        fillColor: Colors.white,
+                        filled: true),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 1.3.h),
+                  child: CommonText(
+                    label: 'GST',
+                    size: 11.sp,
+                    colorT: Colors.black,
+                    maxline: 1,
+                    overflow: TextOverflow.ellipsis,
+                    fontw8: FontWeight.w400,
+                  ),
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Radio(
+                          visualDensity:
+                              VisualDensity(vertical: 0, horizontal: 0),
+                          value: 1,
+                          groupValue: val,
+                          onChanged: (value) {
+                            setState(() {
+                              val = 1;
+                              one = "Yes";
+                            });
+                          },
+                          activeColor: Color(0xff2479AB),
+                        ),
+                        CommonText(
+                          label: "Yes",
+                          fontw8: FontWeight.w500,
+                          maxline: 1,
+                          overflow: TextOverflow.ellipsis,
+                          colorT: Colors.black,
+                          size: 10.sp,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Radio(
+                          value: 2,
+                          groupValue: val,
+                          onChanged: (value) {
+                            setState(() {
+                              val = 2;
+                              one = "No";
+                            });
+                          },
+                          activeColor: Color(0xff2479AB),
+                        ),
+                        CommonText(
+                          label: "No",
+                          fontw8: FontWeight.w500,
+                          maxline: 1,
+                          overflow: TextOverflow.ellipsis,
+                          colorT: Colors.black,
+                          size: 10.sp,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ],
             );
           },
@@ -715,7 +913,24 @@ class _MemberProfileState extends State<MemberProfile> {
                 companyTurnover != null ||
                 noofemployee != null ||
                 industrytype != null) {
-              Get.to(MemberAddressDetails());
+              Get.to(MemberAddressDetails(
+                firstpageDetails: [
+                  companyDesc.text, //0
+                  companyScale, //1
+                  constitution, //2
+                  importer, //3
+                  importerCountry, //4
+                  companyTurnover, //5
+                  noofemployee, //6
+                  industrytype, //7
+                  membershipNo.text, //8
+                  udyamregNo.text, //9
+                  one, //10
+                  gstNo.text, //11
+                  cinNo.text, //12
+                  imgpath.value.toString(), //13
+                ],
+              ));
             } else {
               Fluttertoast.showToast(
                   msg: 'Please fill all the details',

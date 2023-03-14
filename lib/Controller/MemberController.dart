@@ -87,4 +87,39 @@ class MemberProfileController extends GetxController {
     var decodedResponse = json.decode(response.body);
     companydetails = decodedResponse['data'];
   }
+
+  Future updateMemberDetails({AllDetails}) async {
+    final response = await http.post(
+      Uri.parse('${MSMEURL}api/member/update-member-details'),
+      headers: {
+        "Authorization": SignController.CurrentToken,
+      },
+      body: {
+        "user_id": SignController.CurrentuserID.toString(),
+        "company_desccription": AllDetails[0],
+        "company_type": AllDetails[1],
+        "company_constitution": AllDetails[2],
+        "import_expoert_type": AllDetails[3],
+        "import_expoert_country": AllDetails[4],
+        "company_turnover": AllDetails[5],
+        "company_no_employee": AllDetails[6],
+        "industry_id": AllDetails[7],
+        "company_membership_no": AllDetails[8],
+        "udyam_register": AllDetails[9],
+        "is_gst": AllDetails[10],
+        "gst_no": AllDetails[11],
+        "cin_no": AllDetails[12],
+        "company_logo": AllDetails[13],
+        "pincode": companydetails['company_detais']['zip'],
+        "state": companydetails['company_detais']['city'],
+        "city": companydetails['company_detais']['state'],
+        "address": AllDetails[14],
+        "company_customer_care_no": AllDetails[15],
+        "company_email_id": AllDetails[16],
+        "company_website": AllDetails[17],
+      },
+    );
+    var decodedResponse = json.decode(response.body);
+    print(response.body);
+  }
 }
