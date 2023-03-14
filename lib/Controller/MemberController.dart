@@ -87,4 +87,39 @@ class MemberProfileController extends GetxController {
     var decodedResponse = json.decode(response.body);
     companydetails = decodedResponse['data'];
   }
+
+  Future updateMemberDetails() async {
+    final response = await http.post(
+      Uri.parse('${MSMEURL}api/member/update-member-details'),
+      headers: {
+        "Authorization": SignController.CurrentToken,
+      },
+      body: {
+        "user_id": SignController.CurrentuserID.toString(),
+        // "company_constitution": ,
+
+        //   "import_expoert_type": ,
+        //    "import_expoert_country": ,
+        //     "company_turnover": ,
+        //  "company_no_employee": ,
+        //      "company_membership_no": ,
+        //       "udyam_register": ,
+        //        "is_gst": ,
+        //         "gst_no": ,
+        //          "cin_no": ,
+        //          "pincode": ,
+        //           "state": ,
+        //            "city": ,
+        //            "address": ,
+        //             "company_desccription": ,
+        //             "industry_id": ,
+        //             "company_type": ,
+        //          "company_customer_care_no": ,
+        //            "company_email_id": ,
+        //            "company_website": ,
+      },
+    );
+    var decodedResponse = json.decode(response.body);
+    print(response.body);
+  }
 }

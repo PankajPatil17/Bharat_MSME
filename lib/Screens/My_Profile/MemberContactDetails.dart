@@ -275,7 +275,7 @@ class _MemberContactDetailsState extends State<MemberContactDetails> {
       child: GestureDetector(
         onTap: () {
           if (formKey.currentState!.validate()) {
-            // Get.to(());
+            membercontroller.updateMemberDetails();
           }
         },
         child: Container(
