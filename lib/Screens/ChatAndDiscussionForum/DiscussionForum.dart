@@ -146,7 +146,8 @@ class _DiscussionForumState extends State<DiscussionForum> {
                                 CommonText(
                                   label: ChatForumController.GetAllPosts[index]
                                           ['created_at']
-                                      .toString(),
+                                      .toString()
+                                      .replaceRange(11, 19, ''),
                                   colorT: Colors.black,
                                   fontw8: FontWeight.w400,
                                   size: 9.sp,
@@ -374,16 +375,12 @@ class _DiscussionForumState extends State<DiscussionForum> {
                             );
                             imgpath.value != ''
                                 ? ChatForumController.AddNewConversation(
-                                    userID: SigunpController.CurrentuserID
-                                        .toString(),
                                     title: Title.text,
                                     descrpition: Description.text,
                                     file: imgpath.value,
                                     context: context)
                                 : ChatForumController
                                     .AddConversationWithoutAttachment(
-                                        userID: SigunpController.CurrentuserID
-                                            .toString(),
                                         title: Title.text,
                                         descrpition: Description.text,
                                         context: context);

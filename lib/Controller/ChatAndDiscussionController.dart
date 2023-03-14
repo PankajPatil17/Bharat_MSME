@@ -34,20 +34,21 @@ class ChatAndDiscussionController extends GetxController {
     GetPostWithComments = decodedResponse['data']['data'];
   }
 
-  AddNewConversation({userID, descrpition, title, file, context}) async {
-    var request = http.MultipartRequest(
-        'POST', Uri.parse('${MSMEURL}api/Chat_Controller/add_post'));
-    request.fields['user_id'] = '${userID}';
+  AddNewConversation({descrpition, title, file, context}) async {
+    var request =
+        http.MultipartRequest('POST', Uri.parse('${MSMEURL}api/save-chat'));
+    request.headers.addAll(
+        {"Authorization": "${SigunpController.CurrentToken.toString()}"});
     request.fields['description'] = '${descrpition}';
     request.fields['title'] = "${title}";
-
+    request.fields['is_visible_to'] = "0";
     request.files
-        .add(await http.MultipartFile.fromPath("attachment", "${file}"));
+        .add(await http.MultipartFile.fromPath("attachment[]", "${file}"));
     var response = await request.send();
     var responsed = await http.Response.fromStream(response);
     var decodedResponse = json.decode(responsed.body);
 
-    if (decodedResponse['status'] == 200) {
+    if (decodedResponse['status'] == true) {
       print(response.statusCode);
       print('resbeco${responsed.body}');
       Get.back();
@@ -62,19 +63,17 @@ class ChatAndDiscussionController extends GetxController {
     }
   }
 
-  Future AddConversationWithoutAttachment(
-      {userID, descrpition, title, context}) async {
-    final response = await http.post(
-      Uri.parse('${MSMEURL}api/Chat_Controller/add_post'),
-      body: {
-        'user_id': userID.toString(),
-        'description': descrpition.toString(),
-        'title': title.toString(),
-        'attachment': ''
-      },
-    );
+  Future AddConversationWithoutAttachment({descrpition, title, context}) async {
+    final response =
+        await http.post(Uri.parse('${MSMEURL}api/save-chat'), body: {
+      'description': descrpition.toString(),
+      'title': title.toString(),
+      'is_visible_to': '0'
+    }, headers: {
+      'Authorization': SigunpController.CurrentToken.toString()
+    });
     var decodedResponse = json.decode(response.body);
-    if (decodedResponse['status'] == 200) {
+    if (decodedResponse['status'] == true) {
       print(response.statusCode);
       print('resbeco${response.body}');
       Get.back();
@@ -90,27 +89,22 @@ class ChatAndDiscussionController extends GetxController {
   }
 
   AddNewConversationwithParent(
-      {userID,
-      descrpition,
-      title,
-      file,
-      context,
-      parentID,
-      Description}) async {
-    var request = http.MultipartRequest(
-        'POST', Uri.parse('${MSMEURL}api/Chat_Controller/add_post'));
-    request.fields['user_id'] = '${userID}';
+      {descrpition, title, file, context, parentID, Description}) async {
+    var request =
+        http.MultipartRequest('POST', Uri.parse('${MSMEURL}api/save-chat'));
+    request.headers.addAll(
+        {"Authorization": "${SigunpController.CurrentToken.toString()}"});
     request.fields['description'] = '${descrpition}';
     request.fields['title'] = "${title}";
-    request.fields['parent_id'] = "${parentID}";
+    request.fields['post_id'] = "${parentID}";
 
     request.files
-        .add(await http.MultipartFile.fromPath("attachment", "${file}"));
+        .add(await http.MultipartFile.fromPath("attachment[]", "${file}"));
     var response = await request.send();
     var responsed = await http.Response.fromStream(response);
     var decodedResponse = json.decode(responsed.body);
 
-    if (decodedResponse['status'] == 200) {
+    if (decodedResponse['status'] == true) {
       print(response.statusCode);
       print('resbeco${responsed.body}');
       Description.clear();
@@ -127,23 +121,21 @@ class ChatAndDiscussionController extends GetxController {
   }
 
   Future AddConversationWithoutAttachmentwithParent(
-      {userID, descrpition, title, context, parentID, Description}) async {
-    final response = await http.post(
-      Uri.parse('${MSMEURL}api/Chat_Controller/add_post'),
-      body: {
-        'user_id': userID.toString(),
-        'description': descrpition.toString(),
-        'title': title.toString(),
-        'parent_id': parentID.toString(),
-        'attachment': ''
-      },
-    );
+      {title, context, parentID, Description, descrpition}) async {
+    final response =
+        await http.post(Uri.parse('${MSMEURL}api/save-chat'), body: {
+      'description': descrpition.toString(),
+      'title': title.toString(),
+      'post_id': parentID.toString(),
+    }, headers: {
+      'Authorization': SigunpController.CurrentToken.toString()
+    });
     var decodedResponse = json.decode(response.body);
-    if (decodedResponse['status'] == 200) {
+    if (decodedResponse['status'] == true) {
       print(response.statusCode);
       print('resbeco${response.body}');
-      Get.back();
       Description.clear();
+      Get.back();
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("Conversation successfully posted"),
       ));
@@ -204,15 +196,14 @@ class ChatAndDiscussionController extends GetxController {
   }
 
   //################################ Like API ###############################
-  Future LikePost({status, PostID, UserID}) async {
-    final response = await http.post(
-      Uri.parse('${MSMEURL}api/Chat_Controller/update_post_like'),
-      body: {
-        "status": "${status}",
-        "post_id": "${PostID}",
-        "user_id": "${UserID}"
-      },
-    );
+  Future LikePost({status, PostID}) async {
+    final response =
+        await http.post(Uri.parse('${MSMEURL}api/save-like'), body: {
+      "status": "${status}",
+      "id": "${PostID}",
+    }, headers: {
+      'Authorization': SigunpController.CurrentToken.toString()
+    });
     print(response.body);
   }
 }

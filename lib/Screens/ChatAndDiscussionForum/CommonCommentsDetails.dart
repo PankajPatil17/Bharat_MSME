@@ -289,10 +289,8 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                     );
                     imgpath.value != ''
                         ? ChatForumController.AddNewConversationwithParent(
-                            userID: SigunpController.CurrentuserID.toString(),
-                            title: ChatForumController
-                                .CommentsParentsWholedata['post_details']
-                                    ['parent_details']['title']
+                            title: ChatForumController.CommentsParentsWholedata[
+                                    'data']['parent_details']['title']
                                 .toString(),
                             descrpition: Description.text == ''
                                 ? filename
@@ -303,16 +301,14 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                             Description: Description)
                         : ChatForumController
                             .AddConversationWithoutAttachmentwithParent(
-                                userID:
-                                    SigunpController.CurrentuserID.toString(),
                                 title: ChatForumController
-                                    .CommentsParentsWholedata['post_details']
+                                    .CommentsParentsWholedata['data']
                                         ['parent_details']['title']
                                     .toString(),
-                                descrpition: Description.text,
                                 parentID: widget.postID.toString(),
                                 context: context,
-                                Description: Description);
+                                Description: Description,
+                                descrpition: Description.text);
                   },
                   child: Icon(
                     Icons.send,
@@ -400,14 +396,13 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                 fontw8: FontWeight.w400,
                 size: 11.sp,
               ),
-              ChatForumController.GetPostWithComments[index]
-                          ['attachment_file'] ==
-                      ''
+              ChatForumController.GetPostWithComments[index]['attachment'] ==
+                      null
                   ? Container()
                   : GestureDetector(
                       onTap: () {
                         _url = Uri.parse(
-                            '${ChatForumController.GetPostWithComments[index]['attachment_file']}');
+                            'https://msmebharatmanch.com/chat-attachment/${ChatForumController.GetPostWithComments[index]['attachment']}');
                         Future.delayed(Duration(milliseconds: 100), () {
                           _launchUrl(_url);
                         });
@@ -419,7 +414,7 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                         decoration: BoxDecoration(
                             color: PWhite, borderRadius: MainBorderRadius),
                         child:
-                            '${ChatForumController.GetPostWithComments[index]['attachment_file']}'
+                            '${ChatForumController.GetPostWithComments[index]['attachment']}'
                                     .contains('pdf')
                                 ? Row(
                                     children: [
@@ -434,7 +429,7 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                                           width: 70.w,
                                           child: CommonText(
                                             label:
-                                                '${ChatForumController.GetPostWithComments[index]['attachment_file']}',
+                                                'https://msmebharatmanch.com/chat-attachment/${ChatForumController.GetPostWithComments[index]['attachment']}',
                                             fontw8: FontWeight.w500,
                                             maxline: 2,
                                             overflow: TextOverflow.ellipsis,
@@ -445,7 +440,7 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                                   )
                                 : Image.network(
                                     height: 20.h,
-                                    '${ChatForumController.GetPostWithComments[index]['attachment_file']}',
+                                    'https://msmebharatmanch.com/chat-attachment/${ChatForumController.GetPostWithComments[index]['attachment']}',
                                   ),
                       ),
                     ),
@@ -471,8 +466,11 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
   //MainCommentPost
 
   MainCommentPost() {
-    statusCodelike = ChatForumController
-        .CommentsParentsWholedata['post_details']['parent_details']['is_like'];
+    ChatForumController.CommentsParentsWholedata['data']['parent_details']
+                ['is_like'] ==
+            'true'
+        ? statusCodelike = true
+        : statusCodelike = false;
     return Container(
       width: 68.w,
       margin: EdgeInsets.all(2.4.h),
@@ -501,9 +499,8 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                 width: 1.w,
               ),
               CommonText(
-                label: ChatForumController
-                    .CommentsParentsWholedata['post_details']['parent_details']
-                        ['founder_name']
+                label: ChatForumController.CommentsParentsWholedata['data']
+                        ['parent_details']['founder_name']
                     .toString()
                     .capitalizeFirst,
                 colorT: Colors.black,
@@ -516,7 +513,7 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
             height: 1.h,
           ),
           CommonText(
-            label: ChatForumController.CommentsParentsWholedata['post_details']
+            label: ChatForumController.CommentsParentsWholedata['data']
                     ['parent_details']['message']
                 .toString()
                 .capitalizeFirst,
@@ -524,14 +521,14 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
             fontw8: FontWeight.w400,
             size: 11.sp,
           ),
-          ChatForumController.CommentsParentsWholedata['post_details']
-                      ['parent_details']['attachment_file'] ==
-                  ''
+          ChatForumController.CommentsParentsWholedata['data']['parent_details']
+                      ['attachment'] ==
+                  null
               ? Container()
               : GestureDetector(
                   onTap: () {
                     _url = Uri.parse(
-                        '${ChatForumController.CommentsParentsWholedata['post_details']['parent_details']['attachment_file']}');
+                        'https://msmebharatmanch.com/chat-attachment/${ChatForumController.CommentsParentsWholedata['data']['parent_details']['attachment']}');
                     Future.delayed(Duration(milliseconds: 100), () {
                       _launchUrl(_url);
                     });
@@ -544,7 +541,7 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                         color: Colors.transparent,
                         borderRadius: MainBorderRadius),
                     child:
-                        '${ChatForumController.CommentsParentsWholedata['post_details']['parent_details']['attachment_file']}'
+                        '${ChatForumController.CommentsParentsWholedata['data']['parent_details']['attachment']}'
                                 .contains('pdf')
                             ? Row(
                                 children: [
@@ -555,10 +552,10 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                                     size: 3.5.h,
                                   )),
                                   SizedBox(
-                                    width: 70.w,
+                                    width: 40.w,
                                     child: CommonText(
                                       label:
-                                          '${ChatForumController.CommentsParentsWholedata['post_details']['parent_details']['attachment_file']}',
+                                          'https://msmebharatmanch.com/chat-attachment/${ChatForumController.CommentsParentsWholedata['data']['parent_details']['attachment']}',
                                       fontw8: FontWeight.w500,
                                       maxline: 2,
                                       overflow: TextOverflow.ellipsis,
@@ -568,16 +565,15 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                               )
                             : Image.network(
                                 height: 20.h,
-                                '${ChatForumController.CommentsParentsWholedata['post_details']['parent_details']['attachment_file']}',
+                                'https://msmebharatmanch.com/chat-attachment/${ChatForumController.CommentsParentsWholedata['data']['parent_details']['attachment']}',
                               ),
                   ),
                 ),
           Align(
             alignment: Alignment.centerRight,
             child: CommonText(
-              label: ChatForumController
-                  .CommentsParentsWholedata['post_details']['parent_details']
-                      ['created_at']
+              label: ChatForumController.CommentsParentsWholedata['data']
+                      ['parent_details']['created_at']
                   .toString()
                   .replaceRange(10, 19, ''),
               colorT: Colors.black,
@@ -594,16 +590,14 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                     if (statusCodelike == false) {
                       ChatForumController.LikePost(
                           PostID: ChatForumController
-                                  .CommentsParentsWholedata['post_details']
+                                  .CommentsParentsWholedata['data']
                               ['parent_details']['id'],
-                          UserID: SigunpController.CurrentuserID.toString(),
                           status: 0);
                     } else {
                       ChatForumController.LikePost(
                           PostID: ChatForumController
-                                  .CommentsParentsWholedata['post_details']
+                                  .CommentsParentsWholedata['data']
                               ['parent_details']['id'],
-                          UserID: SigunpController.CurrentuserID.toString(),
                           status: 1);
                     }
                   });
@@ -630,7 +624,7 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
               ),
               CommonText(
                 label:
-                    '${ChatForumController.CommentsParentsWholedata['post_details']['parent_details']['total_likes']}',
+                    '${ChatForumController.CommentsParentsWholedata['data']['parent_details']['total_likes']}',
                 fontw8: FontWeight.w500,
                 size: 12.sp,
               ),
@@ -648,8 +642,7 @@ class _CommonCommentsDetailsState extends State<CommonCommentsDetails> {
                 ),
               ),
               CommonText(
-                label:
-                    '${ChatForumController.CommentsParentsWholedata['post_details']['no_of_comments']}',
+                label: '${ChatForumController.GetPostWithComments.length}',
                 fontw8: FontWeight.w500,
                 size: 12.sp,
               )
